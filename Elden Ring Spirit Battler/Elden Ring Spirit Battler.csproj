@@ -19,6 +19,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\ER-ParamComparison\SoulsFormats\SoulsFormats\SoulsFormats.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Update="Properties\Resources.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -34,6 +38,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="SpiritAshResource.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="EnemyInfoResource.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

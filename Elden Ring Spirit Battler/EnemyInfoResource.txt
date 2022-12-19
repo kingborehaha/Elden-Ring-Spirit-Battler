@@ -1,0 +1,576 @@
+Name||NpcParamID||NpcThinkID
+Abnormal Stone Cluster||44300022||44300000
+Abnormal Stone Cluster||44301033||44301000
+Alabaster Lord||36000062||36000062
+Alabaster Lord||36001052||36001000
+Albinauric Archer||31700052||31700000
+Albinauric Archer||31701052||31700054
+Albinauric Archer - NPC||31709020||31709000
+Albinauric Lookout||36700120||36700000
+Albinauric Lookout||36701138||36701120
+Albinauric Lookout||36702238||36702200
+Albinauric Lookout||36704020||36704000
+Albinauric Lookout||36708020||36708000
+Albinauric Lookout||36709020||36709000
+Albinauric Lookout (Leyndell, Royal Capital)||36703034||36703000
+Ancestor Spirit (Nonregal)||46700964||46700100
+Ancestral Follower||33600062||33600000
+Ancestral Follower||33601265||33601100
+Ancestral Follower||33602265||33602000
+Ancestral Follower (Siofra River)||33605064||33600000
+Ancestral Follower (Siofra River)||33606064||33601000
+Ancestral Follower (Siofra River)||33607264||33602000
+Ancestral Follower Shaman||33700865||33700000
+Ancient Dragon||45100572||45100200
+Ancient Dragon||45101272||45100200
+Ancient Dragon||45102272||45100300
+Ancient Hero of Zamor (Boss)||71000030||71000000
+Armored Troll Knight||46018021||46010020
+Armored Troll Knight (Boss)||46010920||46010900
+Ash Scarab||41920040||41920000
+Ash Scarab||41921040||41920000
+Ash Scarab||41922020||41920000
+Ash Scarab||41925050||41920000
+Astel, Stars of Darkness (Ainsel River)||46202060||46201000
+Astel, Stars of Darkness (Lake of Rot)||46200062||46200100
+Astel, Stars of Darkness (Snowfield Mine Clone)||46209152||46209100
+Avionette||38600030||38600000
+Avionette||38601024||38601001
+Azula Beastman||39700072||39700000
+Azula Beastman||39702072||39702000
+Azula Beastman||39703172||39703100
+Azula Beastman - Armored||39701272||39701000
+Azur Corpse - NPC||37100032||37100000
+Baleful Shadow||20108562||20108500
+Ballista (Stormveil Castle)||81000014||81000000
+Balloon||1300000||1300000
+Banished Knight||30101172||30101000
+Banished Knight (Niall Boss)||30106051||30106050
+Banished Knight (Niall Boss)||30107051||30107050
+Banished Knight (Stormveil Castle)||30100814||30100100
+Banished Knight (Stormveil Castle)||30102014||30102000
+Basilisk (Ainsel River)||41500060||41500000
+Bat Harpy||42011100||42010000
+Bat Harpy||42017020||42010000
+Bat Harpy||42018026||42011000
+Battlemage||37040054||37040020
+Bear||60310022||60310000
+Beast Clergyman (Farum Azula)||21100072||21100000
+Black Blade Kindred||47700070||47700000
+Black Blade Kindred (Leyndell, Royal Capital)||47701034||47701000
+Black Blade Kindred Ruin  (Leyndell, Royal Capital)||47702034||47702000
+Black Knife Assassin (Leyndell, Royal Capital)||21000034||21000000
+Black Knife Assassin (Limgrave Catacombs Boss)||21001010||21000010
+Black Knife Assassin (Unscaled)||21009000||21000000
+Black Knife Assassin Alecto (Alecto)||21002922||21000000
+Blaidd the Half-Wolf||20100000||20100000
+Blaidd the Half-Wolf (Siofra River)||20109064||20100000
+Bloodhound Knight||42900138||42900000
+Bloodhound Knight||42909024||42909000
+Bloodthorn Exile||43810032||43810000
+Bloodthorn Exile||43811020||43810100
+Boar||60500064||60500000
+Boar||60501030||60501000
+Braided Dog||41630072||41630000
+Burial Watchdog||42604150||42600200
+Burial Watchdog||42605150||42600200
+Burial Watchdog (Cliffbottom Catacombs)||42601920||42601000
+Burial Watchdog (Impalers Catacombs)||42600512||42600900
+Burial Watchdog (Wyndham Catacombs)||42602932||42600000
+Caravan Dummy||1100000||44000000
+Castle Exile (Boss)||30008040||30000140
+Castle Exile (Stormveil Castle)||30000114||30000400
+Castle Exile (Stormveil Castle)||30001014||30001100
+Castle Exile (Stormveil Castle)||30002014||30002000
+Castle Exile (Stormveil Castle)||30003214||30003000
+Cemetery Shade (Weeping Peninsula)||36640012||36640912
+Clayman (Ainsel River)||37500060||37500100
+Clayman (Ainsel River)||37501060||37501100
+Clayman (Ainsel River)||37502060||37502100
+Cleanrot Knight||38000056||38000000
+Cleanrot Knight||38001056||38001000
+Commander (Nieelelell)||30500140||30500940
+Commoner||36600014||36600000
+Commoner||36601438||36601000
+Commoner||36602338||36602000
+Commoner||36603020||36603000
+Commoner||36608033||36608000
+Commoner||36609165||36600000
+Crab - Clean||22750024||22750020
+Crab - Clean||22751024||22750020
+Crab - Golden Tuffs||22770020||22770000
+Crab - Maggots||22730020||22730000
+Crab (Siofra River)||22710064||22710000
+Crucible Knight||25009038||25009000
+Crucible Knight (Boss)||25006020||25000000
+Crucible Knight (Boss)||25007020||25001000
+Crucible Knight (Leyndell, Royal Capital)||25001134||25001100
+Crucible Knight (Unused)||25000014||25000050
+Crystalian||33500154||33500000
+Crystalian||33501154||33501000
+Crystalian||33502154||33502000
+Cuckoo Knight||43520020||43520000
+Cuckoo Knight||43521120||43521000
+Cuckoo Knight's Horse||43620020||43620000
+Death Bird (Liurnia)||49800020||49800100
+Death Rite Bird||49801020||49800100
+Deer||60100064||60100000
+Demi-Human||41000020||41000000
+Demi-Human||41001020||41001000
+Demi-Human||41002020||41002200
+Demi-Human Beastman||41200020||41200000
+Demi-Human Queen (Hermit Village Boss)||41300032||41300000
+Demi-Human Queen (Volcano Cave Boss)||41301932||41301000
+Demi-Human Shaman||41100020||41100000
+Demi-Human Shaman - NPC (Leyndell, Royal Capital)||41109034||41109000
+Depraved Perfumer||37000020||37000020
+Depraved Perfumer (Shaded Castle)||37001031||37000000
+Devious Commoner||36650014||36650000
+Dog||31800021||31800020
+Dominula Celebrant||30700030||30700100
+Dominula Celebrant||30701030||30701000
+Dominula Celebrant||30702030||30702000
+Dominula Celebrant||30703030||30703100
+Dominula Celebrant||30704030||30704000
+Draconic Tree Sentinel (Farum Azula)||32500072||32500000
+Dragon||45008024||45008000
+Dragon||45020022||45020000
+Dragon||45021922||45020922
+Dragon - Agheel (Limgrave)||45000010||45000900
+Dragon - Borealis (Mountaintops)||45030050||45030900
+Dragon - Ekzykes (Caelid)||45010040||45010900
+Dragon-faced Flamethrower||81100014||81100000
+Dragonfly||60800064||60800000
+Dragonfly||60810020||60810000
+Dragonfly||60820040||60820000
+Dragonkin Soldier of Nokstella Healthbar (Boss)||46500960||1
+Dragonlord Placidusax||45200072||45200000
+Dummy||10000000||1
+Dummy||1002000||1
+Dummy||1200000||1002000
+Elden Beast||22000078||22000000
+Elder Dragon Greyoll||45040042||45040000
+Elemer of the Briar||31000020||31001000
+Erdtree Avatar||48110056||48110000
+Erdtree Avatar (Leyndell, Royal Capital)||48100034||48100000
+Erdtree Guardian||36502040||36500100
+Erdtree Guardian (Leyndell, Royal Capital)||36500034||36500000
+Erdtree Guardian (Leyndell, Royal Capital)||36501034||36500000
+Fading Giant Miranda Sprout||44820054||44820000
+Fading Miranda Sprout||44830054||44830000
+Fading Miranda Sprout||44831054||44831000
+Fallen Hawk Soldier||70000065||70000000
+Fallen Hawk Soldier||70001065||70001000
+Fallen Hawk Soldier||70002065||70002000
+Fallen Hawk Soldier||70003165||70003100
+Fallingstar Beast||46801940||46800000
+Fire Giant||47600050||47600900
+Fire Giant||47601050||47600900
+Fire Monk||39000050||39000000
+Fire Monk||39001050||39001000
+Fire Prelate||39100150||39100100
+Fire Prelate||39101150||39101100
+Flamethrower Tank||44607020||44600000
+Flamethrower Tank||44608032||44600000
+Full-Grown Fallingstar Beast (Volcano Top)||46800032||46800930
+Fungal Pod||44400050||44400000
+Fungal Sorcerer||43850012||43850000
+Fungal Sorcerer||43858140||43850000
+Ghiza Torturer||44700024||44700100
+Ghiza Torturer (Leyndell, Royal Capital)||44701034||44701000
+Ghiza Torturer (Unscaled)||44702000||44700000
+Giant Ant - Sac||42810062||42800000
+Giant Ant (Ainsel River)||42800160||42800100
+Giant Ant Skull||42801162||42800000
+Giant Ballista||81010030||81000000
+Giant Bat||42000014||42000100
+Giant Bat||42001050||42000000
+Giant Crab - Clean||22740024||22740200
+Giant Crab - Damaged||22720020||22720000
+Giant Crab - Golden Tuffs||22760020||22760000
+Giant Crab (Siofra River)||22700064||22700200
+Giant Fingercreeper||42410150||42410050
+Giant Fungal Pod||44410050||44410000
+Giant Fungal Pod||44420040||44410000
+Giant Land Octopus (Siofra River)||42200064||42200000
+Giant Living Mass||41710468||41710010
+Giant Lobster||44200035||44200000
+Giant Lobster||44201020||44200000
+Giant Lobster||44202020||44200000
+Giant Lobster||44203050||44200000
+Giant Miranda Sprout||44800370||44800000
+Giant Oracle Envoy||36300054||36300000
+Giant Rat (Stormveil Castle)||40900014||40900000
+Giant Skeleton Torso||49600168||49600068
+Giant Wormface||45801072||45800000
+Giant Wormface||45802132||45800000
+Giant Wormface (Boss)||45800030||45800900
+Glintstone Miner||43831040||43831000
+Glintstone Miner||43840040||43840000
+Glintstone Miner (Sellia Tunnel)||43830040||43830000
+Glintstone Raya Lucaria Scholar||37021024||37020000
+Goat||60600064||60600000
+Goat||60601010||60601000
+Goat||60602010||60601000
+Goat||60603000||60600000
+Goat||60604030||60601000
+Goat||60605030||60601000
+God-Devouring Serpent / Rykard, Lord of Blasphemy||47100038||47100000
+God-Devouring Serpent / Rykard, Lord of Blasphemy||47101038||47100000
+Godfrey, First Elden Lord (Phantom)||47200134||47200000
+Godrick Foot Soldier||43710010||43710000
+Godrick Foot Soldier||43711510||43710210
+Godrick Foot Soldier||43712010||43710000
+Godrick Foot Soldier||43714012||43710500
+Godrick Foot Soldier||43716010||43711000
+Godrick Knight||43510010||43510000
+Godrick Knight||43511112||43511000
+Godrick Knight's Horse||43610012||43610000
+Godrick Soldier||43110010||43110010
+Godrick Soldier||43111306||43110200
+Godrick Soldier||43112010||43112000
+Godrick Soldier||43114006||43114006
+Godrick the Grafted (Stormveil Castle)||47500014||47500000
+Godskin Apostle {Godskin Duo)||35600172||35600100
+Godskin Monk||39010038||39010000
+Godskin Monk||39011042||39011000
+Godskin Noble (Godskin Duo)||35700172||35700100
+Golem||46601010||46601100
+Golem||46602050||46600000
+Golem||46604142||46600000
+Golem||46605140||46601000
+Golem||46606020||46600000
+Golem||46607012||46601100
+Golem||46609050||46601050
+Golem (Leyndell, Royal Capital)||46600034||46600000
+Grafted Scion (Stormveil Castle)||46900014||46900000
+Grave Warden Duelist (Leyndell, Royal Capital)||34000034||34000000
+Grave Warden Duelist (Leyndell, Royal Capital)||34001034||34001000
+Great Wyrm Theodorix (Boss)||49110052||49100952
+Grey Wolf||40700165||40700100
+Grey Wolf||40702012||40700600
+Grey Wolf||40708024||40708000
+Gull||60700022||60700000
+Gurranq, Beast Clergyman||21109042||21102000
+Haligtree Foot Soldier||43760056||43760000
+Haligtree Foot Soldier||43761756||43760200
+Haligtree Foot Soldier||43766056||43761000
+Haligtree Foot Soldier||43767056||43761500
+Haligtree Knight||43560556||43560000
+Haligtree Knight||43561556||43561000
+Haligtree Knight||43562556||43562000
+Haligtree Soldier||43160156||43160100
+Haligtree Soldier||43161056||43161000
+Haligtree Soldier||43162056||43162000
+Haligtree Soldier||43163056||43163000
+Hawk||60010014||60010000
+Highwayman||43770012||43770012
+Highwayman||43772012||43770012
+Hoarah Loux||47210070||47210900
+Horse||40600010||40600000
+Human||1000000||1000000
+Human||10003000||1
+Human||52306000||1
+Imp||30802033||30800000
+Imp (Leyndell, Royal Capital)||30800034||30800000
+Imp (Leyndell, Royal Capital)||30801034||30800000
+Imp (Leyndell, Royal Capital)||30806034||30800000
+Jellyfish||41800065||41800000
+Jellyfish||41801013||41800000
+Jellyfish||41809050||41809000
+Kaiden Sellsword||40500010||40508100
+Kindred of Rot||38100062||38100000
+Kindred of Rot||38101040||38101000
+Kindred of Rot||38103056||38100010
+Kindred of Rot||38109040||38100000
+Kindred of Rot (Boss)||38102932||38100000
+Large Braided Dog||41620072||41620000
+Large Castle Exile||30200014||30200800
+Large Castle Exile (Boss)||30208040||30200040
+Large Demi-Human||41010020||41010200
+Large Fingercreeper||42405050||42400000
+Large Fingercreeper||42406150||42400000
+Large Fingercreeper||42408821||42400000
+Large Fingercreeper  (Leyndell, Royal Capital)||42407034||42400000
+Large Misbegotten (Leyndell, Royal Capital)||34510034||34510000
+Large Mushroom Dog||41660040||41660000
+Large Oracle Envoy (Leyndell, Royal Capital)||36200034||36200000
+Large Red Albinauric||34715268||34705052
+Large Rotten Dog||41640830||41640000
+Large Starved Dog||41601020||41600000
+Large Starved Dog||41602050||41600000
+Large Starved Dog (Stormveil Castle)||41600014||41600000
+Large Tear Scarab||41900052||41900000
+Large Tear Scarab||41902032||41900000
+Large Tear Scarab||41905052||41900000
+Large Wormface||45700030||45700000
+Large Wormface||45701072||45700200
+Large Wormface||45702030||45700100
+Lazuli Raya Lucaria Scholar||37022024||37020000
+Leonine Misbegotten (Boss)||34601952||34600000
+Leonine Misbegotten (Leyndell, Royal Capital)||34600034||34600020
+Lesser Elder Dragon||45050042||45050000
+Leyndell Foot Soldier||43731530||43730200
+Leyndell Foot Soldier||43734050||43730500
+Leyndell Foot Soldier||43736030||43731000
+Leyndell Foot Soldier||43737050||43731550
+Leyndell Foot Soldier||43738032||43730000
+Leyndell Foot Soldier (Leyndell, Royal Capital)||43730534||43730000
+Leyndell Foot Soldier (Leyndell, Royal Capital)||43732534||43730000
+Leyndell Knight - Archer (Leyndell, Royal Capital)||43532034||43532000
+Leyndell Knight (Leyndell, Royal Capital)||43530034||43530000
+Leyndell Knight (Leyndell, Royal Capital)||43531034||43531000
+Leyndell Knight's Horse||43630050||43630000
+Leyndell Soldier||43131032||43131000
+Leyndell Soldier||43134232||43130000
+Leyndell Soldier||43135032||43131000
+Leyndell Soldier||43136032||43132000
+Leyndell Soldier  (Leyndell, Royal Capital)||43130034||43130000
+Leyndell Soldier (Leyndell, Royal Capital)||43132034||43132000
+Leyndell Soldier (Leyndell, Royal Capital)||43133034||43133000
+Lichdragon Fortissax||45110066||45110000
+Lion Guardian||42701051||42701000
+Lion Guardian (Stormveil Castle)||42700014||42700100
+Living Jar - Small||44919020||44919000
+Living Jar - Small (Stormveil Castle)||44910014||44910000
+Living Pot - Huge||44920040||44920000
+Living Pot - Large||44908124||44900000
+Living Pot - Large||44909972||44900000
+Living Pot - Large (Stormveil Castle)||44907014||44900000
+Loretta Tree Sentinel||32520054||32520054
+Mad Pumpkin Head||43400430||43400000
+Mad Pumpkin Head||43401024||43401000
+Magma Wyrm||49100038||49100000
+Malenia, Blade of Miquella||21200056||21200000
+Malenia, Blade of Miquella||21202056||21200000
+Maliketh (Farum Azula)||21101072||21101000
+Man-Serpent||39500038||39500000
+Man-Serpent||39501138||39500000
+Man-Serpent||39502038||39502000
+Man-Serpent||39503038||39502000
+Man-Serpent||39504038||39504000
+Man-Serpent - NPC||39509038||39509000
+Margit (Limgrave)||21300014||21300000
+Marionette||38500024||38500000
+Marionette||38501024||38501000
+Marionette||38502024||38502000
+Master Lusat - NPC||37200040||37200000
+Mausoleum Castle Exile||30004007||30000020
+Mausoleum Castle Exile||30005007||30001100
+Mausoleum Castle Exile||30006051||30002010
+Mausoleum Foot Soldier||43751052||43750100
+Mausoleum Knight||43550066||43550000
+Mausoleum Knight||43551166||43551000
+Mausoleum Knight||43552066||43552100
+Mausoleum Knight's Horse||43650066||43650000
+Mausoleum Soldier||43150066||43150000
+Mausoleum Soldier||43151366||43151000
+Mausoleum Soldier||43152066||43152000
+Mausoleum Soldier||43153066||43153000
+Melina (Leyndell, Royal Capital)||21801034||21800000
+Merciless Chariot||81200007||81200000
+Miranda Sprout||44811830||44811300
+Miranda Sprout (Leyndell, Royal Capital)||44810034||44810000
+Misbegotten||34502030||34501000
+Misbegotten (Leyndell, Royal Capital)||34500034||34500000
+Misbegotten (Leyndell, Royal Capital)||34501034||34501000
+Mohg, The Omen (Palace)||48000068||48000000
+Mohg, The Omen (Sewers)||48001935||48000000
+Monstrous Blood Crow||45610068||45610010
+Monstrous Crow||45600000||45600000
+Monstrous Crow||45601850||45609990
+Monstrous Dog||45500000||45500000
+Monstrous Dog||45501000||45500100
+Monstrous Dog||45502000||45500200
+Monstrous Dog||45503040||45500300
+Monstrous Dog||45504040||45500000
+Monstrous Dog||45506050||45506000
+Mushroom Dog||41670040||41670000
+Night's Cavalry||31500052||31500052
+Night's Cavalry||31501052||31501052
+Night's Cavalry Horse||31600052||31600052
+Noble's Page (Leyndell, Royal Capital)||37030034||37030000
+Noble's Page (Leyndell, Royal Capital)||37031034||37030000
+Nomad Mule||32100010||32100000
+Nomad Mule||32101720||32100000
+Nomad Mule||32102132||32100000
+Nomad Mule||32103010||32100000
+Nomad Trader||32010035||32010000
+Nomad Trader - Hermit Merchant (Ainsel River)||32002860||32000000
+Nomad Trader - Isolated Merchant||32001720||32000000
+Nomad Trader - Merchant Kalé||32000010||32000000
+Nomad Trader - Nomadic Merchant||32003010||32000000
+Nox Swordstress||33000062||33000000
+Nox Swordstress||33001062||33100000
+Nox Swordstress||33002062||33101000
+Omen Monstrosity||21401120||21401000
+Omen Monstrosity (Stormveil Castle)||21400114||21400000
+Omen Monstrosity (Void Boss)||21403050||21400900
+Omenkiller (Boss Village)||48200930||48200000
+Omenkiller (Leyndell, Royal Capital)||48208034||48200000
+Oracle Envoy (Leyndell, Royal Capital)||36100034||36100030
+Orb of Many Faces||37300120||37300000
+Orb of Many Faces - NPC||37301024||37300000
+Owl||60400022||60400000
+Palm Reader - No Chair||21700079||21700000
+Palm Reader - Wooden Chair||21601066||21600000
+Putrid Corpse||36611035||36610000
+Putrid Corpse||36612040||36610100
+Putrid Corpse||36613254||36610000
+Putrid Corpse||36614024||36610000
+Putrid Corpse||36615068||36615000
+Putrid Corpse||36616040||36610000
+Putrid Corpse (Leyndell, Royal Capital)||36610034||36610000
+Rabbitgaroo||61000065||61000000
+Radagon (Stone Platform)||21900078||21900000
+Radahn Foot Soldier||43740342||43740000
+Radahn Foot Soldier||43741040||43740100
+Radahn Foot Soldier||43742042||43740000
+Radahn Foot Soldier||43743040||43740100
+Radahn Foot Soldier||43746040||43741000
+Radahn Foot Soldier||43747040||43741500
+Radahn Soldier||43140642||43140900
+Radahn Soldier||43141140||43141100
+Radahn Soldier||43142142||43140000
+Radahn Soldier||43143242||43143000
+Ranni the Witch||20500020||20500000
+Rat (Stormveil Castle)||40800014||40800000
+Raya Lucaria Foot Soldier||43720020||43720000
+Raya Lucaria Foot Soldier||43721820||43720000
+Raya Lucaria Foot Soldier||43722020||43720000
+Raya Lucaria Foot Soldier||43723020||43720100
+Raya Lucaria Foot Soldier||43724020||43720500
+Raya Lucaria Foot Soldier||43727020||43721500
+Raya Lucaria Scholar||37020024||37020000
+Raya Lucaria Scholar||37024024||37020000
+Raya Lucaria Soldier||43120028||43120010
+Raya Lucaria Soldier||43121020||43121000
+Raya Lucaria Soldier||43122021||43122010
+Raya Lucaria Soldier||43123028||43123010
+Red Albinauric||34700268||34700500
+Red Albinauric||34701468||34701500
+Red Albinauric||34702468||34702500
+Red Albinauric||34703068||34703000
+Red Albinauric||34704268||34704000
+Red Wolf of Radagon||31810065||31810000
+Red Wolf of Radagon Sword (Archives)||31811024||31810024
+Redmane Kngiht||43540342||43540210
+Redmane Kngiht||43541242||43541200
+Redmane Kngiht||43542242||43542300
+Redmane Knight's Horse||43640040||43640000
+Rennala Student||20400024||20400000
+Rennala Student||20401024||20400000
+Rennala Student||20402024||20400000
+Rennala Student||20403024||20400000
+Rennala Student||20404024||20400000
+Rennala Student - Bug Form||20410056||20410000
+Rennala, Queen of the Full Moon||20300024||20300000
+Rennala, Queen of the Full Moon||20310024||20310000
+Rotten Dog||41650068||41650000
+Royal Revenant||40208056||40200000
+Royal Revenant (Boss)||40200920||40200000
+Royal Rider||40000030||40000000
+Royal Rider||40001030||40001000
+Runebear||46300766||46300000
+Sanguine Noble||35500068||35500000
+Scarlet Putrid Corpse||36621035||36620000
+Scarlet Putrid Corpse||36622040||36620100
+Scarlet Putrid Corpse||36624024||36620000
+Scarlet Putrid Corpse||36626040||36620000
+Silver Tear||33200062||33200000
+Silver Tear||33201062||33200000
+Silver Tear||33202262||33200000
+Silver Tear Orb||33300862||33300062
+Skeleton - Curved Sword  (Leyndell, Royal Capital)||35000034||35000000
+Skeleton (Curved Sword)||35001172||35001020
+Skeleton (Curved Sword)||35002172||35002000
+Skeleton (Curved Sword)||35003172||35003000
+Skeleton (Curved Sword)||35004172||35004000
+Skeleton (Curved Sword)||35005020||35000000
+Skeleton (Curved Sword)||35006010||35001000
+Skeleton (Curved Sword)||35007020||35002000
+Skeleton (Curved Sword)||35008020||35003000
+Skeleton (Scimitar)||35100012||35100000
+Skeleton (Scimitar)||35101012||35101000
+Skeleton (Scimitar)||35102012||35102000
+Skeleton (Scimitar)||35103012||35103000
+Slug||40400035||40400100
+Slug||40401038||40400000
+Slug||40402030||40400000
+Slug||40403020||40400000
+Small Fingercreeper  (Leyndell, Royal Capital)||42500034||42500000
+Small Land Octopus (Siofra River)||42300064||42300000
+Small Living Mass||41700032||41700000
+Snail||41400062||41400000
+Snail||41402054||41400000
+Snail||41403930||41403000
+Snail||41404020||41404000
+Soldier of Godrick (Boss)||43113906||43113900
+Starcaller||43800062||43800000
+Starscourge Radahn||47300040||47300000
+Starved Dog (Stormveil Castle)||41610014||41610000
+Stonedigger Troll (Club) (Boss)||46030910||46030100
+Sunflower Commoner (Leyndell, Royal Capital)||36660034||36660000
+Talk Dummy||10001000||1
+Talk Dummy||10005000||1
+Talk Dummy||10006050||1
+Talk Dummy||10100000||1
+Tear Scarab||41910065||41910000
+Tear Scarab||41911062||41910000
+Tear Scarab||41912014||41910000
+Tear Scarab||41913014||41910000
+Tear Scarab||41915062||41910000
+Tear Scarab (Leyndell, Royal Capital)||41914034||41910000
+The Two Fingers||20600079||20600000
+Tibia Mariner (Boss)||49500032||49500932
+Tree Sentinel - Torch (Altus Plateua)||32511030||32511000
+Tree Sentinel (Altus Plateua)||32510030||32510900
+Troll Iji||46040020||46040000
+Troll Knight||46001020||46001000
+Troll Knight||46003140||46000000
+Troll Knight||46004032||46004000
+Troll Knight||46020050||46020000
+Troll Knight||46021052||46021000
+Troll Knight (Boss)||46008024||46008000
+Troll Knight (Stormveil Castle)||46000014||46000000
+Tunnel Miner||43820012||43820000
+Tunnel Miner||43821012||43821000
+Tunnel Miner||43822010||43822000
+Tunnel Miner||43823010||43823000
+Tunnel Miner||43825026||43823000
+Tunnel Miner||43826033||43824000
+Tunnel Miner||43827012||43825000
+Tunnel Miner||43828033||43826000
+Tunnel Miner||43829030||43826000
+Turtle||60900064||60900000
+Turtle Large||60911022||60910000
+Turtle Pope||60910020||60910000
+Twinsage Raya Lucaria Scholar||37023024||37020000
+Ulcerated Tree Spirit (Stormveil Castle)||46400014||46400000
+Undead Beastmariner||30610072||30600000
+Undead Beastmariner||30611072||30611000
+Undead Mariner||30600030||30600000
+Undead Mariner||30601020||30601000
+Vulgar Militia||43210152||43210100
+Vulgar Militia||43211152||43210100
+Vulgar Militia||43212152||43210100
+Walking Mausoleum||44500066||44500000
+Walking Mausoleum||44501020||44500000
+Wandering Noble||43000024||43000000
+Wandering Noble||43001024||43001000
+Wandering Noble||43002024||43002000
+Wandering Noble||43003010||43003600
+Wandering Noble||43004130||43004000
+Wandering Noble||43005024||43005000
+Wandering Noble||43006024||43006000
+Wandering Noble||43007020||43006100
+Warhawk||42102072||42100000
+Warhawk||42103050||42100000
+Warhawk||42104551||42100000
+Warhawk (Stormveil Castle)||42100114||42100000
+Warhawk (Stormveil Castle)||42101214||42100200
+White Veil Perfumer  (Leyndell, Royal Capital)||37010034||37010000
+White Veil Perfumer (Leyndell, Royal Capital)||37011034||37010000
+White Wolf||40710010||40703000
+Wisp||21500064||21500030
+Writhing Mass||47110038||47110000
