@@ -1,11 +1,15 @@
 using SoulsFormats;
 using Microsoft.VisualBasic.FileIO;
+using System.Numerics;
 
 /*
-    TODO
+-- TODO
 summon positioning
-per-enemy scaling level, fine tuning
-phantom color
+randomize an entire ash
+-- Figure out
+Hide player from enemies option
+    Hop into roleParam, change player teamtype to neutral ghost?
+        make sure to change hollow and human params!
 */
 
 
@@ -15,31 +19,391 @@ namespace ER_Buddy_Randomizer
     {
         public string backupFile = "";
 
-        public List<string> settingsList = new();
-        public Dictionary<string, string> presetList = new()
+        public uint buddyLimit = 33; //TODO: confirm
+
+        public List<string> baseEnemyList = new();
+        public List<(int, string)> spiritAshesList = new();
+        public Dictionary<string, List<Enemy>> enemyVariantDict = new();
+        public List<BattleSpirit> battleSpiritList = new();
+        public Dictionary<string, SpiritTeam> teamDict;
+
+        public string[] randomTeamNames = new string[]
         {
-            //list of settings presets
-            { "default", "20,50,5,50,80,False,2,3,30,60,10,300,600,True," },
-            { "fun", "20,50,5,50,80,False,2,3,30,60,10,300,600,True," },
-            { "reasonable", "30,20,4,60,100,False,1.5,1.25,30,100,10,300,900,True," },
-            { "chaos", "0,100,5,100,0,False,3,2,60,100,50,600,1000,False," },
-            { "family", "50,100,8,80,100,False,1.5,2,30,60,10,300,600,False," },
-            { "playground", "20,90,8,50,50,False,10,3,0,0,0,0,0,True," },
-            { "balanced", "30,20,3,50,100,False,1,1,30,100,10,300,900,True," },
+            "Cowboys",
+            "Orbists",
+            "Sun Deniers",
+            "The Chosen",
+            "Solaire's Pals",
+            "Peasant Army",
+            "Party of Fools",
+            "Elden Nerds",
+            "Little Birthday Boys",
+            "Ravens",
+            "The Yharnam Shadows",
+            "Energetic Susans",
+            "Patch's Patches",
+            "The Dark Souls",
+            "Scarlet Simps",
+            "Dung Eaters",
+            "Mensis Maniacs",
+            "Bloodshades",
+            "Sen’s Sneks",
+            "Sen’s Simps",
+            "Grafting Fodder",
+            "The Elderly",
+            "Sophists",
+            "The Aristocats",
+            "Fat Cats",
+            "Lyndon B's Babes",
+            "White Fishes",
+            "Speedrunners",
+            "Erdtree Huggers",
+            "Gamers",
+            "?TeamName?",
+            "Havel's Heavyweights",
+            "Drangleic Apologists",
+            "Discalceate Devotees",
+            "The Boilprawn Boys",
+            "The Poopshitters",
+            "The Dungshitters",
+            "The Peepissers",
+            "D's Nuts",
+            "Gwyn's Sun Fuckers",
+            "Big Bois, Big Poise",
+            "Moon Enjoyers",
+            "Gwynevere's GFs",
+            "Convicted Gamists",
+            "The Gatekeepers",
+            "Crestfallen Crew",
+            "Rotund Ruffians",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
         };
+
+        public enum TeamTypeEnum : byte
+        {
+            Indiscriminate = 29,
+            Enemy = 6,
+            Boss = 7,
+            FriendlyPhantom = 2,
+            Player = 1,
+            Invader = 16,
+            UnusedDS3Unk_3 = 3,
+            UnusedDS3Unk_4 = 4,
+            Passive = 5,
+            Unknown8 = 8,
+            HostileAlly = 9,
+            Torrent = 10,
+            Dragon = 11,
+            UnusedDS3_BattleAlly = 12,
+            UnknownDS3_Invader = 13,
+            UnusedDS3_Neutral = 14,
+            UnusedDS3_Charmed = 15,
+            UnusedDS3_Invader3 = 17,
+            UnusedDS3_Invader4 = 18,
+            UnusedDS3_Host = 19,
+            UnusedDS3_Coop = 20,
+            UnusedDS3_Hostile = 21,
+            UnusedDS3_WanderingPhantom = 22,
+            UnusedDS3_Enemy1 = 23,
+            Unknown24 = 24,
+            UnusedDS3_StrongEnemy = 25,
+            FriendlyNPC = 26,
+            HostileNPC = 27,
+            CoopNPC = 28,
+            Object = 30,
+            DS3_CoopMadPhantom = 31,
+            DS3_InvaderMadPhantom = 32,
+            ArchEnemyTeam = 33,
+            SpiritSummon = 47,
+            Unknown48 = 48,
+            Unknown49 = 49,
+            Unknown50 = 50,
+            Unknown51 = 51,
+            Unknown52 = 52,
+            Unknown54 = 54,
+            Unknown55 = 55,
+            Unknown56 = 56,
+            Unknown57 = 57,
+            Unknown58 = 58,
+            Unknown59 = 59,
+            Unknown60 = 60,
+            Unknown61 = 61,
+            Unknown63 = 63,
+            Unknown65 = 65,
+            Unknown66 = 66,
+        };
+
+        public enum PhantomEnum
+        {
+            // TODO
+            None = -1,
+            C19 = 19,
+            C24 = 24,
+            C25 = 25,
+            C60 = 60,
+            C80 = 80,
+            C203 = 203,
+            C900 = 900,
+            C920 = 920,
+        };
+
+        public enum StatScalingEnum
+        {
+            Default = -99,
+            None = -1,
+            Level_1 = 7000,
+            Level_2 = 7001,
+            Level_3 = 7002,
+            Level_4 = 7003,
+            Level_5 = 7004,
+            Level_6 = 7005,
+            Level_7 = 7006,
+            Level_8 = 7007,
+            Level_9 = 7008,
+            Level_10 = 7009,
+            Level_11 = 7010,
+            Level_12 = 7011,
+            Level_13 = 7012,
+            Level_14 = 7013,
+            Level_15 = 7014,
+            Level_16 = 7015,
+            Level_17 = 7016,
+            Level_18 = 7017,
+            Level_19 = 7018,
+            Level_20 = 7019,
+            Level_21 = 7020,
+        };
+
+        public class Enemy
+        {
+            public string Name;
+            public int NpcID;
+            public int ThinkID;
+            public Enemy(string name, int npcID, int thinkID)
+            {
+                Name = name;
+                NpcID = npcID;
+                ThinkID = thinkID;
+            }
+        }
+
+        public class SummonPos
+        {
+            public float X;
+            public float Z;
+            public float Ang;
+            public SummonPos() { }
+            public SummonPos(float x, float z, float ang)
+            {
+                X = x;
+                Z = z;
+                Ang = ang;
+            }
+            public SummonPos(decimal x, decimal z, decimal ang)
+            {
+                X = (float)x;
+                Z = (float)z;
+                Ang = (float)ang;
+            }
+        }
+
+        public class BattleSpirit
+        {
+            public string BaseName = "";
+            public string VariantName = "";
+            public int BaseNpcID;
+            public int BaseThinkID;
+            public SpiritTeam Team = null!;
+            public SummonPos Position = new(); // X, Z, Angle
+
+            public float HpMult;
+            public float DamageMult;
+            public int Sp_StatScaling;
+            public int Sp_SpecialScaling;
+            public List<int> SpecialEffects
+            {
+                get
+                {
+                    List<int> effects = new();
+                    effects.Add(Sp_StatScaling);
+                    if (Team.BonusStatScalingEffect > 0)
+                        effects.Add(Team.BonusStatScalingEffect);
+                    if (Sp_SpecialScaling > 0)
+                        effects.Add(Sp_SpecialScaling);
+                    return effects;
+                }
+            }
+            public BattleSpirit()
+            { }
+        }
+
+        public class SpiritTeam
+        {
+            public string Name = "";
+            public int PhantomShaderID; // PhantomParam ID to put into NpcParam
+            public byte TeamType; // NpcParam enum
+            public int BonusStatScalingEffect; // Special Effect with bonus stat scaling
+            public SpiritTeam()
+            { }
+            public SpiritTeam(string name, int phantomShaderID, int teamStatScaling, byte teamType)
+            {
+                Name = name;
+                PhantomShaderID = phantomShaderID;
+                BonusStatScalingEffect = teamStatScaling;
+                TeamType = teamType;
+            }
+        }
 
         public MainForm()
         {
             InitializeComponent();
         }
 
-        private void MainForm_Load(object sender, EventArgs e)
+        public void SetRandomTeamName()
         {
-            b_randomize.Enabled = false;
-            b_restoreRegulation.Enabled = false;
-            Text += GetVersion();
+            Random rand = new();
+            if (rand.Next(1, 42069) == 1)
+                Input_TeamName.Text = "Prod's Feet Enjoyers";
+            else
+                Input_TeamName.Text = randomTeamNames[rand.Next(0, randomTeamNames.Length)];
         }
 
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            Button_Execute.Enabled = false;
+            b_restoreRegulation.Enabled = false;
+            Text += GetVersion();
+
+            SetRandomTeamName();
+
+            teamDict = new()
+            {
+                { "Summons", new SpiritTeam("Summons", (int)PhantomEnum.C19, (int)StatScalingEnum.None, (byte)TeamTypeEnum.SpiritSummon) },
+                { "Invaders", new SpiritTeam("Invaders", (int)PhantomEnum.C60, (int)StatScalingEnum.None, (byte)TeamTypeEnum.Invader) },
+                { "Enemies", new SpiritTeam("Enemies", (int)PhantomEnum.None, (int)StatScalingEnum.None, (byte)TeamTypeEnum.Enemy) },
+            };
+
+            LoadSpiritAshResource();
+            LoadEnemyResource();
+            LoadTeamsResource();
+            LoadTeamTypeResource();
+            LoadPhantomResource();
+        }
+
+        public class SearchFilterClass
+        {
+            public List<string> Results_Cache = new();
+            public List<string> Results_Filtered = new();
+            public string SearchFilter_Cache;
+            public string SearchFilter;
+            public SearchFilterClass() { }
+        }
+
+        private void SearchList()
+        {
+
+        }
+
+        private int GetLongestCharInList(object list)
+        {
+            string[] strs = (string[])list;
+            int count = 0;
+            foreach (var s in strs)
+            {
+                var c = s.Length;
+                if (c > count)
+                    count = c;
+            }
+            return count*8;
+        }
+
+        private void LoadPhantomResource()
+        {
+            List_TeamPhantomColor.DataSource = Enum.GetNames(typeof(PhantomEnum));
+            List_TeamPhantomColor.DropDownWidth = GetLongestCharInList(List_TeamPhantomColor.DataSource);
+        }
+        private void LoadTeamTypeResource()
+        {
+            List_TeamType.DataSource = Enum.GetNames(typeof(TeamTypeEnum));
+            List_TeamType.DropDownWidth = GetLongestCharInList(List_TeamType.DataSource);
+        }
+
+        private void LoadEnemyResource()
+        {
+            try
+            {
+                //List<Enemy> enemyList = new();
+                var file = File.ReadAllLines($@"{AppDomain.CurrentDomain.BaseDirectory}\EnemyInfoResource.txt");
+
+                string variantKey = "";
+                for (var i = 0; i < file.Length; i++)
+                {
+                    var line = file[i];
+                    if (line.StartsWith("--"))
+                    {
+                        // Start of a new enemy section
+                        if (i + 1 >= file.Length)
+                            break;
+
+                        string nextLine = file[i + 1];
+                        if (nextLine.Count(c => c == '|') != 4)
+                            continue;
+
+                        variantKey = nextLine.Split("||")[0];
+                        enemyVariantDict[variantKey] = new List<Enemy>();
+                        continue;
+                    }
+                    if (string.IsNullOrWhiteSpace(line))
+                        continue;
+                    if (line.StartsWith("//"))
+                        continue;
+
+                    var split = line.Split("||");
+                    Enemy newEnemy = new(split[0], int.Parse(split[1]), int.Parse(split[2]));
+                    //enemyList.Add(newEnemy);
+                    enemyVariantDict[variantKey].Add(newEnemy);
+                }
+                List_Enemy.DataSource = enemyVariantDict.Keys.ToList();
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Error loading EnemyInfoResource.txt", e);
+            }
+        }
+
+        private void LoadSpiritAshResource()
+        {
+            try
+            {
+                spiritAshesList.Clear();
+                var file = File.ReadAllLines($@"{AppDomain.CurrentDomain.BaseDirectory}\SpiritAshResource.txt");
+
+                foreach (var line in file)
+                {
+                    if (string.IsNullOrWhiteSpace(line))
+                        continue;
+                    if (line.StartsWith("//"))
+                        continue;
+
+                    var split = line.Split("||");
+                    spiritAshesList.Add((int.Parse(split[0]), split[1]));
+                }
+                List_SpiritAsh.DataSource = spiritAshesList.Select(e => e.Item2).ToList();
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Error loading EnemyInfoResource.txt", e);
+            }
+        }
+        private void LoadTeamsResource()
+        {
+            List_Teams.DataSource = teamDict.Select(e => e.Value.Name).ToList();
+        }
 
         private static string GetTime()
         {
@@ -54,7 +418,6 @@ namespace ER_Buddy_Randomizer
             return version;
         }
 
-
         private static PARAM.Row InsertParamRow(PARAM param, PARAM.Row row, int newID)
         {
             PARAM.Row newRow = new PARAM.Row(newID, "buddyRando " + newID, param.AppliedParamdef);
@@ -68,109 +431,23 @@ namespace ER_Buddy_Randomizer
             return newRow;
         }
 
-        private void SettingsToString()
+        private void InsertSpecialEffect(PARAM.Row npcRow, int spEffectID)
         {
-            //read fields, set settings string
-            //(nobody make fun of me for this shitty implementation, please.)
-
-            settingsList.Clear();
-
-            //place settings values into list
-            //
-            settingsList.Add(n_variantReuseChance.Value.ToString());
-            settingsList.Add(n_multipleChanceBase.Value.ToString());
-            settingsList.Add(n_multipleMax.Value.ToString());
-            settingsList.Add(n_multipleChanceAdditional.Value.ToString());
-            settingsList.Add(n_multipleDupeChance.Value.ToString());
-            settingsList.Add(cb_buddyReuse.Checked.ToString());
-            //
-            settingsList.Add(n_hpMult.Value.ToString());
-            settingsList.Add(n_damageMult.Value.ToString());
-            settingsList.Add(n_fpMin.Value.ToString());
-            settingsList.Add(n_fpMax.Value.ToString());
-            settingsList.Add(n_hpChance.Value.ToString());
-            settingsList.Add(n_hpMin.Value.ToString());
-            settingsList.Add(n_hpMax.Value.ToString());
-            //
-            settingsList.Add(cb_bigBuddy.Checked.ToString());
-
-            string settingsString = "";
-            foreach (string str in settingsList)
+            for (var iEffect = 0; iEffect <= 31; iEffect++)
             {
-                settingsString = settingsString+str + ",";
-            }
-
-            tb_settings.Text = settingsString;
-
-            return;
-        }
-
-        /*
-        private void StringToSettings()
-        {
-            //read settings string, set fields
-            //(nobody make fun of me for this shitty implementation, please.)
-
-            int lastEntry = 13; //way to make sure i'm not too stupid
-
-            List<string> settingsList = tb_settings.Text.Split(",",StringSplitOptions.RemoveEmptyEntries).ToList();
-            List<string> defaultSettings = presetList["default"].Split(",", StringSplitOptions.RemoveEmptyEntries).ToList();
-
-            bool showWarning = false;
-            if (settingsList.Count != defaultSettings.Count)
-                showWarning = true;
-
-            
-            //get current settings to update out-of-date settings string (if required)
-            for (var i = settingsList.Count; i < defaultSettings.Count; i++)
-            {
-                settingsList.Add(defaultSettings[i]);
-            }
-
-            try
-            {
-                //
-                n_variantReuseChance.Value = decimal.Parse(settingsList[0]);
-                n_multipleChanceBase.Value = decimal.Parse(settingsList[1]);
-                n_multipleMax.Value = decimal.Parse(settingsList[2]);
-                n_multipleChanceAdditional.Value = decimal.Parse(settingsList[3]);
-                n_multipleDupeChance.Value = decimal.Parse(settingsList[4]);
-                cb_buddyReuse.Checked = bool.Parse(settingsList[5]);
-                //
-                n_hpMult.Value = decimal.Parse(settingsList[6]);
-                n_damageMult.Value = decimal.Parse(settingsList[7]);
-                n_fpMin.Value = decimal.Parse(settingsList[8]);
-                n_fpMax.Value = decimal.Parse(settingsList[9]);
-                n_hpChance.Value = decimal.Parse(settingsList[10]);
-                n_hpMin.Value = decimal.Parse(settingsList[11]);
-                n_hpMax.Value = decimal.Parse(settingsList[12]);
-                //
-                cb_bigBuddy.Checked = bool.Parse(settingsList[lastEntry]);
-
-                if (showWarning)
+                PARAM.Cell cell = npcRow["spEffectID" + iEffect];
+                if ((int)cell.Value != -1)
                 {
-                    SettingsToString();
-                    MessageBox.Show("Settings have been set successfully." +
-                        "\nHowever, the Settings Preset was missing some settings: probably because of a Summon Randomizer update." +
-                        "\n\nAny missing settings have been set to default, and the Settings Preset has been updated to include missing settings."
-                        , "Notice", MessageBoxButtons.OK);
+                    cell.Value = spEffectID;
+                    return;
                 }
-
-                UpdateConsole("Applied Preset");
             }
-            catch
-            {
-                MessageBox.Show("Settings Preset is invalid.\n\nMake sure you properly copy/pasted the entire string.", "Error", MessageBoxButtons.OK);
-                return;
-                //SettingsToString();
-            }
-            return;
+            throw new Exception($"Ran out of unused SpEffectID slots in npcParam for ID {npcRow.ID}");
         }
-        */
 
-        private void CreateBuddy()
+
+        private bool CreateBuddy()
         {
-
             #region Load Parameters from Regulation.bin
             Dictionary<string, PARAM> paramList = new();
             string regulationPath = openFileDialog1.FileName;
@@ -178,7 +455,7 @@ namespace ER_Buddy_Randomizer
             UpdateConsole("Checking Backup");
             if (!File.Exists(backupFile))
             {
-                //no backup file exists
+                // No backup file exists
                 UpdateConsole("Creating Backup");
                 File.Copy(openFileDialog1.FileName, backupFile);
                 b_restoreRegulation.Enabled = true;
@@ -186,11 +463,11 @@ namespace ER_Buddy_Randomizer
 
             UpdateConsole("Decrypting Regulation");
 
-            BND4 paramBND = SFUtil.DecryptERRegulation(regulationPath); //load and decrypt param regulation
+            BND4 paramBND = SFUtil.DecryptERRegulation(regulationPath); // Load and decrypt param regulation
 
             UpdateConsole("Loading ParamDefs");
 
-            var paramdefs = new List<PARAMDEF>();
+            List<PARAMDEF> paramdefs = new();
             foreach (string path in Directory.GetFiles("Paramdex", "*.xml"))
             {
                 var paramdef = PARAMDEF.XmlDeserialize(path);
@@ -207,266 +484,86 @@ namespace ER_Buddy_Randomizer
                 if (param.ApplyParamdefCarefully(paramdefs))
                     paramList[name] = param;
             }
+
+            PARAM buddyParam;
+            PARAM npcParam;
+            PARAM npcThinkParam;
+            PARAM goodsParam;
+            PARAM spEffectParam;
+            try
+            {
+                buddyParam = paramList["BuddyParam"];
+                npcParam = paramList["NpcParam"];
+                npcThinkParam = paramList["NpcThinkParam"];
+                goodsParam = paramList["EquipParamGoods"];
+                spEffectParam = paramList["SpEffectParam"];
+            }
+            catch
+            {
+                MessageBox.Show("Required parameters couldn't be loaded. Make sure this program and Elden Ring are updated.\nIf both are up to date and Elden Ring was recently updated, please report this issue.");
+                throw;
+            }
             #endregion
 
             UpdateConsole("Modifying Params");
 
-            try
+            var selectedBuddyRowID = ((KeyValuePair<string, int>)List_SpiritAsh.SelectedItem).Value;
+            PARAM.Row targetBuddyRow = buddyParam[selectedBuddyRowID];
+
+            foreach (var buddyRow in buddyParam.Rows)
             {
-                PARAM buddyParam = paramList["BuddyParam"];
-                PARAM npcParam = paramList["NpcParam"];
-                PARAM npcThinkParam = paramList["NpcThinkParam"];
-                PARAM goodsParam = paramList["EquipParamGoods"];
-                PARAM spEffectParam = paramList["SpEffectParam"];
-            }
-            catch
-            {
-                MessageBox.Show("Required parameters couldn't be loaded. If Elden Ring was recently updated, please report this issue.");
-                throw;
-            }
-
-            //initialize RNG
-            int rngSeed = (int)n_rngSeed.Value;
-            if (rngSeed == -1)
-            {
-                //if no seed was provided, generate a new one
-                Random newSeed = new Random();
-                n_rngSeed.Value = newSeed.Next(1, 999999999);
-                rngSeed = (int)n_rngSeed.Value;
-            }
-            Random rng = new(rngSeed);
-
-            SettingsToString();//update settings string
-
-            List<string> outputLog = new();
-            string time = GetTime();
-
-            outputLog.Add("RANDOMIZER LOG" + GetVersion() + " " + time);
-            outputLog.Add("RNG SEED: " + rngSeed.ToString());
-            outputLog.Add("SETTINGS: " + tb_settings.Text);
-            outputLog.Add("");
-            outputLog.Add("## Buddies ##");
-
-
-            #region Cleanup & Randomizer Logic 1
-            //Clean buddyParam BuddyParam entry groundwork
-            for (int i = 0; i < buddyParam.Rows.Count; i++)
-            {
-                PARAM.Row row = buddyParam.Rows[i];
-
-                //Clean up buddy params
-                if (row.ID == 0)
-                    continue;
-                else if (row.ID % 100 != 0)
+                if (selectedBuddyRowID - buddyRow.ID > 99)
                 {
-                    //row is for an additional buddy, nuke it
-                    buddyParam.Rows.Remove(row);
-                    i--; //decrement to account for the removed row
+                    // This is not related to the targeted row
                     continue;
                 }
-                row["npcParamId"].Value = -1; //needs to be cleared for variant logic
-
-                //Logic 1
-                //Decide how many buddies this summon should have
-                if (rng.Next(1, 100) <= n_multipleChanceBase.Value && n_multipleMax.Value > 1)
+                if (buddyRow.ID % 100 != 0)
                 {
-                    //is a multi-summon
-                    InsertParamRow(buddyParam, buddyParam.Rows[i], buddyParam.Rows[i].ID + 1);
-                    i++; //skip inserted row for the next loop
-
-                    for (int ii = 1; ii < n_multipleMax.Value; ii++) //ii = 1 since the first multi-buddy has already been implemented above
-                    {
-                        if (rng.Next(1, 100) <= n_multipleChanceAdditional.Value)
-                        {
-                            InsertParamRow(buddyParam, buddyParam.Rows[i], buddyParam.Rows[i].ID + 1);
-                            i++; //skip inserted row for the next loop
-                        }
-                    }
+                    // Row is for an additional buddy, nuke it
+                    buddyParam.Rows.Remove(targetBuddyRow);
                 }
             }
-            int buddyParamCount = buddyParam.Rows.Count;
-            #endregion
 
-            #region Get Valid NPCs
-            //create list of valid npcParam and npcThinkParam
-            List<int> goodNpcIDs = new();
-            List<int> goodNpcThinkIDs = new();
-            foreach (PARAM.Row NpcRow in npcParam.Rows.ToList())
+            for (var i = 0; i < battleSpiritList.Count; i++)
             {
-                int npcID = NpcRow.ID;
+                var spirit = battleSpiritList[i];
 
-                /*
-                //DEBUG
-                float mySizeTest = (float)NpcRow["hitHeight"].Value + (float)NpcRow["hitRadius"].Value;
-                if (mySizeTest < 6)
+
+                #region SpEffectParam
+                // TODO: insert rows for new individual scaling effects, then add them to spirit list
+                if (spirit.HpMult != 1 && spirit.DamageMult != 1)
                 {
-                    continue;
-                }
-                */
-
-                if ((Int32)npcParam[npcID]["behaviorVariationId"].Value > 10000 //not a c0000 NPC
-                //&& npcID < 1000000000 //not a spirit ash npc
-                    && npcID < 89000000) //not a cutscene NPC (probably) (this disallows some c0000's fyi. maybe just non-combat ones though.)
-                {
-
-                    //figure out the best npcThinkID to use
-                    for (int i = npcThinkParam.Rows.Count - 1; i >= 0; i--) //iterate backwards to catch the juicy variant IDs first
+                    int baseEffectID = 290000;
+                    int newEffectID = baseEffectID + 1000; // 291000
+                    do
                     {
-                        PARAM.Row row2 = npcThinkParam.Rows[i];
-                        if (npcID == row2.ID
-                        || npcID - npcID % 10 == row2.ID
-                        || npcID - npcID % 100 == row2.ID
-                        || npcID - npcID % 1000 == row2.ID
-                        || npcID - npcID % 10000 == row2.ID
-                        || npcID - npcID % 100000 == row2.ID)
-                        {
-                            goodNpcIDs.Add(npcID);
-                            goodNpcThinkIDs.Add(row2.ID);
-                            break;
-                        }
-                        else if (i == 0)
-                        {
-                            //throw new InvalidOperationException("Couldn't find an NpcThinkParam entry! Weird, right?");
-                            MessageBox.Show("Couldn't find a good NpcThinkParam entry!\nOffending NpcParam ID: " + npcID + "\n\nPlease send me a message (@king_bore_haha) with this error message and ID!", "Error", MessageBoxButtons.OK);
-                        }
+                        newEffectID++;
                     }
-                }
-            }
-            #endregion
+                    while (spEffectParam[newEffectID] != null);
+                    PARAM.Row newSpEffectRow = InsertParamRow(spEffectParam, spEffectParam[baseEffectID], newEffectID);
+                    newSpEffectRow.Name = $"Spirit Battler Special Scaling ({spirit.VariantName})";
+                    float hpMult = spirit.HpMult;
+                    float damMult = spirit.DamageMult;
+                    newSpEffectRow["maxHpRate"].Value = hpMult;
+                    newSpEffectRow["physicsAttackPowerRate"].Value = damMult;
+                    newSpEffectRow["magicAttackPowerRate"].Value = damMult;
+                    newSpEffectRow["fireAttackPowerRate"].Value = damMult;
+                    newSpEffectRow["thunderAttackPowerRate"].Value = damMult;
+                    newSpEffectRow["darkAttackPowerRate"].Value = damMult;
 
-            #region Randomizer Logic 2
-            for (int i = 0; i < buddyParamCount; i++)
-            {
-                PARAM.Row buddyParamRow = buddyParam.Rows[i];
-                Int32 npcID;
-                Int32 npcThinkID;
-
-                //skip row ID 0
-                if (buddyParamRow.ID == 0)
-                    continue;
-
-                if (goodNpcIDs.Count == 0)
-                {
-                    //error: good NPC IDs has ran out, but the program wants to still run
-                    MessageBox.Show("Ran out of NPC IDs to use! This is probably because you are requesting too many unique multi-buddies. Try enabling buddy reuse, or reducing multi-buddy chances.\n\nIf this happens with reasonable settings, please send me a message (@king_bore_haha) with this error message and let me know if your game was already modded!", "Error", MessageBoxButtons.OK);
-                    ActiveForm.Close(); //close the program
-                }
-
-                //decide which NpcParam entries to use
-                int rng_index = rng.Next(0, goodNpcIDs.Count); //pick next random entry
-
-
-                //check if chosen NPC is acceptable
-                int timeout = 0;
-                for (var iLogic = 0; iLogic < buddyParam.Rows.Count; iLogic++)
-                {
-                    int buddyNpcChoice = (int)buddyParam.Rows[iLogic]["npcParamId"].Value;
-                    int npcChoice = goodNpcIDs[rng_index];
-
-                    //variant check
-                    if (cb_buddyReuse.Checked == false
-                        && npcChoice - npcChoice % 1000 == buddyNpcChoice - buddyNpcChoice % 1000)
-                    {
-                        //chosen NPC is a variant
-                        if (rng.Next(1, 100) <= n_variantReuseChance.Value)
-                        {
-                            //variant is accepted, leave loop
-                            break;
-                        }
-                        else
-                        {
-                            //variant denied, choose a different entry
-                            if (timeout < 1000000)
-                            {
-                                rng_index = rng.Next(0, goodNpcIDs.Count);
-                            }
-                            else
-                            {
-                                //change selection method to iterative if RNG fails an insane number of times
-                                rng_index++;
-                                if (rng_index >= goodNpcIDs.Count)
-                                    rng_index = 0;
-                            }
-                            iLogic = -1; //reset loop
-                        }
-                    }
-                    //size check
-                    else if (buddyParamRow.ID % 100 != 0)
-                    {
-                        //is a multi-buddy
-                        PARAM.Row chosenNpcRow = npcParam[npcChoice];
-                        float mySize = (float)chosenNpcRow["hitHeight"].Value + (float)chosenNpcRow["hitRadius"].Value;
-                        float sizeThreshold = 6;
-
-                        if (mySize > sizeThreshold)
-                        {
-                            //size denied, choose a different entry
-                            if (timeout < 1000000)
-                            {
-                                rng_index = rng.Next(0, goodNpcIDs.Count);
-                            }
-                            else
-                            {
-                                //change selection method to iterative if RNG fails an insane number of times
-                                rng_index++;
-                                if (rng_index >= goodNpcIDs.Count)
-                                    rng_index = 0;
-                            }
-                            iLogic = -1; //reset loop
-                        }
-                    }
-                    //edge case timeout check
-                    timeout++;
-                    if (timeout >= 3000000 + goodNpcIDs.Count)
-                    {
-                        MessageBox.Show("Got stuck in NPC choice logic! This is probably because you are requesting too many unique multi-buddies. Try reducing multi-buddy chances, or enabling buddy reuse.\n\nIf this happens with a default preset (or very easily), please send me a message with this error message and let me know if your game was already modded!", "Error", MessageBoxButtons.OK);
-                        ActiveForm.Close(); //close the program
-                    }
-                }
-
-                bool isMultiSummon = buddyParamRow.ID - buddyParam.Rows[i - 1].ID == 1;
-                if (isMultiSummon
-                && rng.Next(1, 100) <= n_multipleDupeChance.Value) //should this be a dupe summon
-                {
-                    //this is multi-summon, and will be a dupe of the first entry
-                    int buddyBaseID = buddyParamRow.ID - buddyParamRow.ID % 100;
-                    npcID = (Int32)buddyParam[buddyBaseID]["npcParamId"].Value;
-                    npcThinkID = (Int32)buddyParam[buddyBaseID]["npcThinkParamId"].Value;
-                }
-                else
-                {
-                    //summon is not a dupe
-
-                    npcID = goodNpcIDs[rng_index];
-                    npcThinkID = goodNpcThinkIDs[rng_index];
-                    if (cb_buddyReuse.Checked == false)
-                    {
-                        //Remove entries if Buddy Reuse is disabled
-                        goodNpcIDs.Remove(rng_index);
-                        goodNpcThinkIDs.Remove(rng_index);
-                    }
+                    spirit.Sp_SpecialScaling = newSpEffectRow.ID;
                 }
                 #endregion
 
                 #region NpcParam
-                //create and modify new npcParam entry
+                int npcID = spirit.BaseNpcID;
                 int newNpcID = npcID;
                 do
                 {
-                    newNpcID++; //increment until ID is free
+                    newNpcID++;
                 }
                 while (npcParam[newNpcID] != null);
-
                 PARAM.Row newNpcRow = InsertParamRow(npcParam, npcParam[npcID], newNpcID);
-
-                int newNpcThinkID = npcThinkID;
-                do
-                {
-                    newNpcThinkID++; //increment until ID is free
-                }
-                while (npcThinkParam[newNpcThinkID] != null);
-
-                PARAM.Row newNpcThinkRow = InsertParamRow(npcThinkParam, npcThinkParam[npcThinkID], newNpcThinkID);
 
                 /*
                 UInt32 baseHP = (UInt32)newNpcRow["hp"].Value;
@@ -474,86 +571,124 @@ namespace ER_Buddy_Randomizer
                 newNpcRow["hp"].Value = (UInt32)Math.Floor(baseHP * maxHPMod); //add onto existing multiplier
                 */
 
-                newNpcRow["teamType"].Value = (byte)47; //spirit summon
+
+                newNpcRow["teamType"].Value = spirit.Team;
+                newNpcRow["phantomShaderId"].Value = spirit.Team.PhantomShaderID;
                 newNpcRow["itemLotId_enemy"].Value = -1;
                 newNpcRow["itemLotId_map"].Value = -1;
                 newNpcRow["GameClearSpEffectID"].Value = -1;
                 newNpcRow["getSoul"].Value = (uint)0;
 
-                //max map hit radii to prevent spawning issues
-                float maxHitRadius = 1; //very low!
-                float maxHitHeight = 5; //this could probably be tested more
-                if ((float)newNpcRow["hitRadius"].Value > maxHitRadius)
+                // Cap map hit radii to prevent spawning issues
+                if (Option_ReduceEnemyMapCol.Checked)
                 {
-                    newNpcRow["hitRadius"].Value = maxHitRadius;
+                    float maxHitRadius = 1;
+                    float maxHitHeight = 5;
+                    if ((float)newNpcRow["hitRadius"].Value > maxHitRadius)
+                    {
+                        newNpcRow["hitRadius"].Value = maxHitRadius;
+                    }
+                    if ((float)newNpcRow["hitHeight"].Value > maxHitHeight)
+                    {
+                        newNpcRow["hitHeight"].Value = maxHitHeight;
+                    }
                 }
-                if ((float)newNpcRow["hitHeight"].Value > maxHitHeight)
+                if (Option_DisableFriendlyFire.Checked)
                 {
-                    newNpcRow["hitHeight"].Value = maxHitHeight;
+                    newNpcRow["npcType"].Value = (byte)0;
                 }
 
-                //npcParam Special Effects
-                int[] buddyEffects = { 295000, 296000, 297000 }; //special effects to be inserted into new npcParam
+                // NpcParam Special Effects
+                // Todo: organize scaling effect, and phantom param effect
+                //int[] buddyEffects = { 295000, 296000, 297000 }; // (randomizer) special effects to be inserted into new npcParam
+
+                var buddyEffects = spirit.SpecialEffects;
                 int iBuddy = 0;
                 for (var iEffect = 0; iEffect <= 31; iEffect++)
                 {
                     int effectID = (int)newNpcRow["spEffectID" + iEffect].Value;
-                    if (effectID >= 7000 && effectID < 7700)
+                    if (spirit.Sp_StatScaling != (int)StatScalingEnum.Default
+                        && effectID >= 7000 && effectID < 7700)
                     {
-                        //slot contains a regular scaling spEffect. Destroy it.
+                        // Vanilla scaling spEffect. Remove it
                         newNpcRow["spEffectID" + iEffect].Value = -1;
                     }
 
-                    if (effectID != -1 && iBuddy < buddyEffects.Length)
+                    if (effectID == -1 && iBuddy < buddyEffects.Count)
                     {
-                        //slot is empty. insert buddy effects
+                        // Slot is empty, insert effect
                         newNpcRow["spEffectID" + iEffect].Value = buddyEffects[iBuddy];
                         iBuddy++;
                     }
                 }
-                if (iBuddy < buddyEffects.Length)
+                if (iBuddy < buddyEffects.Count)
                 {
-                    MessageBox.Show("Couldn't find enough empty effect slots.\nOffending NpcParam ID: " + npcID + "\n\nPlease send me a message (@king_bore_haha) with this error message and ID!", "Error", MessageBoxButtons.OK);
+                    MessageBox.Show($"Not enough free SpEffect slots in NpcParam ID {spirit.BaseNpcID}.\nPlease report this issue and ID.", "Error", MessageBoxButtons.OK);
+                    return false;
                 }
                 #endregion
 
+                #region NpcThinkParam
+                int npcThinkID = spirit.BaseThinkID;
+                int newNpcThinkID = npcThinkID;
+                do
+                {
+                    newNpcThinkID++;
+                }
+                while (npcThinkParam[newNpcThinkID] != null);
+                PARAM.Row newNpcThinkRow = InsertParamRow(npcThinkParam, npcThinkParam[npcThinkID], newNpcThinkID);
+
+                // TODO
+                // eye dist, battleStartDist, forget time, backHomeDist
+
+                //newNpcThinkRow["isBuddyAI"].Value = false;
+                #endregion
+
                 #region BuddyParam
-                buddyParamRow["npcParamId"].Value = newNpcID;
+                PARAM.Row buddyParamRow = InsertParamRow(buddyParam, targetBuddyRow, targetBuddyRow.ID + i);
 
-                buddyParamRow["npcThinkParamId"].Value = newNpcThinkID;
-                buddyParamRow["npcPlayerInitParamId"].Value = -1; //some c0000 thing i think
+                buddyParamRow["npcParamId"].Value = newNpcRow.ID;
+                buddyParamRow["npcThinkParamId"].Value = newNpcThinkRow.ID;
+                buddyParamRow["npcPlayerInitParamId"].Value = -1; // Probably for c0000
 
+                buddyParamRow["appearOnAroundSekihi"].Value = (byte)0; // 0 = Summon using player location
+                buddyParamRow["pcFollowType"].Value = (byte)1; // 0 = Follow player around, 1 = No special behavior (?), 2 = ?
+
+                buddyParamRow["x_offset"].Value = spirit.Position.X; // Horizontal offset 1
+                buddyParamRow["z_offset"].Value = spirit.Position.Z; // Horizontal offset 2
+                buddyParamRow["y_angle"].Value = spirit.Position.Ang;
+
+                for (var ii = 0; ii <= 10; ii++)
+                {
+                    buddyParamRow["dopingSpEffect_lv" + ii].Value = -1;
+                }
                 buddyParamRow["npcParamId_ridden"].Value = -1;
                 buddyParamRow["npcThinkParamId_ridden"].Value = -1;
                 buddyParamRow["generateAnimId"].Value = -1;
-                buddyParamRow["appearOnAroundSekihi"].Value = (byte)0; //always summon around player
-                buddyParamRow["pcFollowType"].Value = (byte)0; //0 = follow player around, 1 = don't?, 2 = ?
+                #endregion
 
+                #region GoodsParam
+                if (Option_SpiritAshNoRequirements.Checked)
+                {
+                    foreach (PARAM.Row row in goodsParam.Rows)
+                    {
+                        if (row.ID >= 200000 && row.ID <= 270000) //can probably replace this with good type check, or a sort ID check or something. ashes are distinguished in the UI somehow, after all.
+                        {
+                            // This is a spirit ash good
+                            row["consumeHP"].Value = (Int16)0;
+                            row["consumeMP"].Value = (Int16)0;
+                        }
+                    }
+                }
+                #endregion
+            }
 
-
+            if (false)
+            {
+                // Leftover auto-dist calculations
+                /*
                 //spawn offsets
                 //this is all pretty dumb and I hate it
-                /* //Horizontal offset 2 (I was right about being wrong. There isn't a height offset)
-                float buddyHeight = (float)newNpcRow["hitHeight"].Value;
-                buddyParamRow["z_offset"].Value = buddyHeight * buddyHeightMult * -1; //horizontal offset 2
-                */
-                float xOffset = 0;
-                float buddyWidth = (float)newNpcRow["chrHitRadius"].Value;// * (float).75;
-                if (isMultiSummon)
-                {
-                    float xOffsetIncrement = buddyWidth;
-
-                    //this part doesn't actually make sense, but whatever.
-                    xOffset = (float)buddyParam.Rows[i - 1]["x_offset"].Value;
-                    if (xOffset >= 0)
-                        xOffset += xOffsetIncrement; //increment
-                    else
-                        xOffset -= xOffsetIncrement; //decrement
-                    xOffset *= -1; //invert
-
-                }
-                buddyParamRow["x_offset"].Value = xOffset; //horizontal offset 1
-                buddyParamRow["z_offset"].Value = buddyWidth * -1; //horizontal offset 2
 
 
                 //special effect scalers
@@ -564,69 +699,37 @@ namespace ER_Buddy_Randomizer
                 #endregion
 
                 #region npcThinkParam
+                //TODO SPIRIT BATTLER
+                // nose dist? maybe not, to hide player. just do high eye dist isntead i guess.
+                // backhome dist
+                // do I still want isbuddyAI? pretty sure that overrides backhome dist or something. may also make them follow player which i definitely do not want.
                 newNpcThinkRow["isBuddyAI"].Value = true;
-                //newNpcThinkRow["TeamAttackEffectivity"].Value = (byte)0;
-                //Summon AI now always behaves at 100 % aggressiveness when they are not the primary attacker (in situations where multiple allies are attacking the same enemy).
+
                 #endregion
 
                 string logSpacer = " [] ";
                 outputLog.Add("Buddy " + buddyParamRow.ID + logSpacer + "NPC " + npcID + logSpacer + "THINK " + npcThinkID);
+                */
 
-            }
-
-            #region SpEffectParam
-            //modify spEffects scalers used for buddy reinforcement
-            for (var i = 0; i <= 10; i++)
-            {
-                //spEffects
-                PARAM.Row spEffectRow = spEffectParam[290000 + i];
-                float hpMult = (float)n_hpMult.Value - 1; //1.5 = + .5, .5 = -.5
-                float damMult = (float)n_damageMult.Value - 1; //1.5 = + .5, .5 = -.5
-                spEffectRow["maxHpRate"].Value = (float)spEffectRow["maxHpRate"].Value + hpMult;
-                spEffectRow["physicsAttackPowerRate"].Value = (float)spEffectRow["physicsAttackPowerRate"].Value + damMult;
-                spEffectRow["magicAttackPowerRate"].Value = (float)spEffectRow["magicAttackPowerRate"].Value + damMult;
-                spEffectRow["fireAttackPowerRate"].Value = (float)spEffectRow["fireAttackPowerRate"].Value + damMult;
-                spEffectRow["thunderAttackPowerRate"].Value = (float)spEffectRow["thunderAttackPowerRate"].Value + damMult;
-                spEffectRow["darkAttackPowerRate"].Value = (float)spEffectRow["darkAttackPowerRate"].Value + damMult;
-            }
-            #endregion
-
-            #region GoodsParam
-            //randomize FP/HP cost
-            foreach (PARAM.Row row in goodsParam.Rows)
-            {
-                if (row.ID >= 200000 && row.ID <= 270000) //can probably replace this with good type check, or a sort ID check or something. ashes are distinguished in the UI somehow, after all.
+                #region SpEffectParam
+                /*
+                //modify spEffects scalers used for buddy reinforcement
+                for (var i = 0; i <= 10; i++)
                 {
-                    //this is a spirit ash good
-                    row["consumeHP"].Value = (Int16)0;
-                    row["consumeMP"].Value = (Int16)0;
-
-                    if (row.ID % 100 == 0)
-                    {
-                        //this is a +0 spirit ash, randomize costs
-                        if (rng.Next(1, 100) <= n_hpChance.Value)
-                        {
-                            //costs HP
-                            Int16 HPCost = (Int16)rng.Next((int)n_hpMin.Value, (int)n_hpMax.Value);
-                            row["consumeHP"].Value = HPCost;
-                        }
-                        else
-                        {
-                            //costs FP
-                            Int16 FPCost = (Int16)rng.Next((int)n_fpMin.Value, (int)n_fpMax.Value);
-                            row["consumeMP"].Value = FPCost;
-                        }
-                    }
-                    else
-                    {
-                        //this is NOT +0, copy costs from previous row
-                        row["consumeHP"].Value = goodsParam[row.ID - 1]["consumeHP"].Value;
-                        row["consumeMP"].Value = goodsParam[row.ID - 1]["consumeMP"].Value;
-
-                    }
+                    //spEffects
+                    PARAM.Row spEffectRow = spEffectParam[290000 + i];
+                    float hpMult = (float)n_hpMult.Value - 1; //1.5 = + .5, .5 = -.5
+                    float damMult = (float)n_damageMult.Value - 1; //1.5 = + .5, .5 = -.5
+                    spEffectRow["maxHpRate"].Value = (float)spEffectRow["maxHpRate"].Value + hpMult;
+                    spEffectRow["physicsAttackPowerRate"].Value = (float)spEffectRow["physicsAttackPowerRate"].Value + damMult;
+                    spEffectRow["magicAttackPowerRate"].Value = (float)spEffectRow["magicAttackPowerRate"].Value + damMult;
+                    spEffectRow["fireAttackPowerRate"].Value = (float)spEffectRow["fireAttackPowerRate"].Value + damMult;
+                    spEffectRow["thunderAttackPowerRate"].Value = (float)spEffectRow["thunderAttackPowerRate"].Value + damMult;
+                    spEffectRow["darkAttackPowerRate"].Value = (float)spEffectRow["darkAttackPowerRate"].Value + damMult;
                 }
+                */
+                #endregion
             }
-            #endregion
 
             UpdateConsole("Exporting Params");
 
@@ -638,11 +741,10 @@ namespace ER_Buddy_Randomizer
                     file.Bytes = paramList[name].Write();
             }
 
-            SFUtil.EncryptERRegulation(regulationPath, paramBND); //encrypt and write param regulation
+            //SFUtil.EncryptERRegulation(regulationPath, paramBND); //encrypt and write param regulation
 
-            File.WriteAllLines("Randomizer Logs\\" + "Output" + GetVersion() + " " + time + ".txt", outputLog);
-
-            }
+            return true;
+        }
 
         private void b_browse_Click(object sender, EventArgs e)
         {
@@ -650,24 +752,24 @@ namespace ER_Buddy_Randomizer
             {
 
                 string? directory = Path.GetDirectoryName(openFileDialog1.FileName);
-                if (directory != null && File.Exists(directory + "\\eldenring.exe"))
+                if (File.Exists(directory + "\\eldenring.exe"))
                 {
                     //user is loading the regulation next to eldenring.exe, yell at them
 
-                    DialogResult result = MessageBox.Show("Warning: Modifying the Regulation.bin directly used by Elden Ring is ill-advised, as it's possible you may be banned."
-                        + " \nIt's highly recommended you instead use Mod Engine 2 and modify a copy of Regulation.bin."
-                        + " \n\nAre you sure you want to load the Regulation.bin you selected?"
+                    DialogResult result = MessageBox.Show("Warning: Modifying the Regulation.bin directly used by Elden Ring is ill-advised."
+                        + " \nIt's highly recommended you instead use Mod Engine 2 and place a copy of Regulation.bin into the Mod folder."
+                        + " \n\nAre you sure you want to load this Regulation.bin anyway?"
                         , "Confirm Regulation.bin Selection", MessageBoxButtons.OKCancel);
                     if (result != DialogResult.OK)
                     {
-                        b_randomize.Enabled = false;
+                        Button_Execute.Enabled = false;
                         return;
                     }
                 }
 
-                b_randomize.Enabled = true;
+                Button_Execute.Enabled = true;
 
-                UpdateConsole("Selected Regulation.bin");
+                UpdateConsole("Loaded Regulation.bin");
 
                 backupFile = directory + "/regulation.bin.backup"; //place backup next to regulation.bin
 
@@ -686,57 +788,41 @@ namespace ER_Buddy_Randomizer
         {
             //start randomizer
 
-             if (File.Exists(backupFile))
+            if (File.Exists(backupFile))
+            {
+                //User wants to randomize a regulation that has a backup file next to it
+
+                DialogResult result = MessageBox.Show("Warning: Backup Regulation.bin already exists."
+                    + " \nYou may be trying to randomize an already randomized Regulation.bin, which will cause issues. It's recommended you restore the backup first."
+                    + " \n\nDelete Regulation.bin and restore backup before proceeding?"
+                    , "Confirm Randomization", MessageBoxButtons.YesNoCancel);
+                if (result == DialogResult.OK)
                 {
-                    //User wants to randomize a regulation that has a backup file next to it
+                    Restore_Regulation();
+                }
+                else if (result == DialogResult.Cancel)
+                {
+                    return;
+                }
+            }
 
-                    DialogResult result = MessageBox.Show("Warning: Backup Regulation.bin already exists."
-                        + " \nYou may be trying to randomize an already randomized Regulation.bin, which will cause issues. It's recommended you restore the backup first."
-                        + " \n\nDelete Regulation.bin and restore backup before proceeding?"
-                        , "Confirm Randomization", MessageBoxButtons.YesNoCancel);
-                    if (result == DialogResult.OK)
-                    {
-                        Restore_Regulation();
-                    }
-                    else if (result == DialogResult.Cancel)
-                    {
-                        return;
-                    }
-             }
-
-            CreateBuddy(); //Do everything
-
-            GC.Collect(); //free memory
-
-            UpdateConsole("Finished!");
-            System.Media.SystemSounds.Exclamation.Play(); //make noise
-            MessageBox.Show("All done!","Randomization Finished",MessageBoxButtons.OK);
-
-        }
-
-        private void n_rngSeed_ValueChanged(object sender, EventArgs e)
-        {
-            /*
-            if (n_rngSeed.Value > 0) //don't choose a random seed
-                label_randomseed.Visible = false;
+            if (CreateBuddy())
+            {
+                // Success
+                GC.Collect(); // Free memory
+                UpdateConsole("Finished!");
+                System.Media.SystemSounds.Exclamation.Play();
+                MessageBox.Show("All done!", "Finished", MessageBoxButtons.OK);
+            }
             else
-                label_randomseed.Visible = true;
-            */
-        }
+            {
+                // Success
+                GC.Collect(); // Free memory
+                UpdateConsole("Could not finish");
+                System.Media.SystemSounds.Exclamation.Play();
+                MessageBox.Show("Execution failed.", "Error", MessageBoxButtons.OK);
+            }
 
-        private void b_newSeed_Click(object sender, EventArgs e)
-        {
-            Random newSeed = new Random();
-            n_rngSeed.Value = newSeed.Next(1, 999999999);
-            UpdateConsole("Generated New Seed");
-        }
-
-        private void cb_buddyReuse_CheckedChanged(object sender, EventArgs e)
-        {
-            if (cb_buddyReuse.Checked)
-                n_variantReuseChance.Enabled = false;  
-            else
-                n_variantReuseChance.Enabled = true;
         }
 
         private void menu_info_Click(object sender, EventArgs e)
@@ -749,44 +835,15 @@ namespace ER_Buddy_Randomizer
 
         }
 
-        private void b_settingsSet_Click(object sender, EventArgs e)
-        {
-            StringToSettings();
-        }
-
-        private void b_getSettings_Click(object sender, EventArgs e)
-        {
-            SettingsToString();
-        }
-
-        private void tb_settings_ManualToolTip(object sender, EventArgs e)
-        {
-            //manual tooltip. because tooltips for text boxes is currently bugged
-            toolTip1.Show("Used to save/restore Randomizer settings.\nCopy along with RNG Seed for consistent randomization.", tb_settings, 12, 20);
-        }
-
-        private void tb_settings_MouseLeave(object sender, EventArgs e)
-        {
-            toolTip1.Hide(tb_settings);
-        }
-
-        private void tb_settings_TextChanged(object sender, EventArgs e)
-        {
-            if (tb_settings.Text != "")
-                b_settingsSet.Enabled = true;
-            else
-                b_settingsSet.Enabled = false;
-        }
-
         private void Restore_Regulation()
         {
             string regulationPath = openFileDialog1.FileName;
-            
+
             FileSystem.DeleteFile(regulationPath, UIOption.OnlyErrorDialogs, RecycleOption.SendToRecycleBin);
             File.Move(backupFile, regulationPath, false);
             UpdateConsole("Backup Restored");
             b_restoreRegulation.Enabled = false;
-            
+
         }
 
         private void b_restoreRegulation_Click(object sender, EventArgs e)
@@ -796,65 +853,172 @@ namespace ER_Buddy_Randomizer
                 Restore_Regulation();
         }
 
-        private void n_fpMin_ValueChanged(object sender, EventArgs e)
+        private void GetLoadedGridSpiritInfo()
         {
-            if (n_fpMin.Value > n_fpMax.Value)
-                n_fpMax.Value = n_fpMin.Value;
+            BattleSpirit? spirit = GetSpiritGridSelection();
+
+            if (spirit == null)
+                return;
+
+            //TODO: set elements from grid selection
+
+            List_Enemy.SelectedItem = spirit.BaseName;
+            List_EnemyVariant.SelectedItem = spirit.VariantName;
+
+            SummonPosition_X.Value = (decimal)spirit.Position.X;
+            SummonPosition_Z.Value = (decimal)spirit.Position.Z;
+            SummonPosition_Angle.Value = (decimal)spirit.Position.Ang;
+            
         }
 
-        private void n_fpMax_ValueChanged(object sender, EventArgs e)
+        private void SpiritDataGrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-
-            if (n_fpMin.Value > n_fpMax.Value)
-                n_fpMin.Value = n_fpMax.Value;
+            //GetLoadedGridSpiritInfo();
         }
 
-        private void n_hpMin_ValueChanged(object sender, EventArgs e)
+        private void Option_ReduceEnemyMapCol_clicked(object sender, EventArgs e)
         {
-            if (n_hpMin.Value > n_hpMax.Value)
-                n_hpMax.Value = n_hpMin.Value;
+            Option_ReduceEnemyMapCol.Checked = !Option_ReduceEnemyMapCol.Checked;
         }
 
-        private void n_hpMax_ValueChanged(object sender, EventArgs e)
+        private void Option_SpiritAshNoRequirements_Click(object sender, EventArgs e)
         {
-            if (n_hpMin.Value > n_hpMax.Value)
-                n_hpMin.Value = n_hpMax.Value;
+            Option_SpiritAshNoRequirements.Checked = !Option_SpiritAshNoRequirements.Checked;
+            if (Option_SpiritAshNoRequirements.Checked == false)
+                MessageBox.Show("This option is not reversable if you have already executed with this option.\nRestore backups if you want to undo this.", "Warning");
         }
 
-        private void preset_fun_Click(object sender, EventArgs e)
+        private void Option_DisableFriendlyFire_Click(object sender, EventArgs e)
         {
-            tb_settings.Text = presetList["fun"];
-            StringToSettings();
+            Option_DisableFriendlyFire.Checked = !Option_DisableFriendlyFire.Checked;
         }
 
-        private void preset_reasonable_Click(object sender, EventArgs e)
+        private void List_Enemy_SelectedIndexChanged(object sender, EventArgs e)
         {
-            tb_settings.Text = presetList["reasonable"];
-            StringToSettings();
+            if (enemyVariantDict.TryGetValue(List_Enemy.Text, out List<Enemy> list))
+                List_EnemyVariant.DataSource = list.Select(e => e.Name).ToList();
         }
 
-        private void preset_CHAOS_Click(object sender, EventArgs e)
+        private SummonPos CreateSummonPosition()
         {
-            tb_settings.Text = presetList["chaos"];
-            StringToSettings();
+            if (!SummonPosition_Auto.Checked)
+                return new SummonPos(SummonPosition_X.Value, SummonPosition_Z.Value, SummonPosition_Angle.Value);
+
+            // TODO: auto dist logic
+            decimal mag = SummonPosition_Auto_DistMagnitude.Value;
+            SummonPos pos = new();
+
+            /*
+            float xOffset = 0;
+            float buddyWidth = (float)newNpcRow["chrHitRadius"].Value;// * (float).75;
+            if (isMultiSummon)
+            {
+                float xOffsetIncrement = buddyWidth;
+
+                //this part doesn't actually make sense, but whatever.
+                xOffset = (float)buddyParam.Rows[i - 1]["x_offset"].Value;
+                if (xOffset >= 0)
+                    xOffset += xOffsetIncrement; //increment
+                else
+                    xOffset -= xOffsetIncrement; //decrement
+                xOffset *= -1; //invert
+
+            }
+            buddyParamRow["x_offset"].Value = xOffset; //horizontal offset 1
+            buddyParamRow["z_offset"].Value = buddyWidth * -1; //horizontal offset 2
+            */
+
+            return pos;
         }
 
-        private void preset_family_Click(object sender, EventArgs e)
+        private BattleSpirit CreateBattleSpirit()
         {
-            tb_settings.Text = presetList["family"];
-            StringToSettings();
+            BattleSpirit spirit = new()
+            {
+                BaseName = List_Enemy.Text,
+                VariantName = List_EnemyVariant.Text,
+                Team = teamDict[List_Teams.Text],
+                Sp_StatScaling = (int)Enum.Parse(typeof(StatScalingEnum), List_StatScaling.Text),
+                Position = CreateSummonPosition(),
+                HpMult = (float)Input_EnemyHpMult.Value,
+                DamageMult = (float)Input_EnemyDamageMult.Value,
+                BaseNpcID = (int)Input_NpcParamID.Value,
+                BaseThinkID = (int)Input_NpcThinkID.Value,
+            };
+            return spirit;
         }
 
-        private void preset_playground_Click(object sender, EventArgs e)
+        private void Button_AddSpiritToList_Click(object sender, EventArgs e)
         {
-            tb_settings.Text = presetList["playground"];
-            StringToSettings();
+            var spirit = CreateBattleSpirit();
+            battleSpiritList.Add(spirit);
+            UpdateSpiritGrid();
         }
 
-        private void balancedToolStripMenuItem_Click(object sender, EventArgs e)
+        private BattleSpirit? GetSpiritGridSelection()
         {
-            tb_settings.Text = presetList["balanced"];
-            StringToSettings();
+            if (SpiritDataGrid.SelectedRows.Count == 0)
+                return null;
+
+            DataGridViewRow row = SpiritDataGrid.SelectedRows[0];
+            return (BattleSpirit)row.Cells[0].Value;
+        }
+
+        private void SetSpiritGridSelection(BattleSpirit spirit)
+        {
+            if (SpiritDataGrid.SelectedRows.Count == 0)
+                return;
+
+            DataGridViewRow row = SpiritDataGrid.SelectedRows[0];
+            row.Cells[0].Value = spirit;
+        }
+
+        private void UpdateSpiritGrid()
+        {
+            SpiritDataGrid.DataSource = battleSpiritList.Select(spirit => new { spirit, spirit.Team, spirit.VariantName }).ToList();
+            SpiritDataGrid.Columns[0].Visible = false;
+        }
+        private void Button_RemoveSpiritFromList_Click(object sender, EventArgs e)
+        {
+            if (SpiritDataGrid.SelectedRows.Count == 0)
+                return;
+            battleSpiritList.Remove(GetSpiritGridSelection());
+
+            UpdateSpiritGrid();
+        }
+
+        private SpiritTeam CreateSpiritTeam()
+        {
+            SpiritTeam team = new()
+            {
+                Name = Input_TeamName.Text,
+                PhantomShaderID = (int)Enum.Parse(typeof(PhantomEnum), List_TeamPhantomColor.Text),
+                TeamType = (byte)Enum.Parse(typeof(TeamTypeEnum), List_TeamType.Text)
+            };
+            return team;
+        }
+
+        private void Button_AddNewTeam_Click(object sender, EventArgs e)
+        {
+            teamDict[Input_TeamName.Text] = CreateSpiritTeam();
+            LoadTeamsResource();
+        }
+
+        private void Button_GetDataSelection_Click(object sender, EventArgs e)
+        {
+            GetLoadedGridSpiritInfo();
+        }
+
+        private void Button_SetDataSelection_Click(object sender, EventArgs e)
+        {
+            var spirit = CreateBattleSpirit();
+            SetSpiritGridSelection(spirit);
+            UpdateSpiritGrid();
+        }
+
+        private void Button_RandomTeamName_Click(object sender, EventArgs e)
+        {
+            SetRandomTeamName();
         }
     }
 }
