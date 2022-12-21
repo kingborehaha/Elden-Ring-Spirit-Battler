@@ -38,10 +38,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="SpiritAshResource.txt">
+    <None Update="Resources\SpiritAshResource.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="EnemyInfoResource.txt">
+    <None Update="Resources\EnemyInfoResource.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="Paramdex\BuddyParam.1.08.xml">
@@ -61,9 +61,6 @@
     </None>
     <None Update="Paramdex\SpEffect.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="Randomizer Logs\Output Example.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
 

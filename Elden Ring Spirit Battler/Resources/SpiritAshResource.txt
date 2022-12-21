@@ -1,4 +1,4 @@
-//BuddyParamID||Name
+--BuddyParamID||Name
 20000000||Black Knife Tiche
 20100000||Banished Knight Oleg
 20200000||Banished Knight Engvall
@@ -33,8 +33,8 @@
 23100000||Kaiden Sellsword
 23200000||Lone Wolf
 23300000||Giant Rat
-23310000||Giant Rat - Additional Set 1
-23320000||Giant Rat - Additional Set 2
+23310000||Giant Rat - Reinforced
+23320000||Giant Rat - Reinforced +10
 23400000||Demi-Human
 23500000||Rotten Stray
 23600000||Spirit Jellyfish

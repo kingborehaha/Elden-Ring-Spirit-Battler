@@ -1,19 +1,27 @@
 using SoulsFormats;
 using Microsoft.VisualBasic.FileIO;
 using System.Numerics;
+using System.Diagnostics;
+using static EldenRingSpiritBattler.SpiritBattlerResources;
 
 /*
 -- TODO
 summon positioning
 randomize an entire ash
+do DSMS style of project folder/game folder instead of just targeted selected regulation.bin?
+
 -- Figure out
 Hide player from enemies option
     Hop into roleParam, change player teamtype to neutral ghost?
         make sure to change hollow and human params!
+--low priority
+    change targeted ash name's FMG name
+        format: "Spirit Battler: [team] vs [team]
+    custom phantom colors
 */
 
 
-namespace ER_Buddy_Randomizer
+namespace EldenRingSpiritBattler
 {
     public partial class MainForm : Form
     {
@@ -21,163 +29,11 @@ namespace ER_Buddy_Randomizer
 
         public uint buddyLimit = 33; //TODO: confirm
 
-        public List<string> baseEnemyList = new();
         public List<(int, string)> spiritAshesList = new();
+        //public Dictionary<string, Enemy> enemyDict = new();
         public Dictionary<string, List<Enemy>> enemyVariantDict = new();
         public List<BattleSpirit> battleSpiritList = new();
         public Dictionary<string, SpiritTeam> teamDict;
-
-        public string[] randomTeamNames = new string[]
-        {
-            "Cowboys",
-            "Orbists",
-            "Sun Deniers",
-            "The Chosen",
-            "Solaire's Pals",
-            "Peasant Army",
-            "Party of Fools",
-            "Elden Nerds",
-            "Little Birthday Boys",
-            "Ravens",
-            "The Yharnam Shadows",
-            "Energetic Susans",
-            "Patch's Patches",
-            "The Dark Souls",
-            "Scarlet Simps",
-            "Dung Eaters",
-            "Mensis Maniacs",
-            "Bloodshades",
-            "Sen’s Sneks",
-            "Sen’s Simps",
-            "Grafting Fodder",
-            "The Elderly",
-            "Sophists",
-            "The Aristocats",
-            "Fat Cats",
-            "Lyndon B's Babes",
-            "White Fishes",
-            "Speedrunners",
-            "Erdtree Huggers",
-            "Gamers",
-            "?TeamName?",
-            "Havel's Heavyweights",
-            "Drangleic Apologists",
-            "Discalceate Devotees",
-            "The Boilprawn Boys",
-            "The Poopshitters",
-            "The Dungshitters",
-            "The Peepissers",
-            "D's Nuts",
-            "Gwyn's Sun Fuckers",
-            "Big Bois, Big Poise",
-            "Moon Enjoyers",
-            "Gwynevere's GFs",
-            "Convicted Gamists",
-            "The Gatekeepers",
-            "Crestfallen Crew",
-            "Rotund Ruffians",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-        };
-
-        public enum TeamTypeEnum : byte
-        {
-            Indiscriminate = 29,
-            Enemy = 6,
-            Boss = 7,
-            FriendlyPhantom = 2,
-            Player = 1,
-            Invader = 16,
-            UnusedDS3Unk_3 = 3,
-            UnusedDS3Unk_4 = 4,
-            Passive = 5,
-            Unknown8 = 8,
-            HostileAlly = 9,
-            Torrent = 10,
-            Dragon = 11,
-            UnusedDS3_BattleAlly = 12,
-            UnknownDS3_Invader = 13,
-            UnusedDS3_Neutral = 14,
-            UnusedDS3_Charmed = 15,
-            UnusedDS3_Invader3 = 17,
-            UnusedDS3_Invader4 = 18,
-            UnusedDS3_Host = 19,
-            UnusedDS3_Coop = 20,
-            UnusedDS3_Hostile = 21,
-            UnusedDS3_WanderingPhantom = 22,
-            UnusedDS3_Enemy1 = 23,
-            Unknown24 = 24,
-            UnusedDS3_StrongEnemy = 25,
-            FriendlyNPC = 26,
-            HostileNPC = 27,
-            CoopNPC = 28,
-            Object = 30,
-            DS3_CoopMadPhantom = 31,
-            DS3_InvaderMadPhantom = 32,
-            ArchEnemyTeam = 33,
-            SpiritSummon = 47,
-            Unknown48 = 48,
-            Unknown49 = 49,
-            Unknown50 = 50,
-            Unknown51 = 51,
-            Unknown52 = 52,
-            Unknown54 = 54,
-            Unknown55 = 55,
-            Unknown56 = 56,
-            Unknown57 = 57,
-            Unknown58 = 58,
-            Unknown59 = 59,
-            Unknown60 = 60,
-            Unknown61 = 61,
-            Unknown63 = 63,
-            Unknown65 = 65,
-            Unknown66 = 66,
-        };
-
-        public enum PhantomEnum
-        {
-            // TODO
-            None = -1,
-            C19 = 19,
-            C24 = 24,
-            C25 = 25,
-            C60 = 60,
-            C80 = 80,
-            C203 = 203,
-            C900 = 900,
-            C920 = 920,
-        };
-
-        public enum StatScalingEnum
-        {
-            Default = -99,
-            None = -1,
-            Level_1 = 7000,
-            Level_2 = 7001,
-            Level_3 = 7002,
-            Level_4 = 7003,
-            Level_5 = 7004,
-            Level_6 = 7005,
-            Level_7 = 7006,
-            Level_8 = 7007,
-            Level_9 = 7008,
-            Level_10 = 7009,
-            Level_11 = 7010,
-            Level_12 = 7011,
-            Level_13 = 7012,
-            Level_14 = 7013,
-            Level_15 = 7014,
-            Level_16 = 7015,
-            Level_17 = 7016,
-            Level_18 = 7017,
-            Level_19 = 7018,
-            Level_20 = 7019,
-            Level_21 = 7020,
-        };
 
         public class Enemy
         {
@@ -288,11 +144,19 @@ namespace ER_Buddy_Randomizer
                 { "Enemies", new SpiritTeam("Enemies", (int)PhantomEnum.None, (int)StatScalingEnum.None, (byte)TeamTypeEnum.Enemy) },
             };
 
+            List_StatScaling.DataSource = GetOrderedEnumNames(typeof(StatScalingEnum));
+
             LoadSpiritAshResource();
             LoadEnemyResource();
             LoadTeamsResource();
             LoadTeamTypeResource();
             LoadPhantomResource();
+        }
+
+        public string[] GetOrderedEnumNames(Type enumType)
+        {
+            // Order by enum value
+            return Enum.GetNames(enumType).OrderBy(e => Enum.Parse(enumType, e)).ToArray();
         }
 
         public class SearchFilterClass
@@ -324,12 +188,12 @@ namespace ER_Buddy_Randomizer
 
         private void LoadPhantomResource()
         {
-            List_TeamPhantomColor.DataSource = Enum.GetNames(typeof(PhantomEnum));
+            List_TeamPhantomColor.DataSource = GetOrderedEnumNames(typeof(PhantomEnum));
             List_TeamPhantomColor.DropDownWidth = GetLongestCharInList(List_TeamPhantomColor.DataSource);
         }
         private void LoadTeamTypeResource()
         {
-            List_TeamType.DataSource = Enum.GetNames(typeof(TeamTypeEnum));
+            List_TeamType.DataSource = GetOrderedEnumNames(typeof(TeamTypeEnum));
             List_TeamType.DropDownWidth = GetLongestCharInList(List_TeamType.DataSource);
         }
 
@@ -337,8 +201,7 @@ namespace ER_Buddy_Randomizer
         {
             try
             {
-                //List<Enemy> enemyList = new();
-                var file = File.ReadAllLines($@"{AppDomain.CurrentDomain.BaseDirectory}\EnemyInfoResource.txt");
+                var file = File.ReadAllLines($@"{AppDomain.CurrentDomain.BaseDirectory}\Resources\EnemyInfoResource.txt");
 
                 string variantKey = "";
                 for (var i = 0; i < file.Length; i++)
@@ -354,25 +217,23 @@ namespace ER_Buddy_Randomizer
                         if (nextLine.Count(c => c == '|') != 4)
                             continue;
 
-                        variantKey = nextLine.Split("||")[0];
+                        //variantKey = nextLine.Split("||")[0]; // Choose key name based on next valid line (first entry in new category)
+                        variantKey = line[2..]; // Choose key name based on current line post-comment.
                         enemyVariantDict[variantKey] = new List<Enemy>();
                         continue;
                     }
                     if (string.IsNullOrWhiteSpace(line))
                         continue;
-                    if (line.StartsWith("//"))
-                        continue;
 
                     var split = line.Split("||");
                     Enemy newEnemy = new(split[0], int.Parse(split[1]), int.Parse(split[2]));
-                    //enemyList.Add(newEnemy);
                     enemyVariantDict[variantKey].Add(newEnemy);
                 }
                 List_Enemy.DataSource = enemyVariantDict.Keys.ToList();
             }
             catch (Exception e)
             {
-                throw new Exception("Error loading EnemyInfoResource.txt", e);
+                throw new Exception("Error loading \"Resources\\EnemyInfoResource.txt\"", e);
             }
         }
 
@@ -381,13 +242,13 @@ namespace ER_Buddy_Randomizer
             try
             {
                 spiritAshesList.Clear();
-                var file = File.ReadAllLines($@"{AppDomain.CurrentDomain.BaseDirectory}\SpiritAshResource.txt");
+                var file = File.ReadAllLines($@"{AppDomain.CurrentDomain.BaseDirectory}\Resources\SpiritAshResource.txt");
 
                 foreach (var line in file)
                 {
                     if (string.IsNullOrWhiteSpace(line))
                         continue;
-                    if (line.StartsWith("//"))
+                    if (line.StartsWith("--"))
                         continue;
 
                     var split = line.Split("||");
@@ -397,7 +258,7 @@ namespace ER_Buddy_Randomizer
             }
             catch (Exception e)
             {
-                throw new Exception("Error loading EnemyInfoResource.txt", e);
+                throw new Exception("Error loading \"Resources\\EnemyInfoResource.txt\"", e);
             }
         }
         private void LoadTeamsResource()
@@ -558,6 +419,11 @@ namespace ER_Buddy_Randomizer
                 #region NpcParam
                 int npcID = spirit.BaseNpcID;
                 int newNpcID = npcID;
+                if (npcParam[npcID] == null)
+                {
+                    MessageBox.Show($"Spirit {spirit.VariantName}'s base NpcParamID {npcID} cannot be found. Please fix this enemy.", "Error");
+                    return false;
+                }
                 do
                 {
                     newNpcID++;
@@ -628,9 +494,15 @@ namespace ER_Buddy_Randomizer
                 }
                 #endregion
 
+
                 #region NpcThinkParam
                 int npcThinkID = spirit.BaseThinkID;
                 int newNpcThinkID = npcThinkID;
+                if (npcThinkParam[npcThinkID] == null)
+                {
+                    MessageBox.Show($"Spirit {spirit.VariantName}'s base NpcThinkParamID {npcThinkID} cannot be found. Please fix this enemy.", "Error");
+                    return false;
+                }
                 do
                 {
                     newNpcThinkID++;
@@ -683,54 +555,6 @@ namespace ER_Buddy_Randomizer
                 #endregion
             }
 
-            if (false)
-            {
-                // Leftover auto-dist calculations
-                /*
-                //spawn offsets
-                //this is all pretty dumb and I hate it
-
-
-                //special effect scalers
-                for (var iLv = 0; iLv <= 10; iLv++)
-                {
-                    buddyParamRow["dopingSpEffect_lv" + iLv].Value = 290000 + iLv; //buddy reinforcement spEfects
-                }
-                #endregion
-
-                #region npcThinkParam
-                //TODO SPIRIT BATTLER
-                // nose dist? maybe not, to hide player. just do high eye dist isntead i guess.
-                // backhome dist
-                // do I still want isbuddyAI? pretty sure that overrides backhome dist or something. may also make them follow player which i definitely do not want.
-                newNpcThinkRow["isBuddyAI"].Value = true;
-
-                #endregion
-
-                string logSpacer = " [] ";
-                outputLog.Add("Buddy " + buddyParamRow.ID + logSpacer + "NPC " + npcID + logSpacer + "THINK " + npcThinkID);
-                */
-
-                #region SpEffectParam
-                /*
-                //modify spEffects scalers used for buddy reinforcement
-                for (var i = 0; i <= 10; i++)
-                {
-                    //spEffects
-                    PARAM.Row spEffectRow = spEffectParam[290000 + i];
-                    float hpMult = (float)n_hpMult.Value - 1; //1.5 = + .5, .5 = -.5
-                    float damMult = (float)n_damageMult.Value - 1; //1.5 = + .5, .5 = -.5
-                    spEffectRow["maxHpRate"].Value = (float)spEffectRow["maxHpRate"].Value + hpMult;
-                    spEffectRow["physicsAttackPowerRate"].Value = (float)spEffectRow["physicsAttackPowerRate"].Value + damMult;
-                    spEffectRow["magicAttackPowerRate"].Value = (float)spEffectRow["magicAttackPowerRate"].Value + damMult;
-                    spEffectRow["fireAttackPowerRate"].Value = (float)spEffectRow["fireAttackPowerRate"].Value + damMult;
-                    spEffectRow["thunderAttackPowerRate"].Value = (float)spEffectRow["thunderAttackPowerRate"].Value + damMult;
-                    spEffectRow["darkAttackPowerRate"].Value = (float)spEffectRow["darkAttackPowerRate"].Value + damMult;
-                }
-                */
-                #endregion
-            }
-
             UpdateConsole("Exporting Params");
 
             //output regulation
@@ -741,7 +565,7 @@ namespace ER_Buddy_Randomizer
                     file.Bytes = paramList[name].Write();
             }
 
-            //SFUtil.EncryptERRegulation(regulationPath, paramBND); //encrypt and write param regulation
+            //SFUtil.EncryptERRegulation(regulationPath, paramBND); //encrypt and write param regulation // TODO: save testing
 
             return true;
         }
@@ -754,7 +578,7 @@ namespace ER_Buddy_Randomizer
                 string? directory = Path.GetDirectoryName(openFileDialog1.FileName);
                 if (File.Exists(directory + "\\eldenring.exe"))
                 {
-                    //user is loading the regulation next to eldenring.exe, yell at them
+                    // User is loading the regulation next to eldenring.exe, yell at them
 
                     DialogResult result = MessageBox.Show("Warning: Modifying the Regulation.bin directly used by Elden Ring is ill-advised."
                         + " \nIt's highly recommended you instead use Mod Engine 2 and place a copy of Regulation.bin into the Mod folder."
@@ -825,24 +649,23 @@ namespace ER_Buddy_Randomizer
 
         }
 
-        private void menu_info_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show(
-                "Hover over an option to see what it does.\n\n" +
-                "Remember: use this with Mod Engine 2 and don't use modded saves online, or else you might get banned!\n" +
-                "Made by King Bore Haha / Geeeeeorge"
-                , "Info", MessageBoxButtons.OK);
-
-        }
-
         private void Restore_Regulation()
         {
             string regulationPath = openFileDialog1.FileName;
 
             FileSystem.DeleteFile(regulationPath, UIOption.OnlyErrorDialogs, RecycleOption.SendToRecycleBin);
-            File.Move(backupFile, regulationPath, false);
-            UpdateConsole("Backup Restored");
-            b_restoreRegulation.Enabled = false;
+            if (!File.Exists(backupFile))
+            {
+                MessageBox.Show($"Failed to restore backup as \"{backupFile}\" could not be found.", "Error", MessageBoxButtons.OK);
+                UpdateConsole("Backup Restoration Failed");
+                b_restoreRegulation.Enabled = false;
+            }
+            else
+            {
+                File.Move(backupFile, regulationPath, false);
+                UpdateConsole("Backup Restored");
+                b_restoreRegulation.Enabled = false;
+            }
 
         }
 
@@ -896,7 +719,19 @@ namespace ER_Buddy_Randomizer
         private void List_Enemy_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (enemyVariantDict.TryGetValue(List_Enemy.Text, out List<Enemy> list))
+            {
                 List_EnemyVariant.DataSource = list.Select(e => e.Name).ToList();
+                // Update NpcParamId and NpcThinkParam elements
+                Input_NpcParamID.Value = enemyVariantDict[List_Enemy.Text][0].NpcID;
+                Input_NpcThinkID.Value = enemyVariantDict[List_Enemy.Text][0].ThinkID;
+            }
+        }
+
+        private void List_EnemyVariant_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // Update NpcParamId and NpcThinkParam elements
+            Input_NpcParamID.Value = enemyVariantDict[List_Enemy.Text][List_EnemyVariant.SelectedIndex].NpcID;
+            Input_NpcThinkID.Value = enemyVariantDict[List_Enemy.Text][List_EnemyVariant.SelectedIndex].ThinkID;
         }
 
         private SummonPos CreateSummonPosition()
@@ -975,8 +810,10 @@ namespace ER_Buddy_Randomizer
 
         private void UpdateSpiritGrid()
         {
-            SpiritDataGrid.DataSource = battleSpiritList.Select(spirit => new { spirit, spirit.Team, spirit.VariantName }).ToList();
+            SpiritDataGrid.DataSource = battleSpiritList.Select(spirit => new { spirit, spirit.Team.Name, spirit.VariantName }).ToList();
             SpiritDataGrid.Columns[0].Visible = false;
+            SpiritDataGrid.Columns[1].HeaderCell.Value = "Team";
+            SpiritDataGrid.Columns[2].HeaderCell.Value = "Enemy";
         }
         private void Button_RemoveSpiritFromList_Click(object sender, EventArgs e)
         {
@@ -1019,6 +856,38 @@ namespace ER_Buddy_Randomizer
         private void Button_RandomTeamName_Click(object sender, EventArgs e)
         {
             SetRandomTeamName();
+        }
+
+        private void infoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Button_Info_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(
+                "Hover over an option to see what it does.\n\n" +
+                "Step 1: Locate your Elden Ring installation and find Regulation.bin.\n" +
+                "Step 2: Copy and paste regulation.bin into your Mod Engine 2 \"Mod\" folder.\n" +
+                "Step 3: Use this tool to browse and load the copied regulation.bin.\n" +
+                "Step 4: Create teams and enemies as desired, then choose which Spirit Ash to overwrite.\n" +
+                "Step 5: Save Changes. The selected ash should now be changed in-game.\n" +
+                "\nMade by King Bore Haha / Geeeeeorge"
+                , "Info", MessageBoxButtons.OK);
+        }
+
+        private void Button_StatScalingLevelInfo_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show(
+                "Stat scaling is a vanilla system that scales enemies stats, and is generally applied per-area.\n\n" +
+                "Open stat scaling information spreadsheet in browser?"
+                , "Info", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                Process myProcess = new();
+                myProcess.StartInfo.UseShellExecute = true;
+                myProcess.StartInfo.FileName = "https://docs.google.com/spreadsheets/d/1Cj1ZT2VH-rjWddqDSY0zTvNZfolZlXAHqhrdnTQe7hQ/edit#gid=1042523006";
+                myProcess.Start();
+            }
         }
     }
 }

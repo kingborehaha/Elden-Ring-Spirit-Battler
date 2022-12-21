@@ -1,4 +1,4 @@
-namespace ER_Buddy_Randomizer
+namespace EldenRingSpiritBattler
 {
     internal static class Program
     {
