@@ -214,7 +214,7 @@ Red Wolf of Radagon||31810065||31810000
 Red Wolf of Radagon - Sword||31811024||31810024
 Red Wolf of the Champion||31811032||31810932
 
--- Nomadic Merchant
+--Nomadic Merchant
 Frenzied Nomad||32010035||32010000
 Nomadic Merchant - Merchant Kale||32000010||32000000
 Nomadic Merchant - Nomadic Merchant||32001110||32000000
@@ -755,7 +755,7 @@ Warhawk||42102072||42100000
 Warhawk||42103050||42100000
 Warhawk||42104551||42100000
 
--- Land Octopus
+--Land Octopus
 Giant Land Octopus||42200064||42200000
 Small Land Octopus||42300064||42300000
 Small Land Octopus||42300830||42300000

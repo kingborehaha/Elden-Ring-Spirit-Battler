@@ -618,6 +618,7 @@
             this.SpiritDataGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
             this.SpiritDataGrid.RowTemplate.Height = 25;
             this.SpiritDataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.SpiritDataGrid.ShowCellToolTips = false;
             this.SpiritDataGrid.Size = new System.Drawing.Size(354, 495);
             this.SpiritDataGrid.TabIndex = 90;
             this.SpiritDataGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.SpiritDataGrid_CellClick);
