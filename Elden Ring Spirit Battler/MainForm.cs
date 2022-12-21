@@ -79,12 +79,14 @@ namespace EldenRingSpiritBattler
             LoadTeamTypeResource();
             LoadPhantomResource();
 
-            if (Button_ToggleAutoGetSpiritSettings.Checked)
-            {
-                // Add an initial random BattleSpirit to the grid.
-                SelectRandomEnemyAndSetToElements();
-                AddSpiritToGrid();
-            }
+            // Add an initial random BattleSpirit to the grid.
+            AddRandomEnemyToGrid();
+        }
+
+        public void AddRandomEnemyToGrid()
+        {
+            SelectRandomEnemyAndSetToElements();
+            AddSpiritToGrid();
         }
 
         public void SelectRandomEnemyAndSetToElements()
@@ -682,6 +684,5 @@ namespace EldenRingSpiritBattler
             SetSpiritGridSelection(spirit);
             UpdateSpiritGrid();
         }
-
     }
 }

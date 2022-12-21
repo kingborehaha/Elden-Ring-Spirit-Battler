@@ -157,6 +157,9 @@ namespace EldenRingSpiritBattler
             "Amazing Chests",
             "xX_DarkMoonBlades_Xx",
             "Stardust Crusaders",
+            "Disco Heretics",
+            "The Purple Moss Clumps",
+            //"\"; DROP TABLE TEAMS;",
         };
     }
 }

@@ -13,12 +13,13 @@ namespace EldenRingSpiritBattler
 {
     public partial class MainForm : Form
     {
+        public bool preventEnemyEdited = false;
+
         private void EnemyWasEdited(object sender, EventArgs e)
         {
-            if (Button_ToggleAutoGetSpiritSettings.Checked)
-            {
-                UpdateSelectedSpirit();
-            }
+            if (preventEnemyEdited)
+                return;
+            UpdateSelectedSpirit();
         }
 
         private void b_restoreRegulation_Click(object sender, EventArgs e)
@@ -196,18 +197,9 @@ namespace EldenRingSpiritBattler
             ActiveControl = SpiritDataGrid;
         }
 
-        private void Button_ToggleAutoGetSpiritSettings_Click(object sender, EventArgs e)
-        {
-            Button_ToggleAutoGetSpiritSettings.Checked = !Button_ToggleAutoGetSpiritSettings.Checked;
-        }
-
-
         private void SpiritDataGrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (Button_ToggleAutoGetSpiritSettings.Checked)
-            {
-                GetLoadedGridSpiritInfo();
-            }
+            GetLoadedGridSpiritInfo();
         }
 
         private void Option_ReduceEnemyMapCol_clicked(object sender, EventArgs e)
@@ -246,12 +238,16 @@ namespace EldenRingSpiritBattler
             Input_NpcThinkID.Value = enemyVariantDict[List_Enemy.Text][List_EnemyVariant.SelectedIndex].ThinkID;
         }
 
-
-        private void Button_AddSpiritToList_Click(object sender, EventArgs e)
+        private void Button_AddRandomEnemy_Click(object sender, EventArgs e)
         {
-            AddSpiritToGrid();
+            preventEnemyEdited = true;
+
+            AddRandomEnemyToGrid();
+
+            SpiritDataGrid.ClearSelection();
+            SpiritDataGrid.Rows[SpiritDataGrid.Rows.Count - 1].Selected = true;
+
+            preventEnemyEdited = false;
         }
-
-
     }
 }
