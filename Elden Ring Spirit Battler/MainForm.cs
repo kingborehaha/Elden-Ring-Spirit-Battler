@@ -9,6 +9,8 @@ using static EldenRingSpiritBattler.SpiritBattlerResources;
 summon positioning
 randomize an entire ash
 do DSMS style of project folder/game folder instead of just targeted selected regulation.bin?
+save/load .json for battleSpiritList.
+    automatically save on execute just so that data isn't lost on exceptions. that would be annoying.
 
 -- Figure out
 Hide player from enemies option
@@ -29,7 +31,7 @@ namespace EldenRingSpiritBattler
 
         public uint buddyLimit = 33; //TODO: confirm
 
-        public List<(int, string)> spiritAshesList = new();
+        public Dictionary<string, int> spiritAshesDict = new();
         //public Dictionary<string, Enemy> enemyDict = new();
         public Dictionary<string, List<Enemy>> enemyVariantDict = new();
         public List<BattleSpirit> battleSpiritList = new();
@@ -77,10 +79,10 @@ namespace EldenRingSpiritBattler
             public SpiritTeam Team = null!;
             public SummonPos Position = new(); // X, Z, Angle
 
-            public float HpMult;
-            public float DamageMult;
-            public int Sp_StatScaling;
-            public int Sp_SpecialScaling;
+            public float HpMult = 1.0f;
+            public float DamageMult = 1.0f;
+            public int Sp_StatScaling = -1; //
+            public int Sp_SpecialScaling = -1; // Stores ID of newly created spEffect that holds HpMult and DamageMult modifiers
             public List<int> SpecialEffects
             {
                 get
@@ -96,6 +98,22 @@ namespace EldenRingSpiritBattler
             }
             public BattleSpirit()
             { }
+
+            public BattleSpirit Clone()
+            {
+                var spirit = new BattleSpirit();
+                spirit.BaseName = BaseName;
+                spirit.VariantName = VariantName;
+                spirit.BaseNpcID = BaseNpcID;
+                spirit.BaseThinkID = BaseThinkID;
+                spirit.Team = Team;
+                spirit.Position = new SummonPos(Position.X, Position.Z, Position.Ang);
+                spirit.HpMult = HpMult;
+                spirit.DamageMult = DamageMult;
+                spirit.Sp_StatScaling = Sp_StatScaling;
+                spirit.Sp_SpecialScaling = Sp_SpecialScaling;
+                return spirit;
+            }
         }
 
         public class SpiritTeam
@@ -151,6 +169,20 @@ namespace EldenRingSpiritBattler
             LoadTeamsResource();
             LoadTeamTypeResource();
             LoadPhantomResource();
+
+            if (Button_ToggleAutoGetSpiritSettings.Checked)
+            {
+                // Add an initial random BattleSpirit to the grid.
+                SelectRandomEnemyAndSetToElements();
+                AddSpiritToGrid();
+            }
+        }
+
+        public void SelectRandomEnemyAndSetToElements()
+        {
+            Random rand = new();
+            List_Enemy.SelectedIndex = rand.Next(0, List_Enemy.Items.Count - 1);
+            List_EnemyVariant.SelectedIndex = rand.Next(0, List_EnemyVariant.Items.Count - 1);
         }
 
         public string[] GetOrderedEnumNames(Type enumType)
@@ -241,7 +273,7 @@ namespace EldenRingSpiritBattler
         {
             try
             {
-                spiritAshesList.Clear();
+                spiritAshesDict.Clear();
                 var file = File.ReadAllLines($@"{AppDomain.CurrentDomain.BaseDirectory}\Resources\SpiritAshResource.txt");
 
                 foreach (var line in file)
@@ -252,9 +284,9 @@ namespace EldenRingSpiritBattler
                         continue;
 
                     var split = line.Split("||");
-                    spiritAshesList.Add((int.Parse(split[0]), split[1]));
+                    spiritAshesDict[split[1]] = int.Parse(split[0]);
                 }
-                List_SpiritAsh.DataSource = spiritAshesList.Select(e => e.Item2).ToList();
+                List_SpiritAsh.DataSource = spiritAshesDict.Keys.ToList();
             }
             catch (Exception e)
             {
@@ -307,8 +339,14 @@ namespace EldenRingSpiritBattler
         }
 
 
-        private bool CreateBuddy()
+        private bool ExecuteMainLogic()
         {
+            if (SpiritDataGrid.Rows.Count == 0)
+            {
+                MessageBox.Show("No summons have been added to the summon list.", "Error", MessageBoxButtons.OK);
+                return false;
+            }
+
             #region Load Parameters from Regulation.bin
             Dictionary<string, PARAM> paramList = new();
             string regulationPath = openFileDialog1.FileName;
@@ -368,11 +406,12 @@ namespace EldenRingSpiritBattler
 
             UpdateConsole("Modifying Params");
 
-            var selectedBuddyRowID = ((KeyValuePair<string, int>)List_SpiritAsh.SelectedItem).Value;
+            var selectedBuddyRowID = spiritAshesDict[List_SpiritAsh.Text];
             PARAM.Row targetBuddyRow = buddyParam[selectedBuddyRowID];
 
-            foreach (var buddyRow in buddyParam.Rows)
+            foreach (var buddyRow in buddyParam.Rows.ToList())
             {
+                // Clean targeted Spirit Ash
                 if (selectedBuddyRowID - buddyRow.ID > 99)
                 {
                     // This is not related to the targeted row
@@ -389,9 +428,9 @@ namespace EldenRingSpiritBattler
             {
                 var spirit = battleSpiritList[i];
 
-
                 #region SpEffectParam
-                // TODO: insert rows for new individual scaling effects, then add them to spirit list
+
+                // If the battleSpirit has special scaling, create a new spEffectParam row with the values and assign it to the battleSpirit.
                 if (spirit.HpMult != 1 && spirit.DamageMult != 1)
                 {
                     int baseEffectID = 290000;
@@ -411,6 +450,12 @@ namespace EldenRingSpiritBattler
                     newSpEffectRow["fireAttackPowerRate"].Value = damMult;
                     newSpEffectRow["thunderAttackPowerRate"].Value = damMult;
                     newSpEffectRow["darkAttackPowerRate"].Value = damMult;
+                    newSpEffectRow["registPoizonChangeRate"].Value = 1.0f;
+                    newSpEffectRow["registDiseaseChangeRate"].Value = 1.0f;
+                    newSpEffectRow["registBloodChangeRate"].Value = 1.0f;
+                    newSpEffectRow["registFreezeChangeRate"].Value = 1.0f;
+                    newSpEffectRow["registSleepChangeRate"].Value = 1.0f;
+                    newSpEffectRow["registMadnessChangeRate"].Value = 1.0f;
 
                     spirit.Sp_SpecialScaling = newSpEffectRow.ID;
                 }
@@ -430,13 +475,6 @@ namespace EldenRingSpiritBattler
                 }
                 while (npcParam[newNpcID] != null);
                 PARAM.Row newNpcRow = InsertParamRow(npcParam, npcParam[npcID], newNpcID);
-
-                /*
-                UInt32 baseHP = (UInt32)newNpcRow["hp"].Value;
-                float maxHPMod = (float)n_hpMult.Value;
-                newNpcRow["hp"].Value = (UInt32)Math.Floor(baseHP * maxHPMod); //add onto existing multiplier
-                */
-
 
                 newNpcRow["teamType"].Value = spirit.Team;
                 newNpcRow["phantomShaderId"].Value = spirit.Team.PhantomShaderID;
@@ -465,7 +503,7 @@ namespace EldenRingSpiritBattler
                 }
 
                 // NpcParam Special Effects
-                // Todo: organize scaling effect, and phantom param effect
+                // TODO: organize scaling effect, and phantom param effect
                 //int[] buddyEffects = { 295000, 296000, 297000 }; // (randomizer) special effects to be inserted into new npcParam
 
                 var buddyEffects = spirit.SpecialEffects;
@@ -608,47 +646,6 @@ namespace EldenRingSpiritBattler
             Application.DoEvents();
         }
 
-        private void b_randomize_Click(object sender, EventArgs e)
-        {
-            //start randomizer
-
-            if (File.Exists(backupFile))
-            {
-                //User wants to randomize a regulation that has a backup file next to it
-
-                DialogResult result = MessageBox.Show("Warning: Backup Regulation.bin already exists."
-                    + " \nYou may be trying to randomize an already randomized Regulation.bin, which will cause issues. It's recommended you restore the backup first."
-                    + " \n\nDelete Regulation.bin and restore backup before proceeding?"
-                    , "Confirm Randomization", MessageBoxButtons.YesNoCancel);
-                if (result == DialogResult.OK)
-                {
-                    Restore_Regulation();
-                }
-                else if (result == DialogResult.Cancel)
-                {
-                    return;
-                }
-            }
-
-            if (CreateBuddy())
-            {
-                // Success
-                GC.Collect(); // Free memory
-                UpdateConsole("Finished!");
-                System.Media.SystemSounds.Exclamation.Play();
-                MessageBox.Show("All done!", "Finished", MessageBoxButtons.OK);
-            }
-            else
-            {
-                // Success
-                GC.Collect(); // Free memory
-                UpdateConsole("Could not finish");
-                System.Media.SystemSounds.Exclamation.Play();
-                MessageBox.Show("Execution failed.", "Error", MessageBoxButtons.OK);
-            }
-
-        }
-
         private void Restore_Regulation()
         {
             string regulationPath = openFileDialog1.FileName;
@@ -683,10 +680,18 @@ namespace EldenRingSpiritBattler
             if (spirit == null)
                 return;
 
-            //TODO: set elements from grid selection
+            List_Teams.Text = spirit.Team.Name;
 
             List_Enemy.SelectedItem = spirit.BaseName;
             List_EnemyVariant.SelectedItem = spirit.VariantName;
+            
+            Input_NpcParamID.Value = spirit.BaseNpcID;
+            Input_NpcThinkID.Value = spirit.BaseThinkID;
+
+            List_StatScaling.Text = ((StatScalingEnum)spirit.Sp_StatScaling).ToString();
+
+            Input_EnemyHpMult.Value = (decimal)spirit.HpMult;
+            Input_EnemyDamageMult.Value = (decimal)spirit.DamageMult;
 
             SummonPosition_X.Value = (decimal)spirit.Position.X;
             SummonPosition_Z.Value = (decimal)spirit.Position.Z;
@@ -696,7 +701,10 @@ namespace EldenRingSpiritBattler
 
         private void SpiritDataGrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            //GetLoadedGridSpiritInfo();
+            if (Button_ToggleAutoGetSpiritSettings.Checked)
+            {
+                GetLoadedGridSpiritInfo();
+            }
         }
 
         private void Option_ReduceEnemyMapCol_clicked(object sender, EventArgs e)
@@ -725,6 +733,7 @@ namespace EldenRingSpiritBattler
                 Input_NpcParamID.Value = enemyVariantDict[List_Enemy.Text][0].NpcID;
                 Input_NpcThinkID.Value = enemyVariantDict[List_Enemy.Text][0].ThinkID;
             }
+            EnemyWasEdited(sender, e);
         }
 
         private void List_EnemyVariant_SelectedIndexChanged(object sender, EventArgs e)
@@ -766,7 +775,7 @@ namespace EldenRingSpiritBattler
             return pos;
         }
 
-        private BattleSpirit CreateBattleSpirit()
+        private BattleSpirit CreateBattleSpiritFromElements()
         {
             BattleSpirit spirit = new()
             {
@@ -783,11 +792,16 @@ namespace EldenRingSpiritBattler
             return spirit;
         }
 
-        private void Button_AddSpiritToList_Click(object sender, EventArgs e)
+        private void AddSpiritToGrid()
         {
-            var spirit = CreateBattleSpirit();
+            var spirit = CreateBattleSpiritFromElements();
             battleSpiritList.Add(spirit);
             UpdateSpiritGrid();
+        }
+
+        private void Button_AddSpiritToList_Click(object sender, EventArgs e)
+        {
+            AddSpiritToGrid();
         }
 
         private BattleSpirit? GetSpiritGridSelection()
@@ -799,21 +813,39 @@ namespace EldenRingSpiritBattler
             return (BattleSpirit)row.Cells[0].Value;
         }
 
-        private void SetSpiritGridSelection(BattleSpirit spirit)
+        private void SetSpiritGridSelection(BattleSpirit newSpirit)
         {
             if (SpiritDataGrid.SelectedRows.Count == 0)
                 return;
 
-            DataGridViewRow row = SpiritDataGrid.SelectedRows[0];
-            row.Cells[0].Value = spirit;
+            BattleSpirit oldSpirit = (BattleSpirit)SpiritDataGrid.SelectedRows[0].Cells[0].Value;
+            battleSpiritList[battleSpiritList.IndexOf(oldSpirit)] = newSpirit;
         }
 
         private void UpdateSpiritGrid()
         {
-            SpiritDataGrid.DataSource = battleSpiritList.Select(spirit => new { spirit, spirit.Team.Name, spirit.VariantName }).ToList();
+            int prevIndex = 0;
+            if (SpiritDataGrid.SelectedRows.Count > 0)
+                prevIndex = SpiritDataGrid.SelectedRows[0].Index;
+            SpiritDataGrid.DataSource = battleSpiritList.Select(spirit => new
+            {
+                spirit,
+                spirit.Team.Name,
+                spirit.VariantName,
+                StatScaling = Enum.GetName(typeof(StatScalingEnum), spirit.Sp_StatScaling)
+            }).ToList();
             SpiritDataGrid.Columns[0].Visible = false;
             SpiritDataGrid.Columns[1].HeaderCell.Value = "Team";
             SpiritDataGrid.Columns[2].HeaderCell.Value = "Enemy";
+            SpiritDataGrid.Columns[3].HeaderCell.Value = "Scaling";
+            // TODO: display individual scaling
+            // TODO: maybe also dispay overall scaling by pre-multiplying stat scaling level + individual scaling?
+
+            SpiritDataGrid.ClearSelection();
+            if (prevIndex > SpiritDataGrid.Rows.Count - 1)
+                prevIndex = SpiritDataGrid.Rows.Count - 1;
+            if (prevIndex > -1)
+                SpiritDataGrid.Rows[prevIndex].Selected = true;
         }
         private void Button_RemoveSpiritFromList_Click(object sender, EventArgs e)
         {
@@ -846,11 +878,20 @@ namespace EldenRingSpiritBattler
             GetLoadedGridSpiritInfo();
         }
 
-        private void Button_SetDataSelection_Click(object sender, EventArgs e)
+        private void UpdateSelectedSpirit()
         {
-            var spirit = CreateBattleSpirit();
+            // Get data from selected spirit in summon grid and transfer it to UI elements.
+            if (SpiritDataGrid.SelectedRows.Count == 0)
+                return;
+
+            var spirit = CreateBattleSpiritFromElements();
             SetSpiritGridSelection(spirit);
             UpdateSpiritGrid();
+        }
+
+        private void Button_SetDataSelection_Click(object sender, EventArgs e)
+        {
+            UpdateSelectedSpirit();
         }
 
         private void Button_RandomTeamName_Click(object sender, EventArgs e)
@@ -888,6 +929,95 @@ namespace EldenRingSpiritBattler
                 myProcess.StartInfo.FileName = "https://docs.google.com/spreadsheets/d/1Cj1ZT2VH-rjWddqDSY0zTvNZfolZlXAHqhrdnTQe7hQ/edit#gid=1042523006";
                 myProcess.Start();
             }
+        }
+
+        private void Button_DuplicateSpirit_Click(object sender, EventArgs e)
+        {
+            // Get data from selected spirit in summon grid and duplicate it
+            if (SpiritDataGrid.SelectedRows.Count == 0)
+                return;
+
+            battleSpiritList.Add(((BattleSpirit)SpiritDataGrid.SelectedRows[0].Cells[0].Value).Clone());
+
+            UpdateSpiritGrid();
+        }
+
+        private void Button_Execute_Click(object sender, EventArgs e)
+        {
+            /*
+            if (File.Exists(backupFile))
+            {
+                //User wants to randomize a regulation that has a backup file next to it
+
+                DialogResult result = MessageBox.Show("Warning: Backup Regulation.bin already exists."
+                    + " \nYou may be trying to randomize an already randomized Regulation.bin, which will cause issues. It's recommended you restore the backup first."
+                    + " \n\nDelete Regulation.bin and restore backup before proceeding?"
+                    , "Confirm Randomization", MessageBoxButtons.YesNoCancel);
+                if (result == DialogResult.OK)
+                {
+                    Restore_Regulation();
+                }
+                else if (result == DialogResult.Cancel)
+                {
+                    return;
+                }
+            }
+            */
+
+            if (ExecuteMainLogic())
+            {
+                // Success
+                GC.Collect(); // Free memory
+                UpdateConsole("Save Successful");
+                System.Media.SystemSounds.Exclamation.Play();
+                MessageBox.Show("Saved Successfully!", "Finished", MessageBoxButtons.OK);
+            }
+            else
+            {
+                // Failure
+                GC.Collect(); // Free memory
+                UpdateConsole("Save Failed");
+                System.Media.SystemSounds.Exclamation.Play();
+                MessageBox.Show("Save Failed.", "Error", MessageBoxButtons.OK);
+            }
+        }
+        private void SpiritDataGrid_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            // Spirit grid right-click functionality
+            if (e.Button == MouseButtons.Right)
+            {
+                int rowSelected = e.RowIndex;
+                if (e.RowIndex != -1)
+                {
+                    SpiritDataGrid.ClearSelection();
+                    SpiritDataGrid.Rows[rowSelected].Selected = true;
+                }
+            }
+        }
+
+        private void ComboBox_KeyPress(object sender, KeyEventArgs e)
+        {
+            // Jank way to make ComboBoxes not take keyboard inputs
+            ActiveControl = SpiritDataGrid;
+        }
+
+        private void Button_ToggleAutoGetSpiritSettings_Click(object sender, EventArgs e)
+        {
+            Button_ToggleAutoGetSpiritSettings.Checked = !Button_ToggleAutoGetSpiritSettings.Checked;
+        }
+
+        private void EnemyWasEdited(object sender, EventArgs e)
+        {
+            if (Button_ToggleAutoGetSpiritSettings.Checked)
+            {
+                UpdateSelectedSpirit();
+            }
+        }
+
+        private void Button_PickRandomEnemy_Click(object sender, EventArgs e)
+        {
+            SelectRandomEnemyAndSetToElements();
+            EnemyWasEdited(sender, e);
         }
     }
 }

@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
@@ -42,16 +44,21 @@
             this.b_restoreRegulation = new System.Windows.Forms.ToolStripMenuItem();
             this.Button_Execute = new System.Windows.Forms.ToolStripMenuItem();
             this.Menu_Edit = new System.Windows.Forms.ToolStripMenuItem();
+            this.addSpiritToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Button_GetDataSelection = new System.Windows.Forms.ToolStripMenuItem();
+            this.duplicateSpiritToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Button_SetDataSelection = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteSpiritToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.batchChangesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.removeAllSpiritsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.resetToDefaultToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.Button_RemoveAllSpirits = new System.Windows.Forms.ToolStripMenuItem();
+            this.Button_ResetTool = new System.Windows.Forms.ToolStripMenuItem();
             this.Menu_Settings = new System.Windows.Forms.ToolStripMenuItem();
             this.Option_ReduceEnemyMapCol = new System.Windows.Forms.ToolStripMenuItem();
             this.Option_SpiritAshNoRequirements = new System.Windows.Forms.ToolStripMenuItem();
             this.Option_HidePlayer = new System.Windows.Forms.ToolStripMenuItem();
             this.Option_DisableFriendlyFire = new System.Windows.Forms.ToolStripMenuItem();
+            this.programSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.Button_ToggleAutoGetSpiritSettings = new System.Windows.Forms.ToolStripMenuItem();
             this.Menu_Help = new System.Windows.Forms.ToolStripMenuItem();
             this.Button_Info = new System.Windows.Forms.ToolStripMenuItem();
             this.Button_StatScalingLevelInfo = new System.Windows.Forms.ToolStripMenuItem();
@@ -71,10 +78,14 @@
             this.List_Teams = new System.Windows.Forms.ComboBox();
             this.Button_AddNewTeam = new System.Windows.Forms.Button();
             this.SpiritDataGrid = new System.Windows.Forms.DataGridView();
+            this.Context_DataGrid = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.Button_Context_GetSpirit = new System.Windows.Forms.ToolStripMenuItem();
+            this.Button_Context_DuplicateSpirit = new System.Windows.Forms.ToolStripMenuItem();
+            this.Button_Context_RemoveSpirit = new System.Windows.Forms.ToolStripMenuItem();
+            this.Button_Context_UpdateSpirit = new System.Windows.Forms.ToolStripMenuItem();
             this.Team = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.EnemyCol = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.Variant = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.Button_RemoveSpiritFromList = new System.Windows.Forms.Button();
             this.Input_NpcParamID = new System.Windows.Forms.NumericUpDown();
             this.Input_NpcThinkID = new System.Windows.Forms.NumericUpDown();
             this.label3 = new System.Windows.Forms.Label();
@@ -96,6 +107,7 @@
             this.label20 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.Button_PickRandomEnemy = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.Button_RandomTeamName = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
@@ -105,6 +117,7 @@
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SummonPosition_Auto_DistMagnitude)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SpiritDataGrid)).BeginInit();
+            this.Context_DataGrid.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Input_NpcParamID)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Input_NpcThinkID)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Input_EnemyHpMult)).BeginInit();
@@ -148,6 +161,8 @@
             this.SummonPosition_X.TabIndex = 75;
             this.toolTip1.SetToolTip(this.SummonPosition_X, "Left/Right position of summon location in meters\r\nNegative values are to the left" +
         " of the player\r\nPositive values are to the right of the player");
+            this.SummonPosition_X.ValueChanged += new System.EventHandler(this.EnemyWasEdited);
+            this.SummonPosition_X.Click += new System.EventHandler(this.EnemyWasEdited);
             // 
             // SummonPosition_Z
             // 
@@ -169,6 +184,8 @@
             this.SummonPosition_Z.TabIndex = 80;
             this.toolTip1.SetToolTip(this.SummonPosition_Z, "Depth of summon location in meters\r\nNegative values are in front of the player\r\nP" +
         "ositive values are behind the player");
+            this.SummonPosition_Z.ValueChanged += new System.EventHandler(this.EnemyWasEdited);
+            this.SummonPosition_Z.Click += new System.EventHandler(this.EnemyWasEdited);
             // 
             // SummonPosition_Angle
             // 
@@ -190,6 +207,8 @@
             this.SummonPosition_Angle.TabIndex = 81;
             this.toolTip1.SetToolTip(this.SummonPosition_Angle, "Facing angle of the spirit when summoned\r\nRange of -180 to 180 degrees\r\nNegative " +
         "values face left, Positive values face right\r\n");
+            this.SummonPosition_Angle.ValueChanged += new System.EventHandler(this.EnemyWasEdited);
+            this.SummonPosition_Angle.Click += new System.EventHandler(this.EnemyWasEdited);
             // 
             // t_console
             // 
@@ -219,8 +238,8 @@
             // Menu_File
             // 
             this.Menu_File.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.b_restoreRegulation,
             this.loadRegulationbinToolStripMenuItem,
+            this.b_restoreRegulation,
             this.Button_Execute});
             this.Menu_File.Name = "Menu_File";
             this.Menu_File.Size = new System.Drawing.Size(37, 20);
@@ -229,67 +248,102 @@
             // loadRegulationbinToolStripMenuItem
             // 
             this.loadRegulationbinToolStripMenuItem.Name = "loadRegulationbinToolStripMenuItem";
-            this.loadRegulationbinToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.loadRegulationbinToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
             this.loadRegulationbinToolStripMenuItem.Text = "Load regulation.bin";
             this.loadRegulationbinToolStripMenuItem.Click += new System.EventHandler(this.b_browse_Click);
             // 
             // b_restoreRegulation
             // 
             this.b_restoreRegulation.Name = "b_restoreRegulation";
-            this.b_restoreRegulation.Size = new System.Drawing.Size(180, 22);
+            this.b_restoreRegulation.Size = new System.Drawing.Size(177, 22);
             this.b_restoreRegulation.Text = "Restore Backups";
             this.b_restoreRegulation.Click += new System.EventHandler(this.b_restoreRegulation_Click);
             // 
             // Button_Execute
             // 
             this.Button_Execute.Name = "Button_Execute";
-            this.Button_Execute.Size = new System.Drawing.Size(180, 22);
+            this.Button_Execute.Size = new System.Drawing.Size(177, 22);
             this.Button_Execute.Text = "Save";
+            this.Button_Execute.Click += new System.EventHandler(this.Button_Execute_Click);
             // 
             // Menu_Edit
             // 
             this.Menu_Edit.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addSpiritToolStripMenuItem,
             this.Button_GetDataSelection,
+            this.duplicateSpiritToolStripMenuItem,
             this.Button_SetDataSelection,
+            this.deleteSpiritToolStripMenuItem,
             this.batchChangesToolStripMenuItem});
             this.Menu_Edit.Name = "Menu_Edit";
             this.Menu_Edit.Size = new System.Drawing.Size(39, 20);
             this.Menu_Edit.Text = "Edit";
             // 
+            // addSpiritToolStripMenuItem
+            // 
+            this.addSpiritToolStripMenuItem.Name = "addSpiritToolStripMenuItem";
+            this.addSpiritToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.Insert;
+            this.addSpiritToolStripMenuItem.Size = new System.Drawing.Size(209, 22);
+            this.addSpiritToolStripMenuItem.Text = "Add Spirit";
+            this.addSpiritToolStripMenuItem.Visible = false;
+            this.addSpiritToolStripMenuItem.Click += new System.EventHandler(this.Button_AddSpiritToList_Click);
+            // 
             // Button_GetDataSelection
             // 
             this.Button_GetDataSelection.Name = "Button_GetDataSelection";
-            this.Button_GetDataSelection.Size = new System.Drawing.Size(193, 22);
-            this.Button_GetDataSelection.Text = "Get Selected Spirit info";
+            this.Button_GetDataSelection.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.G)));
+            this.Button_GetDataSelection.Size = new System.Drawing.Size(209, 22);
+            this.Button_GetDataSelection.Text = "Get Spirit Settings";
+            this.Button_GetDataSelection.Visible = false;
             this.Button_GetDataSelection.Click += new System.EventHandler(this.Button_GetDataSelection_Click);
+            // 
+            // duplicateSpiritToolStripMenuItem
+            // 
+            this.duplicateSpiritToolStripMenuItem.Name = "duplicateSpiritToolStripMenuItem";
+            this.duplicateSpiritToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D)));
+            this.duplicateSpiritToolStripMenuItem.Size = new System.Drawing.Size(209, 22);
+            this.duplicateSpiritToolStripMenuItem.Text = "Duplicate Spirit";
+            this.duplicateSpiritToolStripMenuItem.Click += new System.EventHandler(this.Button_DuplicateSpirit_Click);
             // 
             // Button_SetDataSelection
             // 
             this.Button_SetDataSelection.Name = "Button_SetDataSelection";
-            this.Button_SetDataSelection.Size = new System.Drawing.Size(193, 22);
-            this.Button_SetDataSelection.Text = "Update Selected Spirit";
+            this.Button_SetDataSelection.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.R)));
+            this.Button_SetDataSelection.Size = new System.Drawing.Size(209, 22);
+            this.Button_SetDataSelection.Text = "Update Spirit";
+            this.Button_SetDataSelection.Visible = false;
             this.Button_SetDataSelection.Click += new System.EventHandler(this.Button_SetDataSelection_Click);
+            // 
+            // deleteSpiritToolStripMenuItem
+            // 
+            this.deleteSpiritToolStripMenuItem.Name = "deleteSpiritToolStripMenuItem";
+            this.deleteSpiritToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.Delete;
+            this.deleteSpiritToolStripMenuItem.Size = new System.Drawing.Size(209, 22);
+            this.deleteSpiritToolStripMenuItem.Text = "Delete Spirit";
+            this.deleteSpiritToolStripMenuItem.Click += new System.EventHandler(this.Button_RemoveSpiritFromList_Click);
             // 
             // batchChangesToolStripMenuItem
             // 
             this.batchChangesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.removeAllSpiritsToolStripMenuItem,
-            this.resetToDefaultToolStripMenuItem});
+            this.Button_RemoveAllSpirits,
+            this.Button_ResetTool});
             this.batchChangesToolStripMenuItem.Name = "batchChangesToolStripMenuItem";
-            this.batchChangesToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
+            this.batchChangesToolStripMenuItem.Size = new System.Drawing.Size(209, 22);
             this.batchChangesToolStripMenuItem.Text = "Batch Changes";
+            this.batchChangesToolStripMenuItem.Visible = false;
             // 
-            // removeAllSpiritsToolStripMenuItem
+            // Button_RemoveAllSpirits
             // 
-            this.removeAllSpiritsToolStripMenuItem.Name = "removeAllSpiritsToolStripMenuItem";
-            this.removeAllSpiritsToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
-            this.removeAllSpiritsToolStripMenuItem.Text = "Remove all spirits";
+            this.Button_RemoveAllSpirits.Name = "Button_RemoveAllSpirits";
+            this.Button_RemoveAllSpirits.Size = new System.Drawing.Size(166, 22);
+            this.Button_RemoveAllSpirits.Text = "Remove all spirits";
             // 
-            // resetToDefaultToolStripMenuItem
+            // Button_ResetTool
             // 
-            this.resetToDefaultToolStripMenuItem.Name = "resetToDefaultToolStripMenuItem";
-            this.resetToDefaultToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
-            this.resetToDefaultToolStripMenuItem.Text = "Reset to default";
+            this.Button_ResetTool.Name = "Button_ResetTool";
+            this.Button_ResetTool.Size = new System.Drawing.Size(166, 22);
+            this.Button_ResetTool.Text = "Reset to default";
+            this.Button_ResetTool.Visible = false;
             // 
             // Menu_Settings
             // 
@@ -297,7 +351,8 @@
             this.Option_ReduceEnemyMapCol,
             this.Option_SpiritAshNoRequirements,
             this.Option_HidePlayer,
-            this.Option_DisableFriendlyFire});
+            this.Option_DisableFriendlyFire,
+            this.programSettingsToolStripMenuItem});
             this.Menu_Settings.Name = "Menu_Settings";
             this.Menu_Settings.Size = new System.Drawing.Size(61, 20);
             this.Menu_Settings.Text = "Settings";
@@ -335,6 +390,23 @@
     " to hurt all teams will not be affected.";
             this.Option_DisableFriendlyFire.Click += new System.EventHandler(this.Option_DisableFriendlyFire_Click);
             // 
+            // programSettingsToolStripMenuItem
+            // 
+            this.programSettingsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.Button_ToggleAutoGetSpiritSettings});
+            this.programSettingsToolStripMenuItem.Name = "programSettingsToolStripMenuItem";
+            this.programSettingsToolStripMenuItem.Size = new System.Drawing.Size(287, 22);
+            this.programSettingsToolStripMenuItem.Text = "Program Settings";
+            // 
+            // Button_ToggleAutoGetSpiritSettings
+            // 
+            this.Button_ToggleAutoGetSpiritSettings.Checked = true;
+            this.Button_ToggleAutoGetSpiritSettings.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.Button_ToggleAutoGetSpiritSettings.Name = "Button_ToggleAutoGetSpiritSettings";
+            this.Button_ToggleAutoGetSpiritSettings.Size = new System.Drawing.Size(321, 22);
+            this.Button_ToggleAutoGetSpiritSettings.Text = "Automatically get Spirit Settings when selected";
+            this.Button_ToggleAutoGetSpiritSettings.Click += new System.EventHandler(this.Button_ToggleAutoGetSpiritSettings_Click);
+            // 
             // Menu_Help
             // 
             this.Menu_Help.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -349,7 +421,7 @@
             // Button_Info
             // 
             this.Button_Info.Name = "Button_Info";
-            this.Button_Info.Size = new System.Drawing.Size(180, 22);
+            this.Button_Info.Size = new System.Drawing.Size(170, 22);
             this.Button_Info.Text = "How to use";
             this.Button_Info.Click += new System.EventHandler(this.Button_Info_Click);
             // 
@@ -357,7 +429,7 @@
             // 
             this.Button_StatScalingLevelInfo.Name = "Button_StatScalingLevelInfo";
             this.Button_StatScalingLevelInfo.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.Button_StatScalingLevelInfo.Size = new System.Drawing.Size(180, 22);
+            this.Button_StatScalingLevelInfo.Size = new System.Drawing.Size(170, 22);
             this.Button_StatScalingLevelInfo.Text = "Stat Scaling Levels";
             this.Button_StatScalingLevelInfo.Click += new System.EventHandler(this.Button_StatScalingLevelInfo_Click);
             // 
@@ -366,11 +438,13 @@
             this.List_Enemy.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.List_Enemy.DropDownWidth = 200;
             this.List_Enemy.FormattingEnabled = true;
+            this.List_Enemy.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.List_Enemy.Location = new System.Drawing.Point(6, 121);
             this.List_Enemy.Name = "List_Enemy";
             this.List_Enemy.Size = new System.Drawing.Size(200, 23);
             this.List_Enemy.TabIndex = 62;
             this.List_Enemy.SelectedIndexChanged += new System.EventHandler(this.List_Enemy_SelectedIndexChanged);
+            this.List_Enemy.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ComboBox_KeyPress);
             // 
             // Search_Enemy
             // 
@@ -379,6 +453,7 @@
             this.Search_Enemy.Size = new System.Drawing.Size(200, 23);
             this.Search_Enemy.TabIndex = 64;
             this.Search_Enemy.Text = "Search...";
+            this.Search_Enemy.Validated += new System.EventHandler(this.EnemyWasEdited);
             // 
             // label1
             // 
@@ -397,6 +472,7 @@
             this.List_TeamPhantomColor.Name = "List_TeamPhantomColor";
             this.List_TeamPhantomColor.Size = new System.Drawing.Size(157, 23);
             this.List_TeamPhantomColor.TabIndex = 66;
+            this.List_TeamPhantomColor.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ComboBox_KeyPress);
             // 
             // label4
             // 
@@ -415,6 +491,7 @@
             this.List_SpiritAsh.Name = "List_SpiritAsh";
             this.List_SpiritAsh.Size = new System.Drawing.Size(174, 23);
             this.List_SpiritAsh.TabIndex = 72;
+            this.List_SpiritAsh.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ComboBox_KeyPress);
             // 
             // SummonPosition_Auto
             // 
@@ -439,6 +516,7 @@
             this.label5.Size = new System.Drawing.Size(133, 21);
             this.label5.TabIndex = 76;
             this.label5.Text = "Summon Position";
+            this.label5.Validated += new System.EventHandler(this.EnemyWasEdited);
             // 
             // label6
             // 
@@ -448,6 +526,7 @@
             this.label6.Size = new System.Drawing.Size(57, 15);
             this.label6.TabIndex = 78;
             this.label6.Text = "Width (X)";
+            this.label6.Validated += new System.EventHandler(this.EnemyWasEdited);
             // 
             // label7
             // 
@@ -457,6 +536,7 @@
             this.label7.Size = new System.Drawing.Size(57, 15);
             this.label7.TabIndex = 79;
             this.label7.Text = "Depth (Z)";
+            this.label7.Validated += new System.EventHandler(this.EnemyWasEdited);
             // 
             // label8
             // 
@@ -466,6 +546,7 @@
             this.label8.Size = new System.Drawing.Size(38, 15);
             this.label8.TabIndex = 82;
             this.label8.Text = "Angle";
+            this.label8.Validated += new System.EventHandler(this.EnemyWasEdited);
             // 
             // SummonPosition_Auto_DistMagnitude
             // 
@@ -510,6 +591,8 @@
             this.List_Teams.Name = "List_Teams";
             this.List_Teams.Size = new System.Drawing.Size(200, 23);
             this.List_Teams.TabIndex = 85;
+            this.List_Teams.SelectedIndexChanged += new System.EventHandler(this.EnemyWasEdited);
+            this.List_Teams.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ComboBox_KeyPress);
             // 
             // Button_AddNewTeam
             // 
@@ -529,16 +612,81 @@
             this.SpiritDataGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.SpiritDataGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.SpiritDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.SpiritDataGrid.ContextMenuStrip = this.Context_DataGrid;
+            this.SpiritDataGrid.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.SpiritDataGrid.Location = new System.Drawing.Point(6, 22);
             this.SpiritDataGrid.MultiSelect = false;
             this.SpiritDataGrid.Name = "SpiritDataGrid";
             this.SpiritDataGrid.ReadOnly = true;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.SpiritDataGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.SpiritDataGrid.RowHeadersVisible = false;
+            this.SpiritDataGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
             this.SpiritDataGrid.RowTemplate.Height = 25;
             this.SpiritDataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.SpiritDataGrid.Size = new System.Drawing.Size(338, 495);
+            this.SpiritDataGrid.Size = new System.Drawing.Size(338, 524);
             this.SpiritDataGrid.TabIndex = 90;
             this.SpiritDataGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.SpiritDataGrid_CellClick);
+            this.SpiritDataGrid.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.SpiritDataGrid_CellMouseDown);
+            // 
+            // Context_DataGrid
+            // 
+            this.Context_DataGrid.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.Button_Context_GetSpirit,
+            this.Button_Context_DuplicateSpirit,
+            this.Button_Context_RemoveSpirit,
+            this.Button_Context_UpdateSpirit});
+            this.Context_DataGrid.Name = "Context_DataGrid";
+            this.Context_DataGrid.Size = new System.Drawing.Size(210, 92);
+            // 
+            // Button_Context_GetSpirit
+            // 
+            this.Button_Context_GetSpirit.Name = "Button_Context_GetSpirit";
+            this.Button_Context_GetSpirit.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.G)));
+            this.Button_Context_GetSpirit.Size = new System.Drawing.Size(209, 22);
+            this.Button_Context_GetSpirit.Text = "Get Spirit Settings";
+            this.Button_Context_GetSpirit.Visible = false;
+            this.Button_Context_GetSpirit.Click += new System.EventHandler(this.Button_GetDataSelection_Click);
+            // 
+            // Button_Context_DuplicateSpirit
+            // 
+            this.Button_Context_DuplicateSpirit.Name = "Button_Context_DuplicateSpirit";
+            this.Button_Context_DuplicateSpirit.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D)));
+            this.Button_Context_DuplicateSpirit.Size = new System.Drawing.Size(209, 22);
+            this.Button_Context_DuplicateSpirit.Text = "Duplicate Spirit";
+            this.Button_Context_DuplicateSpirit.Click += new System.EventHandler(this.Button_DuplicateSpirit_Click);
+            // 
+            // Button_Context_RemoveSpirit
+            // 
+            this.Button_Context_RemoveSpirit.Name = "Button_Context_RemoveSpirit";
+            this.Button_Context_RemoveSpirit.ShortcutKeys = System.Windows.Forms.Keys.Delete;
+            this.Button_Context_RemoveSpirit.Size = new System.Drawing.Size(209, 22);
+            this.Button_Context_RemoveSpirit.Text = "Remove Spirit";
+            this.Button_Context_RemoveSpirit.Click += new System.EventHandler(this.Button_RemoveSpiritFromList_Click);
+            // 
+            // Button_Context_UpdateSpirit
+            // 
+            this.Button_Context_UpdateSpirit.Name = "Button_Context_UpdateSpirit";
+            this.Button_Context_UpdateSpirit.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.R)));
+            this.Button_Context_UpdateSpirit.Size = new System.Drawing.Size(209, 22);
+            this.Button_Context_UpdateSpirit.Text = "Update Spirit";
+            this.Button_Context_UpdateSpirit.Visible = false;
+            this.Button_Context_UpdateSpirit.Click += new System.EventHandler(this.Button_SetDataSelection_Click);
             // 
             // Team
             // 
@@ -554,17 +702,6 @@
             // 
             this.Variant.HeaderText = "Variant";
             this.Variant.Name = "Variant";
-            // 
-            // Button_RemoveSpiritFromList
-            // 
-            this.Button_RemoveSpiritFromList.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.Button_RemoveSpiritFromList.Location = new System.Drawing.Point(278, 523);
-            this.Button_RemoveSpiritFromList.Name = "Button_RemoveSpiritFromList";
-            this.Button_RemoveSpiritFromList.Size = new System.Drawing.Size(67, 23);
-            this.Button_RemoveSpiritFromList.TabIndex = 91;
-            this.Button_RemoveSpiritFromList.Text = "Remove";
-            this.Button_RemoveSpiritFromList.UseVisualStyleBackColor = true;
-            this.Button_RemoveSpiritFromList.Click += new System.EventHandler(this.Button_RemoveSpiritFromList_Click);
             // 
             // Input_NpcParamID
             // 
@@ -588,6 +725,8 @@
             0,
             0,
             -2147483648});
+            this.Input_NpcParamID.ValueChanged += new System.EventHandler(this.EnemyWasEdited);
+            this.Input_NpcParamID.Click += new System.EventHandler(this.EnemyWasEdited);
             // 
             // Input_NpcThinkID
             // 
@@ -611,6 +750,8 @@
             0,
             0,
             -2147483648});
+            this.Input_NpcThinkID.ValueChanged += new System.EventHandler(this.EnemyWasEdited);
+            this.Input_NpcThinkID.Click += new System.EventHandler(this.EnemyWasEdited);
             // 
             // label3
             // 
@@ -620,6 +761,7 @@
             this.label3.Size = new System.Drawing.Size(77, 15);
             this.label3.TabIndex = 94;
             this.label3.Text = "NpcParam ID";
+            this.label3.Validated += new System.EventHandler(this.EnemyWasEdited);
             // 
             // label11
             // 
@@ -629,6 +771,7 @@
             this.label11.Size = new System.Drawing.Size(72, 15);
             this.label11.TabIndex = 95;
             this.label11.Text = "NpcThink ID";
+            this.label11.Validated += new System.EventHandler(this.EnemyWasEdited);
             // 
             // Button_AddSpiritToList
             // 
@@ -639,6 +782,7 @@
             this.Button_AddSpiritToList.TabIndex = 96;
             this.Button_AddSpiritToList.Text = "Add Enemy";
             this.Button_AddSpiritToList.UseVisualStyleBackColor = true;
+            this.Button_AddSpiritToList.Visible = false;
             this.Button_AddSpiritToList.Click += new System.EventHandler(this.Button_AddSpiritToList_Click);
             // 
             // List_StatScaling
@@ -649,6 +793,8 @@
             this.List_StatScaling.Name = "List_StatScaling";
             this.List_StatScaling.Size = new System.Drawing.Size(121, 23);
             this.List_StatScaling.TabIndex = 98;
+            this.List_StatScaling.SelectedIndexChanged += new System.EventHandler(this.EnemyWasEdited);
+            this.List_StatScaling.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ComboBox_KeyPress);
             // 
             // label13
             // 
@@ -659,6 +805,7 @@
             this.label13.Size = new System.Drawing.Size(98, 15);
             this.label13.TabIndex = 99;
             this.label13.Text = "Stat Scaling Level";
+            this.label13.Validated += new System.EventHandler(this.EnemyWasEdited);
             // 
             // Input_EnemyHpMult
             // 
@@ -677,6 +824,8 @@
             0,
             0,
             0});
+            this.Input_EnemyHpMult.ValueChanged += new System.EventHandler(this.EnemyWasEdited);
+            this.Input_EnemyHpMult.Click += new System.EventHandler(this.EnemyWasEdited);
             // 
             // label14
             // 
@@ -687,6 +836,7 @@
             this.label14.Size = new System.Drawing.Size(87, 15);
             this.label14.TabIndex = 101;
             this.label14.Text = "Bonus HP Mult";
+            this.label14.Validated += new System.EventHandler(this.EnemyWasEdited);
             // 
             // label15
             // 
@@ -697,6 +847,7 @@
             this.label15.Size = new System.Drawing.Size(115, 15);
             this.label15.TabIndex = 103;
             this.label15.Text = "Bonus Damage Mult";
+            this.label15.Validated += new System.EventHandler(this.EnemyWasEdited);
             // 
             // Input_EnemyDamageMult
             // 
@@ -715,6 +866,8 @@
             0,
             0,
             0});
+            this.Input_EnemyDamageMult.ValueChanged += new System.EventHandler(this.EnemyWasEdited);
+            this.Input_EnemyDamageMult.Click += new System.EventHandler(this.EnemyWasEdited);
             // 
             // List_EnemyVariant
             // 
@@ -725,7 +878,8 @@
             this.List_EnemyVariant.Name = "List_EnemyVariant";
             this.List_EnemyVariant.Size = new System.Drawing.Size(200, 23);
             this.List_EnemyVariant.TabIndex = 104;
-            this.List_EnemyVariant.SelectedIndexChanged += new System.EventHandler(this.List_EnemyVariant_SelectedIndexChanged);
+            this.List_EnemyVariant.SelectedIndexChanged += new System.EventHandler(this.EnemyWasEdited);
+            this.List_EnemyVariant.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ComboBox_KeyPress);
             // 
             // label16
             // 
@@ -736,6 +890,7 @@
             this.label16.Size = new System.Drawing.Size(82, 15);
             this.label16.TabIndex = 105;
             this.label16.Text = "Enemy Variant";
+            this.label16.Validated += new System.EventHandler(this.EnemyWasEdited);
             // 
             // List_TeamType
             // 
@@ -745,6 +900,7 @@
             this.List_TeamType.Name = "List_TeamType";
             this.List_TeamType.Size = new System.Drawing.Size(198, 23);
             this.List_TeamType.TabIndex = 107;
+            this.List_TeamType.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ComboBox_KeyPress);
             // 
             // label17
             // 
@@ -779,6 +935,7 @@
             this.label19.Size = new System.Drawing.Size(35, 15);
             this.label19.TabIndex = 110;
             this.label19.Text = "Team";
+            this.label19.Validated += new System.EventHandler(this.EnemyWasEdited);
             // 
             // label20
             // 
@@ -789,6 +946,7 @@
             this.label20.Size = new System.Drawing.Size(70, 15);
             this.label20.TabIndex = 111;
             this.label20.Text = "Base Enemy";
+            this.label20.Validated += new System.EventHandler(this.EnemyWasEdited);
             // 
             // groupBox1
             // 
@@ -805,6 +963,7 @@
             // groupBox2
             // 
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Controls.Add(this.Button_PickRandomEnemy);
             this.groupBox2.Controls.Add(this.List_Enemy);
             this.groupBox2.Controls.Add(this.SummonPosition_X);
             this.groupBox2.Controls.Add(this.Button_AddSpiritToList);
@@ -836,6 +995,16 @@
             this.groupBox2.TabIndex = 113;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Spirit";
+            // 
+            // Button_PickRandomEnemy
+            // 
+            this.Button_PickRandomEnemy.Location = new System.Drawing.Point(212, 121);
+            this.Button_PickRandomEnemy.Name = "Button_PickRandomEnemy";
+            this.Button_PickRandomEnemy.Size = new System.Drawing.Size(102, 23);
+            this.Button_PickRandomEnemy.TabIndex = 111;
+            this.Button_PickRandomEnemy.Text = "Random Enemy";
+            this.Button_PickRandomEnemy.UseVisualStyleBackColor = true;
+            this.Button_PickRandomEnemy.Click += new System.EventHandler(this.Button_PickRandomEnemy_Click);
             // 
             // groupBox3
             // 
@@ -871,7 +1040,6 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox4.Controls.Add(this.SpiritDataGrid);
-            this.groupBox4.Controls.Add(this.Button_RemoveSpiritFromList);
             this.groupBox4.Location = new System.Drawing.Point(12, 27);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(350, 552);
@@ -905,6 +1073,7 @@
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SummonPosition_Auto_DistMagnitude)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SpiritDataGrid)).EndInit();
+            this.Context_DataGrid.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Input_NpcParamID)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Input_NpcThinkID)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Input_EnemyHpMult)).EndInit();
@@ -982,8 +1151,8 @@
         private Label label19;
         private Label label20;
         private ToolStripMenuItem batchChangesToolStripMenuItem;
-        private ToolStripMenuItem removeAllSpiritsToolStripMenuItem;
-        private ToolStripMenuItem resetToDefaultToolStripMenuItem;
+        private ToolStripMenuItem Button_RemoveAllSpirits;
+        private ToolStripMenuItem Button_ResetTool;
         private ToolStripMenuItem Button_GetDataSelection;
         private ToolStripMenuItem Button_SetDataSelection;
         private GroupBox groupBox1;
@@ -993,5 +1162,16 @@
         private Button Button_RandomTeamName;
         private ToolStripMenuItem Button_Info;
         private ToolStripMenuItem Button_StatScalingLevelInfo;
+        private ContextMenuStrip Context_DataGrid;
+        private ToolStripMenuItem Button_Context_GetSpirit;
+        private ToolStripMenuItem Button_Context_UpdateSpirit;
+        private ToolStripMenuItem Button_Context_RemoveSpirit;
+        private ToolStripMenuItem Button_Context_DuplicateSpirit;
+        private ToolStripMenuItem duplicateSpiritToolStripMenuItem;
+        private ToolStripMenuItem deleteSpiritToolStripMenuItem;
+        private ToolStripMenuItem addSpiritToolStripMenuItem;
+        private ToolStripMenuItem programSettingsToolStripMenuItem;
+        private ToolStripMenuItem Button_ToggleAutoGetSpiritSettings;
+        private Button Button_PickRandomEnemy;
     }
 }

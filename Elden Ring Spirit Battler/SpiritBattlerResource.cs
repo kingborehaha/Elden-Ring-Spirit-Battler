@@ -156,6 +156,7 @@ namespace EldenRingSpiritBattler
             "Unhinged Cats",
             "Amazing Chests",
             "xX_DarkMoonBlades_Xx",
+            "Stardust Crusaders",
         };
     }
 }
