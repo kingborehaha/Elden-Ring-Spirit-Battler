@@ -213,7 +213,7 @@
             // t_console
             // 
             this.t_console.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.t_console.Location = new System.Drawing.Point(368, 555);
+            this.t_console.Location = new System.Drawing.Point(384, 555);
             this.t_console.Name = "t_console";
             this.t_console.ReadOnly = true;
             this.t_console.Size = new System.Drawing.Size(375, 23);
@@ -231,7 +231,7 @@
             this.Menu_Help});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(946, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(962, 24);
             this.menuStrip1.TabIndex = 51;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -639,7 +639,7 @@
             this.SpiritDataGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
             this.SpiritDataGrid.RowTemplate.Height = 25;
             this.SpiritDataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.SpiritDataGrid.Size = new System.Drawing.Size(338, 524);
+            this.SpiritDataGrid.Size = new System.Drawing.Size(354, 524);
             this.SpiritDataGrid.TabIndex = 90;
             this.SpiritDataGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.SpiritDataGrid_CellClick);
             this.SpiritDataGrid.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.SpiritDataGrid_CellMouseDown);
@@ -953,7 +953,7 @@
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.List_SpiritAsh);
-            this.groupBox1.Location = new System.Drawing.Point(747, 53);
+            this.groupBox1.Location = new System.Drawing.Point(763, 53);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(187, 117);
             this.groupBox1.TabIndex = 112;
@@ -989,7 +989,7 @@
             this.groupBox2.Controls.Add(this.label11);
             this.groupBox2.Controls.Add(this.label13);
             this.groupBox2.Controls.Add(this.List_StatScaling);
-            this.groupBox2.Location = new System.Drawing.Point(368, 176);
+            this.groupBox2.Location = new System.Drawing.Point(384, 176);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(375, 373);
             this.groupBox2.TabIndex = 113;
@@ -1017,7 +1017,7 @@
             this.groupBox3.Controls.Add(this.label17);
             this.groupBox3.Controls.Add(this.Input_TeamName);
             this.groupBox3.Controls.Add(this.List_TeamType);
-            this.groupBox3.Location = new System.Drawing.Point(368, 53);
+            this.groupBox3.Location = new System.Drawing.Point(384, 53);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(373, 117);
             this.groupBox3.TabIndex = 114;
@@ -1042,7 +1042,7 @@
             this.groupBox4.Controls.Add(this.SpiritDataGrid);
             this.groupBox4.Location = new System.Drawing.Point(12, 27);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(350, 552);
+            this.groupBox4.Size = new System.Drawing.Size(366, 552);
             this.groupBox4.TabIndex = 115;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Summons";
@@ -1051,7 +1051,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(946, 591);
+            this.ClientSize = new System.Drawing.Size(962, 591);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
