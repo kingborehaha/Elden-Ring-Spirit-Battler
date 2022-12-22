@@ -13,16 +13,17 @@ using static EldenRingSpiritBattler.SpiritBattlerResources;
 -- TODO
     in-game testing
 -- high priority
-    make sure npcParam phantom field actually works
     summon positioning
         I still really want some accessible system that'll simplify this.
             maybe give configurable patterns (two opposing rows, row facing player, circle)?
+    enemy search list
+        when searching, go through the variant lists too!
 -- medium priority
-    randomize the 2 starting team names/phantom type on program start. just don't randomize team types
-    don't change enemy's team index combbox when adding new team
-    add grid for teams with similar update system as spirit grid
-    randomize an entire ash
+    randomize team color button
+    option to randomize an entire ash
+    Tooltips.
 --low priority
+    improve team grid <-> UI elements stuff. 
     change targeted ash name's FMG name
         format: "Spirit Battler: [team] vs [team]
     custom phantom colors
@@ -50,31 +51,11 @@ namespace EldenRingSpiritBattler
         public List<BattleSpirit> battleSpiritList = new();
         public List<SpiritTeam> teamList = new();
 
-        public void SetRandomTeamName()
-        {
-            Input_TeamName.Text = GetRandomTeamName();
-        }
-        public string GetRandomTeamName()
+        public int GetRandomPhantomId()
         {
             Random rand = new();
-            if (rand.Next(1, 42069) == 1)
-                return "Prod's Feet Enjoyers";
-            else
-                return randomTeamNames[rand.Next(0, randomTeamNames.Length)];
-        }
-
-        public void AddRandomEnemyToGrid()
-        {
-            SelectRandomEnemyAndSetToElements();
-            BattleSpirit spirit = CreateBattleSpiritFromElements();
-            AddSpiritToList(spirit);
-        }
-
-        public void SelectRandomEnemyAndSetToElements()
-        {
-            Random rand = new();
-            List_Enemy.SelectedIndex = rand.Next(0, List_Enemy.Items.Count - 1);
-            List_EnemyVariant.SelectedIndex = rand.Next(0, List_EnemyVariant.Items.Count - 1);
+            var enums = Enum.GetValues<PhantomEnum>();
+            return (int)enums[rand.Next(0, enums.Length-1)];
         }
 
         public string[] GetOrderedEnumNames(Type enumType)
@@ -218,7 +199,6 @@ namespace EldenRingSpiritBattler
             }
             throw new Exception($"Ran out of unused SpEffectID slots in npcParam for ID {npcRow.ID}");
         }
-
 
         private bool ExecuteMainLogic()
         {
@@ -527,10 +507,91 @@ namespace EldenRingSpiritBattler
                 UpdateConsole("Backup Restored");
                 b_restoreRegulation.Enabled = false;
             }
-
         }
 
-        private void GetLoadedGridSpiritInfo()
+        // SpiritTeam functions
+        #region Team
+        private SpiritTeam GetSelectedTeamFromGrid()
+        {
+            DataGridViewRow row = TeamDataGrid.SelectedRows[0];
+            return (SpiritTeam)row.Cells[0].Value;
+        }
+        private void UpdateTeamGrid()
+        {
+            int prevIndex = 0;
+            if (TeamDataGrid.SelectedRows.Count > 0)
+                prevIndex = TeamDataGrid.SelectedRows[0].Index;
+
+            TeamDataGrid.DataSource = teamList.Select(team => new
+            {
+                team,
+                team.Name,
+                V1 = Enum.GetName(typeof(TeamTypeEnum), team.TeamType),
+                V2 = Enum.GetName(typeof(PhantomEnum), team.PhantomParamID)
+            }).ToList();
+            TeamDataGrid.Columns[0].Visible = false;
+            TeamDataGrid.Columns[1].HeaderCell.Value = "Name";
+            TeamDataGrid.Columns[1].Width = 150;
+            TeamDataGrid.Columns[2].HeaderCell.Value = "Team Type";
+            TeamDataGrid.Columns[3].HeaderCell.Value = "Color";
+
+
+            //TeamDataGrid.ClearSelection();
+            if (prevIndex > TeamDataGrid.Rows.Count - 1)
+                prevIndex = TeamDataGrid.Rows.Count - 1;
+            if (prevIndex > -1)
+                TeamDataGrid.Rows[prevIndex].Selected = true;
+        }
+
+        private SpiritTeam CreateTeamFromElements()
+        {
+            SpiritTeam team = new()
+            {
+                Name = Input_TeamName.Text,
+                PhantomParamID = (int)Enum.Parse(typeof(PhantomEnum), List_TeamPhantomColor.Text),
+                TeamType = (byte)Enum.Parse(typeof(TeamTypeEnum), List_TeamType.Text)
+            };
+            return team;
+        }
+
+        private void AddTeamToGrid(SpiritTeam team)
+        {
+            teamList.Add(team);
+            UpdateTeamGrid();
+        }
+
+        public void SetRandomTeamName()
+        {
+            Input_TeamName.Text = GetRandomTeamName();
+        }
+        public string GetRandomTeamName()
+        {
+            Random rand = new();
+            if (rand.Next(1, 42069) == 1)
+                return "Prod's Feet Enjoyers";
+            else
+                return randomTeamNames[rand.Next(0, randomTeamNames.Length)];
+        }
+        #endregion
+        //
+
+        // BattleSpirit functions
+        #region Spirits
+        public void AddRandomSpiritToGrid()
+        {
+            SelectRandomSpiritAndSetToElements();
+            BattleSpirit spirit = CreateSpiritFromElements();
+            AddSpiritToList(spirit);
+        }
+
+        public void SelectRandomSpiritAndSetToElements()
+        {
+            Random rand = new();
+            List_Enemy.SelectedIndex = rand.Next(0, List_Enemy.Items.Count - 1);
+            List_EnemyVariant.SelectedIndex = rand.Next(0, List_EnemyVariant.Items.Count - 1);
+        }
+
+        private void SetSelectedSpiritToElements()
         {
             BattleSpirit? spirit = GetSpiritGridSelection();
 
@@ -563,90 +624,30 @@ namespace EldenRingSpiritBattler
             SummonPosition_X.Value = (decimal)spirit.Position.X;
             SummonPosition_Z.Value = (decimal)spirit.Position.Z;
             SummonPosition_Angle.Value = (decimal)spirit.Position.Ang;
-
         }
 
-        private SummonPos CreateSummonPosition()
+        private void UpdateSelectedSpirit()
         {
-            if (!SummonPosition_Auto.Checked)
-                return new SummonPos(SummonPosition_X.Value, SummonPosition_Z.Value, SummonPosition_Angle.Value);
-
-            // TODO: auto dist logic
-            decimal mag = SummonPosition_Auto_DistMagnitude.Value;
-            SummonPos pos = new();
-
-            /*
-            float xOffset = 0;
-            float buddyWidth = (float)newNpcRow["chrHitRadius"].Value;// * (float).75;
-            if (isMultiSummon)
-            {
-                float xOffsetIncrement = buddyWidth;
-
-                //this part doesn't actually make sense, but whatever.
-                xOffset = (float)buddyParam.Rows[i - 1]["x_offset"].Value;
-                if (xOffset >= 0)
-                    xOffset += xOffsetIncrement; //increment
-                else
-                    xOffset -= xOffsetIncrement; //decrement
-                xOffset *= -1; //invert
-
-            }
-            buddyParamRow["x_offset"].Value = xOffset; //horizontal offset 1
-            buddyParamRow["z_offset"].Value = buddyWidth * -1; //horizontal offset 2
-            */
-
-            return pos;
-        }
-
-        public SpiritTeam GetSelectedSpiritTeam()
-        {
-            var a = TeamDataGrid.SelectedRows[0]; // TODO: this is failing for some reason
-            var b = a.Cells[0];
-            return (SpiritTeam)TeamDataGrid.SelectedRows[0].Cells[0].Value;
-        }
-
-        private BattleSpirit CreateBattleSpiritFromElements()
-        {
-            BattleSpirit spirit = new()
-            {
-                BaseName = List_Enemy.Text,
-                VariantName = List_EnemyVariant.Text,
-                //Team = teamDict[List_Teams.Text],
-                Team = GetSelectedSpiritTeam(),
-                Sp_StatScaling = (int)Enum.Parse(typeof(StatScalingEnum), List_StatScaling.Text),
-                Position = CreateSummonPosition(),
-                HpMult = (float)Input_EnemyHpMult.Value,
-                DamageMult = (float)Input_EnemyDamageMult.Value,
-                BaseNpcID = (int)Input_NpcParamID.Value,
-                BaseThinkID = (int)Input_NpcThinkID.Value,
-            };
-            return spirit;
-        }
-
-        public void AddSpiritToList(BattleSpirit spirit)
-        {
-            if (SpiritDataGrid.Rows.Count > buddyLimit)
-            {
-                MessageBox.Show("A spirit ash cannot handle more than 33 spirits at once. Sorry!", "Warning");
+            // Get data from selected spirit in summon grid and transfer it to UI elements.
+            if (SpiritDataGrid.SelectedRows.Count == 0)
                 return;
-            }
-            battleSpiritList.Add(spirit);
+
+            var spirit = CreateSpiritFromElements();
+            SetSpiritGridSelection(spirit);
             UpdateSpiritGrid();
         }
 
-        private BattleSpirit? GetSpiritGridSelection()
+        private void DeleteSelectedSpiritFromGrid()
         {
-            if (SpiritDataGrid.SelectedRows.Count == 0)
-                return null;
+            if (SpiritDataGrid.Rows.Count <= 1)
+            {
+                // Don't let number of rows drop below 1
+                return;
+            }
+            battleSpiritList.Remove(GetSpiritGridSelection()!);
 
-            DataGridViewRow row = SpiritDataGrid.SelectedRows[0];
-            return (BattleSpirit)row.Cells[0].Value;
-        }
-
-        private SpiritTeam GetTeamGridSelection()
-        {
-            DataGridViewRow row = TeamDataGrid.SelectedRows[0];
-            return (SpiritTeam)row.Cells[0].Value;
+            UpdateSpiritGrid();
+            SetSelectedSpiritToElements();
         }
 
         private void SetSpiritGridSelection(BattleSpirit newSpirit)
@@ -726,59 +727,76 @@ namespace EldenRingSpiritBattler
             }
         }
         */
-        private void UpdateTeamGrid()
+
+        private BattleSpirit CreateSpiritFromElements()
         {
-            int prevIndex = 0;
-            if (TeamDataGrid.SelectedRows.Count > 0)
-                prevIndex = TeamDataGrid.SelectedRows[0].Index;
-
-            TeamDataGrid.DataSource = teamList.Select(team => new
+            BattleSpirit spirit = new()
             {
-                team,
-                team.Name,
-                V1 = Enum.GetName(typeof(TeamTypeEnum), team.TeamType),
-                V2 = Enum.GetName(typeof(PhantomEnum), team.PhantomParamID)
-            }).ToList();
-            TeamDataGrid.Columns[0].Visible = false;
-            TeamDataGrid.Columns[1].HeaderCell.Value = "Name";
-            TeamDataGrid.Columns[1].Width = 150;
-            TeamDataGrid.Columns[2].HeaderCell.Value = "Team Type";
-            TeamDataGrid.Columns[3].HeaderCell.Value = "Color";
-
-
-            //TeamDataGrid.ClearSelection();
-            if (prevIndex > TeamDataGrid.Rows.Count - 1)
-                prevIndex = TeamDataGrid.Rows.Count - 1;
-            if (prevIndex > -1)
-                TeamDataGrid.Rows[prevIndex].Selected = true;
-        }
-
-        private SpiritTeam CreateTeamFromElements()
-        {
-            SpiritTeam team = new()
-            {
-                Name = Input_TeamName.Text,
-                PhantomParamID = (int)Enum.Parse(typeof(PhantomEnum), List_TeamPhantomColor.Text),
-                TeamType = (byte)Enum.Parse(typeof(TeamTypeEnum), List_TeamType.Text)
+                BaseName = List_Enemy.Text,
+                VariantName = List_EnemyVariant.Text,
+                //Team = teamDict[List_Teams.Text],
+                Team = GetSelectedTeamFromGrid(),
+                Sp_StatScaling = (int)Enum.Parse(typeof(StatScalingEnum), List_StatScaling.Text),
+                Position = CreateSummonPosition(),
+                HpMult = (float)Input_EnemyHpMult.Value,
+                DamageMult = (float)Input_EnemyDamageMult.Value,
+                BaseNpcID = (int)Input_NpcParamID.Value,
+                BaseThinkID = (int)Input_NpcThinkID.Value,
             };
-            return team;
+            return spirit;
         }
 
-        private void AddSpiritTeamToGrid(SpiritTeam team)
+        public void AddSpiritToList(BattleSpirit spirit)
         {
-            teamList.Add(team);
-            UpdateTeamGrid();
-        }
-
-        private void UpdateSelectedSpirit()
-        {
-            // Get data from selected spirit in summon grid and transfer it to UI elements.
-            if (SpiritDataGrid.SelectedRows.Count == 0)
+            if (SpiritDataGrid.Rows.Count > buddyLimit)
+            {
+                MessageBox.Show("A spirit ash cannot handle more than 33 spirits at once. Sorry!", "Warning");
                 return;
-
-            var spirit = CreateBattleSpiritFromElements();
-            SetSpiritGridSelection(spirit);
+            }
+            battleSpiritList.Add(spirit);
             UpdateSpiritGrid();
+        }
+
+        private BattleSpirit? GetSpiritGridSelection()
+        {
+            if (SpiritDataGrid.SelectedRows.Count == 0)
+                return null;
+
+            DataGridViewRow row = SpiritDataGrid.SelectedRows[0];
+            return (BattleSpirit)row.Cells[0].Value;
+        }
+        #endregion
+        //
+
+        private SummonPos CreateSummonPosition()
+        {
+            if (!SummonPosition_Auto.Checked)
+                return new SummonPos(SummonPosition_X.Value, SummonPosition_Z.Value, SummonPosition_Angle.Value);
+
+            // TODO: auto dist logic
+            decimal mag = SummonPosition_Auto_DistMagnitude.Value;
+            SummonPos pos = new();
+
+            /*
+            float xOffset = 0;
+            float buddyWidth = (float)newNpcRow["chrHitRadius"].Value;// * (float).75;
+            if (isMultiSummon)
+            {
+                float xOffsetIncrement = buddyWidth;
+
+                //this part doesn't actually make sense, but whatever.
+                xOffset = (float)buddyParam.Rows[i - 1]["x_offset"].Value;
+                if (xOffset >= 0)
+                    xOffset += xOffsetIncrement; //increment
+                else
+                    xOffset -= xOffsetIncrement; //decrement
+                xOffset *= -1; //invert
+
+            }
+            buddyParamRow["x_offset"].Value = xOffset; //horizontal offset 1
+            buddyParamRow["z_offset"].Value = buddyWidth * -1; //horizontal offset 2
+            */
+            return pos;
         }
     }
 }

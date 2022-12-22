@@ -968,11 +968,11 @@
             // 
             this.Button_RandomTeamName.Location = new System.Drawing.Point(169, 85);
             this.Button_RandomTeamName.Name = "Button_RandomTeamName";
-            this.Button_RandomTeamName.Size = new System.Drawing.Size(66, 23);
+            this.Button_RandomTeamName.Size = new System.Drawing.Size(76, 23);
             this.Button_RandomTeamName.TabIndex = 110;
-            this.Button_RandomTeamName.Text = "Random";
+            this.Button_RandomTeamName.Text = "Randomize";
             this.Button_RandomTeamName.UseVisualStyleBackColor = true;
-            this.Button_RandomTeamName.Click += new System.EventHandler(this.Button_RandomTeamName_Click);
+            this.Button_RandomTeamName.Click += new System.EventHandler(this.Button_RandomizeTeam_Click);
             // 
             // groupBox4
             // 

@@ -28,9 +28,9 @@ namespace EldenRingSpiritBattler
 
             SetRandomTeamName();
 
-            teamList.Add(new SpiritTeam(GetRandomTeamName(), (int)PhantomEnum.C19, (int)StatScalingEnum.None, (byte)TeamTypeEnum.SpiritSummon));
-            teamList.Add(new SpiritTeam(GetRandomTeamName(), (int)PhantomEnum.C60, (int)StatScalingEnum.None, (byte)TeamTypeEnum.Invader));
-            teamList.Add(new SpiritTeam(GetRandomTeamName(), (int)PhantomEnum.None, (int)StatScalingEnum.None, (byte)TeamTypeEnum.Enemy));
+            teamList.Add(new SpiritTeam(GetRandomTeamName(), GetRandomPhantomId(), (int)StatScalingEnum.None, (byte)TeamTypeEnum.SpiritSummon));
+            teamList.Add(new SpiritTeam(GetRandomTeamName(), GetRandomPhantomId(), (int)StatScalingEnum.None, (byte)TeamTypeEnum.Invader));
+            teamList.Add(new SpiritTeam(GetRandomTeamName(), GetRandomPhantomId(), (int)StatScalingEnum.None, (byte)TeamTypeEnum.Enemy));
 
             List_StatScaling.DataSource = GetOrderedEnumNames(typeof(StatScalingEnum));
 
@@ -41,7 +41,7 @@ namespace EldenRingSpiritBattler
             LoadPhantomResource();
 
             // Add an initial random BattleSpirit to the grid.
-            AddRandomEnemyToGrid();
+            AddRandomSpiritToGrid();
         }
 
         private void EnemyWasEdited(object sender, EventArgs e)
@@ -92,7 +92,7 @@ namespace EldenRingSpiritBattler
 
         private void Button_PickRandomEnemy_Click(object sender, EventArgs e)
         {
-            SelectRandomEnemyAndSetToElements();
+            SelectRandomSpiritAndSetToElements();
             EnemyWasEdited(sender, e);
         }
 
@@ -101,9 +101,11 @@ namespace EldenRingSpiritBattler
             UpdateSelectedSpirit();
         }
 
-        private void Button_RandomTeamName_Click(object sender, EventArgs e)
+        private void Button_RandomizeTeam_Click(object sender, EventArgs e)
         {
+            Random rand = new();
             SetRandomTeamName();
+            List_TeamPhantomColor.SelectedIndex = rand.Next(0, List_TeamPhantomColor.Items.Count - 1);
         }
 
         private void Button_Info_Click(object sender, EventArgs e)
@@ -121,25 +123,18 @@ namespace EldenRingSpiritBattler
 
         private void Button_DeleteSpiritFromList_Click(object sender, EventArgs e)
         {
-            if (SpiritDataGrid.Rows.Count <= 1)
-            {
-                // Don't let number of rows drop below 1
-                return;
-            }
-            battleSpiritList.Remove(GetSpiritGridSelection()!);
-
-            UpdateSpiritGrid();
+            DeleteSelectedSpiritFromGrid();
         }
 
         private void Button_AddNewTeam_Click(object sender, EventArgs e)
         {
             SpiritTeam team = CreateTeamFromElements();
-            AddSpiritTeamToGrid(team);
+            AddTeamToGrid(team);
         }
 
         private void Button_GetDataSelection_Click(object sender, EventArgs e)
         {
-            GetLoadedGridSpiritInfo();
+            SetSelectedSpiritToElements();
         }
 
 
@@ -228,7 +223,7 @@ namespace EldenRingSpiritBattler
 
         private void SpiritDataGrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            GetLoadedGridSpiritInfo();
+            SetSelectedSpiritToElements();
         }
 
         private void Option_ReduceEnemyMapCol_clicked(object sender, EventArgs e)
@@ -259,7 +254,7 @@ namespace EldenRingSpiritBattler
         {
             preventEnemyEdited = true;
 
-            AddRandomEnemyToGrid();
+            AddRandomSpiritToGrid();
 
             SpiritDataGrid.ClearSelection();
             SpiritDataGrid.Rows[SpiritDataGrid.Rows.Count - 1].Selected = true;
@@ -273,9 +268,9 @@ namespace EldenRingSpiritBattler
             if (TeamDataGrid.SelectedRows.Count == 0)
                 return;
 
-            SpiritTeam team = GetTeamGridSelection().Clone();
+            SpiritTeam team = GetSelectedTeamFromGrid().Clone();
             team.Name = GetRandomTeamName();
-            AddSpiritTeamToGrid(team);
+            AddTeamToGrid(team);
         }
         private void Button_DeleteTeam_Click(object sender, EventArgs e)
         {
@@ -283,7 +278,7 @@ namespace EldenRingSpiritBattler
             if (TeamDataGrid.Rows.Count <= 1)
                 return;
 
-            SpiritTeam team = GetTeamGridSelection();
+            SpiritTeam team = GetSelectedTeamFromGrid();
             foreach (DataGridViewRow row in SpiritDataGrid.Rows)
             {
                 BattleSpirit spirit = (BattleSpirit)row.Cells[0].Value;
