@@ -238,18 +238,6 @@ namespace EldenRingSpiritBattler
             Option_ReduceEnemyMapCol.Checked = !Option_ReduceEnemyMapCol.Checked;
         }
 
-        private void Option_SpiritAshNoRequirements_Click(object sender, EventArgs e)
-        {
-            Option_SpiritAshNoRequirements.Checked = !Option_SpiritAshNoRequirements.Checked;
-            if (Option_SpiritAshNoRequirements.Checked == false)
-                MessageBox.Show("This option is not reversable if you have already executed with this option.\nRestore backups if you want to undo this.", "Warning");
-        }
-
-        private void Option_DisableFriendlyFire_Click(object sender, EventArgs e)
-        {
-            Option_DisableFriendlyFire.Checked = !Option_DisableFriendlyFire.Checked;
-        }
-
         private void List_Enemy_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (enemyVariantDict.TryGetValue(List_Enemy.Text, out List<Enemy> list))

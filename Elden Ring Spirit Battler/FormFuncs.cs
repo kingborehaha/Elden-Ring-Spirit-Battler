@@ -18,6 +18,9 @@ using static EldenRingSpiritBattler.SpiritBattlerResources;
         I still really want some accessible system that'll simplify this.
             maybe give configurable patterns (two opposing rows, row facing player, circle)?
 -- medium priority
+    randomize the 2 starting team names/phantom type on program start. just don't randomize team types
+    don't change enemy's team index combbox when adding new team
+    add grid for teams with similar update system as spirit grid
     randomize an entire ash
 --low priority
     change targeted ash name's FMG name
@@ -38,12 +41,11 @@ namespace EldenRingSpiritBattler
 {
     public partial class MainForm
     {
-        public string backupFile = "";
-
         public readonly uint buddyLimit = 33; //TODO: confirm
 
+        public string backupFile = "";
+
         public Dictionary<string, int> spiritAshesDict = new();
-        //public Dictionary<string, Enemy> enemyDict = new();
         public Dictionary<string, List<Enemy>> enemyVariantDict = new();
         public List<BattleSpirit> battleSpiritList = new();
         public Dictionary<string, SpiritTeam> teamDict;
@@ -268,6 +270,7 @@ namespace EldenRingSpiritBattler
             PARAM npcThinkParam;
             PARAM goodsParam;
             PARAM spEffectParam;
+            PARAM vfxParam;
             try
             {
                 buddyParam = paramList["BuddyParam"];
@@ -275,6 +278,7 @@ namespace EldenRingSpiritBattler
                 npcThinkParam = paramList["NpcThinkParam"];
                 goodsParam = paramList["EquipParamGoods"];
                 spEffectParam = paramList["SpEffectParam"];
+                vfxParam = paramList["SpEffectVfxParam"];
             }
             catch
             {
@@ -311,42 +315,54 @@ namespace EldenRingSpiritBattler
             {
                 var spirit = battleSpiritList[i];
 
-                #region SpEffectParam
-
-                // If the battleSpirit has special scaling, create a new spEffectParam row with the values and assign it to the battleSpirit.
-                if (spirit.HpMult != 1 && spirit.DamageMult != 1)
+                #region VfxParam
+                PARAM.Row? newVfxRow = null;
+                if (spirit.Team.PhantomParamID > 0)
                 {
-                    int baseEffectID = 290000;
-                    int newEffectID = baseEffectID + 1000; // 291000
+                    int baseVfxID = 57000;
+                    int newVfxID = 60000;
                     do
                     {
-                        newEffectID++;
+                        newVfxID++;
                     }
-                    while (spEffectParam[newEffectID] != null);
-                    PARAM.Row newSpEffectRow = InsertParamRow(spEffectParam, spEffectParam[baseEffectID], newEffectID);
-                    newSpEffectRow.Name = $"Spirit Battler Special Scaling ({spirit.VariantName})";
-                    float hpMult = spirit.HpMult;
-                    float damMult = spirit.DamageMult;
-                    newSpEffectRow["maxHpRate"].Value = hpMult;
-                    newSpEffectRow["physicsAttackPowerRate"].Value = damMult;
-                    newSpEffectRow["magicAttackPowerRate"].Value = damMult;
-                    newSpEffectRow["fireAttackPowerRate"].Value = damMult;
-                    newSpEffectRow["thunderAttackPowerRate"].Value = damMult;
-                    newSpEffectRow["darkAttackPowerRate"].Value = damMult;
-                    newSpEffectRow["registPoizonChangeRate"].Value = 1.0f;
-                    newSpEffectRow["registDiseaseChangeRate"].Value = 1.0f;
-                    newSpEffectRow["registBloodChangeRate"].Value = 1.0f;
-                    newSpEffectRow["registFreezeChangeRate"].Value = 1.0f;
-                    newSpEffectRow["registSleepChangeRate"].Value = 1.0f;
-                    newSpEffectRow["registMadnessChangeRate"].Value = 1.0f;
-
-                    spirit.Sp_SpecialScaling = newSpEffectRow.ID;
+                    while (vfxParam[newVfxID] != null);
+                    newVfxRow = InsertParamRow(vfxParam, vfxParam[baseVfxID], newVfxID);
+                    newVfxRow["phantomParamOverwriteId"].Value = spirit.Team.PhantomParamID;
                 }
+                #endregion
+
+                #region SpEffectParam
+                int baseEffectID = 290000;
+                int newEffectID = 291000;
+                do
+                {
+                    newEffectID++;
+                }
+                while (spEffectParam[newEffectID] != null);
+                PARAM.Row newSpEffectRow = InsertParamRow(spEffectParam, spEffectParam[baseEffectID], newEffectID);
+                newSpEffectRow.Name = $"Spirit Battler VFX and Scaling - ({spirit.VariantName})";
+                float hpMult = spirit.HpMult;
+                float damMult = spirit.DamageMult;
+                newSpEffectRow["maxHpRate"].Value = hpMult;
+                newSpEffectRow["physicsAttackPowerRate"].Value = damMult;
+                newSpEffectRow["magicAttackPowerRate"].Value = damMult;
+                newSpEffectRow["fireAttackPowerRate"].Value = damMult;
+                newSpEffectRow["thunderAttackPowerRate"].Value = damMult;
+                newSpEffectRow["darkAttackPowerRate"].Value = damMult;
+                newSpEffectRow["registPoizonChangeRate"].Value = 1.0f;
+                newSpEffectRow["registDiseaseChangeRate"].Value = 1.0f;
+                newSpEffectRow["registBloodChangeRate"].Value = 1.0f;
+                newSpEffectRow["registFreezeChangeRate"].Value = 1.0f;
+                newSpEffectRow["registSleepChangeRate"].Value = 1.0f;
+                newSpEffectRow["registMadnessChangeRate"].Value = 1.0f;
+                if (newVfxRow != null)
+                    newSpEffectRow["vfxId"].Value = newVfxRow.ID;
+                spirit.Sp_SpecialScaling = newSpEffectRow.ID;
                 #endregion
 
                 #region NpcParam
                 int npcID = spirit.BaseNpcID;
-                int newNpcID = npcID;
+                int newNpcID = 2000000000 + npcID;
                 if (npcParam[npcID] == null)
                 {
                     MessageBox.Show($"Spirit {spirit.VariantName}'s base NpcParamID {npcID} cannot be found. Please fix this enemy.", "Error");
@@ -360,11 +376,12 @@ namespace EldenRingSpiritBattler
                 PARAM.Row newNpcRow = InsertParamRow(npcParam, npcParam[npcID], newNpcID);
 
                 newNpcRow["teamType"].Value = spirit.Team.TeamType;
-                newNpcRow["phantomShaderId"].Value = spirit.Team.PhantomShaderID;
+                //newNpcRow["phantomShaderId"].Value = spirit.Team.PhantomParamID; // TODO: doesn't work, use spEffect vfxparam instead
                 newNpcRow["itemLotId_enemy"].Value = -1;
                 newNpcRow["itemLotId_map"].Value = -1;
                 newNpcRow["GameClearSpEffectID"].Value = -1;
                 newNpcRow["getSoul"].Value = (uint)0;
+                newNpcRow["npcType"].Value = (byte)0; // TODO: this doesn't do anything meaningful beyond hitstun, right?
 
                 // Cap map hit radii to prevent spawning issues
                 if (Option_ReduceEnemyMapCol.Checked)
@@ -380,13 +397,8 @@ namespace EldenRingSpiritBattler
                         newNpcRow["hitHeight"].Value = maxHitHeight;
                     }
                 }
-                if (Option_DisableFriendlyFire.Checked)
-                {
-                    newNpcRow["npcType"].Value = (byte)0;
-                }
 
                 // NpcParam Special Effects
-                // TODO: organize scaling effect, and phantom param effect
                 //int[] buddyEffects = { 295000, 296000, 297000 }; // (randomizer) special effects to be inserted into new npcParam
 
                 var buddyEffects = spirit.SpecialEffects;
@@ -418,7 +430,7 @@ namespace EldenRingSpiritBattler
 
                 #region NpcThinkParam
                 int npcThinkID = spirit.BaseThinkID;
-                int newNpcThinkID = npcThinkID;
+                int newNpcThinkID = 2000000000 + npcThinkID;
                 if (npcThinkParam[npcThinkID] == null)
                 {
                     MessageBox.Show($"Spirit {spirit.VariantName}'s base NpcThinkParamID {npcThinkID} cannot be found. Please fix this enemy.", "Error");
@@ -431,8 +443,7 @@ namespace EldenRingSpiritBattler
                 while (npcThinkParam[newNpcThinkID] != null);
                 PARAM.Row newNpcThinkRow = InsertParamRow(npcThinkParam, npcThinkParam[npcThinkID], newNpcThinkID);
 
-                // TODO
-                // eye dist, battleStartDist, forget time, backHomeDist
+                // TODO: eye dist, battleStartDist, forget time, backHomeDist
 
                 //newNpcThinkRow["isBuddyAI"].Value = false;
                 #endregion
@@ -697,7 +708,7 @@ namespace EldenRingSpiritBattler
             SpiritTeam team = new()
             {
                 Name = Input_TeamName.Text,
-                PhantomShaderID = (int)Enum.Parse(typeof(PhantomEnum), List_TeamPhantomColor.Text),
+                PhantomParamID = (int)Enum.Parse(typeof(PhantomEnum), List_TeamPhantomColor.Text),
                 TeamType = (byte)Enum.Parse(typeof(TeamTypeEnum), List_TeamType.Text)
             };
             return team;

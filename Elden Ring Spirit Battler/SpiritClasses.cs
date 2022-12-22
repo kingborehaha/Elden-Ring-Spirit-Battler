@@ -89,15 +89,15 @@ namespace EldenRingSpiritBattler
     public class SpiritTeam
     {
         public string Name = "";
-        public int PhantomShaderID; // PhantomParam ID to put into NpcParam
         public byte TeamType; // NpcParam enum
+        public int PhantomParamID; // PhantomParam ID to insert into SpEffectVfxParam
         public int BonusStatScalingEffect; // Special Effect with bonus stat scaling
         public SpiritTeam()
         { }
         public SpiritTeam(string name, int phantomShaderID, int teamStatScaling, byte teamType)
         {
             Name = name;
-            PhantomShaderID = phantomShaderID;
+            PhantomParamID = phantomShaderID;
             BonusStatScalingEffect = teamStatScaling;
             TeamType = teamType;
         }

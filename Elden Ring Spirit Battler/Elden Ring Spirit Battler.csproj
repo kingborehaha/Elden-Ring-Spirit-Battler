@@ -38,6 +38,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="Paramdex\SpEffectVfx.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="Resources\SpiritAshResource.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

@@ -54,9 +54,7 @@
             this.Button_ResetTool = new System.Windows.Forms.ToolStripMenuItem();
             this.Menu_Settings = new System.Windows.Forms.ToolStripMenuItem();
             this.Option_ReduceEnemyMapCol = new System.Windows.Forms.ToolStripMenuItem();
-            this.Option_SpiritAshNoRequirements = new System.Windows.Forms.ToolStripMenuItem();
             this.Option_HidePlayer = new System.Windows.Forms.ToolStripMenuItem();
-            this.Option_DisableFriendlyFire = new System.Windows.Forms.ToolStripMenuItem();
             this.Menu_Help = new System.Windows.Forms.ToolStripMenuItem();
             this.Button_Info = new System.Windows.Forms.ToolStripMenuItem();
             this.Button_StatScalingLevelInfo = new System.Windows.Forms.ToolStripMenuItem();
@@ -103,6 +101,7 @@
             this.label19 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.Option_SpiritAshNoRequirements = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.Button_PickRandomEnemy = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -346,9 +345,7 @@
             // 
             this.Menu_Settings.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.Option_ReduceEnemyMapCol,
-            this.Option_SpiritAshNoRequirements,
-            this.Option_HidePlayer,
-            this.Option_DisableFriendlyFire});
+            this.Option_HidePlayer});
             this.Menu_Settings.Name = "Menu_Settings";
             this.Menu_Settings.Size = new System.Drawing.Size(61, 20);
             this.Menu_Settings.Text = "Settings";
@@ -356,35 +353,16 @@
             // Option_ReduceEnemyMapCol
             // 
             this.Option_ReduceEnemyMapCol.Name = "Option_ReduceEnemyMapCol";
-            this.Option_ReduceEnemyMapCol.Size = new System.Drawing.Size(287, 22);
-            this.Option_ReduceEnemyMapCol.Text = "Reduce map collision radius for Enemies";
+            this.Option_ReduceEnemyMapCol.Size = new System.Drawing.Size(266, 22);
+            this.Option_ReduceEnemyMapCol.Text = "Reduce Enemy Map Collision Radius";
             this.Option_ReduceEnemyMapCol.Click += new System.EventHandler(this.Option_ReduceEnemyMapCol_clicked);
-            // 
-            // Option_SpiritAshNoRequirements
-            // 
-            this.Option_SpiritAshNoRequirements.Checked = true;
-            this.Option_SpiritAshNoRequirements.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.Option_SpiritAshNoRequirements.Name = "Option_SpiritAshNoRequirements";
-            this.Option_SpiritAshNoRequirements.Size = new System.Drawing.Size(287, 22);
-            this.Option_SpiritAshNoRequirements.Text = "Remove requirements for all Spirit Ashes";
-            this.Option_SpiritAshNoRequirements.Click += new System.EventHandler(this.Option_SpiritAshNoRequirements_Click);
             // 
             // Option_HidePlayer
             // 
             this.Option_HidePlayer.Name = "Option_HidePlayer";
-            this.Option_HidePlayer.Size = new System.Drawing.Size(287, 22);
+            this.Option_HidePlayer.Size = new System.Drawing.Size(266, 22);
             this.Option_HidePlayer.Text = "Hide Player";
-            // 
-            // Option_DisableFriendlyFire
-            // 
-            this.Option_DisableFriendlyFire.Checked = true;
-            this.Option_DisableFriendlyFire.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.Option_DisableFriendlyFire.Name = "Option_DisableFriendlyFire";
-            this.Option_DisableFriendlyFire.Size = new System.Drawing.Size(287, 22);
-            this.Option_DisableFriendlyFire.Text = "Disable standard friendly fire";
-            this.Option_DisableFriendlyFire.ToolTipText = "Makes summons not deal friendly fire for normal attacks.\r\nSpecial attacks pre-set" +
-    " to hurt all teams will not be affected.";
-            this.Option_DisableFriendlyFire.Click += new System.EventHandler(this.Option_DisableFriendlyFire_Click);
+            this.Option_HidePlayer.Visible = false;
             // 
             // Menu_Help
             // 
@@ -919,14 +897,27 @@
             // groupBox1
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.Option_SpiritAshNoRequirements);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.List_SpiritAsh);
-            this.groupBox1.Location = new System.Drawing.Point(763, 53);
+            this.groupBox1.Location = new System.Drawing.Point(765, 432);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(187, 117);
             this.groupBox1.TabIndex = 112;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Targeted Spirit Ash";
+            // 
+            // Option_SpiritAshNoRequirements
+            // 
+            this.Option_SpiritAshNoRequirements.AutoSize = true;
+            this.Option_SpiritAshNoRequirements.Checked = true;
+            this.Option_SpiritAshNoRequirements.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.Option_SpiritAshNoRequirements.Location = new System.Drawing.Point(15, 70);
+            this.Option_SpiritAshNoRequirements.Name = "Option_SpiritAshNoRequirements";
+            this.Option_SpiritAshNoRequirements.Size = new System.Drawing.Size(155, 19);
+            this.Option_SpiritAshNoRequirements.TabIndex = 75;
+            this.Option_SpiritAshNoRequirements.Text = "No HP/FP Consumption";
+            this.Option_SpiritAshNoRequirements.UseVisualStyleBackColor = true;
             // 
             // groupBox2
             // 
@@ -1116,9 +1107,7 @@
         private NumericUpDown Input_EnemyDamageMult;
         private ToolStripMenuItem Menu_Settings;
         private ToolStripMenuItem Option_ReduceEnemyMapCol;
-        private ToolStripMenuItem Option_SpiritAshNoRequirements;
         private ToolStripMenuItem Option_HidePlayer;
-        private ToolStripMenuItem Option_DisableFriendlyFire;
         private ToolStripMenuItem Button_Execute;
         private ComboBox List_EnemyVariant;
         private Label label16;
@@ -1150,5 +1139,6 @@
         private ToolStripMenuItem addSpiritToolStripMenuItem;
         private Button Button_PickRandomEnemy;
         private Button Button_AddRandomSpirit;
+        private CheckBox Option_SpiritAshNoRequirements;
     }
 }
