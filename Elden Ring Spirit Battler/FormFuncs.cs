@@ -48,15 +48,19 @@ namespace EldenRingSpiritBattler
         public Dictionary<string, int> spiritAshesDict = new();
         public Dictionary<string, List<Enemy>> enemyVariantDict = new();
         public List<BattleSpirit> battleSpiritList = new();
-        public Dictionary<string, SpiritTeam> teamDict;
+        public List<SpiritTeam> teamList = new();
 
         public void SetRandomTeamName()
         {
+            Input_TeamName.Text = GetRandomTeamName();
+        }
+        public string GetRandomTeamName()
+        {
             Random rand = new();
             if (rand.Next(1, 42069) == 1)
-                Input_TeamName.Text = "Prod's Feet Enjoyers";
+                return "Prod's Feet Enjoyers";
             else
-                Input_TeamName.Text = randomTeamNames[rand.Next(0, randomTeamNames.Length)];
+                return randomTeamNames[rand.Next(0, randomTeamNames.Length)];
         }
 
         public void AddRandomEnemyToGrid()
@@ -170,10 +174,6 @@ namespace EldenRingSpiritBattler
             {
                 throw new Exception("Error loading \"Resources\\EnemyInfoResource.txt\"", e);
             }
-        }
-        private void LoadTeamsResource()
-        {
-            List_Teams.DataSource = teamDict.Select(e => e.Value.Name).ToList();
         }
 
         private static string GetTime()
@@ -537,7 +537,17 @@ namespace EldenRingSpiritBattler
             if (spirit == null)
                 return;
 
-            List_Teams.Text = spirit.Team.Name;
+            TeamDataGrid.ClearSelection();
+            foreach (DataGridViewRow row in TeamDataGrid.Rows)
+            {
+                if (row.Cells[0].Value.Equals(spirit.Team))
+                {
+                    row.Selected = true;
+                    break;
+                }
+            }
+            if (TeamDataGrid.SelectedRows.Count == 0)
+                throw new Exception("Couldn't find selected Spirit's team object in TeamDataGrid.");
 
             List_Enemy.SelectedItem = spirit.BaseName;
             List_EnemyVariant.SelectedItem = spirit.VariantName;
@@ -588,13 +598,21 @@ namespace EldenRingSpiritBattler
             return pos;
         }
 
+        public SpiritTeam GetSelectedSpiritTeam()
+        {
+            var a = TeamDataGrid.SelectedRows[0]; // TODO: this is failing for some reason
+            var b = a.Cells[0];
+            return (SpiritTeam)TeamDataGrid.SelectedRows[0].Cells[0].Value;
+        }
+
         private BattleSpirit CreateBattleSpiritFromElements()
         {
             BattleSpirit spirit = new()
             {
                 BaseName = List_Enemy.Text,
                 VariantName = List_EnemyVariant.Text,
-                Team = teamDict[List_Teams.Text],
+                //Team = teamDict[List_Teams.Text],
+                Team = GetSelectedSpiritTeam(),
                 Sp_StatScaling = (int)Enum.Parse(typeof(StatScalingEnum), List_StatScaling.Text),
                 Position = CreateSummonPosition(),
                 HpMult = (float)Input_EnemyHpMult.Value,
@@ -623,6 +641,12 @@ namespace EldenRingSpiritBattler
 
             DataGridViewRow row = SpiritDataGrid.SelectedRows[0];
             return (BattleSpirit)row.Cells[0].Value;
+        }
+
+        private SpiritTeam GetTeamGridSelection()
+        {
+            DataGridViewRow row = TeamDataGrid.SelectedRows[0];
+            return (SpiritTeam)row.Cells[0].Value;
         }
 
         private void SetSpiritGridSelection(BattleSpirit newSpirit)
@@ -702,8 +726,34 @@ namespace EldenRingSpiritBattler
             }
         }
         */
+        private void UpdateTeamGrid()
+        {
+            int prevIndex = 0;
+            if (TeamDataGrid.SelectedRows.Count > 0)
+                prevIndex = TeamDataGrid.SelectedRows[0].Index;
 
-        private SpiritTeam CreateSpiritTeam()
+            TeamDataGrid.DataSource = teamList.Select(team => new
+            {
+                team,
+                team.Name,
+                V1 = Enum.GetName(typeof(TeamTypeEnum), team.TeamType),
+                V2 = Enum.GetName(typeof(PhantomEnum), team.PhantomParamID)
+            }).ToList();
+            TeamDataGrid.Columns[0].Visible = false;
+            TeamDataGrid.Columns[1].HeaderCell.Value = "Name";
+            TeamDataGrid.Columns[1].Width = 150;
+            TeamDataGrid.Columns[2].HeaderCell.Value = "Team Type";
+            TeamDataGrid.Columns[3].HeaderCell.Value = "Color";
+
+
+            //TeamDataGrid.ClearSelection();
+            if (prevIndex > TeamDataGrid.Rows.Count - 1)
+                prevIndex = TeamDataGrid.Rows.Count - 1;
+            if (prevIndex > -1)
+                TeamDataGrid.Rows[prevIndex].Selected = true;
+        }
+
+        private SpiritTeam CreateTeamFromElements()
         {
             SpiritTeam team = new()
             {
@@ -712,6 +762,12 @@ namespace EldenRingSpiritBattler
                 TeamType = (byte)Enum.Parse(typeof(TeamTypeEnum), List_TeamType.Text)
             };
             return team;
+        }
+
+        private void AddSpiritTeamToGrid(SpiritTeam team)
+        {
+            teamList.Add(team);
+            UpdateTeamGrid();
         }
 
         private void UpdateSelectedSpirit()

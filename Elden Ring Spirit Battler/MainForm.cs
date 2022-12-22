@@ -28,18 +28,15 @@ namespace EldenRingSpiritBattler
 
             SetRandomTeamName();
 
-            teamDict = new()
-            {
-                { "Summons", new SpiritTeam("Summons", (int)PhantomEnum.C19, (int)StatScalingEnum.None, (byte)TeamTypeEnum.SpiritSummon) },
-                { "Invaders", new SpiritTeam("Invaders", (int)PhantomEnum.C60, (int)StatScalingEnum.None, (byte)TeamTypeEnum.Invader) },
-                { "Enemies", new SpiritTeam("Enemies", (int)PhantomEnum.None, (int)StatScalingEnum.None, (byte)TeamTypeEnum.Enemy) },
-            };
+            teamList.Add(new SpiritTeam(GetRandomTeamName(), (int)PhantomEnum.C19, (int)StatScalingEnum.None, (byte)TeamTypeEnum.SpiritSummon));
+            teamList.Add(new SpiritTeam(GetRandomTeamName(), (int)PhantomEnum.C60, (int)StatScalingEnum.None, (byte)TeamTypeEnum.Invader));
+            teamList.Add(new SpiritTeam(GetRandomTeamName(), (int)PhantomEnum.None, (int)StatScalingEnum.None, (byte)TeamTypeEnum.Enemy));
 
             List_StatScaling.DataSource = GetOrderedEnumNames(typeof(StatScalingEnum));
 
             LoadSpiritAshResource();
             LoadEnemyResource();
-            LoadTeamsResource();
+            UpdateTeamGrid();
             LoadTeamTypeResource();
             LoadPhantomResource();
 
@@ -122,7 +119,7 @@ namespace EldenRingSpiritBattler
                 , "Info", MessageBoxButtons.OK);
         }
 
-        private void Button_RemoveSpiritFromList_Click(object sender, EventArgs e)
+        private void Button_DeleteSpiritFromList_Click(object sender, EventArgs e)
         {
             if (SpiritDataGrid.Rows.Count <= 1)
             {
@@ -133,10 +130,11 @@ namespace EldenRingSpiritBattler
 
             UpdateSpiritGrid();
         }
+
         private void Button_AddNewTeam_Click(object sender, EventArgs e)
         {
-            teamDict[Input_TeamName.Text] = CreateSpiritTeam();
-            LoadTeamsResource();
+            SpiritTeam team = CreateTeamFromElements();
+            AddSpiritTeamToGrid(team);
         }
 
         private void Button_GetDataSelection_Click(object sender, EventArgs e)
@@ -210,7 +208,7 @@ namespace EldenRingSpiritBattler
         }
         private void SpiritDataGrid_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
         {
-            // Spirit grid right-click functionality
+            // Right-click functionality
             if (e.Button == MouseButtons.Right)
             {
                 int rowSelected = e.RowIndex;
@@ -267,6 +265,52 @@ namespace EldenRingSpiritBattler
             SpiritDataGrid.Rows[SpiritDataGrid.Rows.Count - 1].Selected = true;
 
             preventEnemyEdited = false;
+        }
+
+        private void Button_DuplicateTeam_Click(object sender, EventArgs e)
+        {
+            // Get data from selected team and duplicate it
+            if (TeamDataGrid.SelectedRows.Count == 0)
+                return;
+
+            SpiritTeam team = GetTeamGridSelection().Clone();
+            team.Name = GetRandomTeamName();
+            AddSpiritTeamToGrid(team);
+        }
+        private void Button_DeleteTeam_Click(object sender, EventArgs e)
+        {
+            // Don't let number of rows drop below 1
+            if (TeamDataGrid.Rows.Count <= 1)
+                return;
+
+            SpiritTeam team = GetTeamGridSelection();
+            foreach (DataGridViewRow row in SpiritDataGrid.Rows)
+            {
+                BattleSpirit spirit = (BattleSpirit)row.Cells[0].Value;
+                if (spirit.Team == team)
+                {
+                    // A spirit is using this team, don't allow deletion.
+                    MessageBox.Show("Cannot delete this team, it is being used.", "Error");
+                    return;
+                }
+            }
+            teamList.Remove(team);
+            UpdateTeamGrid();
+        }
+
+        private void TeamDataGrid_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            // Right-click functionality
+            if (e.Button == MouseButtons.Right)
+            {
+                int rowSelected = e.RowIndex;
+                if (e.RowIndex != -1)
+                {
+                    TeamDataGrid.ClearSelection();
+                    TeamDataGrid.Rows[rowSelected].Selected = true;
+
+                }
+            }
         }
     }
 }

@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 namespace EldenRingSpiritBattler
 {
-
     public class Enemy
     {
         public string Name;
@@ -71,7 +70,7 @@ namespace EldenRingSpiritBattler
 
         public BattleSpirit Clone()
         {
-            var spirit = new BattleSpirit();
+            BattleSpirit spirit = new();
             spirit.BaseName = BaseName;
             spirit.VariantName = VariantName;
             spirit.BaseNpcID = BaseNpcID;
@@ -91,7 +90,7 @@ namespace EldenRingSpiritBattler
         public string Name = "";
         public byte TeamType; // NpcParam enum
         public int PhantomParamID; // PhantomParam ID to insert into SpEffectVfxParam
-        public int BonusStatScalingEffect; // Special Effect with bonus stat scaling
+        public int BonusStatScalingEffect; // Special Effect with bonus stat scaling // TODO: not implemented
         public SpiritTeam()
         { }
         public SpiritTeam(string name, int phantomShaderID, int teamStatScaling, byte teamType)
@@ -100,6 +99,15 @@ namespace EldenRingSpiritBattler
             PhantomParamID = phantomShaderID;
             BonusStatScalingEffect = teamStatScaling;
             TeamType = teamType;
+        }
+        public SpiritTeam Clone()
+        {
+            SpiritTeam team = new();
+            team.Name = Name;
+            team.TeamType = TeamType;
+            team.PhantomParamID = PhantomParamID;
+            team.BonusStatScalingEffect = BonusStatScalingEffect;
+            return team;
         }
     }
 
