@@ -165,9 +165,8 @@ namespace EldenRingSpiritBattler
             if (SpiritDataGrid.SelectedRows.Count == 0)
                 return;
 
-            battleSpiritList.Add(((BattleSpirit)SpiritDataGrid.SelectedRows[0].Cells[0].Value).Clone());
-
-            UpdateSpiritGrid();
+            BattleSpirit spirit = ((BattleSpirit)SpiritDataGrid.SelectedRows[0].Cells[0].Value).Clone();
+            AddSpiritToList(spirit);
         }
 
         private void Button_Execute_Click(object sender, EventArgs e)

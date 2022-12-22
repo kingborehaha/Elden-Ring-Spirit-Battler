@@ -11,13 +11,12 @@ using static EldenRingSpiritBattler.SpiritBattlerResources;
 
 /*
 -- TODO
-    get tool execution working
-    test in-game
-        make sure npcParam phantom field actually works
--- highish priority
+    in-game testing
+-- high priority
+    make sure npcParam phantom field actually works
     summon positioning
         I still really want some accessible system that'll simplify this.
-            maybe give configurable patters (two opposing rows, row facing player, circle)?
+            maybe give configurable patterns (two opposing rows, row facing player, circle)?
 -- medium priority
     randomize an entire ash
 --low priority
@@ -41,7 +40,7 @@ namespace EldenRingSpiritBattler
     {
         public string backupFile = "";
 
-        public uint buddyLimit = 33; //TODO: confirm
+        public readonly uint buddyLimit = 33; //TODO: confirm
 
         public Dictionary<string, int> spiritAshesDict = new();
         //public Dictionary<string, Enemy> enemyDict = new();
@@ -61,7 +60,8 @@ namespace EldenRingSpiritBattler
         public void AddRandomEnemyToGrid()
         {
             SelectRandomEnemyAndSetToElements();
-            AddSpiritToGrid();
+            BattleSpirit spirit = CreateBattleSpiritFromElements();
+            AddSpiritToList(spirit);
         }
 
         public void SelectRandomEnemyAndSetToElements()
@@ -79,7 +79,6 @@ namespace EldenRingSpiritBattler
 
         private void SearchList()
         {
-
         }
 
         private int GetLongestCharInList(object list)
@@ -188,7 +187,7 @@ namespace EldenRingSpiritBattler
             return version;
         }
 
-        private static PARAM.Row InsertParamRow(PARAM param, PARAM.Row row, int newID)
+        private static PARAM.Row InsertParamRow(PARAM param, PARAM.Row row, int newID, int index = -1)
         {
             PARAM.Row newRow = new PARAM.Row(newID, "buddyRando " + newID, param.AppliedParamdef);
 
@@ -196,7 +195,10 @@ namespace EldenRingSpiritBattler
             {
                 newRow.Cells[i].Value = row.Cells[i].Value;
             }
-            param.Rows.Insert(param.Rows.IndexOf(row) + 1, newRow);
+            if (index == -1)
+                param.Rows.Insert(param.Rows.IndexOf(row) + 1, newRow);
+            else
+                param.Rows.Insert(index, newRow);
 
             return newRow;
         }
@@ -285,20 +287,24 @@ namespace EldenRingSpiritBattler
 
             var selectedBuddyRowID = spiritAshesDict[List_SpiritAsh.Text];
             PARAM.Row targetBuddyRow = buddyParam[selectedBuddyRowID];
+            int buddyRowIndex = buddyParam.Rows.IndexOf(targetBuddyRow);
 
             foreach (var buddyRow in buddyParam.Rows.ToList())
             {
                 // Clean targeted Spirit Ash
-                if (selectedBuddyRowID - buddyRow.ID > 99)
+                if (Math.Abs(selectedBuddyRowID - buddyRow.ID) > 99)
                 {
                     // This is not related to the targeted row
                     continue;
                 }
+                /*
                 if (buddyRow.ID % 100 != 0)
                 {
                     // Row is for an additional buddy, nuke it
-                    buddyParam.Rows.Remove(targetBuddyRow);
+                    buddyParam.Rows.Remove(buddyRow);
                 }
+                */
+                buddyParam.Rows.Remove(buddyRow);
             }
 
             for (var i = 0; i < battleSpiritList.Count; i++)
@@ -432,7 +438,7 @@ namespace EldenRingSpiritBattler
                 #endregion
 
                 #region BuddyParam
-                PARAM.Row buddyParamRow = InsertParamRow(buddyParam, targetBuddyRow, targetBuddyRow.ID + i);
+                PARAM.Row buddyParamRow = InsertParamRow(buddyParam, targetBuddyRow, targetBuddyRow.ID + i, buddyRowIndex + i);
 
                 buddyParamRow["npcParamId"].Value = newNpcRow.ID;
                 buddyParamRow["npcThinkParamId"].Value = newNpcThinkRow.ID;
@@ -453,22 +459,24 @@ namespace EldenRingSpiritBattler
                 buddyParamRow["npcThinkParamId_ridden"].Value = -1;
                 buddyParamRow["generateAnimId"].Value = -1;
                 #endregion
+            }
 
-                #region GoodsParam
-                if (Option_SpiritAshNoRequirements.Checked)
+            #region GoodsParam
+            if (Option_SpiritAshNoRequirements.Checked)
+            {
+                int buddyTriggerSpEffect = (int)targetBuddyRow["triggerSpEffectId"].Value;
+                foreach (PARAM.Row goodsRow in goodsParam.Rows)
                 {
-                    foreach (PARAM.Row row in goodsParam.Rows)
+                    if (buddyTriggerSpEffect == (int)goodsRow["refId_default"].Value)
                     {
-                        if (row.ID >= 200000 && row.ID <= 270000) //can probably replace this with good type check, or a sort ID check or something. ashes are distinguished in the UI somehow, after all.
-                        {
-                            // This is a spirit ash good
-                            row["consumeHP"].Value = (Int16)0;
-                            row["consumeMP"].Value = (Int16)0;
-                        }
+                        // This is the targeted spirit ash good
+                        goodsRow["consumeHP"].Value = (Int16)0;
+                        goodsRow["consumeMP"].Value = (Int16)0;
+                        break;
                     }
                 }
-                #endregion
             }
+            #endregion
 
             UpdateConsole("Exporting Params");
 
@@ -480,7 +488,7 @@ namespace EldenRingSpiritBattler
                     file.Bytes = paramList[name].Write();
             }
 
-            //SFUtil.EncryptERRegulation(regulationPath, paramBND); //encrypt and write param regulation // TODO: save testing
+            SFUtil.EncryptERRegulation(regulationPath, paramBND); // Save regulation.bin
 
             return true;
         }
@@ -586,9 +594,13 @@ namespace EldenRingSpiritBattler
             return spirit;
         }
 
-        private void AddSpiritToGrid()
+        public void AddSpiritToList(BattleSpirit spirit)
         {
-            var spirit = CreateBattleSpiritFromElements();
+            if (SpiritDataGrid.Rows.Count > buddyLimit)
+            {
+                MessageBox.Show("A spirit ash cannot handle more than 33 spirits at once. Sorry!", "Warning");
+                return;
+            }
             battleSpiritList.Add(spirit);
             UpdateSpiritGrid();
         }

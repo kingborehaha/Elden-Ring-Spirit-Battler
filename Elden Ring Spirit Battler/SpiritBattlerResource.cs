@@ -159,7 +159,8 @@ namespace EldenRingSpiritBattler
             "Stardust Crusaders",
             "Disco Heretics",
             "The Purple Moss Clumps",
-            //"\"; DROP TABLE TEAMS;",
+            "The Cohesive Unit",
+            "Silver K***hts"
         };
     }
 }
