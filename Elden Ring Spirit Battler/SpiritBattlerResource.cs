@@ -4,6 +4,16 @@ namespace EldenRingSpiritBattler
 {
     public static class SpiritBattlerResources
     {
+
+        /// <summary>
+        /// List of NpcParam IDs that should not be assigned a phantom VFX, as it won't work very well.
+        /// </summary>
+        public static List<int> enemyPhantomBlacklist = new()
+        {
+            22000000, // Elden Beast
+            21500000 // Wisp
+        };
+
         public enum TeamTypeEnum : byte
         {
             Player = 1,
@@ -38,7 +48,7 @@ namespace EldenRingSpiritBattler
             Object = 30,
             DS3_CoopMadPhantom = 31,
             DS3_InvaderMadPhantom = 32,
-            ArchEnemyTeam = 33,
+            ArchEnemy = 33,
             SpiritSummon = 47,
             Unknown48 = 48,
             Unknown49 = 49,
@@ -62,15 +72,67 @@ namespace EldenRingSpiritBattler
         {
             // TODO
             None = -1,
-            C19 = 19,
-            C24 = 24,
-            C25 = 25,
-            C60 = 60,
-            C80 = 80,
-            C203 = 203,
-            C900 = 900,
-            C920 = 920,
+            GreyNoGlow = 1,
+            Grey = 18,
+            BrightBlue = 19,
+            //low glow//SlightWhite = 28, 
+            YellowBright = 29,
+            //low glow//C32 = 32,
+            C44 = 44,
+            C50 = 50,
+            C51 = 51,
+            RedInvader = 60,
+            BrownSummon = 61,
+            Red62 = 62,
+            Blue70 = 70,
+            WhiteSummon = 200,
+            White201 = 201,
+            Red202 = 202,
+            Red203 = 203,
+            DarkGrey = 211,
+            //low glow//220,
+            WhiteBright = 230,
+            Salmon = 240,
+            GreyBlueOutline = 250,
+            BlueBrightOutline = 260,
+            RedBrightOutline = 270,
+            WhiteOutline = 290,
+            BlueBrightOutline300 = 300,
+            BlueLight = 310,
+            WhiteFaintOutline = 320,
+            GhostLightBlue50 = 330,
+            //340,
+            GhostGrey50 = 350,
+            GhostWhite30 = 900,
+            GhostWhite50 = 901,
+            GhostRed50 = 902,
+            //WhiteGhost30 = 910,
+            Blue = 800,
+            RedStrong = 803,
+            RedStronger = 804,
+            RedFaintEdge = 805,
+            //810,
+            BlueStrong = 811,
+            BrownSlight = 812, // TEST
+            //813,
+            GhostGrey60 = 820,
+            GreySlight = 821, // TEST
+            //890,
+            Invisible = 891,
+            GhostBrown30 = 920,
+            GhostBrown50 = 921,
+            //GhostRed50 = 922,
+            //GhostBrown = 930,
+            White = 998,
+            ///White = 999,
+
         };
+
+        /*
+        public class StatScaler
+        { 
+        }
+        */
 
         public enum StatScalingEnum
         {
@@ -112,7 +174,6 @@ namespace EldenRingSpiritBattler
             "Little Birthday Boys",
             "Ravens",
             "The Yharnam Shadows",
-            "Energetic Susans",
             "Patch's Patches",
             "The Dark Souls",
             "Scarlet Simps",

@@ -39,6 +39,9 @@
             this.SummonPosition_X = new System.Windows.Forms.NumericUpDown();
             this.SummonPosition_Z = new System.Windows.Forms.NumericUpDown();
             this.SummonPosition_Angle = new System.Windows.Forms.NumericUpDown();
+            this.Input_TeamSummonPos_X = new System.Windows.Forms.NumericUpDown();
+            this.Input_TeamSummonPos_Z = new System.Windows.Forms.NumericUpDown();
+            this.Input_TeamSummonPos_Ang = new System.Windows.Forms.NumericUpDown();
             this.t_console = new System.Windows.Forms.TextBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.Menu_File = new System.Windows.Forms.ToolStripMenuItem();
@@ -103,8 +106,18 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.Option_SpiritAshNoRequirements = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.List_EnemyChosenTeam = new System.Windows.Forms.ComboBox();
             this.Button_PickRandomEnemy = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.Input_TeamDamageMult = new System.Windows.Forms.NumericUpDown();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.Input_TeamHpMult = new System.Windows.Forms.NumericUpDown();
             this.Button_RandomTeamName = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.Button_AddRandomSpirit = new System.Windows.Forms.Button();
@@ -114,9 +127,13 @@
             this.Button_Context_DeleteTeam = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.groupBoxRandomize = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.SummonPosition_X)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SummonPosition_Z)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SummonPosition_Angle)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Input_TeamSummonPos_X)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Input_TeamSummonPos_Z)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Input_TeamSummonPos_Ang)).BeginInit();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SummonPosition_Auto_DistMagnitude)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SpiritDataGrid)).BeginInit();
@@ -128,6 +145,8 @@
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Input_TeamDamageMult)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Input_TeamHpMult)).BeginInit();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TeamDataGrid)).BeginInit();
             this.Context_TeamDataGrid.SuspendLayout();
@@ -150,7 +169,7 @@
             // SummonPosition_X
             // 
             this.SummonPosition_X.DecimalPlaces = 2;
-            this.SummonPosition_X.Location = new System.Drawing.Point(78, 232);
+            this.SummonPosition_X.Location = new System.Drawing.Point(78, 276);
             this.SummonPosition_X.Maximum = new decimal(new int[] {
             999,
             0,
@@ -172,7 +191,7 @@
             // SummonPosition_Z
             // 
             this.SummonPosition_Z.DecimalPlaces = 2;
-            this.SummonPosition_Z.Location = new System.Drawing.Point(78, 261);
+            this.SummonPosition_Z.Location = new System.Drawing.Point(78, 305);
             this.SummonPosition_Z.Maximum = new decimal(new int[] {
             999,
             0,
@@ -194,7 +213,7 @@
             // SummonPosition_Angle
             // 
             this.SummonPosition_Angle.DecimalPlaces = 2;
-            this.SummonPosition_Angle.Location = new System.Drawing.Point(78, 290);
+            this.SummonPosition_Angle.Location = new System.Drawing.Point(78, 334);
             this.SummonPosition_Angle.Maximum = new decimal(new int[] {
             180,
             0,
@@ -213,10 +232,70 @@
             this.SummonPosition_Angle.ValueChanged += new System.EventHandler(this.EnemyWasEdited);
             this.SummonPosition_Angle.Click += new System.EventHandler(this.EnemyWasEdited);
             // 
+            // Input_TeamSummonPos_X
+            // 
+            this.Input_TeamSummonPos_X.DecimalPlaces = 2;
+            this.Input_TeamSummonPos_X.Location = new System.Drawing.Point(488, 50);
+            this.Input_TeamSummonPos_X.Maximum = new decimal(new int[] {
+            999,
+            0,
+            0,
+            0});
+            this.Input_TeamSummonPos_X.Minimum = new decimal(new int[] {
+            999,
+            0,
+            0,
+            -2147483648});
+            this.Input_TeamSummonPos_X.Name = "Input_TeamSummonPos_X";
+            this.Input_TeamSummonPos_X.Size = new System.Drawing.Size(49, 23);
+            this.Input_TeamSummonPos_X.TabIndex = 114;
+            this.toolTip1.SetToolTip(this.Input_TeamSummonPos_X, "Left/Right position of summon location in meters\r\nNegative values are to the left" +
+        " of the player\r\nPositive values are to the right of the player");
+            // 
+            // Input_TeamSummonPos_Z
+            // 
+            this.Input_TeamSummonPos_Z.DecimalPlaces = 2;
+            this.Input_TeamSummonPos_Z.Location = new System.Drawing.Point(488, 79);
+            this.Input_TeamSummonPos_Z.Maximum = new decimal(new int[] {
+            999,
+            0,
+            0,
+            0});
+            this.Input_TeamSummonPos_Z.Minimum = new decimal(new int[] {
+            999,
+            0,
+            0,
+            -2147483648});
+            this.Input_TeamSummonPos_Z.Name = "Input_TeamSummonPos_Z";
+            this.Input_TeamSummonPos_Z.Size = new System.Drawing.Size(49, 23);
+            this.Input_TeamSummonPos_Z.TabIndex = 118;
+            this.toolTip1.SetToolTip(this.Input_TeamSummonPos_Z, "Depth of summon location in meters\r\nNegative values are in front of the player\r\nP" +
+        "ositive values are behind the player");
+            // 
+            // Input_TeamSummonPos_Ang
+            // 
+            this.Input_TeamSummonPos_Ang.DecimalPlaces = 2;
+            this.Input_TeamSummonPos_Ang.Location = new System.Drawing.Point(488, 108);
+            this.Input_TeamSummonPos_Ang.Maximum = new decimal(new int[] {
+            180,
+            0,
+            0,
+            0});
+            this.Input_TeamSummonPos_Ang.Minimum = new decimal(new int[] {
+            180,
+            0,
+            0,
+            -2147483648});
+            this.Input_TeamSummonPos_Ang.Name = "Input_TeamSummonPos_Ang";
+            this.Input_TeamSummonPos_Ang.Size = new System.Drawing.Size(49, 23);
+            this.Input_TeamSummonPos_Ang.TabIndex = 120;
+            this.toolTip1.SetToolTip(this.Input_TeamSummonPos_Ang, "Facing angle of the spirit when summoned\r\nRange of -180 to 180 degrees\r\nNegative " +
+        "values face left, Positive values face right\r\n");
+            // 
             // t_console
             // 
             this.t_console.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.t_console.Location = new System.Drawing.Point(396, 550);
+            this.t_console.Location = new System.Drawing.Point(595, 550);
             this.t_console.Name = "t_console";
             this.t_console.ReadOnly = true;
             this.t_console.Size = new System.Drawing.Size(376, 23);
@@ -234,7 +313,7 @@
             this.Menu_Help});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(977, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1176, 24);
             this.menuStrip1.TabIndex = 51;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -265,6 +344,7 @@
             // Button_Execute
             // 
             this.Button_Execute.Name = "Button_Execute";
+            this.Button_Execute.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
             this.Button_Execute.Size = new System.Drawing.Size(177, 22);
             this.Button_Execute.Text = "Save";
             this.Button_Execute.Click += new System.EventHandler(this.Button_Execute_Click);
@@ -354,6 +434,8 @@
             // 
             // Option_ReduceEnemyMapCol
             // 
+            this.Option_ReduceEnemyMapCol.Checked = true;
+            this.Option_ReduceEnemyMapCol.CheckState = System.Windows.Forms.CheckState.Checked;
             this.Option_ReduceEnemyMapCol.Name = "Option_ReduceEnemyMapCol";
             this.Option_ReduceEnemyMapCol.Size = new System.Drawing.Size(266, 22);
             this.Option_ReduceEnemyMapCol.Text = "Reduce Enemy Map Collision Radius";
@@ -398,7 +480,7 @@
             this.List_Enemy.DropDownWidth = 200;
             this.List_Enemy.FormattingEnabled = true;
             this.List_Enemy.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.List_Enemy.Location = new System.Drawing.Point(6, 71);
+            this.List_Enemy.Location = new System.Drawing.Point(6, 115);
             this.List_Enemy.Name = "List_Enemy";
             this.List_Enemy.Size = new System.Drawing.Size(200, 23);
             this.List_Enemy.TabIndex = 62;
@@ -407,7 +489,7 @@
             // 
             // Search_Enemy
             // 
-            this.Search_Enemy.Location = new System.Drawing.Point(6, 42);
+            this.Search_Enemy.Location = new System.Drawing.Point(6, 86);
             this.Search_Enemy.Name = "Search_Enemy";
             this.Search_Enemy.Size = new System.Drawing.Size(200, 23);
             this.Search_Enemy.TabIndex = 64;
@@ -458,7 +540,7 @@
             this.SummonPosition_Auto.Checked = true;
             this.SummonPosition_Auto.CheckState = System.Windows.Forms.CheckState.Checked;
             this.SummonPosition_Auto.Enabled = false;
-            this.SummonPosition_Auto.Location = new System.Drawing.Point(181, 233);
+            this.SummonPosition_Auto.Location = new System.Drawing.Point(181, 277);
             this.SummonPosition_Auto.Name = "SummonPosition_Auto";
             this.SummonPosition_Auto.Size = new System.Drawing.Size(77, 19);
             this.SummonPosition_Auto.TabIndex = 77;
@@ -470,7 +552,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label5.Location = new System.Drawing.Point(6, 205);
+            this.label5.Location = new System.Drawing.Point(6, 249);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(133, 21);
             this.label5.TabIndex = 76;
@@ -480,7 +562,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(15, 234);
+            this.label6.Location = new System.Drawing.Point(15, 278);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(57, 15);
             this.label6.TabIndex = 78;
@@ -490,7 +572,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(15, 263);
+            this.label7.Location = new System.Drawing.Point(15, 307);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(57, 15);
             this.label7.TabIndex = 79;
@@ -500,7 +582,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(34, 292);
+            this.label8.Location = new System.Drawing.Point(34, 336);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(38, 15);
             this.label8.TabIndex = 82;
@@ -511,7 +593,7 @@
             // 
             this.SummonPosition_Auto_DistMagnitude.DecimalPlaces = 2;
             this.SummonPosition_Auto_DistMagnitude.Enabled = false;
-            this.SummonPosition_Auto_DistMagnitude.Location = new System.Drawing.Point(181, 274);
+            this.SummonPosition_Auto_DistMagnitude.Location = new System.Drawing.Point(181, 318);
             this.SummonPosition_Auto_DistMagnitude.Maximum = new decimal(new int[] {
             999,
             0,
@@ -535,7 +617,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(170, 255);
+            this.label9.Location = new System.Drawing.Point(170, 299);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(156, 15);
             this.label9.TabIndex = 84;
@@ -544,11 +626,11 @@
             // 
             // Button_AddNewTeam
             // 
-            this.Button_AddNewTeam.Location = new System.Drawing.Point(298, 85);
+            this.Button_AddNewTeam.Location = new System.Drawing.Point(6, 114);
             this.Button_AddNewTeam.Name = "Button_AddNewTeam";
-            this.Button_AddNewTeam.Size = new System.Drawing.Size(69, 23);
+            this.Button_AddNewTeam.Size = new System.Drawing.Size(116, 23);
             this.Button_AddNewTeam.TabIndex = 87;
-            this.Button_AddNewTeam.Text = "Add Team";
+            this.Button_AddNewTeam.Text = "Add/Update Team";
             this.Button_AddNewTeam.UseVisualStyleBackColor = true;
             this.Button_AddNewTeam.Click += new System.EventHandler(this.Button_AddNewTeam_Click);
             // 
@@ -588,7 +670,7 @@
             this.SpiritDataGrid.RowTemplate.Height = 25;
             this.SpiritDataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.SpiritDataGrid.ShowCellToolTips = false;
-            this.SpiritDataGrid.Size = new System.Drawing.Size(373, 304);
+            this.SpiritDataGrid.Size = new System.Drawing.Size(572, 304);
             this.SpiritDataGrid.TabIndex = 90;
             this.SpiritDataGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.SpiritDataGrid_CellClick);
             this.SpiritDataGrid.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.SpiritDataGrid_CellMouseDown);
@@ -655,7 +737,7 @@
             // Input_NpcParamID
             // 
             this.Input_NpcParamID.Enabled = false;
-            this.Input_NpcParamID.Location = new System.Drawing.Point(212, 116);
+            this.Input_NpcParamID.Location = new System.Drawing.Point(212, 160);
             this.Input_NpcParamID.Maximum = new decimal(new int[] {
             999999999,
             0,
@@ -680,7 +762,7 @@
             // Input_NpcThinkID
             // 
             this.Input_NpcThinkID.Enabled = false;
-            this.Input_NpcThinkID.Location = new System.Drawing.Point(295, 116);
+            this.Input_NpcThinkID.Location = new System.Drawing.Point(295, 160);
             this.Input_NpcThinkID.Maximum = new decimal(new int[] {
             999999999,
             0,
@@ -705,7 +787,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(212, 98);
+            this.label3.Location = new System.Drawing.Point(212, 142);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(77, 15);
             this.label3.TabIndex = 94;
@@ -715,7 +797,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(295, 98);
+            this.label11.Location = new System.Drawing.Point(295, 142);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(72, 15);
             this.label11.TabIndex = 95;
@@ -726,7 +808,7 @@
             // 
             this.List_StatScaling.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.List_StatScaling.FormattingEnabled = true;
-            this.List_StatScaling.Location = new System.Drawing.Point(6, 179);
+            this.List_StatScaling.Location = new System.Drawing.Point(6, 223);
             this.List_StatScaling.Name = "List_StatScaling";
             this.List_StatScaling.Size = new System.Drawing.Size(121, 23);
             this.List_StatScaling.TabIndex = 98;
@@ -737,7 +819,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label13.Location = new System.Drawing.Point(11, 161);
+            this.label13.Location = new System.Drawing.Point(11, 205);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(98, 15);
             this.label13.TabIndex = 99;
@@ -747,7 +829,7 @@
             // Input_EnemyHpMult
             // 
             this.Input_EnemyHpMult.DecimalPlaces = 2;
-            this.Input_EnemyHpMult.Location = new System.Drawing.Point(170, 179);
+            this.Input_EnemyHpMult.Location = new System.Drawing.Point(170, 223);
             this.Input_EnemyHpMult.Maximum = new decimal(new int[] {
             999,
             0,
@@ -768,7 +850,7 @@
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label14.Location = new System.Drawing.Point(158, 161);
+            this.label14.Location = new System.Drawing.Point(158, 205);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(87, 15);
             this.label14.TabIndex = 101;
@@ -779,7 +861,7 @@
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label15.Location = new System.Drawing.Point(254, 161);
+            this.label15.Location = new System.Drawing.Point(254, 205);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(115, 15);
             this.label15.TabIndex = 103;
@@ -789,7 +871,7 @@
             // Input_EnemyDamageMult
             // 
             this.Input_EnemyDamageMult.DecimalPlaces = 2;
-            this.Input_EnemyDamageMult.Location = new System.Drawing.Point(264, 179);
+            this.Input_EnemyDamageMult.Location = new System.Drawing.Point(264, 223);
             this.Input_EnemyDamageMult.Maximum = new decimal(new int[] {
             999,
             0,
@@ -811,7 +893,7 @@
             this.List_EnemyVariant.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.List_EnemyVariant.DropDownWidth = 200;
             this.List_EnemyVariant.FormattingEnabled = true;
-            this.List_EnemyVariant.Location = new System.Drawing.Point(6, 115);
+            this.List_EnemyVariant.Location = new System.Drawing.Point(6, 159);
             this.List_EnemyVariant.Name = "List_EnemyVariant";
             this.List_EnemyVariant.Size = new System.Drawing.Size(200, 23);
             this.List_EnemyVariant.TabIndex = 104;
@@ -822,7 +904,7 @@
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label16.Location = new System.Drawing.Point(11, 98);
+            this.label16.Location = new System.Drawing.Point(11, 142);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(82, 15);
             this.label16.TabIndex = 105;
@@ -835,7 +917,7 @@
             this.List_TeamType.FormattingEnabled = true;
             this.List_TeamType.Location = new System.Drawing.Point(169, 41);
             this.List_TeamType.Name = "List_TeamType";
-            this.List_TeamType.Size = new System.Drawing.Size(198, 23);
+            this.List_TeamType.Size = new System.Drawing.Size(131, 23);
             this.List_TeamType.TabIndex = 107;
             this.List_TeamType.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ComboBox_KeyPress);
             // 
@@ -868,7 +950,7 @@
             // 
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label20.Location = new System.Drawing.Point(11, 24);
+            this.label20.Location = new System.Drawing.Point(11, 68);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(70, 15);
             this.label20.TabIndex = 111;
@@ -881,7 +963,7 @@
             this.groupBox1.Controls.Add(this.Option_SpiritAshNoRequirements);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.List_SpiritAsh);
-            this.groupBox1.Location = new System.Drawing.Point(778, 445);
+            this.groupBox1.Location = new System.Drawing.Point(977, 445);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(187, 99);
             this.groupBox1.TabIndex = 112;
@@ -903,6 +985,8 @@
             // groupBox2
             // 
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Controls.Add(this.label2);
+            this.groupBox2.Controls.Add(this.List_EnemyChosenTeam);
             this.groupBox2.Controls.Add(this.Button_PickRandomEnemy);
             this.groupBox2.Controls.Add(this.List_Enemy);
             this.groupBox2.Controls.Add(this.SummonPosition_X);
@@ -929,16 +1013,39 @@
             this.groupBox2.Controls.Add(this.label11);
             this.groupBox2.Controls.Add(this.label13);
             this.groupBox2.Controls.Add(this.List_StatScaling);
-            this.groupBox2.Location = new System.Drawing.Point(399, 218);
+            this.groupBox2.Location = new System.Drawing.Point(598, 176);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(373, 326);
+            this.groupBox2.Size = new System.Drawing.Size(373, 368);
             this.groupBox2.TabIndex = 113;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Spirit";
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label2.Location = new System.Drawing.Point(11, 24);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(35, 15);
+            this.label2.TabIndex = 113;
+            this.label2.Text = "Team";
+            // 
+            // List_EnemyChosenTeam
+            // 
+            this.List_EnemyChosenTeam.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.List_EnemyChosenTeam.DropDownWidth = 200;
+            this.List_EnemyChosenTeam.FormattingEnabled = true;
+            this.List_EnemyChosenTeam.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.List_EnemyChosenTeam.Location = new System.Drawing.Point(6, 42);
+            this.List_EnemyChosenTeam.Name = "List_EnemyChosenTeam";
+            this.List_EnemyChosenTeam.Size = new System.Drawing.Size(157, 23);
+            this.List_EnemyChosenTeam.TabIndex = 112;
+            this.List_EnemyChosenTeam.SelectedIndexChanged += new System.EventHandler(this.EnemyWasEdited);
+            this.List_EnemyChosenTeam.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ComboBox_KeyPress);
+            // 
             // Button_PickRandomEnemy
             // 
-            this.Button_PickRandomEnemy.Location = new System.Drawing.Point(212, 71);
+            this.Button_PickRandomEnemy.Location = new System.Drawing.Point(212, 115);
             this.Button_PickRandomEnemy.Name = "Button_PickRandomEnemy";
             this.Button_PickRandomEnemy.Size = new System.Drawing.Size(77, 23);
             this.Button_PickRandomEnemy.TabIndex = 111;
@@ -949,20 +1056,124 @@
             // groupBox3
             // 
             this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox3.Controls.Add(this.Input_TeamSummonPos_Ang);
+            this.groupBox3.Controls.Add(this.Input_TeamSummonPos_X);
+            this.groupBox3.Controls.Add(this.label10);
+            this.groupBox3.Controls.Add(this.label19);
+            this.groupBox3.Controls.Add(this.label21);
+            this.groupBox3.Controls.Add(this.Input_TeamDamageMult);
+            this.groupBox3.Controls.Add(this.label22);
+            this.groupBox3.Controls.Add(this.Button_AddNewTeam);
+            this.groupBox3.Controls.Add(this.Input_TeamSummonPos_Z);
+            this.groupBox3.Controls.Add(this.label12);
+            this.groupBox3.Controls.Add(this.label23);
+            this.groupBox3.Controls.Add(this.Input_TeamHpMult);
             this.groupBox3.Controls.Add(this.Button_RandomTeamName);
             this.groupBox3.Controls.Add(this.label1);
             this.groupBox3.Controls.Add(this.List_TeamPhantomColor);
-            this.groupBox3.Controls.Add(this.Button_AddNewTeam);
             this.groupBox3.Controls.Add(this.label18);
             this.groupBox3.Controls.Add(this.label17);
             this.groupBox3.Controls.Add(this.Input_TeamName);
             this.groupBox3.Controls.Add(this.List_TeamType);
-            this.groupBox3.Location = new System.Drawing.Point(399, 53);
+            this.groupBox3.Location = new System.Drawing.Point(598, 27);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(373, 117);
+            this.groupBox3.Size = new System.Drawing.Size(566, 143);
             this.groupBox3.TabIndex = 114;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Team";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label10.Location = new System.Drawing.Point(292, 67);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(110, 15);
+            this.label10.TabIndex = 114;
+            this.label10.Text = "Team Damage Mult";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label19.Location = new System.Drawing.Point(416, 23);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(133, 21);
+            this.label19.TabIndex = 115;
+            this.label19.Text = "Summon Position";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(425, 52);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(57, 15);
+            this.label21.TabIndex = 116;
+            this.label21.Text = "Width (X)";
+            // 
+            // Input_TeamDamageMult
+            // 
+            this.Input_TeamDamageMult.DecimalPlaces = 2;
+            this.Input_TeamDamageMult.Location = new System.Drawing.Point(306, 85);
+            this.Input_TeamDamageMult.Maximum = new decimal(new int[] {
+            999,
+            0,
+            0,
+            0});
+            this.Input_TeamDamageMult.Name = "Input_TeamDamageMult";
+            this.Input_TeamDamageMult.Size = new System.Drawing.Size(61, 23);
+            this.Input_TeamDamageMult.TabIndex = 113;
+            this.Input_TeamDamageMult.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(425, 81);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(57, 15);
+            this.label22.TabIndex = 117;
+            this.label22.Text = "Depth (Z)";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label12.Location = new System.Drawing.Point(299, 23);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(82, 15);
+            this.label12.TabIndex = 112;
+            this.label12.Text = "Team HP Mult";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(444, 110);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(38, 15);
+            this.label23.TabIndex = 119;
+            this.label23.Text = "Angle";
+            // 
+            // Input_TeamHpMult
+            // 
+            this.Input_TeamHpMult.DecimalPlaces = 2;
+            this.Input_TeamHpMult.Location = new System.Drawing.Point(306, 41);
+            this.Input_TeamHpMult.Maximum = new decimal(new int[] {
+            999,
+            0,
+            0,
+            0});
+            this.Input_TeamHpMult.Name = "Input_TeamHpMult";
+            this.Input_TeamHpMult.Size = new System.Drawing.Size(61, 23);
+            this.Input_TeamHpMult.TabIndex = 111;
+            this.Input_TeamHpMult.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // Button_RandomTeamName
             // 
@@ -982,7 +1193,7 @@
             this.groupBox4.Controls.Add(this.SpiritDataGrid);
             this.groupBox4.Location = new System.Drawing.Point(12, 218);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(381, 359);
+            this.groupBox4.Size = new System.Drawing.Size(580, 359);
             this.groupBox4.TabIndex = 115;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Summons";
@@ -990,7 +1201,7 @@
             // Button_AddRandomSpirit
             // 
             this.Button_AddRandomSpirit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.Button_AddRandomSpirit.Location = new System.Drawing.Point(250, 332);
+            this.Button_AddRandomSpirit.Location = new System.Drawing.Point(449, 332);
             this.Button_AddRandomSpirit.Name = "Button_AddRandomSpirit";
             this.Button_AddRandomSpirit.Size = new System.Drawing.Size(127, 23);
             this.Button_AddRandomSpirit.TabIndex = 112;
@@ -1034,9 +1245,9 @@
             this.TeamDataGrid.RowTemplate.Height = 25;
             this.TeamDataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.TeamDataGrid.ShowCellToolTips = false;
-            this.TeamDataGrid.Size = new System.Drawing.Size(373, 157);
+            this.TeamDataGrid.Size = new System.Drawing.Size(572, 157);
             this.TeamDataGrid.TabIndex = 113;
-            this.TeamDataGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.EnemyWasEdited);
+            this.TeamDataGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TeamDataGrid_CellContentClick);
             this.TeamDataGrid.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.TeamDataGrid_CellMouseDown);
             // 
             // Context_TeamDataGrid
@@ -1072,7 +1283,7 @@
             this.groupBox5.Controls.Add(this.TeamDataGrid);
             this.groupBox5.Location = new System.Drawing.Point(12, 27);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(381, 185);
+            this.groupBox5.Size = new System.Drawing.Size(580, 185);
             this.groupBox5.TabIndex = 116;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Teams";
@@ -1080,18 +1291,29 @@
             // button1
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(300, 459);
+            this.button1.Location = new System.Drawing.Point(499, 459);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(127, 23);
             this.button1.TabIndex = 112;
             this.button1.Text = "Add Random Spirit";
             this.button1.UseVisualStyleBackColor = true;
             // 
+            // groupBoxRandomize
+            // 
+            this.groupBoxRandomize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBoxRandomize.Location = new System.Drawing.Point(977, 335);
+            this.groupBoxRandomize.Name = "groupBoxRandomize";
+            this.groupBoxRandomize.Size = new System.Drawing.Size(187, 99);
+            this.groupBoxRandomize.TabIndex = 113;
+            this.groupBoxRandomize.TabStop = false;
+            this.groupBoxRandomize.Text = "Randomizer";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(977, 589);
+            this.ClientSize = new System.Drawing.Size(1176, 589);
+            this.Controls.Add(this.groupBoxRandomize);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
@@ -1107,6 +1329,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.SummonPosition_X)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SummonPosition_Z)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SummonPosition_Angle)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Input_TeamSummonPos_X)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Input_TeamSummonPos_Z)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Input_TeamSummonPos_Ang)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SummonPosition_Auto_DistMagnitude)).EndInit();
@@ -1122,6 +1347,8 @@
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Input_TeamDamageMult)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Input_TeamHpMult)).EndInit();
             this.groupBox4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.TeamDataGrid)).EndInit();
             this.Context_TeamDataGrid.ResumeLayout(false);
@@ -1215,5 +1442,19 @@
         private Button button1;
         private ToolStripMenuItem Button_Menu_DeleteTeam;
         private ToolStripMenuItem Button_Menu_DuplicateTeam;
+        private Label label2;
+        private ComboBox List_EnemyChosenTeam;
+        private Label label10;
+        private NumericUpDown Input_TeamDamageMult;
+        private Label label12;
+        private NumericUpDown Input_TeamHpMult;
+        private GroupBox groupBoxRandomize;
+        private NumericUpDown Input_TeamSummonPos_Ang;
+        private NumericUpDown Input_TeamSummonPos_X;
+        private Label label19;
+        private Label label21;
+        private Label label22;
+        private NumericUpDown Input_TeamSummonPos_Z;
+        private Label label23;
     }
 }

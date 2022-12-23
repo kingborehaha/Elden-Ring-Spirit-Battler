@@ -28,20 +28,27 @@ namespace EldenRingSpiritBattler
 
             SetRandomTeamName();
 
-            teamList.Add(new SpiritTeam(GetRandomTeamName(), GetRandomPhantomId(), (int)StatScalingEnum.None, (byte)TeamTypeEnum.SpiritSummon));
-            teamList.Add(new SpiritTeam(GetRandomTeamName(), GetRandomPhantomId(), (int)StatScalingEnum.None, (byte)TeamTypeEnum.Invader));
-            teamList.Add(new SpiritTeam(GetRandomTeamName(), GetRandomPhantomId(), (int)StatScalingEnum.None, (byte)TeamTypeEnum.Enemy));
+            AddRandomizedTeamToGrid(TeamTypeEnum.Player);
+            AddRandomizedTeamToGrid(TeamTypeEnum.Enemy);
+            AddRandomizedTeamToGrid(TeamTypeEnum.ArchEnemy);
 
             List_StatScaling.DataSource = GetOrderedEnumNames(typeof(StatScalingEnum));
+            List_StatScaling.Text = StatScalingEnum.None.ToString();
 
             LoadSpiritAshResource();
             LoadEnemyResource();
-            UpdateTeamGrid();
+            UpdateTeamGridAndList();
             LoadTeamTypeResource();
             LoadPhantomResource();
 
-            // Add an initial random BattleSpirit to the grid.
             AddRandomSpiritToGrid();
+            AddRandomSpiritToGrid();
+            List_EnemyChosenTeam.SelectedIndex = 1;
+
+            // TODO: debug stuff
+            //Button_Context_DeleteTeam.Enabled = false;
+            //Button_Menu_DeleteTeam.Enabled = false;
+
         }
 
         private void EnemyWasEdited(object sender, EventArgs e)
@@ -112,7 +119,7 @@ namespace EldenRingSpiritBattler
         {
             MessageBox.Show(
                 "Hover over an option to see what it does.\n\n" +
-                "Step 1: Locate your Elden Ring installation and find Regulation.bin.\n" +
+                "Step 1: Locate your Elden Ring installation and find regulation.bin.\n" +
                 "Step 2: Copy and paste regulation.bin into your Mod Engine 2 \"Mod\" folder.\n" +
                 "Step 3: Use this tool to browse and load the copied regulation.bin.\n" +
                 "Step 4: Create teams and enemies as desired, then choose which Spirit Ash to overwrite.\n" +
@@ -129,7 +136,7 @@ namespace EldenRingSpiritBattler
         private void Button_AddNewTeam_Click(object sender, EventArgs e)
         {
             SpiritTeam team = CreateTeamFromElements();
-            AddTeamToGrid(team);
+            AddUpdateTeamToGrid(team);
         }
 
         private void Button_GetDataSelection_Click(object sender, EventArgs e)
@@ -252,14 +259,7 @@ namespace EldenRingSpiritBattler
 
         private void Button_AddRandomEnemy_Click(object sender, EventArgs e)
         {
-            preventEnemyEdited = true;
-
             AddRandomSpiritToGrid();
-
-            SpiritDataGrid.ClearSelection();
-            SpiritDataGrid.Rows[SpiritDataGrid.Rows.Count - 1].Selected = true;
-
-            preventEnemyEdited = false;
         }
 
         private void Button_DuplicateTeam_Click(object sender, EventArgs e)
@@ -269,8 +269,8 @@ namespace EldenRingSpiritBattler
                 return;
 
             SpiritTeam team = GetSelectedTeamFromGrid().Clone();
-            team.Name = GetRandomTeamName();
-            AddTeamToGrid(team);
+            team.Name = GetRandomUnusedTeamName();
+            AddUpdateTeamToGrid(team);
         }
         private void Button_DeleteTeam_Click(object sender, EventArgs e)
         {
@@ -284,13 +284,14 @@ namespace EldenRingSpiritBattler
                 BattleSpirit spirit = (BattleSpirit)row.Cells[0].Value;
                 if (spirit.Team == team)
                 {
+                    // TODO: [may be fine now] this doesn't work since selecting a team automatically makes selected enemy use it!!
                     // A spirit is using this team, don't allow deletion.
                     MessageBox.Show("Cannot delete this team, it is being used.", "Error");
                     return;
                 }
             }
-            teamList.Remove(team);
-            UpdateTeamGrid();
+            teamDict.Remove(team.Name);
+            UpdateTeamGridAndList();
         }
 
         private void TeamDataGrid_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
@@ -303,9 +304,13 @@ namespace EldenRingSpiritBattler
                 {
                     TeamDataGrid.ClearSelection();
                     TeamDataGrid.Rows[rowSelected].Selected = true;
-
                 }
             }
+        }
+
+        private void TeamDataGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            SetGridTeamToElements();
         }
     }
 }

@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace EldenRingSpiritBattler
 {
+    /// <summary>
+    /// Object derived from .txt resource that contains each unique enemy's info.
+    /// </summary>
     public class Enemy
     {
         public string Name;
@@ -19,6 +22,9 @@ namespace EldenRingSpiritBattler
         }
     }
 
+    /// <summary>
+    /// Contains X/Z/Ang BuddyParam summon position info.
+    /// </summary>
     public class SummonPos
     {
         public float X;
@@ -48,8 +54,8 @@ namespace EldenRingSpiritBattler
         public SpiritTeam Team = null!;
         public SummonPos Position = new(); // X, Z, Angle
 
-        public float HpMult = 1.0f;
-        public float DamageMult = 1.0f;
+        public decimal HpMult = 1;
+        public decimal DamageMult = 1;
         public int Sp_StatScaling = -1; //
         public int Sp_SpecialScaling = -1; // Stores ID of newly created spEffect that holds HpMult and DamageMult modifiers
         public List<int> SpecialEffects
@@ -58,8 +64,8 @@ namespace EldenRingSpiritBattler
             {
                 List<int> effects = new();
                 effects.Add(Sp_StatScaling);
-                if (Team.BonusStatScalingEffect > 0)
-                    effects.Add(Team.BonusStatScalingEffect);
+                //if (Team.BonusStatScalingEffect > 0)
+                    //effects.Add(Team.BonusStatScalingEffect);
                 if (Sp_SpecialScaling > 0)
                     effects.Add(Sp_SpecialScaling);
                 return effects;
@@ -90,14 +96,15 @@ namespace EldenRingSpiritBattler
         public string Name = "";
         public byte TeamType; // NpcParam enum
         public int PhantomParamID; // PhantomParam ID to insert into SpEffectVfxParam
-        public int BonusStatScalingEffect; // Special Effect with bonus stat scaling // TODO: not implemented
+        public decimal TeamHpMult = 1;
+        public decimal TeamDamageMult = 1;
+        public SummonPos TeamPosition = new();
         public SpiritTeam()
         { }
-        public SpiritTeam(string name, int phantomShaderID, int teamStatScaling, byte teamType)
+        public SpiritTeam(string name, int phantomShaderID, byte teamType)
         {
             Name = name;
             PhantomParamID = phantomShaderID;
-            BonusStatScalingEffect = teamStatScaling;
             TeamType = teamType;
         }
         public SpiritTeam Clone()
@@ -106,7 +113,12 @@ namespace EldenRingSpiritBattler
             team.Name = Name;
             team.TeamType = TeamType;
             team.PhantomParamID = PhantomParamID;
-            team.BonusStatScalingEffect = BonusStatScalingEffect;
+            team.TeamHpMult = TeamHpMult;
+            team.TeamDamageMult = TeamDamageMult;
+            team.TeamDamageMult = TeamDamageMult;
+            team.TeamPosition.X = TeamPosition.X;
+            team.TeamPosition.Z = TeamPosition.Z;
+            team.TeamPosition.Ang = TeamPosition.Ang;
             return team;
         }
     }

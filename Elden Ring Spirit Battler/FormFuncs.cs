@@ -16,20 +16,27 @@ using static EldenRingSpiritBattler.SpiritBattlerResources;
     summon positioning
         I still really want some accessible system that'll simplify this.
             maybe give configurable patterns (two opposing rows, row facing player, circle)?
-    enemy search list
-        when searching, go through the variant lists too!
+    Enemy list search
+        When searching, go through the variant lists too!
+    
 -- medium priority
-    randomize team color button
-    option to randomize an entire ash
+    Figure out potential HP/damage limits so i can warn when multiple multipliers will cause issues.
+    Catalog phantom color/team behavior
+        Maybe a custom class with a helpful label/info?
+    Option to randomize an entire ash
     Tooltips.
 --low priority
-    improve team grid <-> UI elements stuff. 
-    change targeted ash name's FMG name
-        format: "Spirit Battler: [team] vs [team]
-    custom phantom colors
-    grid sorting
-    save/load .json for battleSpiritList.
-        automatically save on execute just so that data isn't lost on exceptions. that would be annoying.
+    Let user insert phantom param ID/npcID/npcThink they want (they have to tick an option that allows editing them)
+    Replace team enum with more comprehensive info, so user knows where these scaling levels correspond
+    Improve team grid <-> UI elements stuff. 
+    Change targeted ash name's FMG name
+        Format: "Spirit Battler: [team] vs [team]
+    Custom phantom colors
+    Grid sorting (by team)
+    Grid coloring (by team)
+    Allow grid column resizing (currently resets on grid reload)
+    Save/load .json for battleSpiritList.
+        Automatically save on execute just so that data isn't lost on exceptions.
 
 -- Figure out
     Hide player from enemies option
@@ -49,13 +56,19 @@ namespace EldenRingSpiritBattler
         public Dictionary<string, int> spiritAshesDict = new();
         public Dictionary<string, List<Enemy>> enemyVariantDict = new();
         public List<BattleSpirit> battleSpiritList = new();
-        public List<SpiritTeam> teamList = new();
+        public Dictionary<string, SpiritTeam> teamDict = new();
 
-        public int GetRandomPhantomId()
+        public int GetRandomUnusedPhantomId()
         {
             Random rand = new();
             var enums = Enum.GetValues<PhantomEnum>();
-            return (int)enums[rand.Next(0, enums.Length-1)];
+            int phantomID;
+            do
+            {
+                phantomID = (int)enums[rand.Next(0, enums.Length - 1)];
+            } 
+            while (teamDict.Values.ToList().Find(e => phantomID == e.PhantomParamID) != null);
+            return phantomID;
         }
 
         public string[] GetOrderedEnumNames(Type enumType)
@@ -297,7 +310,8 @@ namespace EldenRingSpiritBattler
 
                 #region VfxParam
                 PARAM.Row? newVfxRow = null;
-                if (spirit.Team.PhantomParamID > 0)
+                if (spirit.Team.PhantomParamID > 0
+                    && enemyPhantomBlacklist.Contains(spirit.BaseNpcID - (spirit.BaseNpcID%10000)) == false)
                 {
                     int baseVfxID = 57000;
                     int newVfxID = 60000;
@@ -321,8 +335,9 @@ namespace EldenRingSpiritBattler
                 while (spEffectParam[newEffectID] != null);
                 PARAM.Row newSpEffectRow = InsertParamRow(spEffectParam, spEffectParam[baseEffectID], newEffectID);
                 newSpEffectRow.Name = $"Spirit Battler VFX and Scaling - ({spirit.VariantName})";
-                float hpMult = spirit.HpMult;
-                float damMult = spirit.DamageMult;
+                float hpMult = (float)spirit.HpMult * (float)spirit.Team.TeamHpMult;
+                float damMult = (float)spirit.DamageMult * (float)spirit.Team.TeamDamageMult;
+
                 newSpEffectRow["maxHpRate"].Value = hpMult;
                 newSpEffectRow["physicsAttackPowerRate"].Value = damMult;
                 newSpEffectRow["magicAttackPowerRate"].Value = damMult;
@@ -438,9 +453,9 @@ namespace EldenRingSpiritBattler
                 buddyParamRow["appearOnAroundSekihi"].Value = (byte)0; // 0 = Summon using player location
                 buddyParamRow["pcFollowType"].Value = (byte)1; // 0 = Follow player around, 1 = No special behavior (?), 2 = ?
 
-                buddyParamRow["x_offset"].Value = spirit.Position.X; // Horizontal offset 1
-                buddyParamRow["z_offset"].Value = spirit.Position.Z; // Horizontal offset 2
-                buddyParamRow["y_angle"].Value = spirit.Position.Ang;
+                buddyParamRow["x_offset"].Value = spirit.Team.TeamPosition.X + spirit.Position.X; // Horizontal offset 1
+                buddyParamRow["z_offset"].Value = spirit.Team.TeamPosition.Z + spirit.Position.Z; // Horizontal offset 2
+                buddyParamRow["y_angle"].Value = spirit.Team.TeamPosition.Ang + spirit.Position.Ang;
 
                 for (var ii = 0; ii <= 10; ii++)
                 {
@@ -516,31 +531,46 @@ namespace EldenRingSpiritBattler
             DataGridViewRow row = TeamDataGrid.SelectedRows[0];
             return (SpiritTeam)row.Cells[0].Value;
         }
-        private void UpdateTeamGrid()
+        private void UpdateTeamGridAndList()
         {
             int prevIndex = 0;
             if (TeamDataGrid.SelectedRows.Count > 0)
                 prevIndex = TeamDataGrid.SelectedRows[0].Index;
 
-            TeamDataGrid.DataSource = teamList.Select(team => new
+            TeamDataGrid.DataSource = teamDict.Select(team => new
             {
-                team,
-                team.Name,
-                V1 = Enum.GetName(typeof(TeamTypeEnum), team.TeamType),
-                V2 = Enum.GetName(typeof(PhantomEnum), team.PhantomParamID)
+                team.Value,
+                team.Value.Name,
+                V1 = Enum.GetName(typeof(TeamTypeEnum), team.Value.TeamType),
+                V2 = Enum.GetName(typeof(PhantomEnum), team.Value.PhantomParamID),
+                Scale = GetTeamScalingLevelString(team.Value),
+                Pos = GetTeamPositionString(team.Value)
             }).ToList();
             TeamDataGrid.Columns[0].Visible = false;
             TeamDataGrid.Columns[1].HeaderCell.Value = "Name";
             TeamDataGrid.Columns[1].Width = 150;
             TeamDataGrid.Columns[2].HeaderCell.Value = "Team Type";
+            TeamDataGrid.Columns[2].Width = 90;
             TeamDataGrid.Columns[3].HeaderCell.Value = "Color";
+            TeamDataGrid.Columns[3].Width = 140;
+            TeamDataGrid.Columns[4].HeaderCell.Value = "Stats";
+            TeamDataGrid.Columns[4].Width = 50;
+            TeamDataGrid.Columns[5].HeaderCell.Value = "Pos";
+            TeamDataGrid.Columns[5].Width = 100;
 
-
-            //TeamDataGrid.ClearSelection();
             if (prevIndex > TeamDataGrid.Rows.Count - 1)
                 prevIndex = TeamDataGrid.Rows.Count - 1;
             if (prevIndex > -1)
                 TeamDataGrid.Rows[prevIndex].Selected = true;
+
+            // Chosen Team list
+            string prevText = List_EnemyChosenTeam.Text;
+            List_EnemyChosenTeam.DataSource = teamDict.Select(team => team.Key).ToList(); // Also triggers UpdateSelectedSpirit();
+
+            if (prevText == "")
+                List_EnemyChosenTeam.SelectedIndex = 0;
+            else
+                List_EnemyChosenTeam.Text = prevText;
         }
 
         private SpiritTeam CreateTeamFromElements()
@@ -549,28 +579,64 @@ namespace EldenRingSpiritBattler
             {
                 Name = Input_TeamName.Text,
                 PhantomParamID = (int)Enum.Parse(typeof(PhantomEnum), List_TeamPhantomColor.Text),
-                TeamType = (byte)Enum.Parse(typeof(TeamTypeEnum), List_TeamType.Text)
+                TeamType = (byte)Enum.Parse(typeof(TeamTypeEnum), List_TeamType.Text),
+                TeamHpMult = Input_TeamHpMult.Value,
+                TeamDamageMult = Input_TeamDamageMult.Value,
+                TeamPosition = new SummonPos(Input_TeamSummonPos_X.Value, Input_TeamSummonPos_Z.Value, Input_TeamSummonPos_Ang.Value),
             };
             return team;
         }
 
-        private void AddTeamToGrid(SpiritTeam team)
+        private void AddUpdateTeamToGrid(SpiritTeam team)
         {
-            teamList.Add(team);
-            UpdateTeamGrid();
+            teamDict[team.Name] = team;
+            UpdateTeamGridAndList();
+        }
+
+        private void AddRandomizedTeamToGrid(TeamTypeEnum team)
+        {
+            string teamName = GetRandomUnusedTeamName();
+            teamDict.Add(teamName, new SpiritTeam(teamName, GetRandomUnusedPhantomId(), (byte)team));
         }
 
         public void SetRandomTeamName()
         {
-            Input_TeamName.Text = GetRandomTeamName();
+            Input_TeamName.Text = GetRandomUnusedTeamName();
         }
-        public string GetRandomTeamName()
+
+        public string GetRandomUnusedTeamName()
         {
             Random rand = new();
             if (rand.Next(1, 42069) == 1)
+            {
                 return "Prod's Feet Enjoyers";
+            }
             else
-                return randomTeamNames[rand.Next(0, randomTeamNames.Length)];
+            {
+                if (teamDict.Count >= randomTeamNames.Length)
+                    return rand.Next(0, int.MaxValue).ToString(); // Meme, but also this can't happen atm since randomTeamNames is longer than buddy limit.
+
+                string name;
+                do
+                {
+                    name = randomTeamNames[rand.Next(0, randomTeamNames.Length)];
+                }
+                while (teamDict.ContainsKey(name));
+                return name;
+            }
+        }
+        public void SetGridTeamToElements()
+        {
+            SpiritTeam spirit = GetSelectedTeamFromGrid();
+
+            Input_TeamName.Text = spirit.Name;
+            Input_TeamDamageMult.Value = spirit.TeamDamageMult;
+            Input_TeamHpMult.Value = spirit.TeamHpMult;
+            List_TeamPhantomColor.Text = ((PhantomEnum)spirit.PhantomParamID).ToString();
+            Input_TeamSummonPos_X.Value = (decimal)spirit.TeamPosition.X;
+            Input_TeamSummonPos_Z.Value = (decimal)spirit.TeamPosition.Z;
+            Input_TeamSummonPos_Ang.Value = (decimal)spirit.TeamPosition.Ang;
+            List_TeamType.Text = ((TeamTypeEnum)spirit.TeamType).ToString();
         }
         #endregion
         //
@@ -578,10 +644,17 @@ namespace EldenRingSpiritBattler
         // BattleSpirit functions
         #region Spirits
         public void AddRandomSpiritToGrid()
-        {
+        {;
+            preventEnemyEdited = true;
+
             SelectRandomSpiritAndSetToElements();
             BattleSpirit spirit = CreateSpiritFromElements();
             AddSpiritToList(spirit);
+
+            SpiritDataGrid.ClearSelection();
+            SpiritDataGrid.Rows[SpiritDataGrid.Rows.Count - 1].Selected = true;
+
+            preventEnemyEdited = false;
         }
 
         public void SelectRandomSpiritAndSetToElements()
@@ -601,14 +674,15 @@ namespace EldenRingSpiritBattler
             TeamDataGrid.ClearSelection();
             foreach (DataGridViewRow row in TeamDataGrid.Rows)
             {
-                if (row.Cells[0].Value.Equals(spirit.Team))
+                SpiritTeam team = (SpiritTeam)row.Cells[0].Value;
+                if (team.Name == spirit.Team.Name)
                 {
                     row.Selected = true;
                     break;
                 }
             }
             if (TeamDataGrid.SelectedRows.Count == 0)
-                throw new Exception("Couldn't find selected Spirit's team object in TeamDataGrid.");
+                throw new Exception("Couldn't find selected Spirit's team in TeamDataGrid.");
 
             List_Enemy.SelectedItem = spirit.BaseName;
             List_EnemyVariant.SelectedItem = spirit.VariantName;
@@ -618,8 +692,10 @@ namespace EldenRingSpiritBattler
 
             List_StatScaling.Text = ((StatScalingEnum)spirit.Sp_StatScaling).ToString();
 
-            Input_EnemyHpMult.Value = (decimal)spirit.HpMult;
-            Input_EnemyDamageMult.Value = (decimal)spirit.DamageMult;
+            Input_EnemyHpMult.Value = spirit.HpMult;
+            Input_EnemyDamageMult.Value = spirit.DamageMult;
+
+            List_EnemyChosenTeam.SelectedItem = spirit.Team.Name;
 
             SummonPosition_X.Value = (decimal)spirit.Position.X;
             SummonPosition_Z.Value = (decimal)spirit.Position.Z;
@@ -659,6 +735,43 @@ namespace EldenRingSpiritBattler
             battleSpiritList[battleSpiritList.IndexOf(oldSpirit)] = newSpirit;
         }
 
+        private string GetStatScalingLevelString(BattleSpirit spirit)
+        {
+            /*
+            string enemyScalingLvl = $"{Enum.GetName(typeof(StatScalingEnum), spirit.Sp_StatScaling)}";
+            string myHp = spirit.HpMult.ToString();
+            string myDam = spirit.DamageMult.ToString();
+            string teamHp = spirit.Team.TeamHpMult.ToString();
+            string teamDam = spirit.Team.TeamDamageMult.ToString();
+            return $"{enemyScalingLvl}, {myHp}*{teamHp} / {myDam}*{teamDam}";
+            */
+            string enemyScalingLvl = $"{Enum.GetName(typeof(StatScalingEnum), spirit.Sp_StatScaling)}";
+            decimal hp = spirit.HpMult * spirit.Team.TeamHpMult;
+            decimal dam = spirit.DamageMult * spirit.Team.TeamDamageMult;
+
+            return $"{enemyScalingLvl}, *{hp} *{dam}";
+        }
+        private string GetTeamScalingLevelString(SpiritTeam team)
+        {
+            decimal hp = team.TeamHpMult;
+            decimal dam = team.TeamDamageMult;
+            return $"*{hp} *{dam}";
+        }
+        private string GetTeamPositionString(SpiritTeam team)
+        {
+            float x = team.TeamPosition.X;
+            float z = team.TeamPosition.Z;
+            float ang = team.TeamPosition.Ang;
+            return $"{x}/{z}|{ang}";
+        }
+        private string GetFinalPositionString(BattleSpirit spirit)
+        {
+            float x = spirit.Position.X + spirit.Team.TeamPosition.X;
+            float z = spirit.Position.Z + spirit.Team.TeamPosition.Z;
+            float ang = spirit.Position.Ang + spirit.Team.TeamPosition.Ang;
+            return $"{x}/{z}|{ang}";
+        }
+
         private void UpdateSpiritGrid()
         {
             int prevIndex = 0;
@@ -670,13 +783,18 @@ namespace EldenRingSpiritBattler
                 spirit,
                 spirit.Team.Name,
                 spirit.VariantName,
-                StatScaling = Enum.GetName(typeof(StatScalingEnum), spirit.Sp_StatScaling)
+                S = GetStatScalingLevelString(spirit),
+                P = GetFinalPositionString(spirit)
             }).ToList();
             SpiritDataGrid.Columns[0].Visible = false;
             SpiritDataGrid.Columns[1].HeaderCell.Value = "Team";
+            SpiritDataGrid.Columns[1].Width = 150;
             SpiritDataGrid.Columns[2].HeaderCell.Value = "Enemy";
-            SpiritDataGrid.Columns[2].Width = 150;
-            SpiritDataGrid.Columns[3].HeaderCell.Value = "Scaling";
+            SpiritDataGrid.Columns[2].Width = 200;
+            SpiritDataGrid.Columns[3].HeaderCell.Value = "Stats";
+            SpiritDataGrid.Columns[3].Width = 80;
+            SpiritDataGrid.Columns[4].HeaderCell.Value = "Pos";
+            SpiritDataGrid.Columns[4].Width = 100;
             // TODO: display individual scaling
             // TODO: maybe also dispay overall scaling by pre-multiplying stat scaling level + individual scaling?
             // TODO: position
@@ -728,18 +846,29 @@ namespace EldenRingSpiritBattler
         }
         */
 
+        private SpiritTeam GetChosenTeamFromElement()
+        {
+            foreach (SpiritTeam team in teamDict.Values)
+            {
+                if (List_EnemyChosenTeam.Text == team.Name)
+                {
+                    return team;
+                }
+            }
+            throw new Exception("Could not locate team from List_EnemyChosenTeam UI element.");
+        }
+
         private BattleSpirit CreateSpiritFromElements()
         {
             BattleSpirit spirit = new()
             {
                 BaseName = List_Enemy.Text,
                 VariantName = List_EnemyVariant.Text,
-                //Team = teamDict[List_Teams.Text],
-                Team = GetSelectedTeamFromGrid(),
+                Team = GetChosenTeamFromElement(),
                 Sp_StatScaling = (int)Enum.Parse(typeof(StatScalingEnum), List_StatScaling.Text),
                 Position = CreateSummonPosition(),
-                HpMult = (float)Input_EnemyHpMult.Value,
-                DamageMult = (float)Input_EnemyDamageMult.Value,
+                HpMult = Input_EnemyHpMult.Value,
+                DamageMult = Input_EnemyDamageMult.Value,
                 BaseNpcID = (int)Input_NpcParamID.Value,
                 BaseThinkID = (int)Input_NpcThinkID.Value,
             };
@@ -770,10 +899,13 @@ namespace EldenRingSpiritBattler
 
         private SummonPos CreateSummonPosition()
         {
+            SummonPosition_Auto.Checked = false; // TODO: debug
+
             if (!SummonPosition_Auto.Checked)
                 return new SummonPos(SummonPosition_X.Value, SummonPosition_Z.Value, SummonPosition_Angle.Value);
 
             // TODO: auto dist logic
+            // Don't forget teams have summonPos too now
             decimal mag = SummonPosition_Auto_DistMagnitude.Value;
             SummonPos pos = new();
 
