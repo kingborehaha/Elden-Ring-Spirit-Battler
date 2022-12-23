@@ -312,5 +312,10 @@ namespace EldenRingSpiritBattler
         {
             SetGridTeamToElements();
         }
+
+        private void Option_TargetAllSpiritAshes_CheckedChanged(object sender, EventArgs e)
+        {
+            List_SpiritAsh.Enabled = !Option_TargetAllSpiritAshes.Checked;
+        }
     }
 }

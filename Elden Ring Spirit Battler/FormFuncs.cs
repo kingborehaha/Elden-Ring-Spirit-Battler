@@ -294,13 +294,6 @@ namespace EldenRingSpiritBattler
                     // This is not related to the targeted row
                     continue;
                 }
-                /*
-                if (buddyRow.ID % 100 != 0)
-                {
-                    // Row is for an additional buddy, nuke it
-                    buddyParam.Rows.Remove(buddyRow);
-                }
-                */
                 buddyParam.Rows.Remove(buddyRow);
             }
 
@@ -360,7 +353,7 @@ namespace EldenRingSpiritBattler
                 int newNpcID = 2000000000 + npcID;
                 if (npcParam[npcID] == null)
                 {
-                    MessageBox.Show($"Spirit {spirit.VariantName}'s base NpcParamID {npcID} cannot be found. Please fix this enemy.", "Error");
+                    MessageBox.Show($"Summon {spirit.VariantName}'s base NpcParamID {npcID} cannot be found. Please fix this enemy.", "Error");
                     return false;
                 }
                 do
@@ -428,7 +421,7 @@ namespace EldenRingSpiritBattler
                 int newNpcThinkID = 2000000000 + npcThinkID;
                 if (npcThinkParam[npcThinkID] == null)
                 {
-                    MessageBox.Show($"Spirit {spirit.VariantName}'s base NpcThinkParamID {npcThinkID} cannot be found. Please fix this enemy.", "Error");
+                    MessageBox.Show($"Summon {spirit.VariantName}'s base NpcThinkParamID {npcThinkID} cannot be found. Please fix this enemy.", "Error");
                     return false;
                 }
                 do
@@ -471,14 +464,26 @@ namespace EldenRingSpiritBattler
             if (Option_SpiritAshNoRequirements.Checked)
             {
                 int buddyTriggerSpEffect = (int)targetBuddyRow["triggerSpEffectId"].Value;
-                foreach (PARAM.Row goodsRow in goodsParam.Rows)
+                for(var i = 0; i < goodsParam.Rows.Count; i++)
                 {
-                    if (buddyTriggerSpEffect == (int)goodsRow["refId_default"].Value)
+                    PARAM.Row goodsRow = goodsParam.Rows[i];
+
+                    if (Option_TargetAllSpiritAshes.Checked
+                        && goodsRow.ID >= 200000 && goodsRow.ID < 270000)
                     {
                         // This is the targeted spirit ash good
                         goodsRow["consumeHP"].Value = (Int16)0;
                         goodsRow["consumeMP"].Value = (Int16)0;
-                        break;
+                    }
+                    else if (buddyTriggerSpEffect == (int)goodsRow["refId_default"].Value)
+                    {
+                        // This is the targeted spirit ash good
+                        for (int i2 = 0; i2 <= 10; i2++)
+                        {
+                            // Reinforced goods
+                            goodsParam.Rows[i+i2]["consumeHP"].Value = (Int16)0;
+                            goodsParam.Rows[i+i2]["consumeMP"].Value = (Int16)0;
+                        }
                     }
                 }
             }
@@ -879,7 +884,7 @@ namespace EldenRingSpiritBattler
         {
             if (SpiritDataGrid.Rows.Count > buddyLimit)
             {
-                MessageBox.Show("A spirit ash cannot handle more than 33 spirits at once. Sorry!", "Warning");
+                MessageBox.Show("A spirit ash cannot handle more than 33 summons at once. Sorry!", "Warning");
                 return;
             }
             battleSpiritList.Add(spirit);

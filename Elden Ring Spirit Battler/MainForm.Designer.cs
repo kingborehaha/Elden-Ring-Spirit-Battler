@@ -42,6 +42,7 @@
             this.Input_TeamSummonPos_X = new System.Windows.Forms.NumericUpDown();
             this.Input_TeamSummonPos_Z = new System.Windows.Forms.NumericUpDown();
             this.Input_TeamSummonPos_Ang = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.t_console = new System.Windows.Forms.TextBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.Menu_File = new System.Windows.Forms.ToolStripMenuItem();
@@ -104,6 +105,7 @@
             this.label18 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.Option_TargetAllSpiritAshes = new System.Windows.Forms.CheckBox();
             this.Option_SpiritAshNoRequirements = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -128,12 +130,18 @@
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.button1 = new System.Windows.Forms.Button();
             this.groupBoxRandomize = new System.Windows.Forms.GroupBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label25 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.Button_Randomize_SvE = new System.Windows.Forms.Button();
+            this.Button_Randomize_PvE = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.SummonPosition_X)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SummonPosition_Z)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SummonPosition_Angle)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Input_TeamSummonPos_X)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Input_TeamSummonPos_Z)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Input_TeamSummonPos_Ang)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SummonPosition_Auto_DistMagnitude)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SpiritDataGrid)).BeginInit();
@@ -151,6 +159,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.TeamDataGrid)).BeginInit();
             this.Context_TeamDataGrid.SuspendLayout();
             this.groupBox5.SuspendLayout();
+            this.groupBoxRandomize.SuspendLayout();
             this.SuspendLayout();
             // 
             // openFileDialog1
@@ -291,6 +300,30 @@
             this.Input_TeamSummonPos_Ang.TabIndex = 120;
             this.toolTip1.SetToolTip(this.Input_TeamSummonPos_Ang, "Facing angle of the spirit when summoned\r\nRange of -180 to 180 degrees\r\nNegative " +
         "values face left, Positive values face right\r\n");
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Location = new System.Drawing.Point(15, 104);
+            this.numericUpDown1.Maximum = new decimal(new int[] {
+            33,
+            0,
+            0,
+            0});
+            this.numericUpDown1.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(49, 23);
+            this.numericUpDown1.TabIndex = 121;
+            this.toolTip1.SetToolTip(this.numericUpDown1, "Facing angle of the spirit when summoned\r\nRange of -180 to 180 degrees\r\nNegative " +
+        "values face left, Positive values face right\r\n");
+            this.numericUpDown1.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // t_console
             // 
@@ -960,22 +993,34 @@
             // groupBox1
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.Option_TargetAllSpiritAshes);
             this.groupBox1.Controls.Add(this.Option_SpiritAshNoRequirements);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.List_SpiritAsh);
             this.groupBox1.Location = new System.Drawing.Point(977, 445);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(187, 99);
+            this.groupBox1.Size = new System.Drawing.Size(187, 128);
             this.groupBox1.TabIndex = 112;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Targeted Spirit Ash";
+            // 
+            // Option_TargetAllSpiritAshes
+            // 
+            this.Option_TargetAllSpiritAshes.AutoSize = true;
+            this.Option_TargetAllSpiritAshes.Location = new System.Drawing.Point(6, 95);
+            this.Option_TargetAllSpiritAshes.Name = "Option_TargetAllSpiritAshes";
+            this.Option_TargetAllSpiritAshes.Size = new System.Drawing.Size(74, 19);
+            this.Option_TargetAllSpiritAshes.TabIndex = 76;
+            this.Option_TargetAllSpiritAshes.Text = "All Ashes";
+            this.Option_TargetAllSpiritAshes.UseVisualStyleBackColor = true;
+            this.Option_TargetAllSpiritAshes.CheckedChanged += new System.EventHandler(this.Option_TargetAllSpiritAshes_CheckedChanged);
             // 
             // Option_SpiritAshNoRequirements
             // 
             this.Option_SpiritAshNoRequirements.AutoSize = true;
             this.Option_SpiritAshNoRequirements.Checked = true;
             this.Option_SpiritAshNoRequirements.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.Option_SpiritAshNoRequirements.Location = new System.Drawing.Point(15, 70);
+            this.Option_SpiritAshNoRequirements.Location = new System.Drawing.Point(6, 70);
             this.Option_SpiritAshNoRequirements.Name = "Option_SpiritAshNoRequirements";
             this.Option_SpiritAshNoRequirements.Size = new System.Drawing.Size(155, 19);
             this.Option_SpiritAshNoRequirements.TabIndex = 75;
@@ -1018,7 +1063,7 @@
             this.groupBox2.Size = new System.Drawing.Size(373, 368);
             this.groupBox2.TabIndex = 113;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Spirit";
+            this.groupBox2.Text = "Summon";
             // 
             // label2
             // 
@@ -1086,7 +1131,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label10.Location = new System.Drawing.Point(292, 67);
+            this.label10.Location = new System.Drawing.Point(308, 76);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(110, 15);
             this.label10.TabIndex = 114;
@@ -1114,7 +1159,7 @@
             // Input_TeamDamageMult
             // 
             this.Input_TeamDamageMult.DecimalPlaces = 2;
-            this.Input_TeamDamageMult.Location = new System.Drawing.Point(306, 85);
+            this.Input_TeamDamageMult.Location = new System.Drawing.Point(322, 94);
             this.Input_TeamDamageMult.Maximum = new decimal(new int[] {
             999,
             0,
@@ -1142,7 +1187,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label12.Location = new System.Drawing.Point(299, 23);
+            this.label12.Location = new System.Drawing.Point(315, 32);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(82, 15);
             this.label12.TabIndex = 112;
@@ -1160,7 +1205,7 @@
             // Input_TeamHpMult
             // 
             this.Input_TeamHpMult.DecimalPlaces = 2;
-            this.Input_TeamHpMult.Location = new System.Drawing.Point(306, 41);
+            this.Input_TeamHpMult.Location = new System.Drawing.Point(322, 50);
             this.Input_TeamHpMult.Maximum = new decimal(new int[] {
             999,
             0,
@@ -1301,12 +1346,64 @@
             // groupBoxRandomize
             // 
             this.groupBoxRandomize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBoxRandomize.Location = new System.Drawing.Point(977, 335);
+            this.groupBoxRandomize.Controls.Add(this.comboBox1);
+            this.groupBoxRandomize.Controls.Add(this.label25);
+            this.groupBoxRandomize.Controls.Add(this.label24);
+            this.groupBoxRandomize.Controls.Add(this.numericUpDown1);
+            this.groupBoxRandomize.Controls.Add(this.Button_Randomize_SvE);
+            this.groupBoxRandomize.Controls.Add(this.Button_Randomize_PvE);
+            this.groupBoxRandomize.Location = new System.Drawing.Point(977, 176);
             this.groupBoxRandomize.Name = "groupBoxRandomize";
-            this.groupBoxRandomize.Size = new System.Drawing.Size(187, 99);
+            this.groupBoxRandomize.Size = new System.Drawing.Size(187, 258);
             this.groupBoxRandomize.TabIndex = 113;
             this.groupBoxRandomize.TabStop = false;
             this.groupBoxRandomize.Text = "Randomizer";
+            this.groupBoxRandomize.Visible = false;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(6, 160);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 23);
+            this.comboBox1.TabIndex = 123;
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(6, 141);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(98, 15);
+            this.label25.TabIndex = 122;
+            this.label25.Text = "Stat Scaling Level";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(6, 86);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(103, 15);
+            this.label24.TabIndex = 114;
+            this.label24.Text = "Summon Amount";
+            // 
+            // Button_Randomize_SvE
+            // 
+            this.Button_Randomize_SvE.Location = new System.Drawing.Point(6, 51);
+            this.Button_Randomize_SvE.Name = "Button_Randomize_SvE";
+            this.Button_Randomize_SvE.Size = new System.Drawing.Size(140, 23);
+            this.Button_Randomize_SvE.TabIndex = 1;
+            this.Button_Randomize_SvE.Text = "Summons vs Enemies";
+            this.Button_Randomize_SvE.UseVisualStyleBackColor = true;
+            // 
+            // Button_Randomize_PvE
+            // 
+            this.Button_Randomize_PvE.Location = new System.Drawing.Point(6, 22);
+            this.Button_Randomize_PvE.Name = "Button_Randomize_PvE";
+            this.Button_Randomize_PvE.Size = new System.Drawing.Size(140, 23);
+            this.Button_Randomize_PvE.TabIndex = 0;
+            this.Button_Randomize_PvE.Text = "Player vs enemies";
+            this.Button_Randomize_PvE.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
@@ -1332,6 +1429,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.Input_TeamSummonPos_X)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Input_TeamSummonPos_Z)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Input_TeamSummonPos_Ang)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SummonPosition_Auto_DistMagnitude)).EndInit();
@@ -1353,6 +1451,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.TeamDataGrid)).EndInit();
             this.Context_TeamDataGrid.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
+            this.groupBoxRandomize.ResumeLayout(false);
+            this.groupBoxRandomize.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1456,5 +1556,12 @@
         private Label label22;
         private NumericUpDown Input_TeamSummonPos_Z;
         private Label label23;
+        private Button Button_Randomize_SvE;
+        private Button Button_Randomize_PvE;
+        private CheckBox Option_TargetAllSpiritAshes;
+        private ComboBox comboBox1;
+        private Label label25;
+        private Label label24;
+        private NumericUpDown numericUpDown1;
     }
 }
