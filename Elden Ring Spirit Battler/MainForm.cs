@@ -26,11 +26,12 @@ namespace EldenRingSpiritBattler
             b_restoreRegulation.Enabled = false;
             Text += GetVersion();
 
-            SetRandomTeamName();
+            //SetRandomTeamName();
 
-            AddRandomizedTeamToGrid(TeamTypeEnum.Player);
-            AddRandomizedTeamToGrid(TeamTypeEnum.Enemy);
-            AddRandomizedTeamToGrid(TeamTypeEnum.ArchEnemy);
+            AddRandomizedTeamToGrid(TeamTypeEnum.Enemy, teamSummonPresetDict.Values.ElementAt(0));
+            AddRandomizedTeamToGrid(TeamTypeEnum.ArchEnemy, teamSummonPresetDict.Values.ElementAt(1));
+            AddRandomizedTeamToGrid(TeamTypeEnum.Player, teamSummonPresetDict.Values.ElementAt(2));
+            AddRandomizedTeamToGrid(TeamTypeEnum.Dragon, teamSummonPresetDict.Values.ElementAt(3));
 
             List_StatScaling.DataSource = GetOrderedEnumNames(typeof(StatScalingEnum));
             List_StatScaling.Text = StatScalingEnum.None.ToString();
@@ -38,12 +39,15 @@ namespace EldenRingSpiritBattler
             LoadSpiritAshResource();
             LoadEnemyResource();
             UpdateTeamGridAndList();
+            SetGridTeamToElements();
             LoadTeamTypeResource();
             LoadPhantomResource();
 
             AddRandomSpiritToGrid();
             AddRandomSpiritToGrid();
             List_EnemyChosenTeam.SelectedIndex = 1;
+
+            List_TeamSummonPreset.DataSource = teamSummonPresetDict.Keys.ToList();
 
             // TODO: debug stuff
             //Button_Context_DeleteTeam.Enabled = false;
@@ -133,10 +137,11 @@ namespace EldenRingSpiritBattler
             DeleteSelectedSpiritFromGrid();
         }
 
-        private void Button_AddNewTeam_Click(object sender, EventArgs e)
+        private void Button_AddUpdateTeam_Click(object sender, EventArgs e)
         {
             SpiritTeam team = CreateTeamFromElements();
             AddUpdateTeamToGrid(team);
+            UpdateSpiritGrid();
         }
 
         private void Button_GetDataSelection_Click(object sender, EventArgs e)
@@ -240,7 +245,7 @@ namespace EldenRingSpiritBattler
 
         private void List_Enemy_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (enemyVariantDict.TryGetValue(List_Enemy.Text, out List<Enemy> list))
+            if (enemyVariantDict.TryGetValue(List_Enemy.Text, out List<Enemy>? list))
             {
                 List_EnemyVariant.DataSource = list.Select(e => e.Name).ToList();
                 // Update NpcParamId and NpcThinkParam elements
@@ -316,6 +321,23 @@ namespace EldenRingSpiritBattler
         private void Option_TargetAllSpiritAshes_CheckedChanged(object sender, EventArgs e)
         {
             List_SpiritAsh.Enabled = !Option_TargetAllSpiritAshes.Checked;
+        }
+
+        private void List_TeamSummonPreset_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            SummonPos? teamPos = teamSummonPresetDict[List_TeamSummonPreset.Text];
+            if (teamPos != null)
+            {
+                Input_TeamSummonPos_X.Enabled = false;
+                Input_TeamSummonPos_Z.Enabled = false;
+                Input_TeamSummonPos_Ang.Enabled = false;
+            }
+            else
+            {
+                Input_TeamSummonPos_X.Enabled = true;
+                Input_TeamSummonPos_Z.Enabled = true;
+                Input_TeamSummonPos_Ang.Enabled = true;
+            }
         }
     }
 }

@@ -13,9 +13,8 @@ using static EldenRingSpiritBattler.SpiritBattlerResources;
 -- TODO
     in-game testing
 -- high priority
-    summon positioning
-        I still really want some accessible system that'll simplify this.
-            maybe give configurable patterns (two opposing rows, row facing player, circle)?
+    implement preset combobox.
+    make sure updating team info refreshes enemy grid
     Enemy list search
         When searching, go through the variant lists too!
     
@@ -297,9 +296,23 @@ namespace EldenRingSpiritBattler
                 buddyParam.Rows.Remove(buddyRow);
             }
 
+            // Used to keep track of how many enemies are in a team for handlng incrementing summon positions.
+            Dictionary<SpiritTeam, int> teamPositionCountDict = new();
+            Dictionary<SpiritTeam, int> teamTotalSpiritCount = new();
+            foreach (SpiritTeam team in teamDict.Values)
+            {
+                teamPositionCountDict.Add(team, 0);
+                teamTotalSpiritCount[team] = 0;
+            }
+            foreach (BattleSpirit spirit in battleSpiritList)
+            {
+                teamTotalSpiritCount[spirit.Team] += 1;
+            }
+
             for (var i = 0; i < battleSpiritList.Count; i++)
             {
-                var spirit = battleSpiritList[i];
+                BattleSpirit spirit = battleSpiritList[i];
+                SpiritTeam team = spirit.Team;
 
                 #region VfxParam
                 PARAM.Row? newVfxRow = null;
@@ -446,10 +459,6 @@ namespace EldenRingSpiritBattler
                 buddyParamRow["appearOnAroundSekihi"].Value = (byte)0; // 0 = Summon using player location
                 buddyParamRow["pcFollowType"].Value = (byte)1; // 0 = Follow player around, 1 = No special behavior (?), 2 = ?
 
-                buddyParamRow["x_offset"].Value = spirit.Team.TeamPosition.X + spirit.Position.X; // Horizontal offset 1
-                buddyParamRow["z_offset"].Value = spirit.Team.TeamPosition.Z + spirit.Position.Z; // Horizontal offset 2
-                buddyParamRow["y_angle"].Value = spirit.Team.TeamPosition.Ang + spirit.Position.Ang;
-
                 for (var ii = 0; ii <= 10; ii++)
                 {
                     buddyParamRow["dopingSpEffect_lv" + ii].Value = -1;
@@ -457,6 +466,38 @@ namespace EldenRingSpiritBattler
                 buddyParamRow["npcParamId_ridden"].Value = -1;
                 buddyParamRow["npcThinkParamId_ridden"].Value = -1;
                 buddyParamRow["generateAnimId"].Value = -1;
+
+
+                //Position
+                SummonPos pos = GetOffsetSpiritSummonPos(spirit);
+                buddyParamRow["x_offset"].Value = pos.X; // Horizontal offset 1
+                buddyParamRow["z_offset"].Value = pos.Z; // Horizontal offset 2
+                buddyParamRow["y_angle"].Value = pos.Ang;
+                /*
+                 * v2
+                // TODO: make sure this is all good
+                int teamPositionCount = teamPositionCountDict[team];
+                float x_final = team.TeamPosition.X + spirit.Position.X;
+                float z_final = team.TeamPosition.Z + spirit.Position.Z;
+
+                if (team.TeamPosition.EnemiesOffsetInitX == true)
+                {
+                    // Offset X coord based on total enemy count
+                    x_final -= teamTotalSpiritCount[team] * team.TeamPosition.X_increment * 0.5f;
+                }
+                x_final += team.TeamPosition.X_increment * teamPositionCount;
+                z_final += team.TeamPosition.Z_increment * teamPositionCount;
+
+                buddyParamRow["x_offset"].Value = x_final; // Horizontal offset 1
+                buddyParamRow["z_offset"].Value = z_final; // Horizontal offset 2
+                buddyParamRow["y_angle"].Value = spirit.Team.TeamPosition.Ang + spirit.Position.Ang;
+                */
+                /*
+                 * v1
+                buddyParamRow["x_offset"].Value = spirit.Team.TeamPosition.X + spirit.Position.X; // Horizontal offset 1
+                buddyParamRow["z_offset"].Value = spirit.Team.TeamPosition.Z + spirit.Position.Z; // Horizontal offset 2
+                buddyParamRow["y_angle"].Value = spirit.Team.TeamPosition.Ang + spirit.Position.Ang;
+                */
                 #endregion
             }
 
@@ -470,8 +511,7 @@ namespace EldenRingSpiritBattler
 
                     if (Option_TargetAllSpiritAshes.Checked
                         && goodsRow.ID >= 200000 && goodsRow.ID < 270000)
-                    {
-                        // This is the targeted spirit ash good
+                    {                        
                         goodsRow["consumeHP"].Value = (Int16)0;
                         goodsRow["consumeMP"].Value = (Int16)0;
                     }
@@ -580,6 +620,9 @@ namespace EldenRingSpiritBattler
 
         private SpiritTeam CreateTeamFromElements()
         {
+            SummonPos? teamPos = teamSummonPresetDict[List_TeamSummonPreset.Text];
+            teamPos ??= new SummonPos(Input_TeamSummonPos_X.Value, Input_TeamSummonPos_Z.Value, Input_TeamSummonPos_Ang.Value);
+
             SpiritTeam team = new()
             {
                 Name = Input_TeamName.Text,
@@ -587,7 +630,7 @@ namespace EldenRingSpiritBattler
                 TeamType = (byte)Enum.Parse(typeof(TeamTypeEnum), List_TeamType.Text),
                 TeamHpMult = Input_TeamHpMult.Value,
                 TeamDamageMult = Input_TeamDamageMult.Value,
-                TeamPosition = new SummonPos(Input_TeamSummonPos_X.Value, Input_TeamSummonPos_Z.Value, Input_TeamSummonPos_Ang.Value),
+                TeamPosition = teamPos,
             };
             return team;
         }
@@ -598,10 +641,10 @@ namespace EldenRingSpiritBattler
             UpdateTeamGridAndList();
         }
 
-        private void AddRandomizedTeamToGrid(TeamTypeEnum team)
+        private void AddRandomizedTeamToGrid(TeamTypeEnum team, SummonPos? summonPos = null)
         {
             string teamName = GetRandomUnusedTeamName();
-            teamDict.Add(teamName, new SpiritTeam(teamName, GetRandomUnusedPhantomId(), (byte)team));
+            teamDict.Add(teamName, new SpiritTeam(teamName, GetRandomUnusedPhantomId(), (byte)team, summonPos));
         }
 
         public void SetRandomTeamName()
@@ -709,6 +752,7 @@ namespace EldenRingSpiritBattler
 
         private void UpdateSelectedSpirit()
         {
+            // EnemyWasUpdated
             // Get data from selected spirit in summon grid and transfer it to UI elements.
             if (SpiritDataGrid.SelectedRows.Count == 0)
                 return;
@@ -764,17 +808,44 @@ namespace EldenRingSpiritBattler
         }
         private string GetTeamPositionString(SpiritTeam team)
         {
+            /*
             float x = team.TeamPosition.X;
             float z = team.TeamPosition.Z;
             float ang = team.TeamPosition.Ang;
-            return $"{x}/{z}|{ang}";
+            return $"{x}/{z} {ang}";
+            */
+            return team.TeamPosition.Label;
         }
         private string GetFinalPositionString(BattleSpirit spirit)
         {
-            float x = spirit.Position.X + spirit.Team.TeamPosition.X;
-            float z = spirit.Position.Z + spirit.Team.TeamPosition.Z;
-            float ang = spirit.Position.Ang + spirit.Team.TeamPosition.Ang;
-            return $"{x}/{z}|{ang}";
+            /*
+            SummonPos teamPos = spirit.Team.TeamPosition;
+            if (teamPos.IsPreset)
+            {
+                float x = spirit.Position.X;
+                float z = spirit.Position.Z;
+                //float ang = spirit.Position.Ang;
+                return $"{x}x {z}z + Preset";
+            }
+            else
+            {
+                float x = spirit.Position.X + teamPos.X;
+                float z = spirit.Position.Z + teamPos.Z;
+                float ang = spirit.Position.Ang + teamPos.Ang;
+                return $"{x}x {z}z";
+                //return $"{x}x {z}z {ang}º";
+            }
+            */
+            /*
+            SummonPos teamPos = spirit.Team.TeamPosition;
+            float x = spirit.Position.X + teamPos.X;
+            float z = spirit.Position.Z + teamPos.Z;
+            float ang = spirit.Position.Ang + teamPos.Ang;
+            return $"{x}x {z}z {ang}º";
+            */
+            SummonPos pos = GetOffsetSpiritSummonPos(spirit);
+
+            return $"{pos.X}x {pos.Z}z {pos.Ang}º";
         }
 
         private void UpdateSpiritGrid()
@@ -871,7 +942,7 @@ namespace EldenRingSpiritBattler
                 VariantName = List_EnemyVariant.Text,
                 Team = GetChosenTeamFromElement(),
                 Sp_StatScaling = (int)Enum.Parse(typeof(StatScalingEnum), List_StatScaling.Text),
-                Position = CreateSummonPosition(),
+                Position = CreateSpiritSummonPosition(),
                 HpMult = Input_EnemyHpMult.Value,
                 DamageMult = Input_EnemyDamageMult.Value,
                 BaseNpcID = (int)Input_NpcParamID.Value,
@@ -887,6 +958,10 @@ namespace EldenRingSpiritBattler
                 MessageBox.Show("A spirit ash cannot handle more than 33 summons at once. Sorry!", "Warning");
                 return;
             }
+
+            // TODO: instead of adding and selecting last index/row, insert after selection. (organized teams better). ditto with duplication
+
+
             battleSpiritList.Add(spirit);
             UpdateSpiritGrid();
         }
@@ -899,41 +974,58 @@ namespace EldenRingSpiritBattler
             DataGridViewRow row = SpiritDataGrid.SelectedRows[0];
             return (BattleSpirit)row.Cells[0].Value;
         }
+        
+        /// <summary>
+        /// Get a spirit's summon pos that includes position preset offsets.
+        /// </summary>
+        /// <param name="team"></param>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
+        private SummonPos GetOffsetSpiritSummonPos(BattleSpirit spirit)
+        {
+            //TODO: calculate position preset increment stuff here
+            SpiritTeam team = spirit.Team;
+
+            int totalCount = 0;
+            int myCount = 0;
+            foreach (BattleSpirit s in battleSpiritList)
+            {
+                if (s.Team == team)
+                {
+                    totalCount++;
+                    if (s == spirit)
+                    {
+                        myCount = totalCount;
+                    }
+                }
+            }
+            if (totalCount == 0)
+                throw new Exception("Found zero enemies with teams that matched the targeted team");
+
+            float x_final = team.TeamPosition.X;
+            float z_final = team.TeamPosition.Z;
+            float ang = team.TeamPosition.Ang;
+            x_final += spirit.Position.X;
+            z_final += spirit.Position.Z;
+            //ang += spirit.Position.Ang; //This needs math to work (UI element is disabled)
+
+            if (team.TeamPosition.EnemiesOffsetInitX == true)
+            {
+                // Offset X coord based on total enemy count
+                x_final -= totalCount * team.TeamPosition.X_increment * 0.5f;
+            }
+            x_final += team.TeamPosition.X_increment * myCount;
+            z_final += team.TeamPosition.Z_increment * myCount;
+
+            return new SummonPos(x_final, z_final, ang);
+        }
+        
         #endregion
         //
 
-        private SummonPos CreateSummonPosition()
+        private SummonPos CreateSpiritSummonPosition()
         {
-            SummonPosition_Auto.Checked = false; // TODO: debug
-
-            if (!SummonPosition_Auto.Checked)
-                return new SummonPos(SummonPosition_X.Value, SummonPosition_Z.Value, SummonPosition_Angle.Value);
-
-            // TODO: auto dist logic
-            // Don't forget teams have summonPos too now
-            decimal mag = SummonPosition_Auto_DistMagnitude.Value;
-            SummonPos pos = new();
-
-            /*
-            float xOffset = 0;
-            float buddyWidth = (float)newNpcRow["chrHitRadius"].Value;// * (float).75;
-            if (isMultiSummon)
-            {
-                float xOffsetIncrement = buddyWidth;
-
-                //this part doesn't actually make sense, but whatever.
-                xOffset = (float)buddyParam.Rows[i - 1]["x_offset"].Value;
-                if (xOffset >= 0)
-                    xOffset += xOffsetIncrement; //increment
-                else
-                    xOffset -= xOffsetIncrement; //decrement
-                xOffset *= -1; //invert
-
-            }
-            buddyParamRow["x_offset"].Value = xOffset; //horizontal offset 1
-            buddyParamRow["z_offset"].Value = buddyWidth * -1; //horizontal offset 2
-            */
-            return pos;
+            return new SummonPos(SummonPosition_X.Value, SummonPosition_Z.Value, SummonPosition_Angle.Value);
         }
     }
 }

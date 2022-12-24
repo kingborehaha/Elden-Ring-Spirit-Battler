@@ -22,7 +22,6 @@ namespace EldenRingSpiritBattler
         }
     }
 
-    /// <summary>
     /// Contains X/Z/Ang BuddyParam summon position info.
     /// </summary>
     public class SummonPos
@@ -30,6 +29,30 @@ namespace EldenRingSpiritBattler
         public float X;
         public float Z;
         public float Ang;
+
+        // Preset fields
+        public string PresetName = "";
+        public float X_increment;
+        public float Z_increment;
+        public bool EnemiesOffsetInitX; // Determines if X position will be negatively offset by X_Increment when calculating number of enemies in team.
+
+        public bool IsPreset
+        {
+            get => (X_increment != 0 || Z_increment != 0);
+        }
+        public string Label
+        {
+            get
+            {
+                if (PresetName != "")
+                    return PresetName;
+                else
+                {
+                    return $"{X}x {Z}z {Ang}º";
+                }
+            }
+        }
+
         public SummonPos() { }
         public SummonPos(float x, float z, float ang)
         {
@@ -42,6 +65,30 @@ namespace EldenRingSpiritBattler
             X = (float)x;
             Z = (float)z;
             Ang = (float)ang;
+        }
+        public SummonPos(float x, float z, float ang, float xIncrement, float zIncremenet, string presetName, bool enemiesOffsetInitX = false)
+        {
+            X = x;
+            Z = z;
+            Ang = ang;
+            X_increment = xIncrement;
+            Z_increment = zIncremenet;
+            PresetName = presetName;
+            EnemiesOffsetInitX = enemiesOffsetInitX;
+        }
+        public SummonPos Clone()
+        {
+            SummonPos newPos = new();
+            newPos.X = X;
+            newPos.Z = Z;
+            newPos.Ang = Ang;
+
+            newPos.X_increment = X_increment;
+            newPos.Z_increment = Z_increment;
+            newPos.PresetName = PresetName;
+            newPos.EnemiesOffsetInitX = EnemiesOffsetInitX;
+
+            return newPos;
         }
     }
 
@@ -82,11 +129,11 @@ namespace EldenRingSpiritBattler
             spirit.BaseNpcID = BaseNpcID;
             spirit.BaseThinkID = BaseThinkID;
             spirit.Team = Team;
-            spirit.Position = new SummonPos(Position.X, Position.Z, Position.Ang);
             spirit.HpMult = HpMult;
             spirit.DamageMult = DamageMult;
             spirit.Sp_StatScaling = Sp_StatScaling;
             spirit.Sp_SpecialScaling = Sp_SpecialScaling;
+            spirit.Position = new SummonPos(Position.X, Position.Z, Position.Ang);
             return spirit;
         }
     }
@@ -101,11 +148,13 @@ namespace EldenRingSpiritBattler
         public SummonPos TeamPosition = new();
         public SpiritTeam()
         { }
-        public SpiritTeam(string name, int phantomShaderID, byte teamType)
+        public SpiritTeam(string name, int phantomShaderID, byte teamType, SummonPos? teamPosition = null)
         {
             Name = name;
             PhantomParamID = phantomShaderID;
             TeamType = teamType;
+            if (teamPosition != null)
+                TeamPosition = teamPosition;
         }
         public SpiritTeam Clone()
         {
@@ -115,10 +164,12 @@ namespace EldenRingSpiritBattler
             team.PhantomParamID = PhantomParamID;
             team.TeamHpMult = TeamHpMult;
             team.TeamDamageMult = TeamDamageMult;
-            team.TeamDamageMult = TeamDamageMult;
+            /*
             team.TeamPosition.X = TeamPosition.X;
             team.TeamPosition.Z = TeamPosition.Z;
             team.TeamPosition.Ang = TeamPosition.Ang;
+            */
+            team.TeamPosition = TeamPosition.Clone();
             return team;
         }
     }

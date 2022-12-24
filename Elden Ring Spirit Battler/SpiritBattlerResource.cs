@@ -4,6 +4,17 @@ namespace EldenRingSpiritBattler
 {
     public static class SpiritBattlerResources
     {
+        private const float magnitude = 1; // TODO
+        private const float incrementBase = 1.5f;
+        private const float rowStartPos = -10;
+        public static Dictionary<string, SummonPos?> teamSummonPresetDict = new()
+        {
+            {"Column left side (face right)", new SummonPos(-10*magnitude, 10*magnitude, 90, 0, incrementBase, "Column L")},
+            {"Column right side (face left)", new SummonPos(10*magnitude, 10*magnitude, -90, 0, incrementBase, "Column R")},
+            {"Row close (face front)", new SummonPos(rowStartPos, 5*magnitude, 0, incrementBase, 0, "Row Close", true)},
+            {"Row far (face back", new SummonPos(rowStartPos, 20*magnitude, -180, incrementBase, 0, "Row Far", true)},
+            {"Manual Offset", null},
+        };
 
         /// <summary>
         /// List of NpcParam IDs that should not be assigned a phantom VFX, as it won't work very well.
@@ -78,7 +89,7 @@ namespace EldenRingSpiritBattler
             //low glow//SlightWhite = 28, 
             YellowBright = 29,
             //low glow//C32 = 32,
-            C44 = 44,
+            C44 = 44, //todo
             C50 = 50,
             C51 = 51,
             RedInvader = 60,
@@ -113,10 +124,10 @@ namespace EldenRingSpiritBattler
             RedFaintEdge = 805,
             //810,
             BlueStrong = 811,
-            BrownSlight = 812, // TEST
+            BrownSlight = 812,
             //813,
             GhostGrey60 = 820,
-            GreySlight = 821, // TEST
+            GreySlight = 821,
             //890,
             Invisible = 891,
             GhostBrown30 = 920,
