@@ -524,6 +524,7 @@
             this.Search_Enemy.Size = new System.Drawing.Size(200, 23);
             this.Search_Enemy.TabIndex = 64;
             this.Search_Enemy.Text = "Search...";
+            this.Search_Enemy.TextChanged += new System.EventHandler(this.Search_Enemy_TextChanged);
             this.Search_Enemy.Validated += new System.EventHandler(this.EnemyWasEdited);
             // 
             // label1

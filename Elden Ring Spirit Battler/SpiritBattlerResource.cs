@@ -6,7 +6,6 @@ namespace EldenRingSpiritBattler
     {
         private static readonly float magnitude = 1; // Unimplemented
         private static readonly float incrementBase = 1.5f;
-        private static readonly float baseColDist = 13.5f; // TODO
         public static readonly Dictionary<string, SummonPos?> teamSummonPresetDict = new()
         {
             {"Column Left", new SummonPos(-10*magnitude, 13.5f*magnitude, 90, 0, incrementBase, "Column Left")},

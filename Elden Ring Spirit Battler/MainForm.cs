@@ -26,16 +26,14 @@ namespace EldenRingSpiritBattler
             b_restoreRegulation.Enabled = false;
             Text += GetVersion();
 
-            //SetRandomTeamName();
-
             // TODO: figure out non-lame teamtypes
             AddRandomizedTeamToGrid(TeamTypeEnum.Enemy, teamSummonPresetDict["Column Left"]);
             AddRandomizedTeamToGrid(TeamTypeEnum.DS3_CoopMadPhantom, teamSummonPresetDict["Column Right"]);
             AddRandomizedTeamToGrid(TeamTypeEnum.Player, teamSummonPresetDict["Row Close"]);
-            AddRandomizedTeamToGrid(TeamTypeEnum.HostileNPC, teamSummonPresetDict["Row Far"]);
+            AddRandomizedTeamToGrid(TeamTypeEnum.Unknown24, teamSummonPresetDict["Row Far"]);
 
             List_StatScaling.DataSource = GetOrderedEnumNames(typeof(StatScalingEnum));
-            List_StatScaling.Text = StatScalingEnum.None.ToString();
+            List_StatScaling.Text = StatScalingEnum.Level_15.ToString();
 
             LoadSpiritAshResource();
             LoadEnemyResource();
@@ -50,11 +48,6 @@ namespace EldenRingSpiritBattler
             SetGridTeamToElements();
 
             List_TeamSummonPreset.DataSource = teamSummonPresetDict.Keys.ToList();
-
-            // TODO: debug stuff
-            //Button_Context_DeleteTeam.Enabled = false;
-            //Button_Menu_DeleteTeam.Enabled = false;
-
         }
 
         private void EnemyWasEdited(object sender, EventArgs e)
@@ -97,9 +90,9 @@ namespace EldenRingSpiritBattler
 
                 UpdateConsole("Loaded Regulation.bin");
 
-                backupFile = directory + "/regulation.bin.backup"; //place backup next to regulation.bin
+                backupFileName = directory + "/regulation.bin.backup"; //place backup next to regulation.bin
 
-                if (File.Exists(backupFile))
+                if (File.Exists(backupFileName))
                     b_restoreRegulation.Enabled = true;
             }
         }
@@ -291,7 +284,6 @@ namespace EldenRingSpiritBattler
                 BattleSpirit spirit = (BattleSpirit)row.Cells[0].Value;
                 if (spirit.Team == team)
                 {
-                    // TODO: [may be fine now] this doesn't work since selecting a team automatically makes selected enemy use it!!
                     // A spirit is using this team, don't allow deletion.
                     MessageBox.Show("Cannot delete this team, it is being used.", "Error");
                     return;
@@ -345,6 +337,21 @@ namespace EldenRingSpiritBattler
         private void List_EnemyChosenTeam_SelectedIndexChanged(object sender, EventArgs e)
         {
             EnemyWasEdited(sender, e);
+        }
+
+        private void Search_Enemy_TextChanged(object sender, EventArgs e)
+        {
+            string str = Search_Enemy.Text;
+            List<string> resultList = new();
+            var results = enemyListCache.FindAll(s => s.Contains(str, StringComparison.CurrentCultureIgnoreCase)).ToList();
+            foreach (var en in enemyVariantDict)
+            {
+                if (en.Value.Find(e => e.Name.Contains(str, StringComparison.CurrentCultureIgnoreCase)) != null)
+                {
+                    resultList.Add(en.Key);
+                }
+            }
+            List_Enemy.DataSource = resultList;
         }
     }
 }

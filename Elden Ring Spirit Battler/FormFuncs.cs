@@ -14,18 +14,20 @@ using static EldenRingSpiritBattler.SpiritBattlerResources;
     in-game testing
 -- high priority
     preset combobox formatting
-    Enemy list search
-        When searching, go through the variant lists too!
+    Hide player from enemies option
+        Hop into roleParam, change player teamtype to neutral ghost?
+            make sure to change hollow and human params!
 -- medium priority
+    Save program settings
     Figure out potential HP/damage limits so i can warn when multiple multipliers will cause issues.
-    Catalog phantom color/team behavior
+    Better catalog phantom color/team behavior
         Maybe a custom class with a helpful label/info?
+    Better catalog enemy variant names
     Option to randomize an entire ash
     Tooltips.
 --low priority
     Let user insert phantom param ID/npcID/npcThink they want (they have to tick an option that allows editing them)
     Replace team enum with more comprehensive info, so user knows where these scaling levels correspond
-    Improve team grid <-> UI elements stuff. 
     Change targeted ash name's FMG name
         Format: "Spirit Battler: [team] vs [team]
     Custom phantom colors
@@ -34,11 +36,6 @@ using static EldenRingSpiritBattler.SpiritBattlerResources;
     Allow grid column resizing (currently resets on grid reload)
     Save/load .json for battleSpiritList.
         Automatically save on execute just so that data isn't lost on exceptions.
-
--- Figure out
-    Hide player from enemies option
-        Hop into roleParam, change player teamtype to neutral ghost?
-            make sure to change hollow and human params!
 */
 
 
@@ -48,12 +45,14 @@ namespace EldenRingSpiritBattler
     {
         public readonly uint buddyLimit = 33; //TODO: confirm
 
-        public string backupFile = "";
+        public string backupFileName = "";
 
         public Dictionary<string, int> spiritAshesDict = new();
-        public Dictionary<string, List<Enemy>> enemyVariantDict = new();
-        public List<BattleSpirit> battleSpiritList = new();
         public SortedDictionary<string, SpiritTeam> teamDict = new();
+        public Dictionary<string, List<Enemy>> enemyVariantDict = new();
+        public List<string> enemyListCache;
+
+        public List<BattleSpirit> battleSpiritList = new();
 
         public int GetRandomUnusedPhantomId()
         {
@@ -134,7 +133,8 @@ namespace EldenRingSpiritBattler
                     Enemy newEnemy = new(split[0], int.Parse(split[1]), int.Parse(split[2]));
                     enemyVariantDict[variantKey].Add(newEnemy);
                 }
-                List_Enemy.DataSource = enemyVariantDict.Keys.ToList();
+                enemyListCache = enemyVariantDict.Keys.ToList();
+                List_Enemy.DataSource = enemyListCache;
             }
             catch (Exception e)
             {
@@ -223,11 +223,11 @@ namespace EldenRingSpiritBattler
             string regulationPath = openFileDialog1.FileName;
 
             UpdateConsole("Checking Backup");
-            if (!File.Exists(backupFile))
+            if (!File.Exists(backupFileName))
             {
                 // No backup file exists
                 UpdateConsole("Creating Backup");
-                File.Copy(openFileDialog1.FileName, backupFile);
+                File.Copy(openFileDialog1.FileName, backupFileName);
                 b_restoreRegulation.Enabled = true;
             }
 
@@ -366,16 +366,15 @@ namespace EldenRingSpiritBattler
                 PARAM.Row newNpcRow = InsertParamRow(npcParam, npcParam[npcID], newNpcID);
 
                 newNpcRow["teamType"].Value = spirit.Team.TeamType;
-                //newNpcRow["phantomShaderId"].Value = spirit.Team.PhantomParamID; // TODO: doesn't work, use spEffect vfxparam instead
                 newNpcRow["itemLotId_enemy"].Value = -1;
                 newNpcRow["itemLotId_map"].Value = -1;
                 newNpcRow["GameClearSpEffectID"].Value = -1;
                 newNpcRow["getSoul"].Value = (uint)0;
-                newNpcRow["npcType"].Value = (byte)0; // TODO: this doesn't do anything meaningful beyond hitstun, right?
+                newNpcRow["npcType"].Value = (byte)0;
 
-                // Cap map hit radii to prevent spawning issues
                 if (Option_ReduceEnemyMapCol.Checked)
                 {
+                    // Cap map hit radii to prevent spawning issues
                     float maxHitRadius = 1;
                     float maxHitHeight = 5;
                     if ((float)newNpcRow["hitRadius"].Value > maxHitRadius)
@@ -389,10 +388,7 @@ namespace EldenRingSpiritBattler
                 }
 
                 // NpcParam Special Effects
-                //int[] buddyEffects = { 295000, 296000, 297000 }; // (randomizer) special effects to be inserted into new npcParam
-
                 var buddyEffects = spirit.SpecialEffects;
-
                 int iBuddy = 0;
                 for (var iEffect = 0; iEffect <= 31; iEffect++)
                 {
@@ -437,7 +433,7 @@ namespace EldenRingSpiritBattler
 
                 // TODO: eye dist, battleStartDist, forget time, backHomeDist
 
-                newNpcThinkRow["isBuddyAI"].Value = true;
+                newNpcThinkRow["isBuddyAI"].Value = true; // This PROBABLY overrides backhomeDist, etc.
                 newNpcThinkRow["nose_dist"].Value = (UInt16)30;
                 newNpcThinkRow["backhomeDist"].Value = (UInt16)999;
                 newNpcThinkRow["maxBackhomeDist"].Value = (UInt16)999;
@@ -532,15 +528,15 @@ namespace EldenRingSpiritBattler
             string regulationPath = openFileDialog1.FileName;
 
             FileSystem.DeleteFile(regulationPath, UIOption.OnlyErrorDialogs, RecycleOption.SendToRecycleBin);
-            if (!File.Exists(backupFile))
+            if (!File.Exists(backupFileName))
             {
-                MessageBox.Show($"Failed to restore backup as \"{backupFile}\" could not be found.", "Error", MessageBoxButtons.OK);
+                MessageBox.Show($"Failed to restore backup as \"{backupFileName}\" could not be found.", "Error", MessageBoxButtons.OK);
                 UpdateConsole("Backup Restoration Failed");
                 b_restoreRegulation.Enabled = false;
             }
             else
             {
-                File.Move(backupFile, regulationPath, false);
+                File.Move(backupFileName, regulationPath, false);
                 UpdateConsole("Backup Restored");
                 b_restoreRegulation.Enabled = false;
             }
@@ -882,46 +878,6 @@ namespace EldenRingSpiritBattler
             if (prevScrollIndex != -1)
                 SpiritDataGrid.FirstDisplayedScrollingRowIndex = prevScrollIndex; // Scroll to selection
         }
-        /*
-        // Autosort: didn't work, had trouble finding previously selected row after rows were sorted
-        private void UpdateSpiritGrid()
-        {
-            BattleSpirit? prevSelection = null;
-                if (SpiritDataGrid.SelectedRows.Count > 0)
-                    prevSelection = (BattleSpirit)SpiritDataGrid.SelectedRows[0].Cells[0].Value;
-
-            //battleSpiritList = battleSpiritList.OrderBy(e => e.Team.Name).ToList(); // TODO: figure out a way to do this but properly update selected row afterwards
-
-            SpiritDataGrid.DataSource = battleSpiritList.Select(spirit => new
-            {
-                spirit,
-                spirit.Team.Name,
-                spirit.VariantName,
-                StatScaling = Enum.GetName(typeof(StatScalingEnum), spirit.Sp_StatScaling)
-            }).ToList();
-            SpiritDataGrid.Columns[0].Visible = false;
-            SpiritDataGrid.Columns[1].HeaderCell.Value = "Team";
-            SpiritDataGrid.Columns[2].HeaderCell.Value = "Enemy";
-            SpiritDataGrid.Columns[2].Width = 150;
-            SpiritDataGrid.Columns[3].HeaderCell.Value = "Scaling";
-            // TODO: display individual scaling
-            // TODO: maybe also dispay overall scaling by pre-multiplying stat scaling level + individual scaling?
-
-            prevSelection ??= (BattleSpirit)SpiritDataGrid.Rows[0].Cells[0].Value;
-
-            foreach (DataGridViewRow row in SpiritDataGrid.Rows)
-            {
-                BattleSpirit spirit = (BattleSpirit)row.Cells[0].Value;
-                if (spirit.Equals(prevSelection))
-                {
-                    //TODO: why this no work?
-                    SpiritDataGrid.ClearSelection();
-                    row.Selected = true;
-                    break;
-                }
-            }
-        }
-        */
 
         private SpiritTeam GetChosenTeamFromElement()
         {
