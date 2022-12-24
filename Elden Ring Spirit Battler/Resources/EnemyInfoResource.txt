@@ -4,41 +4,41 @@
 Baleful Shadow||20108562||20108500
 
 --Blaidd the Half-Wolf
-Blaidd the Half-Wolf||20109064||20100000
-Blaidd the Half-Wolf||20109140||20109500
-Blaidd the Half-Wolf||20109210||20100000
-Blaidd the Half-Wolf||20109310||20109000
+Blaidd the Half-Wolf 1||20109064||20100000
+Blaidd the Half-Wolf 2||20109140||20109500
+Blaidd the Half-Wolf 3||20109210||20100000
+Blaidd the Half-Wolf 4||20109310||20109000
 
 --Rennala, Queen of the Full Moon
-Rennala (1)||20300024||20300000
-Rennala (1)||20300124||20300100
-Rennala (2)||20310024||20310000
+Rennala 1||20300024||20300000
+Rennala 2||20300124||20300100
+Rennala 3||20310024||20310000
 
 --Rennala Student
-Rennala Student||20400024||20400000
-Rennala Student||20401024||20400000
-Rennala Student||20402024||20400000
-Rennala Student||20402124||20400000
-Rennala Student||20402224||20400000
-Rennala Student||20403024||20400000
-Rennala Student||20404024||20400000
+Rennala Student 1||20400024||20400000
+Rennala Student 2||20401024||20400000
+Rennala Student 3||20402024||20400000
+Rennala Student 4||20402124||20400000
+Rennala Student 5||20402224||20400000
+Rennala Student 6||20403024||20400000
+Rennala Student 7||20404024||20400000
 
 --Kindred of Rot Larva
 Kindred of Rot Larva||20410056||20410000
 
 --Ranni the Witch
 Ranni the Witch||20500020||20500000
-Ranni the Witch||20500122||20500000
+Ranni the Witch 2||20500122||20500000
 
 --The Two Fingers
 The Two Fingers||20600079||20600000
 
 --Black Knife Assassin
 Alecto, Black Knife Ringleader||21002922||21000000
-Black Knife Assassin||21000034||21000000
-Black Knife Assassin (Boss)||21000820||21000000
-Black Knife Assassin (Boss)||21000930||21000000
-Black Knife Assassin||21001010||21000010
+Black Knife Assassin 1||21000034||21000000
+Black Knife Assassin (Boss) 2||21000820||21000000
+Black Knife Assassin (Boss) 3||21000930||21000000
+Black Knife Assassin 4||21001010||21000010
 
 --Maliketh
 Maliketh||21101072||21101000
@@ -48,9 +48,9 @@ Beast Clergyman||21100072||21100000
 Gurranq, Beast Clergyman||21109042||21102000
 
 --Malenia, Blade of Miquella
-Malenia, Blade of Miquella||21200056||21200000
-Malenia, Blade of Miquella||21201056||21200000
-Malenia, Blade of Miquella||21202056||21200000
+Malenia 1||21200056||21200000
+Malenia 2||21201056||21200000
+Malenia 3||21202056||21200000
 
 --Margit
 Margit||21300014||21300000
@@ -58,25 +58,25 @@ Morgott||21300534||21300500
 
 --Omen
 Omen||21400035||21400000
-Omen||21400114||21400000
-Omen||21400235||21400000
-Omen||21400335||21400000
-Omen||21400435||21400000
-Omen||21400633||21400000
-Omen||21400930||21400000
-Omen||21401035||21401000
-Omen||21401120||21401000
-Omen||21401235||21401000
-Omen||21401435||21401000
-Omen||21401930||21401000
+Omen 2||21400114||21400000
+Omen 3||21400235||21400000
+Omen 4||21400335||21400000
+Omen 5||21400435||21400000
+Omen 6||21400633||21400000
+Omen 7||21400930||21400000
+Omen 8||21401035||21401000
+Omen 9||21401120||21401000
+Omen 10||21401235||21401000
+Omen 11||21401435||21401000
+Omen 12||21401930||21401000
 Omen (Fell Twins)||21403050||21400900
-Omen (Fell Twins)||21403150||21401900
+Omen (Fell Twins) 2||21403150||21401900
 
 --Wisp
 Wisp||21500064||21500030
-Wisp||21500352||21500030
-Wisp||21500452||21500030
-Wisp||21500652||21500000
+Wisp 2||21500352||21500030
+Wisp 3||21500452||21500030
+Wisp 4||21500652||21500000
 
 --Finger Reader Crone
 Finger Reader Crone||21700079||21700000
@@ -95,70 +95,70 @@ Elden Beast||22000078||22000000
 Crab (Siofra River)||22710064||22710000
 Crab - Maggots||22730020||22730000
 Crab - Clean||22750024||22750020
-Crab - Clean||22750120||22750000
-Crab - Clean||22751024||22750020
+Crab - Clean 2||22750120||22750000
+Crab - Clean 3||22751024||22750020
 Crab - Golden Tuffs||22770020||22770000
 
 --Giant Crab
 Giant Crab||22700064||22700200
 Giant Crab - Damaged||22720020||22720000
-Giant Crab - Damaged||22720112||22720000
+Giant Crab - Damaged 2||22720112||22720000
 Giant Crab - Clean||22740024||22740200
-Giant Crab - Clean||22740120||22740000
+Giant Crab - Clean 2||22740120||22740000
 Giant Crab - Golden Tuffs||22760020||22760000
 
 --Crucible Knight
 Crucible Knight||25000165||25000100
 Crucible Knight (Unused)||25000014||25000050
-Crucible Knight||25000865||25000110
+Crucible Knight 2||25000865||25000110
 Crucible Knight Ordovis||25000933||25000030
 Crucible Knight Siluria||25001034||25001066
-Crucible Knight||25001134||25001100
-Crucible Knight||25001933||25001030
+Crucible Knight 3||25001134||25001100
+Crucible Knight 4||25001933||25001030
 Crucible Knight (Boss)||25006020||25000000
-Crucible Knight (Boss)||25006120||25000100
-Crucible Knight (Boss)||25007020||25001000
-Crucible Knight (Boss)||25007120||25001100
+Crucible Knight (Boss) 2||25006120||25000100
+Crucible Knight (Boss) 3||25007020||25001000
+Crucible Knight (Boss) 4||25007120||25001100
 Tanith's Knight||25009038||25009000
-Tanith's Knight||25009138||25009000
+Tanith's Knight 2||25009138||25009000
 
 --Exile Soldier
 Exile Soldier||30000014||30000000
-Exile Soldier||30000114||30000400
-Exile Soldier||30000214||30000200
-Exile Soldier||30000614||30000800
-Exile Soldier||30000714||30000200
-Exile Soldier||30000814||30000100
-Exile Soldier||30001014||30001100
-Exile Soldier||30001114||30001000
-Exile Soldier||30001214||30000000
-Exile Soldier||30001314||30000400
-Exile Soldier||30002014||30002000
-Exile Soldier||30003014||30003200
-Exile Soldier||30003214||30003000
-Exile Soldier||30003514||30003800
+Exile Soldier 2||30000114||30000400
+Exile Soldier 3||30000214||30000200
+Exile Soldier 4||30000614||30000800
+Exile Soldier 5||30000714||30000200
+Exile Soldier 6||30000814||30000100
+Exile Soldier 7||30001014||30001100
+Exile Soldier 8||30001114||30001000
+Exile Soldier 9||30001214||30000000
+Exile Soldier 10||30001314||30000400
+Exile Soldier 11||30002014||30002000
+Exile Soldier 12||30003014||30003200
+Exile Soldier 13||30003214||30003000
+Exile Soldier 14||30003514||30003800
 Mausoleum Exile Soldier||30004007||30000020
-Mausoleum Exile Soldier||30004151||30000110
-Mausoleum Exile Soldier||30004351||30000200
-Mausoleum Exile Soldier||30005007||30001100
-Mausoleum Exile Soldier||30006051||30002010
+Mausoleum Exile Soldier 2||30004151||30000110
+Mausoleum Exile Soldier 3||30004351||30000200
+Mausoleum Exile Soldier 4||30005007||30001100
+Mausoleum Exile Soldier 5||30006051||30002010
 Exile Soldier (Boss)||30008040||30000140
 
 --Banished Knight
 Banished Knight||30100014||30100200
-Banished Knight||30100114||30100100
+Banished Knight 2||30100114||30100100
 Mausoleum Banished Knight||30100451||30100000
-Mausoleum Banished Knight||30100507||30100200
-Banished Knight||30100814||30100100
-Banished Knight||30101172||30101000
-Mausoleum Banished Knight||30101451||30101000
-Mausoleum Banished Knight||30101651||30101200
-Banished Knight||30102014||30102000
-Banished Knight||30102172||30102000
-Mausoleum Banished Knight||30102507||30102000
-Mausoleum Banished Knight||30102651||30102200
+Mausoleum Banished Knight 2||30100507||30100200
+Banished Knight 3||30100814||30100100
+Banished Knight 4||30101172||30101000
+Mausoleum Banished Knight 3||30101451||30101000
+Mausoleum Banished Knight 4||30101651||30101200
+Banished Knight 5||30102014||30102000
+Banished Knight 6||30102172||30102000
+Mausoleum Banished Knight 5||30102507||30102000
+Mausoleum Banished Knight 6||30102651||30102200
 Banished Knight (Niall Boss)||30106051||30106050
-Banished Knight (Niall Boss)||30107051||30107050
+Banished Knight (Niall Boss) 2||30107051||30107050
 Large Exile Soldier||30200014||30200800
 Mausoleum Large Exile Soldier||30200151||30200000
 Large Exile Soldier (Boss)||30208040||30200040
@@ -169,27 +169,27 @@ Commander O'Neil||30500140||30500940
 
 --Grave Skeleton
 Grave Skeleton||30600030||30600000
-Grave Skeleton||30601020||30601000
+Grave Skeleton 2||30601020||30601000
 Undead Beastman of Farum Azula||30610072||30600000
-Undead Beastman of Farum Azula||30611072||30611000
+Undead Beastman of Farum Azula 2||30611072||30611000
 
 --Dominula Celebrant
 Dominula Celebrant||30700030||30700100
-Dominula Celebrant||30701030||30701000
-Dominula Celebrant||30702030||30702000
-Dominula Celebrant||30703030||30703100
-Dominula Celebrant||30704030||30704000
+Dominula Celebrant 2||30701030||30701000
+Dominula Celebrant 3||30702030||30702000
+Dominula Celebrant 4||30703030||30703100
+Dominula Celebrant 5||30704030||30704000
 
 --Imp
 Imp||30800034||30800000
-Imp||30800110||30800000
-Imp||30800830||30800010
+Imp 2||30800110||30800000
+Imp 3||30800830||30800010
 Imp (Boss)||30800912||30800900
-Imp||30801034||30800000
-Imp||30801120||30800000
-Imp||30801232||30800020
-Imp||30802033||30800000
-Imp||30806034||30800000
+Imp 4||30801034||30800000
+Imp 5||30801120||30800000
+Imp 6||30801232||30800020
+Imp 7||30802033||30800000
+Imp 8||30806034||30800000
 
 --Bell Bearing Hunter
 Bell Bearing Hunter||31000020||31001000
@@ -197,17 +197,17 @@ Elemer of the Briar||31000931||31000931
 
 --Night's Cavalry
 Night's Cavalry||31500052||31500052
-Night's Cavalry||31501052||31501052
+Night's Cavalry 2||31501052||31501052
 Night's Cavalry Horse||31600052||31600052
 
 --Albinauric Archer
 Albinauric Archer||31700052||31700000
-Albinauric Archer||31701052||31700054
+Albinauric Archer 2||31701052||31700054
 Latenna the Albinauric||31709020||31709000
 
 --Big Wolf
 Big Wolf||31800021||31800000
-Big Wolf||31800021||31800020
+Big Wolf 2||31800021||31800020
 
 --Red Wolf of Radagon
 Red Wolf of Radagon||31810065||31810000
@@ -218,41 +218,41 @@ Red Wolf of the Champion||31811032||31810932
 Frenzied Nomad||32010035||32010000
 Nomadic Merchant - Merchant Kale||32000010||32000000
 Nomadic Merchant - Nomadic Merchant||32001110||32000000
-Nomadic Merchant - Nomadic Merchant||32001210||32000000
-Nomadic Merchant - Nomadic Merchant||32001310||32000000
-Nomadic Merchant - Nomadic Merchant||32001412||32000000
-Nomadic Merchant - Nomadic Merchant||32001520||32000000
+Nomadic Merchant - Nomadic Merchant 2||32001210||32000000
+Nomadic Merchant - Nomadic Merchant 3||32001310||32000000
+Nomadic Merchant - Nomadic Merchant 4||32001412||32000000
+Nomadic Merchant - Nomadic Merchant 5||32001520||32000000
 Nomadic Merchant - Isolated Merchant||32001612||32000000
-Nomadic Merchant - Isolated Merchant||32001720||32000000
-Nomadic Merchant - Nomadic Merchant||32001820||32000000
+Nomadic Merchant - Isolated Merchant 2||32001720||32000000
+Nomadic Merchant - Nomadic Merchant 6||32001820||32000000
 Nomadic Merchant - Hermit Merchant||32001933||32000000
-Nomadic Merchant - Nomadic Merchant||32002030||32000000
-Nomadic Merchant - Nomadic Merchant||32002132||32000000
-Nomadic Merchant - Nomadic Merchant||32002240||32000000
-Nomadic Merchant - Nomadic Merchant||32002340||32000000
-Nomadic Merchant - Isolated Merchant||32002542||32000000
-Nomadic Merchant - Hermit Merchant||32002650||32000000
+Nomadic Merchant - Nomadic Merchant 7||32002030||32000000
+Nomadic Merchant - Nomadic Merchant 8||32002132||32000000
+Nomadic Merchant - Nomadic Merchant 9||32002240||32000000
+Nomadic Merchant - Nomadic Merchant 10||32002340||32000000
+Nomadic Merchant - Isolated Merchant 3||32002542||32000000
+Nomadic Merchant - Hermit Merchant 2||32002650||32000000
 Nomadic Merchant - Abandoned Merchant||32002764||32000000
 Nomadic Merchant - Hermit Merchant (Ainsel River)||32002860||32000000
 Nomadic Merchant - Imprisoned Merchant||32002968||32000000
-Nomadic Merchant - Nomadic Merchant||32003010||32000000
+Nomadic Merchant - Nomadic Merchant 11||32003010||32000000
 
 --Nomad Mule
 Nomad Mule||32100010||32100000
-Nomad Mule||32101210||32100000
-Nomad Mule||32101310||32100000
-Nomad Mule||32101412||32100000
-Nomad Mule||32101520||32100000
-Nomad Mule||32101612||32100000
-Nomad Mule||32101720||32100000
-Nomad Mule||32101820||32100000
-Nomad Mule||32101933||32100000
-Nomad Mule||32102132||32100000
-Nomad Mule||32102240||32100000
-Nomad Mule||32102340||32100000
-Nomad Mule||32102542||32100000
-Nomad Mule||32102650||32100000
-Nomad Mule||32103010||32100000
+Nomad Mule 2||32101210||32100000
+Nomad Mule 3||32101310||32100000
+Nomad Mule 4||32101412||32100000
+Nomad Mule 5||32101520||32100000
+Nomad Mule 6||32101612||32100000
+Nomad Mule 7||32101720||32100000
+Nomad Mule 8||32101820||32100000
+Nomad Mule 9||32101933||32100000
+Nomad Mule 10||32102132||32100000
+Nomad Mule 11||32102240||32100000
+Nomad Mule 12||32102340||32100000
+Nomad Mule 13||32102542||32100000
+Nomad Mule 14||32102650||32100000
+Nomad Mule 15||32103010||32100000
 
 --Tree Sentinel
 Tree Sentinel||32510030||32510900
@@ -265,23 +265,23 @@ Royal Knight Loretta||32520921||32520110
 Nox Swordstress||33000062||33000000
 Nox Swordstress (Boss)||33000940||33000900
 Nox Fighter||33001062||33100000
-Nox Swordstress (Boss)||33001940||33100900
-Nox Fighter||33002062||33101000
+Nox Swordstress (Boss) (2)||33001940||33100900
+Nox Fighter 2||33002062||33101000
 
 --Silver Tear
 Silver Tear||33200062||33200000
-Silver Tear||33200162||33200100
-Silver Tear||33200262||33200000
-Silver Tear||33201062||33200000
-Silver Tear||33201165||33200000
-Silver Tear||33202062||33200000
-Silver Tear||33202262||33200000
+Silver Tear 2||33200162||33200100
+Silver Tear 3||33200262||33200000
+Silver Tear 4||33201062||33200000
+Silver Tear 5||33201165||33200000
+Silver Tear 6||33202062||33200000
+Silver Tear 7||33202262||33200000
 
 --Silver Tear Orb
 Silver Tear Orb||33300040||33300020
-Silver Tear Orb||33300662||33300000
-Silver Tear Orb||33300762||33300000
-Silver Tear Orb||33300862||33300062
+Silver Tear Orb 2||33300662||33300000
+Silver Tear Orb 3||33300762||33300000
+Silver Tear Orb 4||33300862||33300062
 
 --Crystalian
 Crystalian - Ringblade||33500920||33500900
@@ -296,107 +296,107 @@ Putrid Crystalian - Staff (Haligtree)||33502556||33502000
 
 --Ancestral Follower
 Ancestral Follower||33600062||33600000
-Ancestral Follower||33600265||33600000
-Ancestral Follower||33600565||33600600
-Ancestral Follower||33601065||33601100
-Ancestral Follower||33601265||33601100
-Ancestral Follower||33601365||33601100
-Ancestral Follower||33602265||33602000
-Ancestral Follower||33602365||33602000
+Ancestral Follower 2||33600265||33600000
+Ancestral Follower 3||33600565||33600600
+Ancestral Follower 4||33601065||33601100
+Ancestral Follower 5||33601265||33601100
+Ancestral Follower 6||33601365||33601100
+Ancestral Follower 7||33602265||33602000
+Ancestral Follower 8||33602365||33602000
 Ancestral Follower (Siofra River)||33605064||33600000
-Ancestral Follower (Siofra River)||33605264||33600100
-Ancestral Follower (Siofra River)||33605564||33600664
-Ancestral Follower (Siofra River)||33605764||33600664
-Ancestral Follower (Siofra River)||33606064||33601000
-Ancestral Follower (Siofra River)||33606264||33601000
-Ancestral Follower (Siofra River)||33607064||33602000
-Ancestral Follower (Siofra River)||33607264||33602000
+Ancestral Follower (Siofra River) 2||33605264||33600100
+Ancestral Follower (Siofra River) 3||33605564||33600664
+Ancestral Follower (Siofra River) 4||33605764||33600664
+Ancestral Follower (Siofra River) 5||33606064||33601000
+Ancestral Follower (Siofra River) 6||33606264||33601000
+Ancestral Follower (Siofra River) 7||33607064||33602000
+Ancestral Follower (Siofra River) 8||33607264||33602000
 
 --Ancestral Follower Shaman
 Ancestral Follower Shaman||33700065||33700000
-Ancestral Follower Shaman||33700265||33700000
-Ancestral Follower Shaman||33700865||33700000
+Ancestral Follower Shaman 2||33700265||33700000
+Ancestral Follower Shaman 3||33700865||33700000
 
 --Grave Warden Duelist
 Grave Warden Duelist||34000034||34000000
-Grave Warden Duelist||34000852||34000000
-Putrid Grave Warden Duelist (Boss)||34000952||34000010
-Grave Warden Duelist||34001034||34001000
+Grave Warden Duelist 2||34000852||34000000
+Grave Warden Duelist 3||34001034||34001000
 Grave Warden Duelist (Boss)||34001110||34001010
-Grave Warden Duelist||34001852||34001000
+Grave Warden Duelist 4||34001852||34001000
+Putrid Grave Warden Duelist (Boss)||34000952||34000010
 
 --Misbegotten
 Misbegotten||34500034||34500000
-Misbegotten||34501034||34501000
-Misbegotten||34501354||34500000
-Misbegotten||34502030||34501000
+Misbegotten 2||34501034||34501000
+Misbegotten 3||34501354||34500000
+Misbegotten 4||34502030||34501000
 
 --Scaly Misbegotten
 Scaly Misbegotten||34510034||34510000
-Scaly Misbegotten||34510179||34519000
-Scaly Misbegotten||34510354||34510000
+Scaly Misbegotten 2||34510179||34519000
+Scaly Misbegotten 3||34510354||34510000
 Scaly Misbegotten (Boss)||34510912||34510000
 
 --Leonine Misbegotten
 Leonine Misbegotten||34600034||34600020
 Misbegotten Warrior||34600930||34600900
-Misbegotten Warrior||34601952||34600000
+Misbegotten Warrior 2||34601952||34600000
 
 --Albinauric
 Albinauric||34700020||34700000
-Albinauric||34700120||34700000
+Albinauric 2||34700120||34700000
 Red Albinauric||34700268||34700500
-Albinauric||34700352||34700000
-Albinauric||34700452||34700000
-Albinauric||34701020||34701000
-Albinauric||34701120||34701000
-Red Albinauric||34701468||34701500
-Albinauric||34701552||34701000
-Albinauric||34701652||34701000
-Albinauric||34702120||34702000
-Albinauric||34702320||34702000
-Red Albinauric||34702468||34702500
-Albinauric||34702552||34702000
-Red Albinauric||34703068||34703000
-Albinauric||34703252||34703000
-Albinauric||34704020||34704000
-Albinauric||34704120||34704000
-Red Albinauric||34704268||34704000
-Albinauric||34704352||34704000
+Albinauric 3||34700352||34700000
+Albinauric 4||34700452||34700000
+Albinauric 5||34701020||34701000
+Albinauric 6||34701120||34701000
+Red Albinauric 2||34701468||34701500
+Albinauric 7||34701552||34701000
+Albinauric 8||34701652||34701000
+Albinauric 9||34702120||34702000
+Albinauric 10||34702320||34702000
+Red Albinauric 3||34702468||34702500
+Albinauric 11||34702552||34702000
+Red Albinauric 4||34703068||34703000
+Albinauric 12||34703252||34703000
+Albinauric 13||34704020||34704000
+Albinauric 14||34704120||34704000
+Red Albinauric 5||34704268||34704000
+Albinauric 15||34704352||34704000
 
 --Large Albinauric
 Large Albinauric||34715120||34705000
 Large Red Albinauric||34715268||34705052
-Large Albinauric||34715352||34705052
+Large Albinauric 2||34715352||34705052
 
 --Skeleton
 Skeleton (Curved Sword)||35000034||35000000
-Skeleton (Curved Sword)||35000172||35000000
-Skeleton (Curved Sword)||35000733||35000000
-Skeleton (Curved Sword)||35001030||35001020
-Skeleton (Curved Sword)||35001172||35001020
-Skeleton (Curved Sword)||35001733||35001021
-Skeleton (Curved Sword)||35002020||35002000
-Skeleton (Curved Sword)||35002172||35002000
-Skeleton (Curved Sword)||35002733||35002000
-Skeleton (Curved Sword)||35003032||35003000
-Skeleton (Curved Sword)||35003172||35003000
-Skeleton (Curved Sword)||35003733||35003000
-Skeleton (Curved Sword)||35004030||35004000
-Skeleton (Curved Sword)||35004172||35004000
-Skeleton (Curved Sword)||35004733||35004000
-Skeleton (Curved Sword)||35005020||35000000
-Skeleton (Curved Sword)||35006010||35001000
-Skeleton (Curved Sword)||35007020||35002000
-Skeleton (Curved Sword)||35008020||35003000
+Skeleton (Curved Sword) 2||35000172||35000000
+Skeleton (Curved Sword) 3||35000733||35000000
+Skeleton (Curved Sword) 4||35001030||35001020
+Skeleton (Curved Sword) 5||35001172||35001020
+Skeleton (Curved Sword) 6||35001733||35001021
+Skeleton (Curved Sword) 7||35002020||35002000
+Skeleton (Curved Sword) 8||35002172||35002000
+Skeleton (Curved Sword) 9||35002733||35002000
+Skeleton (Curved Sword) 10||35003032||35003000
+Skeleton (Curved Sword) 11||35003172||35003000
+Skeleton (Curved Sword) 12||35003733||35003000
+Skeleton (Curved Sword) 13||35004030||35004000
+Skeleton (Curved Sword) 14||35004172||35004000
+Skeleton (Curved Sword) 15||35004733||35004000
+Skeleton (Curved Sword) 16||35005020||35000000
+Skeleton (Curved Sword) 17||35006010||35001000
+Skeleton (Curved Sword) 18||35007020||35002000
+Skeleton (Curved Sword) 19||35008020||35003000
 Skeleton (Scimitar)||35100012||35100000
-Skeleton (Scimitar)||35100112||35100100
+Skeleton (Scimitar) 2||35100112||35100100
 Skeleton (Scimitar) (Boss)||35100920||35100100
-Skeleton (Scimitar)||35101012||35101000
-Skeleton (Scimitar) (Boss)||35101920||35101000
-Skeleton (Scimitar)||35102012||35102000
-Skeleton (Scimitar) (Boss)||35102920||35102010
-Skeleton (Scimitar)||35103012||35103000
+Skeleton (Scimitar) 3||35101012||35101000
+Skeleton (Scimitar) (Boss) 2||35101920||35101000
+Skeleton (Scimitar) 4||35102012||35102000
+Skeleton (Scimitar) (Boss) 3||35102920||35102010
+Skeleton (Scimitar) 5||35103012||35103000
 
 --Sanguine Noble
 Sanguine Noble||35500068||35500000
@@ -409,7 +409,7 @@ Godskin Apostle {Godskin Duo)||35600172||35600100
 --Godskin Noble
 Godskin Noble||35700038||35700900
 Godskin Noble (Godskin Duo)||35700172||35700100
-Godskin Noble||35700950||35700910
+Godskin Noble 2||35700950||35700910
 
 --Onyx/Alabaster Lord
 Onyx Lord||36000062||36000062
@@ -427,41 +427,41 @@ Giant Oracle Envoy||36300054||36300000
 
 --Erdtree Guardian
 Erdtree Guardian||36500034||36500000
-Erdtree Guardian||36501034||36500000
-Erdtree Guardian||36501833||36500000
-Erdtree Guardian||36502040||36500100
+Erdtree Guardian 2||36501034||36500000
+Erdtree Guardian 3||36501833||36500000
+Erdtree Guardian 4||36502040||36500100
 
 --Commoner
 Commoner||36600014||36600000
-Commoner||36600114||36600040
-Commoner||36600620||36600000
-Commoner||36600733||36600600
-Commoner||36600838||36600000
-Commoner||36601030||36601000
-Commoner||36601220||36601000
-Commoner||36601438||36601000
-Commoner||36602152||36602500
-Commoner||36602338||36602000
-Commoner||36603020||36603000
-Commoner||36608033||36608000
-Commoner||36609165||36600000
+Commoner 2||36600114||36600040
+Commoner 3||36600620||36600000
+Commoner 4||36600733||36600600
+Commoner 5||36600838||36600000
+Commoner 6||36601030||36601000
+Commoner 7||36601220||36601000
+Commoner 8||36601438||36601000
+Commoner 9||36602152||36602500
+Commoner 10||36602338||36602000
+Commoner 11||36603020||36603000
+Commoner 12||36608033||36608000
+Commoner 13||36609165||36600000
 
 --Putrid Corpse
 Putrid Corpse||36610034||36610000
-Putrid Corpse||36610812||36610000
-Putrid Corpse||36611035||36610000
-Putrid Corpse||36612040||36610100
-Putrid Corpse||36612132||36610100
-Putrid Corpse||36613054||36610000
-Putrid Corpse||36613154||36610000
-Putrid Corpse||36613254||36610000
-Putrid Corpse||36614024||36610000
-Putrid Corpse||36615068||36615000
-Putrid Corpse||36616040||36610000
+Putrid Corpse 2||36610812||36610000
+Putrid Corpse 3||36611035||36610000
+Putrid Corpse 4||36612040||36610100
+Putrid Corpse 5||36612132||36610100
+Putrid Corpse 6||36613054||36610000
+Putrid Corpse 7||36613154||36610000
+Putrid Corpse 8||36613254||36610000
+Putrid Corpse 9||36614024||36610000
+Putrid Corpse 10||36615068||36615000
+Putrid Corpse 11||36616040||36610000
 Scarlet Putrid Corpse||36621035||36620000
-Scarlet Putrid Corpse||36622040||36620100
-Scarlet Putrid Corpse||36624024||36620000
-Scarlet Putrid Corpse||36626040||36620000
+Scarlet Putrid Corpse 2||36622040||36620100
+Scarlet Putrid Corpse 3||36624024||36620000
+Scarlet Putrid Corpse 4||36626040||36620000
 
 --Cemetery Shade
 Cemetery Shade||36640012||36640912
@@ -469,54 +469,54 @@ Cemetery Shade (Boss)||36640920||36640920
 
 --Gatekeeper Gostoc
 Gatekeeper Gostoc||36650014||36650000
-Gatekeeper Gostoc||36650114||36650000
-Gatekeeper Gostoc||36650214||36650000
-Gatekeeper Gostoc||36650314||36650000
-Gatekeeper Gostoc||36650414||36650000
-Gatekeeper Gostoc||36650514||36650000
-Gatekeeper Gostoc||36650614||36650000
+Gatekeeper Gostoc 2||36650114||36650000
+Gatekeeper Gostoc 3||36650214||36650000
+Gatekeeper Gostoc 4||36650314||36650000
+Gatekeeper Gostoc 5||36650414||36650000
+Gatekeeper Gostoc 6||36650514||36650000
+Gatekeeper Gostoc 7||36650614||36650000
 
 --The Noble Goldmask
 The Noble Goldmask||36660034||36660000
 
 --Albinauric Lookout
 Albinauric Lookout||36700120||36700000
-Albinauric Lookout||36701038||36701100
-Albinauric Lookout||36701138||36701120
-Albinauric Lookout||36702038||36702000
-Albinauric Lookout||36702138||36702100
-Albinauric Lookout||36702238||36702200
-Albinauric Lookout||36703034||36703000
-Albinauric Lookout||36704020||36704000
-Albinauric Lookout||36708020||36708000
-Albinauric Lookout||36709020||36709000
-Albinauric Lookout||36709920||36709000
+Albinauric Lookout 2||36701038||36701100
+Albinauric Lookout 3||36701138||36701120
+Albinauric Lookout 4||36702038||36702000
+Albinauric Lookout 5||36702138||36702100
+Albinauric Lookout 6||36702238||36702200
+Albinauric Lookout 7||36703034||36703000
+Albinauric Lookout 8||36704020||36704000
+Albinauric Lookout 9||36708020||36708000
+Albinauric Lookout 10||36709020||36709000
+Albinauric Lookout 11||36709920||36709000
 
 --Depraved Perfumer
 Depraved Perfumer||37000020||37000020
 Depraved Perfumer (Shaded Castle)||37001031||37000000
 White Veil Perfumer ||37010034||37010000
 White Veil Perfumer||37010830||37010000
-White Veil Perfumer||37011034||37010000
+White Veil Perfumer 2||37011034||37010000
 White Veil Perfumer (Boss)||37011930||37010900
 
 --Raya Lucaria Scholar
 Raya Lucaria Scholar||37020024||37020000
 Glintstone Raya Lucaria Scholar||37021024||37020000
-Glintstone Raya Lucaria Scholar||37021140||37020000
+Glintstone Raya Lucaria Scholar 2||37021140||37020000
 Lazuli Raya Lucaria Scholar||37022024||37020000
-Lazuli Raya Lucaria Scholar||37022140||37020000
+Lazuli Raya Lucaria Scholar 2||37022140||37020000
 Twinsage Raya Lucaria Scholar||37023024||37020000
-Twinsage Raya Lucaria Scholar||37023140||37020000
-Raya Lucaria Scholar||37024024||37020000
+Twinsage Raya Lucaria Scholar 2||37023140||37020000
+Raya Lucaria Scholar 2||37024024||37020000
 
 --Page
 Page||37030034||37030000
-Page||37031034||37030000
+Page 2||37031034||37030000
 
 --Battlemage
 Battlemage||37040054||37040020
-Battlemage||37040830||37040000
+Battlemage 2||37040830||37040000
 Battlemage Hugues (Boss)||37040940||37040900
 
 --Primeval Sorcerer
@@ -525,55 +525,55 @@ Primeval Sorcerer Lusat||37200040||37200000
 
 --Graven School
 Graven School||37300020||37300000
-Graven School||37300120||37300000
+Graven School 2||37300120||37300000
 Graven School - NPC||37301024||37300000
 
 --Clayman
 Clayman||37500060||37500100
 Clayman (Ainsel River)||37501060||37501100
-Clayman (Ainsel River)||37502060||37502100
+Clayman (Ainsel River) 2||37502060||37502100
 
 --Cleanrot Knight
 Cleanrot Knight||38000056||38000000
 Mausoleum Cleanrot Knight||38000142||38000000
-Mausoleum Cleanrot Knight||38000242||38000010
+Mausoleum Cleanrot Knight 2||38000242||38000010
 Cleanrot Knight (Boss)||38000920||38000000
-Cleanrot Knight||38001056||38001000
-Cleanrot Knight (Boss)||38001940||38001000
+Cleanrot Knight 2||38001056||38001000
+Cleanrot Knight (Boss) 2||38001940||38001000
 
 --Kindred of Rot
 Kindred of Rot||38100062||38100000
 Kindred of Rot (Boss)||38100932||38100000
-Kindred of Rot||38101040||38101000
-Kindred of Rot (Boss)||38102932||38100000
-Kindred of Rot||38103056||38100010
-Kindred of Rot||38109040||38100000
+Kindred of Rot 2||38101040||38101000
+Kindred of Rot (Boss) 2||38102932||38100000
+Kindred of Rot 3||38103056||38100010
+Kindred of Rot 4||38109040||38100000
 
 --Marionette
 Marionette||38500024||38500000
-Marionette||38501024||38501000
-Marionette||38501140||38501000
-Marionette||38501240||38501000
-Marionette||38502024||38502000
+Marionette 2||38501024||38501000
+Marionette 3||38501140||38501000
+Marionette 4||38501240||38501000
+Marionette 5||38502024||38502000
 
 --Avionette
 Avionette||38600030||38600000
-Avionette||38600150||38600000
-Avionette||38600632||38600500
-Avionette||38601024||38601001
-Avionette||38601532||38601001
+Avionette 2||38600150||38600000
+Avionette 3||38600632||38600500
+Avionette 4||38601024||38601001
+Avionette 5||38601532||38601001
 
 --Fire Monk
 Fire Monk||39000050||39000000
-Fire Monk||39001050||39001000
+Fire Monk 2||39001050||39001000
 Godskin Monk||39010038||39010000
-Godskin Monk||39011042||39011000
+Godskin Monk 2||39011042||39011000
 
 --Fire Prelate
 Fire Prelate||39100032||39100000
-Fire Prelate||39100150||39100100
-Fire Prelate||39100250||39100100
-Fire Prelate||39101150||39101100
+Fire Prelate 2||39100150||39100100
+Fire Prelate 3||39100250||39100100
+Fire Prelate 4||39101150||39101100
 
 --Man-Serpent
 Man-Serpent - Whip Cool||39500038||39500000
@@ -582,44 +582,44 @@ Man-Serpent - Magma Blade Cool||39502038||39502000
 Man-Serpent - Magma Blade Hot||39503038||39502000
 Man-Serpent - Egghead||39504038||39504000
 Zorayas the Scout||39509038||39509000
-Zorayas the Scout||39509138||39509000
+Zorayas the Scout 2||39509138||39509000
 
 --Beastman of Farum Azula
 Beastman of Farum Azula||39700072||39700000
-Beastman of Farum Azula||39700172||39700000
-Beastman of Farum Azula||39700272||39700000
-Beastman of Farum Azula||39700372||39700000
-Beastman of Farum Azula||39700472||39700000
+Beastman of Farum Azula 2||39700172||39700000
+Beastman of Farum Azula 3||39700272||39700000
+Beastman of Farum Azula 4||39700372||39700000
+Beastman of Farum Azula 5||39700472||39700000
 Beastman of Farum Azula - Armored||39701072||39701000
-Beastman of Farum Azula - Armored||39701172||39701000
-Beastman of Farum Azula - Armored||39701272||39701000
+Beastman of Farum Azula - Armored 2||39701172||39701000
+Beastman of Farum Azula - Armored 3||39701272||39701000
 Beastman of Farum Azula - Armored (Limgrave Cave Boss)||39701910||39701100
-Beastman of Farum Azula||39702072||39702000
-Beastman of Farum Azula||39702172||39702000
-Beastman of Farum Azula||39702272||39702000
-Beastman of Farum Azula||39702372||39702000
+Beastman of Farum Azula 6||39702072||39702000
+Beastman of Farum Azula 7||39702172||39702000
+Beastman of Farum Azula 8||39702272||39702000
+Beastman of Farum Azula 9||39702372||39702000
 Beastman of Farum Azula (Boss)||39702942||39702000
-Beastman of Farum Azula||39703072||39703300
-Beastman of Farum Azula||39703172||39703100
+Beastman of Farum Azula 10||39703072||39703300
+Beastman of Farum Azula 11||39703172||39703100
 
 --Royal Revenant Follower
 Royal Revenant Follower||40000030||40000000
-Royal Revenant Follower||40000120||40000000
-Royal Revenant Follower||40001030||40001000
+Royal Revenant Follower 2||40000120||40000000
+Royal Revenant Follower 3||40001030||40001000
 
 --Royal Revenant
 Royal Revenant (Boss)||40200920||40200000
 Royal Revenant||40208056||40200000
-Royal Revenant||40208156||40200000
-Royal Revenant||40208256||40200000
-Royal Revenant||40208356||40200000
-Royal Revenant||40208456||40200000
+Royal Revenant 2||40208156||40200000
+Royal Revenant 3||40208256||40200000
+Royal Revenant 4||40208356||40200000
+Royal Revenant 5||40208456||40200000
 
 --Slug
 Slug||40400035||40400100
-Slug||40401038||40400000
-Slug||40402030||40400000
-Slug||40403020||40400000
+Slug 2||40401038||40400000
+Slug 3||40402030||40400000
+Slug 4||40403020||40400000
 
 --Kaiden Sellsword
 Kaiden Sellsword||40500010||40508100
@@ -629,34 +629,34 @@ Horse||40600010||40600000
 
 --Grey Wolf
 Grey Wolf||40700010||40703000
-Grey Wolf||40700165||40700100
-Grey Wolf||40700550||40700000
-Grey Wolf||40702012||40700600
-Grey Wolf||40708024||40708000
+Grey Wolf 2||40700165||40700100
+Grey Wolf 3||40700550||40700000
+Grey Wolf 4||40702012||40700600
+Grey Wolf 5||40708024||40708000
 White Wolf||40710010||40703000
-White Wolf||40710550||40700000
+White Wolf 2||40710550||40700000
 
 --Rat
 Rat||40800014||40800000
-Rat||40800212||40800000
-Rat||40800320||40800300
+Rat 2||40800212||40800000
+Rat 3||40800320||40800300
 
 --Giant Rat
 Giant Rat||40900014||40900000
-Giant Rat||40900320||40900300
+Giant Rat 2||40900320||40900300
 
 --Demi-Human
 Demi-Human||41000020||41000000
-Demi-Human||41000910||41000100
-Demi-Human||41001020||41001000
-Demi-Human||41002020||41002200
-Demi-Human||41002910||41002100
+Demi-Human 2||41000910||41000100
+Demi-Human 3||41001020||41001000
+Demi-Human 4||41002020||41002200
+Demi-Human 5||41002910||41002100
 Large Demi-Human||41010020||41010200
 
 --Demi-Human Shaman
 Demi-Human Shaman||41100020||41100000
 Boc the Seamster||41109034||41109000
-Boc the Seamster||41109170||41109000
+Boc the Seamster 2||41109170||41109000
 
 --Demi-Human Chief
 Demi-Human Chief||41200020||41200000
@@ -669,130 +669,130 @@ Demi-Human Queen Margot||41301932||41301000
 
 --Snail
 Snail||41400062||41400000
-Snail||41402054||41400000
+Snail 2||41402054||41400000
 Spiritcaller Snail||41402920||41402000
 Snail (3)||41403033||41403000
-Snail (3)||41403930||41403000
+Snail (3) 2||41403930||41403000
 Snail (4)||41404020||41404000
 
 --Basilisk
 Basilisk||41500060||41500000
-Basilisk||41500862||41500100
+Basilisk 2||41500862||41500100
 
 --Dog
 Dog||41600014||41600000
-Dog||41601020||41600000
-Dog||41602050||41600000
+Dog 2||41601020||41600000
+Dog 3||41602050||41600000
 Starved Dog||41610014||41610000
-Starved Dog||41610220||41610000
-Starved Dog||41610350||41610000
+Starved Dog 2||41610220||41610000
+Starved Dog 3||41610350||41610000
 Large Braided Dog||41620072||41620000
 Braided Dog||41630072||41630000
 Rotten Dog||41640830||41640000
-Rotten Dog||41650068||41650000
-Rotten Dog||41650830||41650000
+Rotten Dog 2||41650068||41650000
+Rotten Dog 3||41650830||41650000
 Rotten Dog (Boss)||41650935||41650000
 Large Mushroom Dog||41660040||41660000
 Mushroom Dog||41670040||41670000
 
 --Small Living Mass
 Small Living Mass||41700032||41700000
-Small Living Mass||41700130||41700000
-Small Living Mass||41700240||41700000
-Small Living Mass||41700312||41700000
+Small Living Mass 2||41700130||41700000
+Small Living Mass 3||41700240||41700000
+Small Living Mass 4||41700312||41700000
 
 --Giant Living Mass
 Giant Living Mass||41710468||41710010
 
 --Spirit Jellyfish
 Spirit Jellyfish||41800065||41800000
-Spirit Jellyfish||41800152||41800000
-Spirit Jellyfish||41800852||41800000
-Spirit Jellyfish||41801013||41800000
-Spirit Jellyfish||41809050||41809000
+Spirit Jellyfish 2||41800152||41800000
+Spirit Jellyfish 3||41800852||41800000
+Spirit Jellyfish 4||41801013||41800000
+Spirit Jellyfish 5||41809050||41809000
 
 --Tear Scarab
 Tear Scarab||41910065||41910000
-Tear Scarab||41911062||41910000
-Tear Scarab||41912014||41910000
-Tear Scarab||41912220||41910000
-Tear Scarab||41913014||41910000
-Tear Scarab||41914034||41910000
-Tear Scarab||41914212||41910000
-Tear Scarab||41915062||41910000
-Tear Scarab||41915150||41910000
-Tear Scarab||41915220||41910000
+Tear Scarab 2||41911062||41910000
+Tear Scarab 3||41912014||41910000
+Tear Scarab 4||41912220||41910000
+Tear Scarab 5||41913014||41910000
+Tear Scarab 6||41914034||41910000
+Tear Scarab 7||41914212||41910000
+Tear Scarab 8||41915062||41910000
+Tear Scarab 9||41915150||41910000
+Tear Scarab 10||41915220||41910000
 Large Tear Scarab||41900052||41900000
-Large Tear Scarab||41902032||41900000
-Large Tear Scarab||41905052||41900000
+Large Tear Scarab 2||41902032||41900000
+Large Tear Scarab 3||41905052||41900000
 Giant Scarab||41920040||41920000
-Giant Scarab||41921040||41920000
-Giant Scarab||41922020||41920000
-Giant Scarab||41925050||41920000
-Giant Scarab||41925250||41920000
+Giant Scarab 2||41921040||41920000
+Giant Scarab 3||41922020||41920000
+Giant Scarab 4||41925050||41920000
+Giant Scarab 5||41925250||41920000
 
 --Giant/Old Woman Bat
 Giant Bat||42000014||42000100
-Giant Bat||42000138||42000000
-Giant Bat||42000210||42000200
-Giant Bat||42001050||42000000
-Giant Bat||42001150||42000000
+Giant Bat 2||42000138||42000000
+Giant Bat 3||42000210||42000200
+Giant Bat 4||42001050||42000000
+Giant Bat 5||42001150||42000000
 Old Woman Bat||42017020||42010000
-Old Woman Bat||42017426||42010000
-Old Woman Bat||42017526||42010000
-Old Woman Bat||42017640||42010000
-Old Woman Bat||42017740||42010000
-Old Woman Bat||42017840||42010000
-Old Woman Bat||42018026||42011000
+Old Woman Bat 2||42017426||42010000
+Old Woman Bat 3||42017526||42010000
+Old Woman Bat 4||42017640||42010000
+Old Woman Bat 5||42017740||42010000
+Old Woman Bat 6||42017840||42010000
+Old Woman Bat 7||42018026||42011000
 
 --Warhawk
 Warhawk||42100014||42100100
-Warhawk||42100114||42100000
-Warhawk||42101014||42100000
-Warhawk||42101114||42100100
-Warhawk||42101214||42100200
-Warhawk||42102072||42100000
-Warhawk||42103050||42100000
-Warhawk||42104551||42100000
+Warhawk 2||42100114||42100000
+Warhawk 3||42101014||42100000
+Warhawk 4||42101114||42100100
+Warhawk 5||42101214||42100200
+Warhawk 6||42102072||42100000
+Warhawk 7||42103050||42100000
+Warhawk 8||42104551||42100000
 
 --Land Octopus
 Giant Land Octopus||42200064||42200000
 Small Land Octopus||42300064||42300000
-Small Land Octopus||42300830||42300000
+Small Land Octopus 2||42300830||42300000
 
 --Fingercreeper
 Giant Fingercreeper||42410150||42410050
 Large Fingercreeper||42405050||42400000
-Large Fingercreeper||42405150||42400000
-Large Fingercreeper||42405250||42400000
-Large Fingercreeper||42405350||42400000
-Large Fingercreeper||42405450||42400000
-Large Fingercreeper||42405550||42400000
-Large Fingercreeper||42405650||42400000
-Large Fingercreeper||42405750||42400000
-Large Fingercreeper||42405850||42400000
-Large Fingercreeper||42406150||42400000
-Large Fingercreeper||42406250||42400000
-Large Fingercreeper||42406350||42400100
-Large Fingercreeper||42406450||42400100
-Large Fingercreeper||42407034||42400000
-Large Fingercreeper||42407121||42400000
-Large Fingercreeper||42407221||42400000
-Large Fingercreeper||42407321||42400000
-Large Fingercreeper||42407421||42400000
-Large Fingercreeper||42407521||42400100
-Large Fingercreeper||42407621||42400000
-Large Fingercreeper||42407721||42400000
-Large Fingercreeper||42407821||42400000
-Large Fingercreeper||42408021||42400000
-Large Fingercreeper||42408121||42400000
-Large Fingercreeper||42408221||42400000
-Large Fingercreeper||42408321||42400000
-Large Fingercreeper||42408421||42400000
-Large Fingercreeper||42408521||42400020
-Large Fingercreeper||42408821||42400000
+Large Fingercreeper 2||42405150||42400000
+Large Fingercreeper 3||42405250||42400000
+Large Fingercreeper 4||42405350||42400000
+Large Fingercreeper 5||42405450||42400000
+Large Fingercreeper 6||42405550||42400000
+Large Fingercreeper 7||42405650||42400000
+Large Fingercreeper 8||42405750||42400000
+Large Fingercreeper 9||42405850||42400000
+Large Fingercreeper 10||42406150||42400000
+Large Fingercreeper 11||42406250||42400000
+Large Fingercreeper 12||42406350||42400100
+Large Fingercreeper 13||42406450||42400100
+Large Fingercreeper 14||42407034||42400000
+Large Fingercreeper 15||42407121||42400000
+Large Fingercreeper 16||42407221||42400000
+Large Fingercreeper 17||42407321||42400000
+Large Fingercreeper 18||42407421||42400000
+Large Fingercreeper 19||42407521||42400100
+Large Fingercreeper 20||42407621||42400000
+Large Fingercreeper 21||42407721||42400000
+Large Fingercreeper 22||42407821||42400000
+Large Fingercreeper 23||42408021||42400000
+Large Fingercreeper 24||42408121||42400000
+Large Fingercreeper 25||42408221||42400000
+Large Fingercreeper 26||42408321||42400000
+Large Fingercreeper 27||42408421||42400000
+Large Fingercreeper 28||42408521||42400020
+Large Fingercreeper 29||42408821||42400000
 Small Fingercreeper||42500034||42500000
-Small Fingercreeper||42500150||42500000
+Small Fingercreeper 2||42500150||42500000
 
 --Burial Watchdog
 Burial Watchdog||42600110||42600000
@@ -801,172 +801,172 @@ Burial Watchdog (Minor Erdtree Catacombs)||42600940||42600000
 Burial Watchdog (Cliffbottom Catacombs)||42601920||42601000
 Burial Watchdog (Wyndham Catacombs)||42602932||42600000
 Erdtree Burial Watchdog||42604150||42600200
-Erdtree Burial Watchdog||42604650||42600200
-Erdtree Burial Watchdog||42605150||42600200
+Erdtree Burial Watchdog 2||42604650||42600200
+Erdtree Burial Watchdog 3||42605150||42600200
 
 --Lion Guardian
 Lion Guardian||42700014||42700100
-Lion Guardian||42701051||42701000
+Lion Guardian 2||42701051||42701000
 
 --Giant Ant
 Giant Ant||42800060||42800000
 Giant Ant (Ainsel River)||42800160||42800100
-Giant Ant (Ainsel River)||42800360||42801000
-Giant Ant||42800462||42800000
-Giant Ant||42800566||42800000
-Giant Ant||42800862||42800100
+Giant Ant (Ainsel River) 2||42800360||42801000
+Giant Ant 2||42800462||42800000
+Giant Ant 3||42800566||42800000
+Giant Ant 4||42800862||42800100
 Giant Ant - Shield||42801162||42800000
 Giant Ant - Sac||42810062||42800000
 
 --Bloodhound Knight
 Bloodhound Knight Darriwil||42900010||42900030
 Bloodhound Knight||42900138||42900000
-Bloodhound Knight||42900220||42900020
+Bloodhound Knight 2||42900220||42900020
 Bloodhound Knight (Boss)||42900920||42900000
-Bloodhound Knight||42909024||42909000
+Bloodhound Knight 3||42909024||42909000
 
 --Wandering Noble
 Wandering Noble||43000024||43000000
-Wandering Noble||43000110||43000500
-Wandering Noble||43000210||43000500
-Wandering Noble||43000320||43000000
-Wandering Noble||43000410||43000000
-Wandering Noble||43001024||43001000
-Wandering Noble||43001120||43001000
-Wandering Noble||43001230||43001000
-Wandering Noble||43001528||43001000
-Wandering Noble||43002024||43002000
-Wandering Noble||43002110||43002010
-Wandering Noble||43002220||43002010
-Wandering Noble||43002322||43002010
-Wandering Noble||43002410||43002000
-Wandering Noble||43003010||43003600
-Wandering Noble||43004030||43004000
-Wandering Noble||43004130||43004000
-Wandering Noble||43005024||43005000
-Wandering Noble||43005152||43005000
-Wandering Noble||43005252||43005000
-Wandering Noble||43006024||43006000
-Wandering Noble||43006130||43006000
-Wandering Noble||43006252||43006000
-Wandering Noble||43006352||43007000
-Wandering Noble||43006638||43006000
-Wandering Noble||43006838||43006000
-Wandering Noble||43007020||43006100
-Wandering Noble||43007120||43007000
+Wandering Noble 2||43000110||43000500
+Wandering Noble 3||43000210||43000500
+Wandering Noble 4||43000320||43000000
+Wandering Noble 5||43000410||43000000
+Wandering Noble 6||43001024||43001000
+Wandering Noble 7||43001120||43001000
+Wandering Noble 8||43001230||43001000
+Wandering Noble 9||43001528||43001000
+Wandering Noble 10||43002024||43002000
+Wandering Noble 11||43002110||43002010
+Wandering Noble 12||43002220||43002010
+Wandering Noble 13||43002322||43002010
+Wandering Noble 14||43002410||43002000
+Wandering Noble 15||43003010||43003600
+Wandering Noble 16||43004030||43004000
+Wandering Noble 17||43004130||43004000
+Wandering Noble 18||43005024||43005000
+Wandering Noble 19||43005152||43005000
+Wandering Noble 20||43005252||43005000
+Wandering Noble 21||43006024||43006000
+Wandering Noble 22||43006130||43006000
+Wandering Noble 23||43006252||43006000
+Wandering Noble 24||43006352||43007000
+Wandering Noble 25||43006638||43006000
+Wandering Noble 26||43006838||43006000
+Wandering Noble 27||43007020||43006100
+Wandering Noble 28||43007120||43007000
 
 --Soldier
 Godrick Soldier||43110010||43110010
-Godrick Soldier||43111110||43111100
-Godrick Soldier||43111210||43110120
-Godrick Soldier||43111306||43110200
-Godrick Soldier||43112010||43112000
-Godrick Soldier||43112110||43112100
-Godrick Soldier||43113010||43113000
+Godrick Soldier 2||43111110||43111100
+Godrick Soldier 3||43111210||43110120
+Godrick Soldier 4||43111306||43110200
+Godrick Soldier 5||43112010||43112000
+Godrick Soldier 6||43112110||43112100
+Godrick Soldier 7||43113010||43113000
 Soldier of Godrick (Boss)||43113906||43113900
-Godrick Soldier||43114006||43114006
+Godrick Soldier 8||43114006||43114006
 Raya Lucaria Soldier||43120028||43120010
-Raya Lucaria Soldier||43120120||43120100
-Raya Lucaria Soldier||43120320||43120000
-Raya Lucaria Soldier||43121020||43121000
-Raya Lucaria Soldier||43121120||43121100
-Raya Lucaria Soldier||43121321||43121020
-Raya Lucaria Soldier||43122021||43122010
-Raya Lucaria Soldier||43123028||43123010
+Raya Lucaria Soldier 2||43120120||43120100
+Raya Lucaria Soldier 3||43120320||43120000
+Raya Lucaria Soldier 4||43121020||43121000
+Raya Lucaria Soldier 5||43121120||43121100
+Raya Lucaria Soldier 6||43121321||43121020
+Raya Lucaria Soldier 7||43122021||43122010
+Raya Lucaria Soldier 8||43123028||43123010
 Leyndell Soldier ||43130034||43130000
 Leyndell Soldier||43130132||43130100
-Leyndell Soldier||43130234||43130000
-Leyndell Soldier||43130334||43130000
-Leyndell Soldier||43130435||43130000
-Leyndell Soldier||43131032||43131000
-Leyndell Soldier||43131130||43131100
-Leyndell Soldier||43131330||43131000
-Leyndell Soldier||43132034||43132000
-Leyndell Soldier||43133034||43133000
-Leyndell Soldier||43134232||43130000
-Leyndell Soldier||43135032||43131000
-Leyndell Soldier||43136032||43132000
+Leyndell Soldier 2||43130234||43130000
+Leyndell Soldier 3||43130334||43130000
+Leyndell Soldier 4||43130435||43130000
+Leyndell Soldier 5||43131032||43131000
+Leyndell Soldier 6||43131130||43131100
+Leyndell Soldier 7||43131330||43131000
+Leyndell Soldier 8||43132034||43132000
+Leyndell Soldier 9||43133034||43133000
+Leyndell Soldier 10||43134232||43130000
+Leyndell Soldier 11||43135032||43131000
+Leyndell Soldier 12||43136032||43132000
 Radahn Soldier||43140040||43140000
-Radahn Soldier||43140140||43140100
-Radahn Soldier||43140240||43140000
-Radahn Soldier||43140340||43140010
-Radahn Soldier||43140542||43140000
-Radahn Soldier||43140642||43140900
-Radahn Soldier||43141040||43141000
-Radahn Soldier||43141140||43141100
-Radahn Soldier||43141342||43141020
-Radahn Soldier||43142040||43142000
-Radahn Soldier||43142142||43140000
-Radahn Soldier||43142242||43142000
-Radahn Soldier||43143040||43143000
-Radahn Soldier||43143242||43143000
+Radahn Soldier 2||43140140||43140100
+Radahn Soldier 3||43140240||43140000
+Radahn Soldier 4||43140340||43140010
+Radahn Soldier 5||43140542||43140000
+Radahn Soldier 6||43140642||43140900
+Radahn Soldier 7||43141040||43141000
+Radahn Soldier 8||43141140||43141100
+Radahn Soldier 9||43141342||43141020
+Radahn Soldier 10||43142040||43142000
+Radahn Soldier 11||43142142||43140000
+Radahn Soldier 12||43142242||43142000
+Radahn Soldier 13||43143040||43143000
+Radahn Soldier 14||43143242||43143000
 Mausoleum Soldier||43150066||43150000
-Mausoleum Soldier||43150366||43150000
-Mausoleum Soldier||43151066||43151000
-Mausoleum Soldier||43151366||43151000
-Mausoleum Soldier||43152066||43152000
-Mausoleum Soldier||43153066||43153000
+Mausoleum Soldier 2||43150366||43150000
+Mausoleum Soldier 3||43151066||43151000
+Mausoleum Soldier 4||43151366||43151000
+Mausoleum Soldier 5||43152066||43152000
+Mausoleum Soldier 6||43153066||43153000
 Haligtree Soldier||43160056||43160000
-Haligtree Soldier||43160156||43160100
-Haligtree Soldier||43160256||43160000
-Haligtree Soldier||43160356||43160000
-Haligtree Soldier||43160556||43160000
-Haligtree Soldier||43160656||43160100
-Haligtree Soldier||43160856||43160000
-Haligtree Soldier||43161056||43161000
-Haligtree Soldier||43161156||43161100
-Haligtree Soldier||43161556||43160000
-Haligtree Soldier||43161656||43161100
-Haligtree Soldier||43162056||43162000
-Haligtree Soldier||43162556||43162000
-Haligtree Soldier||43163056||43163000
-Haligtree Soldier||43163556||43163000
+Haligtree Soldier 2||43160156||43160100
+Haligtree Soldier 3||43160256||43160000
+Haligtree Soldier 4||43160356||43160000
+Haligtree Soldier 5||43160556||43160000
+Haligtree Soldier 6||43160656||43160100
+Haligtree Soldier 7||43160856||43160000
+Haligtree Soldier 8||43161056||43161000
+Haligtree Soldier 9||43161156||43161100
+Haligtree Soldier 10||43161556||43160000
+Haligtree Soldier 11||43161656||43161100
+Haligtree Soldier 12||43162056||43162000
+Haligtree Soldier 13||43162556||43162000
+Haligtree Soldier 14||43163056||43163000
+Haligtree Soldier 15||43163556||43163000
 
 --Vulgar Militia
 Vulgar Militia||43210040||43210000
-Vulgar Militia||43210152||43210100
-Vulgar Militia||43211040||43211000
-Vulgar Militia||43211152||43210100
-Vulgar Militia||43212033||43212000
-Vulgar Militia||43212152||43210100
+Vulgar Militia 2||43210152||43210100
+Vulgar Militia 3||43211040||43211000
+Vulgar Militia 4||43211152||43210100
+Vulgar Militia 5||43212033||43212000
+Vulgar Militia 6||43212152||43210100
 
 --Mad Pumpkin Head
 Mad Pumpkin Head||43400020||43400000
-Mad Pumpkin Head||43400430||43400000
+Mad Pumpkin Head 2||43400430||43400000
 Mad Pumpkin Head (Flail)||43400910||43400110
-Mad Pumpkin Head||43401024||43401000
-Mad Pumpkin Head||43401130||43401100
+Mad Pumpkin Head 3||43401024||43401000
+Mad Pumpkin Head 4||43401130||43401100
 Mad Pumpkin Head (Hammer)||43401940||43401900
 
 --Knight
 Godrick Knight||43510010||43510000
 Godrick Knight (Blood)||43510110||43510000
-Godrick Knight||43511010||43511000
-Godrick Knight||43511112||43511000
+Godrick Knight 2||43511010||43511000
+Godrick Knight 3||43511112||43511000
 Cuckoo Knight||43520020||43520000
-Cuckoo Knight||43521120||43521000
+Cuckoo Knight 2||43521120||43521000
 Leyndell Knight||43530034||43530000
-Leyndell Knight||43530132||43530000
-Leyndell Knight||43531034||43531000
-Leyndell Knight||43531150||43531000
-Leyndell Knight||43531232||43531000
-Leyndell Knight||43531534||43531000
+Leyndell Knight 2||43530132||43530000
+Leyndell Knight 3||43531034||43531000
+Leyndell Knight 4||43531150||43531000
+Leyndell Knight 5||43531232||43531000
+Leyndell Knight 6||43531534||43531000
 Leyndell Knight - Archer||43532034||43532000
 Redmane Knight||43540040||43540000
-Redmane Knight||43540342||43540210
-Redmane Knight||43541040||43541040
-Redmane Knight||43541140||43541000
-Redmane Knight||43541242||43541200
-Redmane Knight||43542040||43542010
-Redmane Knight||43542242||43542300
+Redmane Knight 2||43540342||43540210
+Redmane Knight 3||43541040||43541040
+Redmane Knight 4||43541140||43541000
+Redmane Knight 5||43541242||43541200
+Redmane Knight 6||43542040||43542010
+Redmane Knight 7||43542242||43542300
 Mausoleum Knight||43550066||43550000
-Mausoleum Knight||43551166||43551000
-Mausoleum Knight||43552066||43552100
+Mausoleum Knight 2||43551166||43551000
+Mausoleum Knight 3||43552066||43552100
 Haligtree Knight||43560556||43560000
-Haligtree Knight||43561056||43561000
-Haligtree Knight||43561556||43561000
-Haligtree Knight||43562056||43562000
-Haligtree Knight||43562556||43562000
+Haligtree Knight 2||43561056||43561000
+Haligtree Knight 3||43561556||43561000
+Haligtree Knight 4||43562056||43562000
+Haligtree Knight 5||43562556||43562000
 
 --Knight's Horse
 Godrick Knight's Horse||43610012||43610000
@@ -977,81 +977,81 @@ Mausoleum Knight's Horse||43650066||43650000
 
 --Foot Soldier
 Godrick Foot Soldier||43710010||43710000
-Godrick Foot Soldier||43710510||43710000
-Godrick Foot Soldier||43711012||43710100
-Godrick Foot Soldier||43711510||43710210
-Godrick Foot Soldier||43711712||43710210
-Godrick Foot Soldier||43712010||43710000
-Godrick Foot Soldier||43712510||43710600
-Godrick Foot Soldier||43714012||43710500
-Godrick Foot Soldier||43716010||43711000
+Godrick Foot Soldier 2||43710510||43710000
+Godrick Foot Soldier 3||43711012||43710100
+Godrick Foot Soldier 4||43711510||43710210
+Godrick Foot Soldier 5||43711712||43710210
+Godrick Foot Soldier 6||43712010||43710000
+Godrick Foot Soldier 7||43712510||43710600
+Godrick Foot Soldier 8||43714012||43710500
+Godrick Foot Soldier 9||43716010||43711000
 Raya Lucaria Foot Soldier||43720020||43720000
-Raya Lucaria Foot Soldier||43720520||43720000
-Raya Lucaria Foot Soldier||43721820||43720000
-Raya Lucaria Foot Soldier||43722020||43720000
-Raya Lucaria Foot Soldier||43723020||43720100
-Raya Lucaria Foot Soldier||43724020||43720500
-Raya Lucaria Foot Soldier||43727020||43721500
+Raya Lucaria Foot Soldier 2||43720520||43720000
+Raya Lucaria Foot Soldier 3||43721820||43720000
+Raya Lucaria Foot Soldier 4||43722020||43720000
+Raya Lucaria Foot Soldier 5||43723020||43720100
+Raya Lucaria Foot Soldier 6||43724020||43720500
+Raya Lucaria Foot Soldier 7||43727020||43721500
 Leyndell Foot Soldier||43730032||43730000
-Leyndell Foot Soldier||43730534||43730000
-Leyndell Foot Soldier||43731030||43730100
-Leyndell Foot Soldier||43731530||43730200
-Leyndell Foot Soldier||43731630||43730300
-Leyndell Foot Soldier||43731730||43730200
-Leyndell Foot Soldier||43732030||43730000
-Leyndell Foot Soldier||43732534||43730000
-Leyndell Foot Soldier||43734050||43730500
-Leyndell Foot Soldier||43734535||43730500
-Leyndell Foot Soldier||43736030||43731000
-Leyndell Foot Soldier||43737050||43731550
-Leyndell Foot Soldier||43738032||43730000
+Leyndell Foot Soldier 2||43730534||43730000
+Leyndell Foot Soldier 3||43731030||43730100
+Leyndell Foot Soldier 4||43731530||43730200
+Leyndell Foot Soldier 5||43731630||43730300
+Leyndell Foot Soldier 6||43731730||43730200
+Leyndell Foot Soldier 7||43732030||43730000
+Leyndell Foot Soldier 8||43732534||43730000
+Leyndell Foot Soldier 9||43734050||43730500
+Leyndell Foot Soldier 10||43734535||43730500
+Leyndell Foot Soldier 11||43736030||43731000
+Leyndell Foot Soldier 12||43737050||43731550
+Leyndell Foot Soldier 13||43738032||43730000
 Radahn Foot Soldier||43740040||43740000
-Radahn Foot Soldier||43740342||43740000
-Radahn Foot Soldier||43740540||43740000
-Radahn Foot Soldier||43741040||43740100
-Radahn Foot Soldier||43741441||43740620
-Radahn Foot Soldier||43741541||43740200
-Radahn Foot Soldier||43741841||43740400
-Radahn Foot Soldier||43742042||43740000
-Radahn Foot Soldier||43743040||43740100
-Radahn Foot Soldier||43746040||43741000
-Radahn Foot Soldier||43747040||43741500
+Radahn Foot Soldier 2||43740342||43740000
+Radahn Foot Soldier 3||43740540||43740000
+Radahn Foot Soldier 4||43741040||43740100
+Radahn Foot Soldier 5||43741441||43740620
+Radahn Foot Soldier 6||43741541||43740200
+Radahn Foot Soldier 7||43741841||43740400
+Radahn Foot Soldier 8||43742042||43740000
+Radahn Foot Soldier 9||43743040||43740100
+Radahn Foot Soldier 10||43746040||43741000
+Radahn Foot Soldier 11||43747040||43741500
 Mausoleum Foot Soldier||43751052||43750100
 Haligtree Foot Soldier||43760056||43760000
-Haligtree Foot Soldier||43761756||43760200
-Haligtree Foot Soldier||43766056||43761000
-Haligtree Foot Soldier||43767056||43761500
+Haligtree Foot Soldier 2||43761756||43760200
+Haligtree Foot Soldier 3||43766056||43761000
+Haligtree Foot Soldier 4||43767056||43761500
 
 --Highwayman
 Highwayman||43770012||43770012
-Highwayman||43772012||43770012
-Highwayman||43772512||43770012
+Highwayman 2||43772012||43770012
+Highwayman 3||43772512||43770012
 
 --Starcaller
 Starcaller||43800062||43800000
-Starcaller||43800130||43800000
+Starcaller 2||43800130||43800000
 
 --Bloodthorn Exile
 Bloodthorn Exile||43810032||43810000
-Bloodthorn Exile||43810132||43810100
-Bloodthorn Exile||43810250||43810000
-Bloodthorn Exile||43810350||43810100
-Bloodthorn Exile||43811020||43810100
-Bloodthorn Exile||43811150||43810150
+Bloodthorn Exile 2||43810132||43810100
+Bloodthorn Exile 3||43810250||43810000
+Bloodthorn Exile 4||43810350||43810100
+Bloodthorn Exile 5||43811020||43810100
+Bloodthorn Exile 6||43811150||43810150
 
 --Tunnel Miner
 Tunnel Miner||43820012||43820000
-Tunnel Miner||43820140||43820200
-Tunnel Miner||43821012||43821000
-Tunnel Miner||43822010||43822000
-Tunnel Miner||43822140||43822000
-Tunnel Miner||43823010||43823000
-Tunnel Miner||43825026||43823000
-Tunnel Miner||43826033||43824000
-Tunnel Miner||43827012||43825000
-Tunnel Miner||43828033||43826000
-Tunnel Miner||43829030||43826000
-Tunnel Miner||43829140||43826000
+Tunnel Miner 2||43820140||43820200
+Tunnel Miner 3||43821012||43821000
+Tunnel Miner 4||43822010||43822000
+Tunnel Miner 5||43822140||43822000
+Tunnel Miner 6||43823010||43823000
+Tunnel Miner 7||43825026||43823000
+Tunnel Miner 8||43826033||43824000
+Tunnel Miner 9||43827012||43825000
+Tunnel Miner 10||43828033||43826000
+Tunnel Miner 11||43829030||43826000
+Tunnel Miner 12||43829140||43826000
 
 --Glintstone Miner
 Glintstone Miner||43830040||43830000
@@ -1060,100 +1060,100 @@ Glintstone Miner - Big||43840040||43840000
 
 --Fungal Sorcerer
 Fungal Sorcerer||43850012||43850000
-Fungal Sorcerer||43850112||43850000
-Fungal Sorcerer||43850212||43850000
-Fungal Sorcerer||43858040||43850000
-Fungal Sorcerer||43858140||43850000
-Fungal Sorcerer||43858240||43850000
+Fungal Sorcerer 2||43850112||43850000
+Fungal Sorcerer 3||43850212||43850000
+Fungal Sorcerer 4||43858040||43850000
+Fungal Sorcerer 5||43858140||43850000
+Fungal Sorcerer 6||43858240||43850000
 
 --Giant Lobster
 Giant Lobster||44200035||44200000
-Giant Lobster||44200120||44200000
-Giant Lobster||44201020||44200000
-Giant Lobster||44202020||44200000
-Giant Lobster||44203050||44200000
+Giant Lobster 2||44200120||44200000
+Giant Lobster 3||44201020||44200000
+Giant Lobster 4||44202020||44200000
+Giant Lobster 5||44203050||44200000
 
 --Abnormal Stone Cluster
 Abnormal Stone Cluster (1)||44300022||44300000
-Abnormal Stone Cluster (1)||44300340||44300000
+Abnormal Stone Cluster (1) 2||44300340||44300000
 Abnormal Stone Cluster (2)||44301033||44301000
 
 --Fungal Pod
 Fungal Pod||44400050||44400000
 Giant Fungal Pod||44410050||44410000
-Giant Fungal Pod||44420040||44410000
+Giant Fungal Pod 2||44420040||44410000
 
 --Walking Mausoleum
 Walking Mausoleum||44500066||44500000
-Walking Mausoleum||44501020||44500000
+Walking Mausoleum 2||44501020||44500000
 
 --Flamethrower Tank
 Flamethrower Tank||44607020||44600000
-Flamethrower Tank||44607132||44600000
-Flamethrower Tank||44607220||44600000
-Flamethrower Tank||44607840||44600000
-Flamethrower Tank||44608032||44600000
-Flamethrower Tank||44608640||44600000
-Flamethrower Tank||44608740||44600000
-Flamethrower Tank||44608840||44600000
+Flamethrower Tank 2||44607132||44600000
+Flamethrower Tank 3||44607220||44600000
+Flamethrower Tank 4||44607840||44600000
+Flamethrower Tank 5||44608032||44600000
+Flamethrower Tank 6||44608640||44600000
+Flamethrower Tank 7||44608740||44600000
+Flamethrower Tank 8||44608840||44600000
 
 --Abductor Virgin
 Abductor Virgin||44700024||44700100
 Abductor Virgin (Boss)||44700938||44700900
-Abductor Virgin||44701034||44701000
+Abductor Virgin 2||44701034||44701000
 Abductor Virgin - Damaged||44701132||44701000
-Abductor Virgin (Boss)||44701938||44701900
-Abductor Virgin||44702041||44702000
+Abductor Virgin (Boss) 2||44701938||44701900
+Abductor Virgin 3||44702041||44702000
 
 --Miranda Flower
 Giant Miranda Flower||44800064||44800000
-Giant Miranda Flower||44800162||44800100
-Giant Miranda Flower||44800220||44800000
-Giant Miranda Flower||44800370||44800000
-Giant Miranda Flower||44800430||44800100
+Giant Miranda Flower 2||44800162||44800100
+Giant Miranda Flower 3||44800220||44800000
+Giant Miranda Flower 4||44800370||44800000
+Giant Miranda Flower 5||44800430||44800100
 Miranda the Blighted Bloom||44800930||44800100
 Giant Miranda Flower - Rot||44820054||44820000
 Miranda Flower||44810034||44810000
-Miranda Flower||44810162||44810100
-Miranda Flower||44810220||44810000
-Miranda Flower||44810370||44810000
-Miranda Flower||44810430||44810100
-Miranda Flower||44810830||44810300
+Miranda Flower 2||44810162||44810100
+Miranda Flower 3||44810220||44810000
+Miranda Flower 4||44810370||44810000
+Miranda Flower 5||44810430||44810100
+Miranda Flower 6||44810830||44810300
 Miranda Flower (Boss)||44810912||44810000
-Miranda Flower||44811012||44811000
-Miranda Flower||44811330||44811300
-Miranda Flower||44811830||44811300
+Miranda Flower 7||44811012||44811000
+Miranda Flower 8||44811330||44811300
+Miranda Flower 9||44811830||44811300
 Miranda Flower - Rot||44830054||44830000
-Miranda Flower - Rot||44831054||44831000
+Miranda Flower - Rot 2||44831054||44831000
 
 --Living Jar
 Living Jar - Huge||44920040||44920000
 Living Jar - Large||44907014||44900000
-Living Jar - Large||44907133||44900000
-Living Jar - Large||44907233||44900000
-Living Jar - Large||44907333||44900000
-Living Jar - Large||44907450||44900000
-Living Jar - Large||44908124||44900000
-Living Jar - Large||44908320||44900000
-Living Jar - Large||44908420||44900000
-Living Jar - Large||44909040||44900040
-Living Jar - Large||44909310||44900000
-Living Jar - Large||44909410||44900000
-Living Jar - Large||44909540||44900000
-Living Jar - Large||44909620||44900000
-Living Jar - Large||44909732||44900000
-Living Jar - Large||44909850||44900052
-Living Jar - Large||44909972||44900000
+Living Jar - Large 2||44907133||44900000
+Living Jar - Large 3||44907233||44900000
+Living Jar - Large 4||44907333||44900000
+Living Jar - Large 5||44907450||44900000
+Living Jar - Large 6||44908124||44900000
+Living Jar - Large 7||44908320||44900000
+Living Jar - Large 8||44908420||44900000
+Living Jar - Large 9||44909040||44900040
+Living Jar - Large 10||44909310||44900000
+Living Jar - Large 11||44909410||44900000
+Living Jar - Large 12||44909540||44900000
+Living Jar - Large 13||44909620||44900000
+Living Jar - Large 14||44909732||44900000
+Living Jar - Large 15||44909850||44900052
+Living Jar - Large 16||44909972||44900000
 Living Jar - Small||44910014||44910000
-Living Jar - Small||44910124||44910000
-Living Jar - Small||44910238||44910000
-Living Jar - Small||44910333||44910000
-Living Jar - Small||44910720||44910000
-Living Jar - Small||44910933||44910000
+Living Jar - Small 2||44910124||44910000
+Living Jar - Small 3||44910238||44910000
+Living Jar - Small 4||44910333||44910000
+Living Jar - Small 5||44910720||44910000
+Living Jar - Small 6||44910933||44910000
 Jar-Bairn||44919020||44919000
-Jar-Bairn||44919120||44919000
-Jar-Bairn||44919220||44919000
-Jar-Bairn||44919320||44919000
+Jar-Bairn 2||44919120||44919000
+Jar-Bairn 3||44919220||44919000
+Jar-Bairn 4||44919320||44919000
 
 --Dragon
 Dragon||45008024||45008000
@@ -1167,60 +1167,60 @@ Elder Dragon Greyoll||45040042||45040000
 Lesser Elder Dragon||45050042||45050000
 Lichdragon Fortissax||45110066||45110000
 Ancient Dragon||45100072||45100200
-Ancient Dragon||45100172||45100300
-Ancient Dragon||45100272||45100000
-Ancient Dragon||45100572||45100200
-Ancient Dragon||45101272||45100200
+Ancient Dragon 2||45100172||45100300
+Ancient Dragon 3||45100272||45100000
+Ancient Dragon 4||45100572||45100200
+Ancient Dragon 5||45101272||45100200
 Ancient Dragon (Boss)||45102030||45100930
-Ancient Dragon||45102272||45100300
+Ancient Dragon 6||45102272||45100300
 
 --Dragonlord Placidusax
 Dragonlord Placidusax||45200072||45200000
 
 --Monstrous Dog
 Monstrous Dog||45500040||45500000
-Monstrous Dog||45501040||45500300
-Monstrous Dog||45502040||45500000
-Monstrous Dog||45503040||45500300
-Monstrous Dog||45504040||45500000
-Monstrous Dog||45506050||45506000
-Monstrous Dog||45506450||45506000
-Monstrous Dog||45506650||45506000
+Monstrous Dog 2||45501040||45500300
+Monstrous Dog 3||45502040||45500000
+Monstrous Dog 4||45503040||45500300
+Monstrous Dog 5||45504040||45500000
+Monstrous Dog 6||45506050||45506000
+Monstrous Dog 7||45506450||45506000
+Monstrous Dog 8||45506650||45506000
 
 --Monstrous Crow
 Monstrous Crow||45600040||45600000
-Monstrous Crow||45601050||45609990
-Monstrous Crow||45601850||45609990
+Monstrous Crow 2||45601050||45609990
+Monstrous Crow 3||45601850||45609990
 Monstrous Blood Crow||45610068||45610010
 
 --Wormface
 Large Wormface||45700030||45700000
-Large Wormface||45701072||45700200
-Large Wormface||45702030||45700100
+Large Wormface 2||45701072||45700200
+Large Wormface 3||45702030||45700100
 Giant Wormface||45800030||45800900
-Giant Wormface||45801072||45800000
-Giant Wormface||45802132||45800000
+Giant Wormface 2||45801072||45800000
+Giant Wormface 3||45802132||45800000
 
 --Troll
 Troll||46001130||46000000
 Troll Knight||46000014||46000000
-Troll Knight||46000150||46000000
-Troll Knight||46001020||46001000
-Troll Knight||46003041||46000040
-Troll Knight||46003140||46000000
-Troll Knight||46004032||46004000
-Troll Knight||46004152||46004000
+Troll Knight 2||46000150||46000000
+Troll Knight 3||46001020||46001000
+Troll Knight 4||46003041||46000040
+Troll Knight 5||46003140||46000000
+Troll Knight 6||46004032||46004000
+Troll Knight 7||46004152||46004000
 Troll Knight (Boss)||46008024||46008000
 Armored Troll Knight||46010020||46010000
-Armored Troll Knight||46010120||46010000
-Armored Troll Knight||46010220||46010000
+Armored Troll Knight 2||46010120||46010000
+Armored Troll Knight 3||46010220||46010000
 Armored Troll Knight (Boss)||46010920||46010900
-Armored Troll Knight||46018021||46010020
-Troll Knight||46020050||46020000
-Troll Knight||46021052||46021000
+Armored Troll Knight 4||46018021||46010020
+Troll Knight 8||46020050||46020000
+Troll Knight 9||46021052||46021000
 Stonedigger Troll (Club)||46030910||46030100
 Troll Iji||46040020||46040000
-Troll Iji||46040120||46040000
+Troll Iji 2||46040120||46040000
 
 --Astel
 Astel, Naturalborn of the Void||46200062||46200100
@@ -1232,35 +1232,35 @@ Astel - Snowfield Mine Clone||46209152||46209100
 Runebear||46300066||46300000
 White Runebear||46300152||46300000
 Elite Runebear||46300240||46300000
-Runebear||46300342||46300020
-Runebear||46300410||46300000
-Elite Runebear||46300652||46300000
-Runebear||46300766||46300000
+Runebear 2||46300342||46300020
+Runebear 3||46300410||46300000
+Elite Runebear 2||46300652||46300000
+Runebear 4||46300766||46300000
 Runebear (Boss)||46300912||46300000
 
 --Ulcerated Tree Spirit
 Ulcerated Tree Spirit||46400014||46400000
-Ulcerated Tree Spirit||46400162||46400062
+Ulcerated Tree Spirit 2||46400162||46400062
 Ulcerated Tree Spirit (Boss)||46400942||46400842
 
 --Dragonkin Soldier
 Dragonkin Soldier of Nokstella||46500060||46500100
-Dragonkin Soldier of Nokstella||46500160||46500100
+Dragonkin Soldier of Nokstella 2||46500160||46500100
 Dragonkin Soldier||46500262||46500200
 Dragonkin Soldier - Phantom||46500352||46500310
 
 --Guardian Golem
 Guardian Golem||46600034||46600000
-Guardian Golem||46600133||46600000
+Guardian Golem 2||46600133||46600000
 Guardian Golem (Limgrave Boss)||46600910||46600100
-Guardian Golem||46601010||46601100
-Guardian Golem||46602050||46600000
-Guardian Golem||46604142||46600000
-Guardian Golem||46605040||46601000
-Guardian Golem||46605140||46601000
-Guardian Golem||46606020||46600000
-Guardian Golem||46607012||46601100
-Guardian Golem||46609050||46601050
+Guardian Golem 3||46601010||46601100
+Guardian Golem 4||46602050||46600000
+Guardian Golem 5||46604142||46600000
+Guardian Golem 6||46605040||46601000
+Guardian Golem 7||46605140||46601000
+Guardian Golem 8||46606020||46600000
+Guardian Golem 9||46607012||46601100
+Guardian Golem 10||46609050||46601050
 
 --Ancestor Spirit
 Ancestor Spirit||46700964||46700100
@@ -1293,16 +1293,16 @@ Godrick the Grafted||47500014||47500000
 
 --Fire Giant
 Fire Giant||47600050||47600900
-Fire Giant||47601050||47600900
+Fire Giant 2||47601050||47600900
 
 --Black Blade Kindred / Gargoyle
 Valiant Gargoyle||47700165||47700200
-Valiant Gargoyle||47701165||47701200
+Valiant Gargoyle 2||47701165||47701200
 Black Blade Kindred||47700070||47700000
-Black Blade Kindred||47700250||47705950
-Black Blade Kindred||47701034||47701000
-Black Blade Kindred||47701242||47706900
-Black Blade Kindred||47702034||47702000
+Black Blade Kindred 2||47700250||47705950
+Black Blade Kindred 3||47701034||47701000
+Black Blade Kindred 4||47701242||47706900
+Black Blade Kindred 5||47702034||47702000
 
 --Mohg
 Mohg, Lord of Blood||48000068||48000000
@@ -1312,12 +1312,12 @@ Mohg, The Omen||48001935||48000000
 Erdtree Avatar||48100034||48100000
 Erdtree Avatar (Giants Mountaintops)||48100150||48100000
 Erdtree Avatar (South Liurnia)||48100920||48100900
-Erdtree Avatar||48110056||48110000
+Erdtree Avatar 2||48110056||48110000
 
 --Omenkiller
 Omenkiller||48200930||48200000
-Omenkiller||48208034||48200000
-Omenkiller||48208138||48200000
+Omenkiller 2||48208034||48200000
+Omenkiller 3||48208138||48200000
 
 --Wyrm
 Magma Wyrm||49100038||49100000
@@ -1329,7 +1329,7 @@ Tibia Mariner||49500032||49500932
 
 --Giant Skeleton Torso
 Giant Skeleton Torso||49600032||49600932
-Giant Skeleton Torso||49600168||49600068
+Giant Skeleton Torso 2||49600168||49600068
 
 --Death Rite Bird/Deathbird
 Death Rite Bird||49801020||49800100
@@ -1338,15 +1338,15 @@ Deathbird||49800020||49800100
 --Passive Fauna
 Eagle||60010014||60010000
 Deer||60100064||60100000
-Deer||60100965||60100000
+Deer 2||60100965||60100000
 Owl||60400022||60400000
 Gull||60700022||60700000
 Turtle||60900064||60900000
 Miriel, Pastor of Vows||60910020||60910000
 Turtle Large||60911022||60910000
 Springhare||61000065||61000000
-Springhare||61000150||61000000
-Springhare||61000965||60600000
+Springhare 2||61000150||61000000
+Springhare 3||61000965||60600000
 
 --Bear
 Bear||60310022||60310000
@@ -1354,31 +1354,31 @@ Bear||60310022||60310000
 --Boar
 Boar - Aggressive||60501030||60501000
 Boar||60500064||60500000
-Boar||60500965||60500000
+Boar 2||60500965||60500000
 
 --Goat
 Goat - Passive||60600064||60600000
-Goat - Passive||60600965||60600000
+Goat - Passive 2||60600965||60600000
 Goat - Passive (?)||60603030||60600000
 Goat (?)||60601010||60601000
-Goat (?)||60602010||60601000
-Goat (?)||60604030||60601000
-Goat (?)||60605030||60601000
+Goat (?) 2||60602010||60601000
+Goat (?) 3||60604030||60601000
+Goat (?) 4||60605030||60601000
 
 --Dragonfly
 Dragonfly||60800064||60800000
-Dragonfly||60810020||60810000
-Dragonfly||60820040||60820000
+Dragonfly 2||60810020||60810000
+Dragonfly 3||60820040||60820000
 
 --Fallen Hawks Soldier
 Fallen Hawks Soldier||70000065||70000000
-Fallen Hawks Soldier||70001065||70001000
-Fallen Hawks Soldier||70002065||70002000
-Fallen Hawks Soldier||70003165||70003100
+Fallen Hawks Soldier 2||70001065||70001000
+Fallen Hawks Soldier 3||70002065||70002000
+Fallen Hawks Soldier 4||70003165||70003100
 
 --Ancient Hero of Zamor
 Ancient Hero of Zamor||71000030||71000000
-Ancient Hero of Zamor||71000150||71000050
+Ancient Hero of Zamor 2||71000150||71000050
 Ancient Hero of Zamor (Boss)||71000950||71000950
 
 --Mounted Weapons
@@ -1388,4 +1388,4 @@ Dragon-Faced Flamethrower||81100014||81100000
 
 --Merciless Chariot
 Merciless Chariot||81200007||81200000
-Merciless Chariot||81200132||81200000
+Merciless Chariot 2||81200132||81200000

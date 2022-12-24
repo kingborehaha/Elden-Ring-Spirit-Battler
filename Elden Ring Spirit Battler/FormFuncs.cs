@@ -474,8 +474,9 @@ namespace EldenRingSpiritBattler
                 buddyParamRow["z_offset"].Value = pos.Z; // Horizontal offset 2
                 buddyParamRow["y_angle"].Value = pos.Ang;
                 #endregion
+                //
             }
-
+            //
             #region GoodsParam
             if (Option_SpiritAshNoRequirements.Checked)
             {
@@ -503,6 +504,7 @@ namespace EldenRingSpiritBattler
                 }
             }
             #endregion
+            //
 
             UpdateConsole("Exporting Params");
 
