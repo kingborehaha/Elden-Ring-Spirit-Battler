@@ -53,7 +53,7 @@ namespace EldenRingSpiritBattler
         public Dictionary<string, int> spiritAshesDict = new();
         public Dictionary<string, List<Enemy>> enemyVariantDict = new();
         public List<BattleSpirit> battleSpiritList = new();
-        public Dictionary<string, SpiritTeam> teamDict = new();
+        public SortedDictionary<string, SpiritTeam> teamDict = new();
 
         public int GetRandomUnusedPhantomId()
         {
@@ -580,6 +580,8 @@ namespace EldenRingSpiritBattler
             if (TeamDataGrid.SelectedRows.Count > 0)
                 prevIndex = TeamDataGrid.SelectedRows[0].Index;
 
+            int prevScrollIndex = TeamDataGrid.FirstDisplayedScrollingRowIndex;
+
             TeamDataGrid.DataSource = teamDict.Select(team => new
             {
                 team.Value,
@@ -606,7 +608,8 @@ namespace EldenRingSpiritBattler
             if (prevIndex > -1)
                 TeamDataGrid.Rows[prevIndex].Selected = true;
 
-            TeamDataGrid.FirstDisplayedScrollingRowIndex = TeamDataGrid.SelectedRows[0].Index; // Scroll to selection
+            if (prevScrollIndex != -1)
+                TeamDataGrid.FirstDisplayedScrollingRowIndex = prevScrollIndex; // Scroll to selection
 
             // Chosen Team list
             string prevText = List_EnemyChosenTeam.Text;
@@ -637,9 +640,17 @@ namespace EldenRingSpiritBattler
 
         private void AddUpdateTeamToGrid(SpiritTeam team)
         {
+            if (teamDict.TryGetValue(team.Name, out SpiritTeam? oldteam))
+            {
+                // This is an update, update all the refs.
+                foreach (BattleSpirit spirit in battleSpiritList)
+                {
+                    if (spirit.Team == oldteam)
+                        spirit.Team = team;
+                }
+            }
             teamDict[team.Name] = team;
             UpdateTeamGridAndList();
-            // todo: detect and select addd rows
         }
 
         private void AddRandomizedTeamToGrid(TeamTypeEnum team, SummonPos? summonPos = null)
@@ -676,16 +687,18 @@ namespace EldenRingSpiritBattler
         }
         public void SetGridTeamToElements()
         {
-            SpiritTeam spirit = GetSelectedTeamFromGrid();
+            SpiritTeam team = GetSelectedTeamFromGrid();
 
-            Input_TeamName.Text = spirit.Name;
-            Input_TeamDamageMult.Value = spirit.TeamDamageMult;
-            Input_TeamHpMult.Value = spirit.TeamHpMult;
-            List_TeamPhantomColor.Text = ((PhantomEnum)spirit.PhantomParamID).ToString();
-            Input_TeamSummonPos_X.Value = (decimal)spirit.TeamPosition.X;
-            Input_TeamSummonPos_Z.Value = (decimal)spirit.TeamPosition.Z;
-            Input_TeamSummonPos_Ang.Value = (decimal)spirit.TeamPosition.Ang;
-            List_TeamType.Text = ((TeamTypeEnum)spirit.TeamType).ToString();
+            Input_TeamName.Text = team.Name;
+            Input_TeamDamageMult.Value = team.TeamDamageMult;
+            Input_TeamHpMult.Value = team.TeamHpMult;
+            List_TeamPhantomColor.Text = ((PhantomEnum)team.PhantomParamID).ToString();
+            Input_TeamSummonPos_X.Value = (decimal)team.TeamPosition.X;
+            Input_TeamSummonPos_Z.Value = (decimal)team.TeamPosition.Z;
+            Input_TeamSummonPos_Ang.Value = (decimal)team.TeamPosition.Ang;
+            List_TeamType.Text = ((TeamTypeEnum)team.TeamType).ToString();
+
+            List_TeamSummonPreset.Text = team.TeamPosition.Label;
         }
         #endregion
         //
@@ -860,6 +873,8 @@ namespace EldenRingSpiritBattler
             if (SpiritDataGrid.SelectedRows.Count > 0)
                 prevIndex = SpiritDataGrid.SelectedRows[0].Index;
 
+            int prevScrollIndex = SpiritDataGrid.FirstDisplayedScrollingRowIndex;
+
             SpiritDataGrid.DataSource = battleSpiritList.Select(spirit => new
             {
                 spirit,
@@ -877,9 +892,7 @@ namespace EldenRingSpiritBattler
             SpiritDataGrid.Columns[3].Width = 80;
             SpiritDataGrid.Columns[4].HeaderCell.Value = "Pos";
             SpiritDataGrid.Columns[4].Width = 100;
-            // TODO: display individual scaling
             // TODO: maybe also dispay overall scaling by pre-multiplying stat scaling level + individual scaling?
-            // TODO: position
 
             SpiritDataGrid.ClearSelection();
             if (prevIndex > SpiritDataGrid.Rows.Count - 1)
@@ -887,10 +900,8 @@ namespace EldenRingSpiritBattler
             if (prevIndex > -1)
                 SpiritDataGrid.Rows[prevIndex].Selected = true;
 
-            if (prevIndex - 2 < 0)
-                SpiritDataGrid.FirstDisplayedScrollingRowIndex = prevIndex; // Scroll to selection
-            else
-                SpiritDataGrid.FirstDisplayedScrollingRowIndex = prevIndex - 2; // Scroll to selection
+            if (prevScrollIndex != -1)
+                SpiritDataGrid.FirstDisplayedScrollingRowIndex = prevScrollIndex; // Scroll to selection
         }
         /*
         // Autosort: didn't work, had trouble finding previously selected row after rows were sorted
@@ -1009,7 +1020,7 @@ namespace EldenRingSpiritBattler
             int myCount = 0;
             foreach (BattleSpirit s in battleSpiritList)
             {
-                if (s.Team == team)
+                if (s.Team.Name == team.Name)
                 {
                     totalCount++;
                     if (s == spirit)
@@ -1031,7 +1042,7 @@ namespace EldenRingSpiritBattler
             if (team.TeamPosition.EnemiesOffsetInitX == true)
             {
                 // Offset X coord based on total enemy count
-                x_final -= totalCount * team.TeamPosition.X_increment * 0.5f;
+                x_final -= (totalCount+1) * team.TeamPosition.X_increment * 0.5f;
             }
             x_final += team.TeamPosition.X_increment * myCount;
             z_final += team.TeamPosition.Z_increment * myCount;

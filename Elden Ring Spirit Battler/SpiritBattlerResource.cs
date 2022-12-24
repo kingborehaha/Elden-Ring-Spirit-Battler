@@ -4,22 +4,21 @@ namespace EldenRingSpiritBattler
 {
     public static class SpiritBattlerResources
     {
-        private const float magnitude = 1; // TODO
-        private const float incrementBase = 1.5f;
-        private const float rowStartPos = -10;
-        public static Dictionary<string, SummonPos?> teamSummonPresetDict = new()
+        private static readonly float magnitude = 1; // Unimplemented
+        private static readonly float incrementBase = 1.5f;
+        public static readonly Dictionary<string, SummonPos?> teamSummonPresetDict = new()
         {
-            {"Column left side (face right)", new SummonPos(-10*magnitude, 10*magnitude, 90, 0, incrementBase, "Column L")},
-            {"Column right side (face left)", new SummonPos(10*magnitude, 10*magnitude, -90, 0, incrementBase, "Column R")},
-            {"Row close (face front)", new SummonPos(rowStartPos, 5*magnitude, 0, incrementBase, 0, "Row Close", true)},
-            {"Row far (face back", new SummonPos(rowStartPos, 20*magnitude, -180, incrementBase, 0, "Row Far", true)},
+            {"Column Left", new SummonPos(-10*magnitude, 10*magnitude, 90, 0, incrementBase, "Column Left")},
+            {"Column Right", new SummonPos(10*magnitude, 10*magnitude, -90, 0, incrementBase, "Column Right")},
+            {"Row Close", new SummonPos(0, 5*magnitude, 0, incrementBase, 0, "Row Close", true)},
+            {"Row Far", new SummonPos(0, 20*magnitude, -180, incrementBase, 0, "Row Far", true)},
             {"Manual Offset", null},
         };
 
         /// <summary>
         /// List of NpcParam IDs that should not be assigned a phantom VFX, as it won't work very well.
         /// </summary>
-        public static List<int> enemyPhantomBlacklist = new()
+        public static readonly List<int> enemyPhantomBlacklist = new()
         {
             22000000, // Elden Beast
             21500000 // Wisp
@@ -172,7 +171,7 @@ namespace EldenRingSpiritBattler
             Level_21 = 7020,
         };
 
-        public static string[] randomTeamNames = new string[]
+        public static readonly string[] randomTeamNames = new string[]
         {
             "Cowboys",
             "Orbists",

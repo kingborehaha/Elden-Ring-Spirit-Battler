@@ -28,10 +28,10 @@ namespace EldenRingSpiritBattler
 
             //SetRandomTeamName();
 
-            AddRandomizedTeamToGrid(TeamTypeEnum.Enemy, teamSummonPresetDict.Values.ElementAt(0));
-            AddRandomizedTeamToGrid(TeamTypeEnum.ArchEnemy, teamSummonPresetDict.Values.ElementAt(1));
-            AddRandomizedTeamToGrid(TeamTypeEnum.Player, teamSummonPresetDict.Values.ElementAt(2));
-            AddRandomizedTeamToGrid(TeamTypeEnum.Dragon, teamSummonPresetDict.Values.ElementAt(3));
+            AddRandomizedTeamToGrid(TeamTypeEnum.Enemy, teamSummonPresetDict["Column Left"]);
+            AddRandomizedTeamToGrid(TeamTypeEnum.ArchEnemy, teamSummonPresetDict["Column Right"]);
+            AddRandomizedTeamToGrid(TeamTypeEnum.SpiritSummon, teamSummonPresetDict["Row Close"]);
+            AddRandomizedTeamToGrid(TeamTypeEnum.Dragon, teamSummonPresetDict["Row Far"]);
 
             List_StatScaling.DataSource = GetOrderedEnumNames(typeof(StatScalingEnum));
             List_StatScaling.Text = StatScalingEnum.None.ToString();
@@ -46,6 +46,7 @@ namespace EldenRingSpiritBattler
             AddRandomSpiritToGrid();
             AddRandomSpiritToGrid();
             List_EnemyChosenTeam.SelectedIndex = 1;
+            SetGridTeamToElements();
 
             List_TeamSummonPreset.DataSource = teamSummonPresetDict.Keys.ToList();
 
@@ -60,6 +61,7 @@ namespace EldenRingSpiritBattler
             if (preventEnemyEdited)
                 return;
             UpdateSelectedSpirit();
+            SetSelectedSpiritToElements();
         }
 
         private void b_restoreRegulation_Click(object sender, EventArgs e)
@@ -107,11 +109,6 @@ namespace EldenRingSpiritBattler
             EnemyWasEdited(sender, e);
         }
 
-        private void Button_SetDataSelection_Click(object sender, EventArgs e)
-        {
-            UpdateSelectedSpirit();
-        }
-
         private void Button_RandomizeTeam_Click(object sender, EventArgs e)
         {
             Random rand = new();
@@ -143,12 +140,6 @@ namespace EldenRingSpiritBattler
             AddUpdateTeamToGrid(team);
             UpdateSpiritGrid();
         }
-
-        private void Button_GetDataSelection_Click(object sender, EventArgs e)
-        {
-            SetSelectedSpiritToElements();
-        }
-
 
         private void Button_StatScalingLevelInfo_Click(object sender, EventArgs e)
         {
@@ -347,6 +338,11 @@ namespace EldenRingSpiritBattler
                 Input_TeamSummonPos_Z.Enabled = true;
                 Input_TeamSummonPos_Ang.Enabled = true;
             }
+        }
+
+        private void List_EnemyChosenTeam_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            EnemyWasEdited(sender, e);
         }
     }
 }

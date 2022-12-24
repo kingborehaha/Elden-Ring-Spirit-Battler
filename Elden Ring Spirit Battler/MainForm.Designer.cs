@@ -77,10 +77,8 @@
             this.Button_AddNewTeam = new System.Windows.Forms.Button();
             this.SpiritDataGrid = new System.Windows.Forms.DataGridView();
             this.Context_DataGrid = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.Button_Context_GetSpirit = new System.Windows.Forms.ToolStripMenuItem();
             this.Button_Context_DuplicateSpirit = new System.Windows.Forms.ToolStripMenuItem();
             this.Button_Context_RemoveSpirit = new System.Windows.Forms.ToolStripMenuItem();
-            this.Button_Context_UpdateSpirit = new System.Windows.Forms.ToolStripMenuItem();
             this.Team = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.EnemyCol = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.Variant = new System.Windows.Forms.DataGridViewComboBoxColumn();
@@ -663,21 +661,10 @@
             // Context_DataGrid
             // 
             this.Context_DataGrid.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.Button_Context_GetSpirit,
             this.Button_Context_DuplicateSpirit,
-            this.Button_Context_RemoveSpirit,
-            this.Button_Context_UpdateSpirit});
+            this.Button_Context_RemoveSpirit});
             this.Context_DataGrid.Name = "Context_DataGrid";
             this.Context_DataGrid.Size = new System.Drawing.Size(210, 92);
-            // 
-            // Button_Context_GetSpirit
-            // 
-            this.Button_Context_GetSpirit.Name = "Button_Context_GetSpirit";
-            this.Button_Context_GetSpirit.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.G)));
-            this.Button_Context_GetSpirit.Size = new System.Drawing.Size(209, 22);
-            this.Button_Context_GetSpirit.Text = "Get Spirit Settings";
-            this.Button_Context_GetSpirit.Visible = false;
-            this.Button_Context_GetSpirit.Click += new System.EventHandler(this.Button_GetDataSelection_Click);
             // 
             // Button_Context_DuplicateSpirit
             // 
@@ -694,15 +681,6 @@
             this.Button_Context_RemoveSpirit.Size = new System.Drawing.Size(209, 22);
             this.Button_Context_RemoveSpirit.Text = "Delete Spirit";
             this.Button_Context_RemoveSpirit.Click += new System.EventHandler(this.Button_DeleteSpiritFromList_Click);
-            // 
-            // Button_Context_UpdateSpirit
-            // 
-            this.Button_Context_UpdateSpirit.Name = "Button_Context_UpdateSpirit";
-            this.Button_Context_UpdateSpirit.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.R)));
-            this.Button_Context_UpdateSpirit.Size = new System.Drawing.Size(209, 22);
-            this.Button_Context_UpdateSpirit.Text = "Update Spirit";
-            this.Button_Context_UpdateSpirit.Visible = false;
-            this.Button_Context_UpdateSpirit.Click += new System.EventHandler(this.Button_SetDataSelection_Click);
             // 
             // Team
             // 
@@ -1034,7 +1012,7 @@
             this.List_EnemyChosenTeam.Name = "List_EnemyChosenTeam";
             this.List_EnemyChosenTeam.Size = new System.Drawing.Size(157, 23);
             this.List_EnemyChosenTeam.TabIndex = 112;
-            this.List_EnemyChosenTeam.SelectedIndexChanged += new System.EventHandler(this.EnemyWasEdited);
+            this.List_EnemyChosenTeam.SelectedIndexChanged += new System.EventHandler(this.List_EnemyChosenTeam_SelectedIndexChanged);
             this.List_EnemyChosenTeam.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ComboBox_KeyPress);
             // 
             // Button_PickRandomEnemy
@@ -1102,7 +1080,7 @@
             // List_TeamSummonPreset
             // 
             this.List_TeamSummonPreset.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.List_TeamSummonPreset.DropDownWidth = 160;
+            this.List_TeamSummonPreset.DropDownWidth = 150;
             this.List_TeamSummonPreset.FormattingEnabled = true;
             this.List_TeamSummonPreset.Location = new System.Drawing.Point(6, 27);
             this.List_TeamSummonPreset.Name = "List_TeamSummonPreset";
