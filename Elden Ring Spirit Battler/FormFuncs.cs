@@ -294,24 +294,11 @@ namespace EldenRingSpiritBattler
                 buddyParam.Rows.Remove(buddyRow);
             }
 
-            // Used to keep track of how many enemies are in a team for handlng incrementing summon positions.
-            Dictionary<SpiritTeam, int> teamPositionCountDict = new();
-            Dictionary<SpiritTeam, int> teamTotalSpiritCount = new();
-            foreach (SpiritTeam team in teamDict.Values)
-            {
-                teamPositionCountDict.Add(team, 0);
-                teamTotalSpiritCount[team] = 0;
-            }
-            foreach (BattleSpirit spirit in battleSpiritList)
-            {
-                teamTotalSpiritCount[spirit.Team] += 1;
-            }
-
             for (var i = 0; i < battleSpiritList.Count; i++)
             {
                 BattleSpirit spirit = battleSpiritList[i];
                 SpiritTeam team = spirit.Team;
-
+                //
                 #region VfxParam
                 PARAM.Row? newVfxRow = null;
                 if (spirit.Team.PhantomParamID > 0
@@ -328,7 +315,9 @@ namespace EldenRingSpiritBattler
                     newVfxRow["phantomParamOverwriteId"].Value = spirit.Team.PhantomParamID;
                 }
                 #endregion
+                //
 
+                //
                 #region SpEffectParam
                 int baseEffectID = 290000;
                 int newEffectID = 291000;
@@ -358,7 +347,9 @@ namespace EldenRingSpiritBattler
                     newSpEffectRow["vfxId"].Value = newVfxRow.ID;
                 spirit.Sp_SpecialScaling = newSpEffectRow.ID;
                 #endregion
+                //
 
+                //
                 #region NpcParam
                 int npcID = spirit.BaseNpcID;
                 int newNpcID = 2000000000 + npcID;
@@ -401,6 +392,7 @@ namespace EldenRingSpiritBattler
                 //int[] buddyEffects = { 295000, 296000, 297000 }; // (randomizer) special effects to be inserted into new npcParam
 
                 var buddyEffects = spirit.SpecialEffects;
+
                 int iBuddy = 0;
                 for (var iEffect = 0; iEffect <= 31; iEffect++)
                 {
@@ -425,8 +417,9 @@ namespace EldenRingSpiritBattler
                     return false;
                 }
                 #endregion
+                //
 
-
+                //
                 #region NpcThinkParam
                 int npcThinkID = spirit.BaseThinkID;
                 int newNpcThinkID = 2000000000 + npcThinkID;
@@ -444,9 +437,18 @@ namespace EldenRingSpiritBattler
 
                 // TODO: eye dist, battleStartDist, forget time, backHomeDist
 
-                //newNpcThinkRow["isBuddyAI"].Value = false;
+                newNpcThinkRow["isBuddyAI"].Value = true;
+                newNpcThinkRow["nose_dist"].Value = (UInt16)30;
+                newNpcThinkRow["backhomeDist"].Value = (UInt16)999;
+                newNpcThinkRow["maxBackhomeDist"].Value = (UInt16)999;
+                newNpcThinkRow["backhomeBattleDist"].Value = (UInt16)999;
+                newNpcThinkRow["SoundTargetForgetTime"].Value = (float)9999;
+                newNpcThinkRow["SightTargetForgetTime"].Value = (float)9999;
+                newNpcThinkRow["MemoryTargetForgetTime"].Value = (float)99;
                 #endregion
+                //
 
+                //
                 #region BuddyParam
                 PARAM.Row buddyParamRow = InsertParamRow(buddyParam, targetBuddyRow, targetBuddyRow.ID + i, buddyRowIndex + i);
 
@@ -454,8 +456,9 @@ namespace EldenRingSpiritBattler
                 buddyParamRow["npcThinkParamId"].Value = newNpcThinkRow.ID;
                 buddyParamRow["npcPlayerInitParamId"].Value = -1; // Probably for c0000
 
-                buddyParamRow["appearOnAroundSekihi"].Value = (byte)0; // 0 = Summon using player location
-                buddyParamRow["pcFollowType"].Value = (byte)1; // 0 = Follow player around, 1 = No special behavior (?), 2 = ?
+                buddyParamRow["disablePCTargetShare"].Value = true; // Must be true for enemies, or else they can try to target themselves.
+                buddyParamRow["appearOnAroundSekihi"].Value = (byte)0; // 0 = Summon using player location.
+                buddyParamRow["pcFollowType"].Value = (byte)1; // 0 = Follow player around, 1 = Wander Around?, 2 = Stand in place?
 
                 for (var ii = 0; ii <= 10; ii++)
                 {
@@ -465,37 +468,11 @@ namespace EldenRingSpiritBattler
                 buddyParamRow["npcThinkParamId_ridden"].Value = -1;
                 buddyParamRow["generateAnimId"].Value = -1;
 
-
                 //Position
                 SummonPos pos = GetOffsetSpiritSummonPos(spirit);
                 buddyParamRow["x_offset"].Value = pos.X; // Horizontal offset 1
                 buddyParamRow["z_offset"].Value = pos.Z; // Horizontal offset 2
                 buddyParamRow["y_angle"].Value = pos.Ang;
-                /*
-                 * v2
-                // TODO: make sure this is all good
-                int teamPositionCount = teamPositionCountDict[team];
-                float x_final = team.TeamPosition.X + spirit.Position.X;
-                float z_final = team.TeamPosition.Z + spirit.Position.Z;
-
-                if (team.TeamPosition.EnemiesOffsetInitX == true)
-                {
-                    // Offset X coord based on total enemy count
-                    x_final -= teamTotalSpiritCount[team] * team.TeamPosition.X_increment * 0.5f;
-                }
-                x_final += team.TeamPosition.X_increment * teamPositionCount;
-                z_final += team.TeamPosition.Z_increment * teamPositionCount;
-
-                buddyParamRow["x_offset"].Value = x_final; // Horizontal offset 1
-                buddyParamRow["z_offset"].Value = z_final; // Horizontal offset 2
-                buddyParamRow["y_angle"].Value = spirit.Team.TeamPosition.Ang + spirit.Position.Ang;
-                */
-                /*
-                 * v1
-                buddyParamRow["x_offset"].Value = spirit.Team.TeamPosition.X + spirit.Position.X; // Horizontal offset 1
-                buddyParamRow["z_offset"].Value = spirit.Team.TeamPosition.Z + spirit.Position.Z; // Horizontal offset 2
-                buddyParamRow["y_angle"].Value = spirit.Team.TeamPosition.Ang + spirit.Position.Ang;
-                */
                 #endregion
             }
 
@@ -597,9 +574,9 @@ namespace EldenRingSpiritBattler
             TeamDataGrid.Columns[2].HeaderCell.Value = "Team Type";
             TeamDataGrid.Columns[2].Width = 90;
             TeamDataGrid.Columns[3].HeaderCell.Value = "Color";
-            TeamDataGrid.Columns[3].Width = 140;
+            TeamDataGrid.Columns[3].Width = 130;
             TeamDataGrid.Columns[4].HeaderCell.Value = "Stats";
-            TeamDataGrid.Columns[4].Width = 50;
+            TeamDataGrid.Columns[4].Width = 60;
             TeamDataGrid.Columns[5].HeaderCell.Value = "Pos";
             TeamDataGrid.Columns[5].Width = 100;
 

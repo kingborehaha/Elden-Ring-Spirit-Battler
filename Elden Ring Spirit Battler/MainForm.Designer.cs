@@ -107,7 +107,6 @@
             this.List_EnemyChosenTeam = new System.Windows.Forms.ComboBox();
             this.Button_PickRandomEnemy = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.Group_TeamSummonPos_Manual = new System.Windows.Forms.GroupBox();
             this.List_TeamSummonPreset = new System.Windows.Forms.ComboBox();
             this.label21 = new System.Windows.Forms.Label();
@@ -664,13 +663,13 @@
             this.Button_Context_DuplicateSpirit,
             this.Button_Context_RemoveSpirit});
             this.Context_DataGrid.Name = "Context_DataGrid";
-            this.Context_DataGrid.Size = new System.Drawing.Size(210, 92);
+            this.Context_DataGrid.Size = new System.Drawing.Size(197, 48);
             // 
             // Button_Context_DuplicateSpirit
             // 
             this.Button_Context_DuplicateSpirit.Name = "Button_Context_DuplicateSpirit";
             this.Button_Context_DuplicateSpirit.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D)));
-            this.Button_Context_DuplicateSpirit.Size = new System.Drawing.Size(209, 22);
+            this.Button_Context_DuplicateSpirit.Size = new System.Drawing.Size(196, 22);
             this.Button_Context_DuplicateSpirit.Text = "Duplicate Spirit";
             this.Button_Context_DuplicateSpirit.Click += new System.EventHandler(this.Button_DuplicateSpirit_Click);
             // 
@@ -678,7 +677,7 @@
             // 
             this.Button_Context_RemoveSpirit.Name = "Button_Context_RemoveSpirit";
             this.Button_Context_RemoveSpirit.ShortcutKeys = System.Windows.Forms.Keys.Delete;
-            this.Button_Context_RemoveSpirit.Size = new System.Drawing.Size(209, 22);
+            this.Button_Context_RemoveSpirit.Size = new System.Drawing.Size(196, 22);
             this.Button_Context_RemoveSpirit.Text = "Delete Spirit";
             this.Button_Context_RemoveSpirit.Click += new System.EventHandler(this.Button_DeleteSpiritFromList_Click);
             // 
@@ -860,7 +859,7 @@
             this.List_EnemyVariant.Name = "List_EnemyVariant";
             this.List_EnemyVariant.Size = new System.Drawing.Size(200, 23);
             this.List_EnemyVariant.TabIndex = 104;
-            this.List_EnemyVariant.SelectedIndexChanged += new System.EventHandler(this.EnemyWasEdited);
+            this.List_EnemyVariant.SelectedIndexChanged += new System.EventHandler(this.List_EnemyVariant_SelectedIndexChanged);
             this.List_EnemyVariant.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ComboBox_KeyPress);
             // 
             // label16
@@ -943,6 +942,7 @@
             this.Option_TargetAllSpiritAshes.TabIndex = 76;
             this.Option_TargetAllSpiritAshes.Text = "All Ashes";
             this.Option_TargetAllSpiritAshes.UseVisualStyleBackColor = true;
+            this.Option_TargetAllSpiritAshes.Visible = false;
             this.Option_TargetAllSpiritAshes.CheckedChanged += new System.EventHandler(this.Option_TargetAllSpiritAshes_CheckedChanged);
             // 
             // Option_SpiritAshNoRequirements
@@ -1028,7 +1028,6 @@
             // groupBox3
             // 
             this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox3.Controls.Add(this.checkBox1);
             this.groupBox3.Controls.Add(this.Group_TeamSummonPos_Manual);
             this.groupBox3.Controls.Add(this.label10);
             this.groupBox3.Controls.Add(this.Input_TeamDamageMult);
@@ -1048,18 +1047,6 @@
             this.groupBox3.TabIndex = 114;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Team";
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Checked = true;
-            this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox1.Location = new System.Drawing.Point(149, 114);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(140, 19);
-            this.checkBox1.TabIndex = 117;
-            this.checkBox1.Text = "Manual Summon Pos";
-            this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // Group_TeamSummonPos_Manual
             // 
@@ -1511,7 +1498,6 @@
         private Label label25;
         private Label label24;
         private NumericUpDown numericUpDown1;
-        private CheckBox checkBox1;
         private GroupBox Group_TeamSummonPos_Manual;
         private ComboBox List_TeamSummonPreset;
     }

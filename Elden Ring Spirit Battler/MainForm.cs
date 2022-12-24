@@ -28,10 +28,11 @@ namespace EldenRingSpiritBattler
 
             //SetRandomTeamName();
 
+            // TODO: figure out non-lame teamtypes
             AddRandomizedTeamToGrid(TeamTypeEnum.Enemy, teamSummonPresetDict["Column Left"]);
-            AddRandomizedTeamToGrid(TeamTypeEnum.ArchEnemy, teamSummonPresetDict["Column Right"]);
-            AddRandomizedTeamToGrid(TeamTypeEnum.SpiritSummon, teamSummonPresetDict["Row Close"]);
-            AddRandomizedTeamToGrid(TeamTypeEnum.Dragon, teamSummonPresetDict["Row Far"]);
+            AddRandomizedTeamToGrid(TeamTypeEnum.DS3_CoopMadPhantom, teamSummonPresetDict["Column Right"]);
+            AddRandomizedTeamToGrid(TeamTypeEnum.Player, teamSummonPresetDict["Row Close"]);
+            AddRandomizedTeamToGrid(TeamTypeEnum.HostileNPC, teamSummonPresetDict["Row Far"]);
 
             List_StatScaling.DataSource = GetOrderedEnumNames(typeof(StatScalingEnum));
             List_StatScaling.Text = StatScalingEnum.None.ToString();
@@ -260,6 +261,7 @@ namespace EldenRingSpiritBattler
             // Update NpcParamId and NpcThinkParam elements
             Input_NpcParamID.Value = enemyVariantDict[List_Enemy.Text][List_EnemyVariant.SelectedIndex].NpcID;
             Input_NpcThinkID.Value = enemyVariantDict[List_Enemy.Text][List_EnemyVariant.SelectedIndex].ThinkID;
+            EnemyWasEdited(sender, e);
         }
 
         private void Button_AddRandomEnemy_Click(object sender, EventArgs e)

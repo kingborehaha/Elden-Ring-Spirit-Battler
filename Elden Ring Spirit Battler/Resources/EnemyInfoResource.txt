@@ -10,9 +10,9 @@ Blaidd the Half-Wolf||20109210||20100000
 Blaidd the Half-Wolf||20109310||20109000
 
 --Rennala, Queen of the Full Moon
-Rennala, Queen of the Full Moon||20300024||20300000
-Rennala, Queen of the Full Moon||20300124||20300100
-Rennala, Queen of the Full Moon||20310024||20310000
+Rennala (1)||20300024||20300000
+Rennala (1)||20300124||20300100
+Rennala (2)||20310024||20310000
 
 --Rennala Student
 Rennala Student||20400024||20400000
@@ -1280,7 +1280,7 @@ Writhing Mass||47110038||47110000
 
 --Godfrey, First Elden Lord
 Godfrey, First Elden Lord||47200070||47200900
-Godfrey, First Elden Lord - Phantom||47200134||47200000
+Godfrey - Phantom||47200134||47200000
 
 --Hoarah Loux
 Hoarah Loux||47210070||47210900
@@ -1295,7 +1295,7 @@ Godrick the Grafted||47500014||47500000
 Fire Giant||47600050||47600900
 Fire Giant||47601050||47600900
 
---Valiant Gargoyle/Black Blade Kindred
+--Black Blade Kindred / Gargoyle
 Valiant Gargoyle||47700165||47700200
 Valiant Gargoyle||47701165||47701200
 Black Blade Kindred||47700070||47700000
