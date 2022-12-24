@@ -1102,6 +1102,7 @@
             // List_TeamSummonPreset
             // 
             this.List_TeamSummonPreset.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.List_TeamSummonPreset.DropDownWidth = 160;
             this.List_TeamSummonPreset.FormattingEnabled = true;
             this.List_TeamSummonPreset.Location = new System.Drawing.Point(6, 27);
             this.List_TeamSummonPreset.Name = "List_TeamSummonPreset";

@@ -170,8 +170,17 @@ namespace EldenRingSpiritBattler
             if (SpiritDataGrid.SelectedRows.Count == 0)
                 return;
 
+            int prevIndex = -1;
+            if (SpiritDataGrid.SelectedRows.Count > 0)
+                prevIndex = SpiritDataGrid.SelectedRows[0].Index;
+
             BattleSpirit spirit = ((BattleSpirit)SpiritDataGrid.SelectedRows[0].Cells[0].Value).Clone();
-            AddSpiritToList(spirit);
+            bool success = InsertSpiritToList(spirit, battleSpiritList.IndexOf(GetSpiritGridSelection()!) + 1);
+            if (success)
+            {
+                SpiritDataGrid.ClearSelection();
+                SpiritDataGrid.Rows[prevIndex + 1].Selected = true;
+            }
         }
 
         private void Button_Execute_Click(object sender, EventArgs e)

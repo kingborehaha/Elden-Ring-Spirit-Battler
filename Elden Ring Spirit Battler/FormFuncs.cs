@@ -13,11 +13,9 @@ using static EldenRingSpiritBattler.SpiritBattlerResources;
 -- TODO
     in-game testing
 -- high priority
-    implement preset combobox.
-    make sure updating team info refreshes enemy grid
+    preset combobox formatting
     Enemy list search
         When searching, go through the variant lists too!
-    
 -- medium priority
     Figure out potential HP/damage limits so i can warn when multiple multipliers will cause issues.
     Catalog phantom color/team behavior
@@ -608,6 +606,8 @@ namespace EldenRingSpiritBattler
             if (prevIndex > -1)
                 TeamDataGrid.Rows[prevIndex].Selected = true;
 
+            TeamDataGrid.FirstDisplayedScrollingRowIndex = TeamDataGrid.SelectedRows[0].Index; // Scroll to selection
+
             // Chosen Team list
             string prevText = List_EnemyChosenTeam.Text;
             List_EnemyChosenTeam.DataSource = teamDict.Select(team => team.Key).ToList(); // Also triggers UpdateSelectedSpirit();
@@ -639,6 +639,7 @@ namespace EldenRingSpiritBattler
         {
             teamDict[team.Name] = team;
             UpdateTeamGridAndList();
+            // todo: detect and select addd rows
         }
 
         private void AddRandomizedTeamToGrid(TeamTypeEnum team, SummonPos? summonPos = null)
@@ -694,13 +695,18 @@ namespace EldenRingSpiritBattler
         public void AddRandomSpiritToGrid()
         {;
             preventEnemyEdited = true;
+            int prevIndex = -1;
+            if (SpiritDataGrid.SelectedRows.Count > 0)
+                prevIndex = SpiritDataGrid.SelectedRows[0].Index;
 
             SelectRandomSpiritAndSetToElements();
             BattleSpirit spirit = CreateSpiritFromElements();
-            AddSpiritToList(spirit);
-
-            SpiritDataGrid.ClearSelection();
-            SpiritDataGrid.Rows[SpiritDataGrid.Rows.Count - 1].Selected = true;
+            bool success = InsertSpiritToList(spirit, battleSpiritList.IndexOf(GetSpiritGridSelection()!) + 1);
+            if (success)
+            {
+                SpiritDataGrid.ClearSelection();
+                SpiritDataGrid.Rows[prevIndex + 1].Selected = true;
+            }
 
             preventEnemyEdited = false;
         }
@@ -880,6 +886,11 @@ namespace EldenRingSpiritBattler
                 prevIndex = SpiritDataGrid.Rows.Count - 1;
             if (prevIndex > -1)
                 SpiritDataGrid.Rows[prevIndex].Selected = true;
+
+            if (prevIndex - 2 < 0)
+                SpiritDataGrid.FirstDisplayedScrollingRowIndex = prevIndex; // Scroll to selection
+            else
+                SpiritDataGrid.FirstDisplayedScrollingRowIndex = prevIndex - 2; // Scroll to selection
         }
         /*
         // Autosort: didn't work, had trouble finding previously selected row after rows were sorted
@@ -951,19 +962,27 @@ namespace EldenRingSpiritBattler
             return spirit;
         }
 
-        public void AddSpiritToList(BattleSpirit spirit)
+        public bool AddSpiritToList(BattleSpirit spirit)
         {
             if (SpiritDataGrid.Rows.Count > buddyLimit)
             {
                 MessageBox.Show("A spirit ash cannot handle more than 33 summons at once. Sorry!", "Warning");
-                return;
+                return false;
             }
-
-            // TODO: instead of adding and selecting last index/row, insert after selection. (organized teams better). ditto with duplication
-
-
             battleSpiritList.Add(spirit);
             UpdateSpiritGrid();
+            return true;
+        }
+        public bool InsertSpiritToList(BattleSpirit spirit, int index)
+        {
+            if (SpiritDataGrid.Rows.Count > buddyLimit)
+            {
+                MessageBox.Show("A spirit ash cannot handle more than 33 summons at once. Sorry!", "Warning");
+                return false;
+            }
+            battleSpiritList.Insert(index, spirit);
+            UpdateSpiritGrid();
+            return true;
         }
 
         private BattleSpirit? GetSpiritGridSelection()
