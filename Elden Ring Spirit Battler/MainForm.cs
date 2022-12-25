@@ -27,6 +27,7 @@ namespace EldenRingSpiritBattler
             Text += GetVersion();
 
             // TODO: figure out non-lame teamtypes
+            // TODO: order isn't consistent! waaat
             AddRandomizedTeamToGrid(TeamTypeEnum.Enemy, teamSummonPresetDict["Column Left"]);
             AddRandomizedTeamToGrid(TeamTypeEnum.DS3_CoopMadPhantom, teamSummonPresetDict["Column Right"]);
             AddRandomizedTeamToGrid(TeamTypeEnum.SpiritSummon, teamSummonPresetDict["Row Close"]);
@@ -43,8 +44,9 @@ namespace EldenRingSpiritBattler
             LoadPhantomResource();
 
             AddRandomSpiritToGrid();
+            List_EnemyChosenTeam.Text = teamDict.Values.Where(e => e.TeamPosition.Label == "Column Left").First().Name;
             AddRandomSpiritToGrid();
-            List_EnemyChosenTeam.SelectedIndex = 1;
+            List_EnemyChosenTeam.Text = teamDict.Values.Where(e => e.TeamPosition.Label == "Column Right").First().Name;
             SetGridTeamToElements();
 
             List_TeamSummonPreset.DataSource = teamSummonPresetDict.Keys.ToList();
@@ -352,6 +354,11 @@ namespace EldenRingSpiritBattler
                 }
             }
             List_Enemy.DataSource = resultList;
+        }
+
+        private void Option_HidePlayer_Click(object sender, EventArgs e)
+        {
+            Option_HidePlayer.Checked = !Option_HidePlayer.Checked;
         }
     }
 }

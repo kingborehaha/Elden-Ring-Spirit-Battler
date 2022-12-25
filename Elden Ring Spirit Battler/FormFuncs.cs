@@ -12,12 +12,9 @@ using static EldenRingSpiritBattler.SpiritBattlerResources;
 /*
 -- TODO
 -- high priority
-    preset combobox formatting
-    Hide player from enemies option
-        Hop into roleParam, change player teamtype to neutral ghost?
-            make sure to change hollow and human params!
-        also apply 0% opacity phantom ID?
-    add names to the remaining phantom enums
+    Preset combobox formatting
+    Add names to the remaining phantom enums
+    Improve default team teamTypes
 -- medium priority
     Better catalog team behavior
         Maybe a custom class with a helpful label/info?
@@ -26,8 +23,10 @@ using static EldenRingSpiritBattler.SpiritBattlerResources;
     Better catalog enemy variant names
     Option to randomize an entire ash
     Tooltips.
+    Look into summoning spirits anywhere
+    Fix default teams dictionary out of order wackiness
 -- low priority
-    put phantom param stuff into a resource file, make it detail more info
+    Put phantom param stuff into a resource file, make it detail more info
     Replace team enum with more comprehensive info, so user knows where these scaling levels correspond
     Change targeted ash name's FMG name
         Format: "Spirit Battler: [team] vs [team]
@@ -261,6 +260,7 @@ namespace EldenRingSpiritBattler
             PARAM goodsParam;
             PARAM spEffectParam;
             PARAM vfxParam;
+            PARAM roleParam;
             try
             {
                 buddyParam = paramList["BuddyParam"];
@@ -269,6 +269,8 @@ namespace EldenRingSpiritBattler
                 goodsParam = paramList["EquipParamGoods"];
                 spEffectParam = paramList["SpEffectParam"];
                 vfxParam = paramList["SpEffectVfxParam"];
+                roleParam = paramList["RoleParam"];
+
             }
             catch
             {
@@ -501,7 +503,16 @@ namespace EldenRingSpiritBattler
             }
             #endregion
             //
-
+            //
+            #region RoleParam
+            PARAM.Row playerRole = roleParam[0];
+            if (Option_HidePlayer.Checked)
+            {
+                playerRole["teamType"].Value = TeamTypeEnum.WanderingGhost;
+                playerRole["phantomParamId"].Value = PhantomEnum.Invisible;
+            }
+            #endregion
+            //
             UpdateConsole("Exporting Params");
 
             //output regulation

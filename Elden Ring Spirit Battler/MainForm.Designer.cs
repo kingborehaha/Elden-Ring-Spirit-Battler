@@ -476,7 +476,7 @@
             this.Option_HidePlayer.Name = "Option_HidePlayer";
             this.Option_HidePlayer.Size = new System.Drawing.Size(266, 22);
             this.Option_HidePlayer.Text = "Hide Player";
-            this.Option_HidePlayer.Visible = false;
+            this.Option_HidePlayer.Click += new System.EventHandler(this.Option_HidePlayer_Click);
             // 
             // Menu_Help
             // 

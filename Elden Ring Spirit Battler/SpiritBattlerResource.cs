@@ -26,8 +26,10 @@ namespace EldenRingSpiritBattler
 
         public enum TeamTypeEnum : byte
         {
-            Player = 1,
+            Player = 1, // Mutual hate, mutual hurt
             FriendlyPhantom = 2,
+            GreyGhost = 4,
+            WanderingGhost = 5, // No hate or hurt
             Enemy = 6,
             Boss = 7,
             Indiscriminate = 29,
@@ -121,14 +123,14 @@ namespace EldenRingSpiritBattler
             RedStrong = 803,
             RedStronger = 804,
             RedFaintEdge = 805,
-            //810,
+            Invisible = 810,
             BlueStrong = 811,
             BrownSlight = 812,
             //813,
             GhostGrey60 = 820,
             GreySlight = 821,
             //890,
-            Invisible = 891,
+            MostlyInvisible = 891,
             GhostBrown30 = 920,
             GhostBrown50 = 921,
             //GhostRed50 = 922,
