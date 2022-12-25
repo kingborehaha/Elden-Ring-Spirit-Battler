@@ -11,22 +11,23 @@ using static EldenRingSpiritBattler.SpiritBattlerResources;
 
 /*
 -- TODO
-    in-game testing
 -- high priority
     preset combobox formatting
     Hide player from enemies option
         Hop into roleParam, change player teamtype to neutral ghost?
             make sure to change hollow and human params!
+        also apply 0% opacity phantom ID?
+    add names to the remaining phantom enums
 -- medium priority
-    Save program settings
-    Figure out potential HP/damage limits so i can warn when multiple multipliers will cause issues.
-    Better catalog phantom color/team behavior
+    Better catalog team behavior
         Maybe a custom class with a helpful label/info?
+    Save program settings
+    Save/load .json for fights.
     Better catalog enemy variant names
     Option to randomize an entire ash
     Tooltips.
---low priority
-    Let user insert phantom param ID/npcID/npcThink they want (they have to tick an option that allows editing them)
+-- low priority
+    put phantom param stuff into a resource file, make it detail more info
     Replace team enum with more comprehensive info, so user knows where these scaling levels correspond
     Change targeted ash name's FMG name
         Format: "Spirit Battler: [team] vs [team]
@@ -38,19 +39,18 @@ using static EldenRingSpiritBattler.SpiritBattlerResources;
         Automatically save on execute just so that data isn't lost on exceptions.
 */
 
-
 namespace EldenRingSpiritBattler
 {
     public partial class MainForm
     {
-        public readonly uint buddyLimit = 33; //TODO: confirm
+        public readonly uint buddyLimit = 10; // Limit with buddyParam successive IDs.
 
         public string backupFileName = "";
 
         public Dictionary<string, int> spiritAshesDict = new();
         public SortedDictionary<string, SpiritTeam> teamDict = new();
         public Dictionary<string, List<Enemy>> enemyVariantDict = new();
-        public List<string> enemyListCache;
+        public List<string> enemyListCache = new();
 
         public List<BattleSpirit> battleSpiritList = new();
 
@@ -549,13 +549,17 @@ namespace EldenRingSpiritBattler
             DataGridViewRow row = TeamDataGrid.SelectedRows[0];
             return (SpiritTeam)row.Cells[0].Value;
         }
-        private void UpdateTeamGridAndList()
+        private void UpdateTeamGridAndList(int scrollIndexOffset = 0)
         {
             int prevIndex = 0;
             if (TeamDataGrid.SelectedRows.Count > 0)
                 prevIndex = TeamDataGrid.SelectedRows[0].Index;
 
-            int prevScrollIndex = TeamDataGrid.FirstDisplayedScrollingRowIndex;
+            int prevScrollIndex = TeamDataGrid.FirstDisplayedScrollingRowIndex + scrollIndexOffset;
+            if (prevScrollIndex < 0)
+                prevScrollIndex = 0;
+            else if (prevScrollIndex >= TeamDataGrid.Rows.Count)
+                prevScrollIndex = TeamDataGrid.Rows.Count - 1;
 
             TeamDataGrid.DataSource = teamDict.Select(team => new
             {
@@ -765,7 +769,7 @@ namespace EldenRingSpiritBattler
             }
             battleSpiritList.Remove(GetSpiritGridSelection()!);
 
-            UpdateSpiritGrid();
+            UpdateSpiritGrid(-1);
             SetSelectedSpiritToElements();
         }
 
@@ -842,13 +846,17 @@ namespace EldenRingSpiritBattler
             return $"{pos.X}x {pos.Z}z {pos.Ang}º";
         }
 
-        private void UpdateSpiritGrid()
+        private void UpdateSpiritGrid(int scrollIndexOffset = 0)
         {
             int prevIndex = 0;
             if (SpiritDataGrid.SelectedRows.Count > 0)
                 prevIndex = SpiritDataGrid.SelectedRows[0].Index;
 
-            int prevScrollIndex = SpiritDataGrid.FirstDisplayedScrollingRowIndex;
+            int prevScrollIndex = SpiritDataGrid.FirstDisplayedScrollingRowIndex + scrollIndexOffset;
+            if (prevScrollIndex < 0)
+                prevScrollIndex = 0;
+            else if (prevScrollIndex >= SpiritDataGrid.Rows.Count)
+                prevScrollIndex = SpiritDataGrid.Rows.Count - 1;
 
             SpiritDataGrid.DataSource = battleSpiritList.Select(spirit => new
             {
@@ -912,22 +920,22 @@ namespace EldenRingSpiritBattler
         {
             if (SpiritDataGrid.Rows.Count > buddyLimit)
             {
-                MessageBox.Show("A spirit ash cannot handle more than 33 summons at once. Sorry!", "Warning");
+                MessageBox.Show($"A spirit ash cannot handle more than {buddyLimit} summons at once. Sorry!", "Warning");
                 return false;
             }
             battleSpiritList.Add(spirit);
-            UpdateSpiritGrid();
+            UpdateSpiritGrid(1);
             return true;
         }
         public bool InsertSpiritToList(BattleSpirit spirit, int index)
         {
             if (SpiritDataGrid.Rows.Count > buddyLimit)
             {
-                MessageBox.Show("A spirit ash cannot handle more than 33 summons at once. Sorry!", "Warning");
+                MessageBox.Show($"A spirit ash cannot handle more than {buddyLimit} summons at once. Sorry!", "Warning");
                 return false;
             }
             battleSpiritList.Insert(index, spirit);
-            UpdateSpiritGrid();
+            UpdateSpiritGrid(1);
             return true;
         }
 

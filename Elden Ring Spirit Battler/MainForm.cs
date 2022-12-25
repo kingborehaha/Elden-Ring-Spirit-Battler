@@ -29,7 +29,7 @@ namespace EldenRingSpiritBattler
             // TODO: figure out non-lame teamtypes
             AddRandomizedTeamToGrid(TeamTypeEnum.Enemy, teamSummonPresetDict["Column Left"]);
             AddRandomizedTeamToGrid(TeamTypeEnum.DS3_CoopMadPhantom, teamSummonPresetDict["Column Right"]);
-            AddRandomizedTeamToGrid(TeamTypeEnum.Player, teamSummonPresetDict["Row Close"]);
+            AddRandomizedTeamToGrid(TeamTypeEnum.SpiritSummon, teamSummonPresetDict["Row Close"]);
             AddRandomizedTeamToGrid(TeamTypeEnum.Unknown24, teamSummonPresetDict["Row Far"]);
 
             List_StatScaling.DataSource = GetOrderedEnumNames(typeof(StatScalingEnum));
