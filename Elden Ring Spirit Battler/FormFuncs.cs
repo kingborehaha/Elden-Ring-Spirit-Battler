@@ -24,7 +24,6 @@ using static EldenRingSpiritBattler.SpiritBattlerResources;
     Option to randomize an entire ash
     Tooltips.
     Look into summoning spirits anywhere
-    Fix default teams dictionary out of order wackiness
 -- low priority
     Put phantom param stuff into a resource file, make it detail more info
     Replace team enum with more comprehensive info, so user knows where these scaling levels correspond
@@ -47,7 +46,7 @@ namespace EldenRingSpiritBattler
         public string backupFileName = "";
 
         public Dictionary<string, int> spiritAshesDict = new();
-        public SortedDictionary<string, SpiritTeam> teamDict = new();
+        public Dictionary<string, SpiritTeam> teamDict = new();
         public Dictionary<string, List<Enemy>> enemyVariantDict = new();
         public List<string> enemyListCache = new();
 

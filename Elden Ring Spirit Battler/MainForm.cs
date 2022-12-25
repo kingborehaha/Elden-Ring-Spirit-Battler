@@ -34,7 +34,7 @@ namespace EldenRingSpiritBattler
             AddRandomizedTeamToGrid(TeamTypeEnum.Unknown24, teamSummonPresetDict["Row Far"]);
 
             List_StatScaling.DataSource = GetOrderedEnumNames(typeof(StatScalingEnum));
-            List_StatScaling.Text = StatScalingEnum.Level_15.ToString();
+            List_StatScaling.Text = StatScalingEnum.Lvl15.ToString();
 
             LoadSpiritAshResource();
             LoadEnemyResource();
