@@ -12,6 +12,12 @@ using static EldenRingSpiritBattler.SpiritBattlerResources;
 /*
 -- TODO
 -- high priority
+    searchbar QOL
+        click on a new spirit: searchbox is emptied
+        click on searchbox: all text is highlight  
+    increase position preset increment based on enemy's hitbox size
+        would have to load regulation.bin early if i used this for preview. maybe it should just be a execute-only thing for now
+    update team elements when a spirit is selected (since selected team can change)
     Preset combobox formatting
     Add names to the remaining phantom enums
     Improve default team teamTypes
@@ -509,6 +515,11 @@ namespace EldenRingSpiritBattler
             {
                 playerRole["teamType"].Value = TeamTypeEnum.WanderingGhost;
                 playerRole["phantomParamId"].Value = PhantomEnum.Invisible;
+            }
+            else
+            {
+                playerRole["teamType"].Value = TeamTypeEnum.Player;
+                playerRole["phantomParamId"].Value = PhantomEnum.None;
             }
             #endregion
             //
