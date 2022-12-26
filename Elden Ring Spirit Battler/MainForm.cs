@@ -27,7 +27,6 @@ namespace EldenRingSpiritBattler
             Text += GetVersion();
 
             // TODO: figure out non-lame teamtypes
-            // TODO: order isn't consistent! waaat
             AddRandomizedTeamToGrid(TeamTypeEnum.Enemy, teamSummonPresetDict["Column Left"]);
             AddRandomizedTeamToGrid(TeamTypeEnum.HostileNPC, teamSummonPresetDict["Column Right"]);
             AddRandomizedTeamToGrid(TeamTypeEnum.SpiritSummon, teamSummonPresetDict["Row Close"]);
@@ -231,8 +230,10 @@ namespace EldenRingSpiritBattler
 
         private void SpiritDataGrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            preventEnemyEdited = true;
             UpdateSpiritElements();
             Search_Enemy.Text = "";
+            preventEnemyEdited = false;
         }
 
         private void Option_ReduceEnemyMapCol_clicked(object sender, EventArgs e)

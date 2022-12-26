@@ -11,9 +11,6 @@ using static EldenRingSpiritBattler.SpiritBattlerResources;
 
 /*
 -- TODO
--- high priority
-    Add names to the remaining phantom enums
-    Improve default team teamTypes
 -- medium priority
     Better catalog team behavior
         Maybe a custom class with a helpful label/info?
@@ -56,11 +53,11 @@ namespace EldenRingSpiritBattler
         public int GetRandomUnusedPhantomId()
         {
             Random rand = new();
-            var enums = Enum.GetValues<PhantomEnum>();
+            var enums = Enum.GetValues<PhantomEnum>().ToList().FindAll(e => !e.ToString().ToLower().Contains("invisible"));
             int phantomID;
             do
             {
-                phantomID = (int)enums[rand.Next(0, enums.Length - 1)];
+                phantomID = (int)enums[rand.Next(0, enums.Count - 1)];
             } 
             while (teamDict.Values.ToList().Find(e => phantomID == e.PhantomParamID) != null);
             return phantomID;
@@ -70,10 +67,6 @@ namespace EldenRingSpiritBattler
         {
             // Order by enum value
             return Enum.GetNames(enumType).OrderBy(e => Enum.Parse(enumType, e)).ToArray();
-        }
-
-        private void SearchList()
-        {
         }
 
         private int GetLongestCharInList(object list)
@@ -432,8 +425,6 @@ namespace EldenRingSpiritBattler
                 }
                 while (npcThinkParam[newNpcThinkID] != null);
                 PARAM.Row newNpcThinkRow = InsertParamRow(npcThinkParam, npcThinkParam[npcThinkID], newNpcThinkID);
-
-                // TODO: eye dist, battleStartDist, forget time, backHomeDist
 
                 newNpcThinkRow["isBuddyAI"].Value = true; // This PROBABLY overrides backhomeDist, etc.
                 newNpcThinkRow["nose_dist"].Value = (UInt16)30;
@@ -895,7 +886,6 @@ namespace EldenRingSpiritBattler
             SpiritDataGrid.Columns[3].Width = 80;
             SpiritDataGrid.Columns[4].HeaderCell.Value = "Pos";
             SpiritDataGrid.Columns[4].Width = 100;
-            // TODO: maybe also dispay overall scaling by pre-multiplying stat scaling level + individual scaling?
 
             SpiritDataGrid.ClearSelection();
             if (prevIndex > SpiritDataGrid.Rows.Count - 1)
@@ -927,7 +917,7 @@ namespace EldenRingSpiritBattler
                 VariantName = List_EnemyVariant.Text,
                 Team = GetChosenTeamFromElement(),
                 Sp_StatScaling = (int)Enum.Parse(typeof(StatScalingEnum), List_StatScaling.Text),
-                Position = CreateSpiritSummonPosition(),
+                Position = CreateSpiritSummonPositionFromElements(),
                 HpMult = Input_EnemyHpMult.Value,
                 DamageMult = Input_EnemyDamageMult.Value,
                 BaseNpcID = (int)Input_NpcParamID.Value,
@@ -967,16 +957,15 @@ namespace EldenRingSpiritBattler
             DataGridViewRow row = SpiritDataGrid.SelectedRows[0];
             return (BattleSpirit)row.Cells[0].Value;
         }
-        
+        #endregion
+        //
+
+
         /// <summary>
         /// Get a spirit's summon pos that includes position preset offsets.
         /// </summary>
-        /// <param name="team"></param>
-        /// <returns></returns>
-        /// <exception cref="Exception"></exception>
         private SummonPos GetOffsetSpiritSummonPos(BattleSpirit spirit)
         {
-            //TODO: calculate position preset increment stuff here
             SpiritTeam team = spirit.Team;
 
             int totalCount = 0;
@@ -1000,23 +989,20 @@ namespace EldenRingSpiritBattler
             float ang = team.TeamPosition.Ang;
             x_final += spirit.Position.X;
             z_final += spirit.Position.Z;
-            //ang += spirit.Position.Ang; //This needs math to work (UI element is disabled)
+            //ang += spirit.Position.Ang; // This needs math to work (UI element is disabled)
 
             if (team.TeamPosition.EnemiesOffsetInitX == true)
             {
                 // Offset X coord based on total enemy count
-                x_final -= (totalCount+1) * team.TeamPosition.X_increment * 0.5f;
+                x_final -= (totalCount + 1) * team.TeamPosition.X_increment * 0.5f;
             }
             x_final += team.TeamPosition.X_increment * myCount;
             z_final += team.TeamPosition.Z_increment * myCount;
 
             return new SummonPos(x_final, z_final, ang);
         }
-        
-        #endregion
-        //
 
-        private SummonPos CreateSpiritSummonPosition()
+        private SummonPos CreateSpiritSummonPositionFromElements()
         {
             return new SummonPos(SummonPosition_X.Value, SummonPosition_Z.Value, SummonPosition_Angle.Value);
         }

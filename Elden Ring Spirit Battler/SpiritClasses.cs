@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace EldenRingSpiritBattler
 {
     /// <summary>
-    /// Object derived from .txt resource that contains each unique enemy's info.
+    /// Object derived from .txt resource that contains a unique enemy's info.
     /// </summary>
     public class Enemy
     {
@@ -177,7 +177,7 @@ namespace EldenRingSpiritBattler
     public class SearchFilterClass
     {
         public List<string> Results_Cache = new();
-        public List<string> Results_Filtered = new();
+        public List<string> Results = new();
         public string SearchFilter_Cache;
         public string SearchFilter;
         public SearchFilterClass() { }
