@@ -39,7 +39,7 @@ namespace EldenRingSpiritBattler
             LoadSpiritAshResource();
             LoadEnemyResource();
             UpdateTeamGridAndList();
-            SetGridTeamToElements();
+            UpdateTeamElements();
             LoadTeamTypeResource();
             LoadPhantomResource();
 
@@ -47,7 +47,7 @@ namespace EldenRingSpiritBattler
             List_EnemyChosenTeam.Text = teamDict.Values.Where(e => e.TeamPosition.Label == "Column Left").First().Name;
             AddRandomSpiritToGrid();
             List_EnemyChosenTeam.Text = teamDict.Values.Where(e => e.TeamPosition.Label == "Column Right").First().Name;
-            SetGridTeamToElements();
+            UpdateTeamElements();
 
             List_TeamSummonPreset.DataSource = teamSummonPresetDict.Keys.ToList();
         }
@@ -57,7 +57,7 @@ namespace EldenRingSpiritBattler
             if (preventEnemyEdited)
                 return;
             UpdateSelectedSpirit();
-            SetSelectedSpiritToElements();
+            UpdateSpiritElements();
         }
 
         private void b_restoreRegulation_Click(object sender, EventArgs e)
@@ -231,7 +231,7 @@ namespace EldenRingSpiritBattler
 
         private void SpiritDataGrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            SetSelectedSpiritToElements();
+            UpdateSpiritElements();
             Search_Enemy.Text = "";
         }
 
@@ -313,9 +313,9 @@ namespace EldenRingSpiritBattler
             }
         }
 
-        private void TeamDataGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void TeamDataGrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            SetGridTeamToElements();
+            UpdateTeamElements();
         }
 
         private void Option_TargetAllSpiritAshes_CheckedChanged(object sender, EventArgs e)

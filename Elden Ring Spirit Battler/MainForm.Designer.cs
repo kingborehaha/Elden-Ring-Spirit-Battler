@@ -1246,7 +1246,7 @@
             this.TeamDataGrid.ShowCellToolTips = false;
             this.TeamDataGrid.Size = new System.Drawing.Size(572, 157);
             this.TeamDataGrid.TabIndex = 113;
-            this.TeamDataGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TeamDataGrid_CellContentClick);
+            this.TeamDataGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TeamDataGrid_CellClick);
             this.TeamDataGrid.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.TeamDataGrid_CellMouseDown);
             // 
             // Context_TeamDataGrid

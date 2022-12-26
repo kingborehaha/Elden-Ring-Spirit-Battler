@@ -12,7 +12,6 @@ using static EldenRingSpiritBattler.SpiritBattlerResources;
 /*
 -- TODO
 -- high priority
-    update team elements when a spirit is selected (since selected team can change)
     Add names to the remaining phantom enums
     Improve default team teamTypes
 -- medium priority
@@ -681,7 +680,7 @@ namespace EldenRingSpiritBattler
                 return name;
             }
         }
-        public void SetGridTeamToElements()
+        public void UpdateTeamElements()
         {
             SpiritTeam team = GetSelectedTeamFromGrid();
 
@@ -728,7 +727,7 @@ namespace EldenRingSpiritBattler
             List_EnemyVariant.SelectedIndex = rand.Next(0, List_EnemyVariant.Items.Count - 1);
         }
 
-        private void SetSelectedSpiritToElements()
+        private void UpdateSpiritElements()
         {
             BattleSpirit? spirit = GetSpiritGridSelection();
 
@@ -764,6 +763,8 @@ namespace EldenRingSpiritBattler
             SummonPosition_X.Value = (decimal)spirit.Position.X;
             SummonPosition_Z.Value = (decimal)spirit.Position.Z;
             SummonPosition_Angle.Value = (decimal)spirit.Position.Ang;
+
+            UpdateTeamElements();
         }
 
         private void UpdateSelectedSpirit()
@@ -788,7 +789,7 @@ namespace EldenRingSpiritBattler
             battleSpiritList.Remove(GetSpiritGridSelection()!);
 
             UpdateSpiritGrid(-1);
-            SetSelectedSpiritToElements();
+            UpdateSpiritElements();
             Search_Enemy.Text = "";
         }
 
