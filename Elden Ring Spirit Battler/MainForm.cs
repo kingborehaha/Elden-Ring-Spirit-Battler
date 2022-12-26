@@ -385,9 +385,14 @@ namespace EldenRingSpiritBattler
 
         private void Search_Enemy_Click(object sender, EventArgs e)
         {
-            Search_Enemy.Focus();
             Search_Enemy.SelectionStart = 0;
             Search_Enemy.SelectionLength = Search_Enemy.Text.Length;
+        }
+
+        private void Label_SearchText_Click(object sender, EventArgs e)
+        {
+            Search_Enemy.Focus();
+            Search_Enemy_Click(sender, e);
         }
     }
 }

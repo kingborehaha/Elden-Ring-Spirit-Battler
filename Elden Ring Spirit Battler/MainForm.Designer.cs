@@ -255,7 +255,7 @@
             -2147483648});
             this.Input_TeamSummonPos_X.Name = "Input_TeamSummonPos_X";
             this.Input_TeamSummonPos_X.Size = new System.Drawing.Size(59, 23);
-            this.Input_TeamSummonPos_X.TabIndex = 114;
+            this.Input_TeamSummonPos_X.TabIndex = 9;
             this.toolTip1.SetToolTip(this.Input_TeamSummonPos_X, "Left/Right position of summon location in meters\r\nNegative values are to the left" +
         " of the player\r\nPositive values are to the right of the player");
             // 
@@ -275,7 +275,7 @@
             -2147483648});
             this.Input_TeamSummonPos_Z.Name = "Input_TeamSummonPos_Z";
             this.Input_TeamSummonPos_Z.Size = new System.Drawing.Size(59, 23);
-            this.Input_TeamSummonPos_Z.TabIndex = 118;
+            this.Input_TeamSummonPos_Z.TabIndex = 10;
             this.toolTip1.SetToolTip(this.Input_TeamSummonPos_Z, "Depth of summon location in meters\r\nNegative values are in front of the player\r\nP" +
         "ositive values are behind the player");
             // 
@@ -295,7 +295,7 @@
             -2147483648});
             this.Input_TeamSummonPos_Ang.Name = "Input_TeamSummonPos_Ang";
             this.Input_TeamSummonPos_Ang.Size = new System.Drawing.Size(59, 23);
-            this.Input_TeamSummonPos_Ang.TabIndex = 120;
+            this.Input_TeamSummonPos_Ang.TabIndex = 11;
             this.toolTip1.SetToolTip(this.Input_TeamSummonPos_Ang, "Facing angle of the spirit when summoned\r\nRange of -180 to 180 degrees\r\nNegative " +
         "values face left, Positive values face right\r\n");
             // 
@@ -523,7 +523,7 @@
             this.Search_Enemy.Location = new System.Drawing.Point(6, 86);
             this.Search_Enemy.Name = "Search_Enemy";
             this.Search_Enemy.Size = new System.Drawing.Size(200, 23);
-            this.Search_Enemy.TabIndex = 64;
+            this.Search_Enemy.TabIndex = 10;
             this.Search_Enemy.Click += new System.EventHandler(this.Search_Enemy_Click);
             this.Search_Enemy.TextChanged += new System.EventHandler(this.Search_Enemy_TextChanged);
             this.Search_Enemy.Validated += new System.EventHandler(this.EnemyWasEdited);
@@ -544,7 +544,7 @@
             this.List_TeamPhantomColor.Location = new System.Drawing.Point(6, 41);
             this.List_TeamPhantomColor.Name = "List_TeamPhantomColor";
             this.List_TeamPhantomColor.Size = new System.Drawing.Size(157, 23);
-            this.List_TeamPhantomColor.TabIndex = 66;
+            this.List_TeamPhantomColor.TabIndex = 1;
             this.List_TeamPhantomColor.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ComboBox_KeyPress);
             // 
             // label4
@@ -613,7 +613,7 @@
             this.Button_AddNewTeam.Location = new System.Drawing.Point(6, 114);
             this.Button_AddNewTeam.Name = "Button_AddNewTeam";
             this.Button_AddNewTeam.Size = new System.Drawing.Size(116, 23);
-            this.Button_AddNewTeam.TabIndex = 87;
+            this.Button_AddNewTeam.TabIndex = 5;
             this.Button_AddNewTeam.Text = "Add/Update Team";
             this.Button_AddNewTeam.UseVisualStyleBackColor = true;
             this.Button_AddNewTeam.Click += new System.EventHandler(this.Button_AddUpdateTeam_Click);
@@ -882,7 +882,7 @@
             this.List_TeamType.Location = new System.Drawing.Point(169, 41);
             this.List_TeamType.Name = "List_TeamType";
             this.List_TeamType.Size = new System.Drawing.Size(131, 23);
-            this.List_TeamType.TabIndex = 107;
+            this.List_TeamType.TabIndex = 2;
             this.List_TeamType.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ComboBox_KeyPress);
             // 
             // label17
@@ -899,7 +899,7 @@
             this.Input_TeamName.Location = new System.Drawing.Point(6, 85);
             this.Input_TeamName.Name = "Input_TeamName";
             this.Input_TeamName.Size = new System.Drawing.Size(157, 23);
-            this.Input_TeamName.TabIndex = 108;
+            this.Input_TeamName.TabIndex = 3;
             // 
             // label18
             // 
@@ -1004,9 +1004,9 @@
             this.Label_SearchText.Location = new System.Drawing.Point(11, 89);
             this.Label_SearchText.Name = "Label_SearchText";
             this.Label_SearchText.Size = new System.Drawing.Size(51, 15);
-            this.Label_SearchText.TabIndex = 114;
+            this.Label_SearchText.TabIndex = 0;
             this.Label_SearchText.Text = "Search...";
-            this.Label_SearchText.Click += new System.EventHandler(this.Search_Enemy_Click);
+            this.Label_SearchText.Click += new System.EventHandler(this.Label_SearchText_Click);
             // 
             // label2
             // 
@@ -1027,7 +1027,7 @@
             this.List_EnemyChosenTeam.Location = new System.Drawing.Point(6, 42);
             this.List_EnemyChosenTeam.Name = "List_EnemyChosenTeam";
             this.List_EnemyChosenTeam.Size = new System.Drawing.Size(157, 23);
-            this.List_EnemyChosenTeam.TabIndex = 112;
+            this.List_EnemyChosenTeam.TabIndex = 20;
             this.List_EnemyChosenTeam.SelectedIndexChanged += new System.EventHandler(this.List_EnemyChosenTeam_SelectedIndexChanged);
             this.List_EnemyChosenTeam.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ComboBox_KeyPress);
             // 
@@ -1083,12 +1083,12 @@
             // List_TeamSummonPreset
             // 
             this.List_TeamSummonPreset.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.List_TeamSummonPreset.DropDownWidth = 150;
+            this.List_TeamSummonPreset.DropDownWidth = 100;
             this.List_TeamSummonPreset.FormattingEnabled = true;
             this.List_TeamSummonPreset.Location = new System.Drawing.Point(6, 27);
             this.List_TeamSummonPreset.Name = "List_TeamSummonPreset";
             this.List_TeamSummonPreset.Size = new System.Drawing.Size(131, 23);
-            this.List_TeamSummonPreset.TabIndex = 121;
+            this.List_TeamSummonPreset.TabIndex = 8;
             this.List_TeamSummonPreset.SelectedIndexChanged += new System.EventHandler(this.List_TeamSummonPreset_SelectedIndexChanged);
             // 
             // label21
@@ -1139,7 +1139,7 @@
             0});
             this.Input_TeamDamageMult.Name = "Input_TeamDamageMult";
             this.Input_TeamDamageMult.Size = new System.Drawing.Size(61, 23);
-            this.Input_TeamDamageMult.TabIndex = 113;
+            this.Input_TeamDamageMult.TabIndex = 7;
             this.Input_TeamDamageMult.Value = new decimal(new int[] {
             1,
             0,
@@ -1167,7 +1167,7 @@
             0});
             this.Input_TeamHpMult.Name = "Input_TeamHpMult";
             this.Input_TeamHpMult.Size = new System.Drawing.Size(61, 23);
-            this.Input_TeamHpMult.TabIndex = 111;
+            this.Input_TeamHpMult.TabIndex = 6;
             this.Input_TeamHpMult.Value = new decimal(new int[] {
             1,
             0,
@@ -1179,7 +1179,7 @@
             this.Button_RandomTeamName.Location = new System.Drawing.Point(169, 85);
             this.Button_RandomTeamName.Name = "Button_RandomTeamName";
             this.Button_RandomTeamName.Size = new System.Drawing.Size(76, 23);
-            this.Button_RandomTeamName.TabIndex = 110;
+            this.Button_RandomTeamName.TabIndex = 4;
             this.Button_RandomTeamName.Text = "Randomize";
             this.Button_RandomTeamName.UseVisualStyleBackColor = true;
             this.Button_RandomTeamName.Click += new System.EventHandler(this.Button_RandomizeTeam_Click);

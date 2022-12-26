@@ -13,7 +13,6 @@ using static EldenRingSpiritBattler.SpiritBattlerResources;
 -- TODO
 -- high priority
     update team elements when a spirit is selected (since selected team can change)
-    Preset combobox formatting
     Add names to the remaining phantom enums
     Improve default team teamTypes
 -- medium priority
