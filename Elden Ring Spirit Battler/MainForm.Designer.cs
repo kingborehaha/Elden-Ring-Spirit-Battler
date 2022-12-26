@@ -103,6 +103,7 @@
             this.Option_TargetAllSpiritAshes = new System.Windows.Forms.CheckBox();
             this.Option_SpiritAshNoRequirements = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.Label_SearchText = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.List_EnemyChosenTeam = new System.Windows.Forms.ComboBox();
             this.Button_PickRandomEnemy = new System.Windows.Forms.Button();
@@ -523,7 +524,7 @@
             this.Search_Enemy.Name = "Search_Enemy";
             this.Search_Enemy.Size = new System.Drawing.Size(200, 23);
             this.Search_Enemy.TabIndex = 64;
-            this.Search_Enemy.Text = "Search...";
+            this.Search_Enemy.Click += new System.EventHandler(this.Search_Enemy_Click);
             this.Search_Enemy.TextChanged += new System.EventHandler(this.Search_Enemy_TextChanged);
             this.Search_Enemy.Validated += new System.EventHandler(this.EnemyWasEdited);
             // 
@@ -961,6 +962,7 @@
             // groupBox2
             // 
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Controls.Add(this.Label_SearchText);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.List_EnemyChosenTeam);
             this.groupBox2.Controls.Add(this.Button_PickRandomEnemy);
@@ -992,6 +994,19 @@
             this.groupBox2.TabIndex = 113;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Summon";
+            // 
+            // Label_SearchText
+            // 
+            this.Label_SearchText.AutoSize = true;
+            this.Label_SearchText.BackColor = System.Drawing.SystemColors.Window;
+            this.Label_SearchText.CausesValidation = false;
+            this.Label_SearchText.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.Label_SearchText.Location = new System.Drawing.Point(11, 89);
+            this.Label_SearchText.Name = "Label_SearchText";
+            this.Label_SearchText.Size = new System.Drawing.Size(51, 15);
+            this.Label_SearchText.TabIndex = 114;
+            this.Label_SearchText.Text = "Search...";
+            this.Label_SearchText.Click += new System.EventHandler(this.Search_Enemy_Click);
             // 
             // label2
             // 
@@ -1501,5 +1516,6 @@
         private NumericUpDown numericUpDown1;
         private GroupBox Group_TeamSummonPos_Manual;
         private ComboBox List_TeamSummonPreset;
+        private Label Label_SearchText;
     }
 }

@@ -12,11 +12,6 @@ using static EldenRingSpiritBattler.SpiritBattlerResources;
 /*
 -- TODO
 -- high priority
-    searchbar QOL
-        click on a new spirit: searchbox is emptied
-        click on searchbox: all text is highlight  
-    increase position preset increment based on enemy's hitbox size
-        would have to load regulation.bin early if i used this for preview. maybe it should just be a execute-only thing for now
     update team elements when a spirit is selected (since selected team can change)
     Preset combobox formatting
     Add names to the remaining phantom enums
@@ -30,6 +25,8 @@ using static EldenRingSpiritBattler.SpiritBattlerResources;
     Option to randomize an entire ash
     Tooltips.
     Look into summoning spirits anywhere
+    increase position preset increment based on enemy's hitbox size
+        would have to load regulation.bin early if i used this for preview. maybe it should just be a execute-only thing for now
 -- low priority
     Put phantom param stuff into a resource file, make it detail more info
     Replace team enum with more comprehensive info, so user knows where these scaling levels correspond
@@ -726,6 +723,7 @@ namespace EldenRingSpiritBattler
 
         public void SelectRandomSpiritAndSetToElements()
         {
+            Search_Enemy.Text = "";
             Random rand = new();
             List_Enemy.SelectedIndex = rand.Next(0, List_Enemy.Items.Count - 1);
             List_EnemyVariant.SelectedIndex = rand.Next(0, List_EnemyVariant.Items.Count - 1);
@@ -792,6 +790,7 @@ namespace EldenRingSpiritBattler
 
             UpdateSpiritGrid(-1);
             SetSelectedSpiritToElements();
+            Search_Enemy.Text = "";
         }
 
         private void SetSpiritGridSelection(BattleSpirit newSpirit)

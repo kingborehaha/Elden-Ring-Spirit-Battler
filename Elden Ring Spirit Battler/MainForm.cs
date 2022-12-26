@@ -232,6 +232,7 @@ namespace EldenRingSpiritBattler
         private void SpiritDataGrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             SetSelectedSpiritToElements();
+            Search_Enemy.Text = "";
         }
 
         private void Option_ReduceEnemyMapCol_clicked(object sender, EventArgs e)
@@ -254,9 +255,12 @@ namespace EldenRingSpiritBattler
         private void List_EnemyVariant_SelectedIndexChanged(object sender, EventArgs e)
         {
             // Update NpcParamId and NpcThinkParam elements
-            Input_NpcParamID.Value = enemyVariantDict[List_Enemy.Text][List_EnemyVariant.SelectedIndex].NpcID;
-            Input_NpcThinkID.Value = enemyVariantDict[List_Enemy.Text][List_EnemyVariant.SelectedIndex].ThinkID;
-            EnemyWasEdited(sender, e);
+            if (List_Enemy.Text != "" && List_EnemyVariant.Text != "")
+            {
+                Input_NpcParamID.Value = enemyVariantDict[List_Enemy.Text][List_EnemyVariant.SelectedIndex].NpcID;
+                Input_NpcThinkID.Value = enemyVariantDict[List_Enemy.Text][List_EnemyVariant.SelectedIndex].ThinkID;
+                EnemyWasEdited(sender, e);
+            }
         }
 
         private void Button_AddRandomEnemy_Click(object sender, EventArgs e)
@@ -344,21 +348,46 @@ namespace EldenRingSpiritBattler
         private void Search_Enemy_TextChanged(object sender, EventArgs e)
         {
             string str = Search_Enemy.Text;
-            List<string> resultList = new();
-            var results = enemyListCache.FindAll(s => s.Contains(str, StringComparison.CurrentCultureIgnoreCase)).ToList();
-            foreach (var en in enemyVariantDict)
+            List_Enemy.Enabled = true;
+            List_EnemyVariant.Enabled = true;
+
+            if (str == "")
             {
-                if (en.Value.Find(e => e.Name.Contains(str, StringComparison.CurrentCultureIgnoreCase)) != null)
+                Label_SearchText.Visible = true;
+                List_Enemy.DataSource = enemyListCache;
+            }
+            else
+            {
+                Label_SearchText.Visible = false;
+                List<string> resultList = new();
+                var results = enemyListCache.FindAll(s => s.Contains(str, StringComparison.CurrentCultureIgnoreCase)).ToList();
+                foreach (var en in enemyVariantDict)
                 {
-                    resultList.Add(en.Key);
+                    if (en.Value.Find(e => e.Name.Contains(str, StringComparison.CurrentCultureIgnoreCase)) != null)
+                    {
+                        resultList.Add(en.Key);
+                    }
+                }
+                List_Enemy.DataSource = resultList;
+
+                if (resultList.Count == 0)
+                {
+                    List_Enemy.Enabled = false;
+                    List_EnemyVariant.Enabled = false;
                 }
             }
-            List_Enemy.DataSource = resultList;
         }
 
         private void Option_HidePlayer_Click(object sender, EventArgs e)
         {
             Option_HidePlayer.Checked = !Option_HidePlayer.Checked;
+        }
+
+        private void Search_Enemy_Click(object sender, EventArgs e)
+        {
+            Search_Enemy.Focus();
+            Search_Enemy.SelectionStart = 0;
+            Search_Enemy.SelectionLength = Search_Enemy.Text.Length;
         }
     }
 }
