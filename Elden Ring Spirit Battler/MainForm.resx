@@ -63,6 +63,30 @@
   <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>157, 17</value>
   </metadata>
+  <data name="List_StatScaling.ToolTip" xml:space="preserve">
+    <value>Vanilla Stat Scaling level this summon will use, which multiplies HP, Damage, Defenses.
+More details can be found in the Help menu
+
+Level 1: Limgrave
+Level 4: Stormveil
+Level 7: Liurnia
+Level 11: Leyndell 
+Level 15: Crumbling Farum Azula
+Level 17: Consecrated Snowfield
+Level 20: Miquella's Haligtree</value>
+  </data>
+  <data name="label13.ToolTip" xml:space="preserve">
+    <value>Vanilla Stat Scaling level this summon will use, which multiplies HP, Damage, Defenses.
+More details can be found in the Help menu
+
+Level 1: Limgrave
+Level 4: Stormveil
+Level 7: Liurnia
+Level 11: Leyndell 
+Level 15: Crumbling Farum Azula
+Level 17: Consecrated Snowfield
+Level 20: Miquella's Haligtree</value>
+  </data>
   <metadata name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>254, 17</value>
   </metadata>

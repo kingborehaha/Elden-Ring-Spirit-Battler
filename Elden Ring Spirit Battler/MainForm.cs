@@ -267,6 +267,7 @@ namespace EldenRingSpiritBattler
         private void Button_AddRandomEnemy_Click(object sender, EventArgs e)
         {
             AddRandomSpiritToGrid();
+            //List_EnemyChosenTeam.Text = ((SpiritTeam)TeamDataGrid.SelectedRows[0].Cells[0].Value).Name;
         }
 
         private void Button_DuplicateTeam_Click(object sender, EventArgs e)

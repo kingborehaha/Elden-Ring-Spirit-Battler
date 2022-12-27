@@ -12,22 +12,24 @@ using static EldenRingSpiritBattler.SpiritBattlerResources;
 /*
 -- TODO
 -- medium priority
-    Better catalog team behavior
-        Maybe a custom class with a helpful label/info?
+    Tooltips.
     Save program settings
     Save/load .json for fights.
     Better catalog enemy variant names
-    Option to randomize an entire ash
-    Tooltips.
+    Options to randomize an entire ash
+    Custom phantom colors
     Look into summoning spirits anywhere
     increase position preset increment based on enemy's hitbox size
         would have to load regulation.bin early if i used this for preview. maybe it should just be a execute-only thing for now
 -- low priority
+    Can probably allow editing team position even with presets active
+        Add step increment to UI.
     Put phantom param stuff into a resource file, make it detail more info
     Replace team enum with more comprehensive info, so user knows where these scaling levels correspond
     Change targeted ash name's FMG name
         Format: "Spirit Battler: [team] vs [team]
-    Custom phantom colors
+    Better catalog team behavior
+        Maybe a custom class with a helpful label/info?
     Grid sorting (by team)
     Grid coloring (by team)
     Allow grid column resizing (currently resets on grid reload)
