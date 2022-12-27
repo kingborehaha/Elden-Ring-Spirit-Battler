@@ -12,7 +12,6 @@ using static EldenRingSpiritBattler.SpiritBattlerResources;
 /*
 -- TODO
 -- medium priority
-    Tooltips.
     Save program settings
     Save/load .json for fights.
     Better catalog enemy variant names
