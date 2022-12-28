@@ -9,9 +9,12 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <ApplicationIcon>spiritbell.ico</ApplicationIcon>
     <PackageIcon></PackageIcon>
-    <FileVersion>1.0.4</FileVersion>
-    <AssemblyVersion>1.0.4</AssemblyVersion>
+    <FileVersion>0.1.0</FileVersion>
+    <AssemblyVersion>0.1.0</AssemblyVersion>
     <Version>0.1.0</Version>
+    <Company></Company>
+    <Authors>King Bore Haha</Authors>
+    <RunPostBuildEvent>Always</RunPostBuildEvent>
   </PropertyGroup>
 
   <ItemGroup>
@@ -72,10 +75,6 @@
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
     <Exec Command="copy &quot;$(SolutionDir)README.md&quot; &quot;$(TargetDir)README.txt&quot;" />
-  </Target>
-
-  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
-    <Exec Command="rmdir &quot;$(TargetDir)Randomizer Logs&quot; /s /q" />
   </Target>
 
 </Project>
