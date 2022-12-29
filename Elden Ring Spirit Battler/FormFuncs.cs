@@ -49,6 +49,8 @@ namespace EldenRingSpiritBattler
         public string backupFileName = "";
 
         public Dictionary<string, int> spiritAshesDict = new();
+        public List<string> spiritAshesCache = new();
+
         public Dictionary<string, SpiritTeam> teamDict = new();
         public Dictionary<string, List<Enemy>> enemyVariantDict = new();
         public List<string> enemyListCache = new();
@@ -156,7 +158,8 @@ namespace EldenRingSpiritBattler
                     var split = line.Split("||");
                     spiritAshesDict[split[1]] = int.Parse(split[0]);
                 }
-                List_SpiritAsh.DataSource = spiritAshesDict.Keys.ToList();
+                spiritAshesCache = spiritAshesDict.Keys.ToList();
+                List_SpiritAsh.DataSource = spiritAshesCache;
             }
             catch (Exception e)
             {

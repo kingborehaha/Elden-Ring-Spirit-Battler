@@ -28,6 +28,8 @@
 - Save Changes. The selected ash should now be changed in-game.
 
 ## Updates
+### v0.1.1
+Beta release
 ### v0.1.0
 Private release
 

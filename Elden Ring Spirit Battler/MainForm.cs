@@ -30,7 +30,7 @@ namespace EldenRingSpiritBattler
             AddRandomizedTeamToGrid(TeamTypeEnum.Enemy, teamSummonPresetDict["Column Left"]);
             AddRandomizedTeamToGrid(TeamTypeEnum.DS3_CoopMadPhantom, teamSummonPresetDict["Column Right"]); //Tried hostileNPC
             AddRandomizedTeamToGrid(TeamTypeEnum.SpiritSummon, teamSummonPresetDict["Row Close"]);
-            AddRandomizedTeamToGrid(TeamTypeEnum.Unknown24, teamSummonPresetDict["Row Far"]);
+            AddRandomizedTeamToGrid(TeamTypeEnum.Beast, teamSummonPresetDict["Row Far"]);
 
             List_StatScaling.DataSource = GetOrderedEnumNames(typeof(StatScalingEnum));
             List_StatScaling.Text = StatScalingEnum.Lvl15.ToString();
@@ -353,27 +353,30 @@ namespace EldenRingSpiritBattler
 
             if (str == "")
             {
-                Label_SearchText.Visible = true;
+                Label_SearchEnemyText.Visible = true;
                 List_Enemy.DataSource = enemyListCache;
             }
             else
             {
-                Label_SearchText.Visible = false;
-                List<string> resultList = new();
-                var results = enemyListCache.FindAll(s => s.Contains(str, StringComparison.CurrentCultureIgnoreCase)).ToList();
+                Label_SearchEnemyText.Visible = false;
+                List<string> results = enemyListCache.FindAll(s => s.Contains(str, StringComparison.CurrentCultureIgnoreCase));
                 foreach (var en in enemyVariantDict)
                 {
+                    // Scan through variants for matches too
                     if (en.Value.Find(e => e.Name.Contains(str, StringComparison.CurrentCultureIgnoreCase)) != null)
                     {
-                        resultList.Add(en.Key);
+                        results.Add(en.Key);
                     }
                 }
-                List_Enemy.DataSource = resultList;
 
-                if (resultList.Count == 0)
+                if (results.Count == 0)
                 {
                     List_Enemy.Enabled = false;
                     List_EnemyVariant.Enabled = false;
+                }
+                else
+                {
+                    List_Enemy.DataSource = results;
                 }
             }
         }
@@ -399,6 +402,45 @@ namespace EldenRingSpiritBattler
         {
             Random rand = new();
             List_TeamPhantomColor.SelectedIndex = rand.Next(0, List_TeamPhantomColor.Items.Count - 1);
+        }
+
+        private void Search_SpiritAsh_TextChanged(object sender, EventArgs e)
+        {
+            string str = Search_SpiritAsh.Text;
+            List_SpiritAsh.Enabled = true;
+            Label_SearchSpiritAshText.Visible = true;
+
+            if (str == "")
+            {
+                Label_SearchEnemyText.Visible = true;
+                List_SpiritAsh.DataSource = spiritAshesCache;
+            }
+            else
+            {
+                Label_SearchSpiritAshText.Visible = false;
+                List<string> results = spiritAshesCache.FindAll(s => s.Contains(str, StringComparison.CurrentCultureIgnoreCase));
+
+                if (results.Count == 0)
+                {
+                    List_SpiritAsh.Enabled = false;
+                }
+                else
+                {
+                    List_SpiritAsh.DataSource = results;
+                }
+            }
+        }
+
+        private void Label_SearchSpiritAshText_Click(object sender, EventArgs e)
+        {
+            Search_SpiritAsh.Focus();
+            Search_SpiritAsh_Click(sender, e);
+        }
+
+        private void Search_SpiritAsh_Click(object sender, EventArgs e)
+        {
+            Search_SpiritAsh.SelectionStart = 0;
+            Search_SpiritAsh.SelectionLength = Search_SpiritAsh.Text.Length;
         }
     }
 }

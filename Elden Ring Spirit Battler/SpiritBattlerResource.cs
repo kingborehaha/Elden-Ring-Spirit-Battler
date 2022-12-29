@@ -54,7 +54,7 @@ namespace EldenRingSpiritBattler
             UnusedDS3_Hostile = 21,
             UnusedDS3_WanderingPhantom = 22,
             UnusedDS3_Enemy1 = 23,
-            Unknown24 = 24,
+            Beast = 24,
             UnusedDS3_StrongEnemy = 25,
             FriendlyNPC = 26,
             HostileNPC = 27,
