@@ -30,6 +30,10 @@
 ## Updates
 ### v0.1.1
 Beta release
+- Added randomize phantom color button, and removed that functionality from randomize team name button.
+- Fixed summon limit check being off by 1
+- UI tweaks
+
 ### v0.1.0
 Private release
 

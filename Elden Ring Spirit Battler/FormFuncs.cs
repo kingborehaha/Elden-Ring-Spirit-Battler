@@ -11,12 +11,9 @@ using static EldenRingSpiritBattler.SpiritBattlerResources;
 
 /*
 -- TODO
--- high priority
-    
 -- medium priority
     Enemy names appear above their heads
         invader blaidd style. need to experiment with limitations. does it work with every team, or just enemies?
-    Spirit Ash searchbar
     Save program settings
     Save/load .json for fights.
     Better catalog enemy variant names
