@@ -30,10 +30,10 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.SummonPosition_X = new System.Windows.Forms.NumericUpDown();
@@ -76,6 +76,9 @@
             this.label12 = new System.Windows.Forms.Label();
             this.Input_TeamHpMult = new System.Windows.Forms.NumericUpDown();
             this.Button_AddRandomSpirit = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.List_SpiritAsh = new System.Windows.Forms.ComboBox();
+            this.Option_SpiritAshNoRequirements = new System.Windows.Forms.CheckBox();
             this.t_console = new System.Windows.Forms.TextBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.Menu_File = new System.Windows.Forms.ToolStripMenuItem();
@@ -97,8 +100,6 @@
             this.Menu_Help = new System.Windows.Forms.ToolStripMenuItem();
             this.Button_Info = new System.Windows.Forms.ToolStripMenuItem();
             this.Button_StatScalingLevelInfo = new System.Windows.Forms.ToolStripMenuItem();
-            this.label4 = new System.Windows.Forms.Label();
-            this.List_SpiritAsh = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.SpiritDataGrid = new System.Windows.Forms.DataGridView();
             this.Context_DataGrid = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -114,9 +115,9 @@
             this.label18 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.Option_TargetAllSpiritAshes = new System.Windows.Forms.CheckBox();
-            this.Option_SpiritAshNoRequirements = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.Option_Randomize_PhantomColor = new System.Windows.Forms.Button();
             this.Group_TeamSummonPos_Manual = new System.Windows.Forms.GroupBox();
             this.Button_RandomTeamName = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
@@ -360,7 +361,7 @@
             this.List_TeamPhantomColor.FormattingEnabled = true;
             this.List_TeamPhantomColor.Location = new System.Drawing.Point(6, 41);
             this.List_TeamPhantomColor.Name = "List_TeamPhantomColor";
-            this.List_TeamPhantomColor.Size = new System.Drawing.Size(157, 23);
+            this.List_TeamPhantomColor.Size = new System.Drawing.Size(129, 23);
             this.List_TeamPhantomColor.TabIndex = 1;
             this.toolTip1.SetToolTip(this.List_TeamPhantomColor, "Phantom color and other shader attributes given to members of this team\r\n");
             this.List_TeamPhantomColor.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ComboBox_KeyPress);
@@ -491,7 +492,7 @@
             this.List_StatScaling.FormattingEnabled = true;
             this.List_StatScaling.Location = new System.Drawing.Point(6, 223);
             this.List_StatScaling.Name = "List_StatScaling";
-            this.List_StatScaling.Size = new System.Drawing.Size(121, 23);
+            this.List_StatScaling.Size = new System.Drawing.Size(129, 23);
             this.List_StatScaling.TabIndex = 98;
             this.toolTip1.SetToolTip(this.List_StatScaling, resources.GetString("List_StatScaling.ToolTip"));
             this.List_StatScaling.SelectedIndexChanged += new System.EventHandler(this.EnemyWasEdited);
@@ -622,9 +623,9 @@
             // 
             this.Button_PickRandomEnemy.Location = new System.Drawing.Point(212, 115);
             this.Button_PickRandomEnemy.Name = "Button_PickRandomEnemy";
-            this.Button_PickRandomEnemy.Size = new System.Drawing.Size(77, 23);
+            this.Button_PickRandomEnemy.Size = new System.Drawing.Size(19, 23);
             this.Button_PickRandomEnemy.TabIndex = 111;
-            this.Button_PickRandomEnemy.Text = "Randomize";
+            this.Button_PickRandomEnemy.Text = "?";
             this.toolTip1.SetToolTip(this.Button_PickRandomEnemy, "Picks a random Enemy Variant");
             this.Button_PickRandomEnemy.UseVisualStyleBackColor = true;
             this.Button_PickRandomEnemy.Click += new System.EventHandler(this.Button_PickRandomEnemy_Click);
@@ -743,6 +744,40 @@
             this.toolTip1.SetToolTip(this.Button_AddRandomSpirit, "Duplicates selected summon and randomizes Enemy Variant");
             this.Button_AddRandomSpirit.UseVisualStyleBackColor = true;
             this.Button_AddRandomSpirit.Click += new System.EventHandler(this.Button_AddRandomEnemy_Click);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(6, 23);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(57, 15);
+            this.label4.TabIndex = 74;
+            this.label4.Text = "Spirit Ash";
+            this.toolTip1.SetToolTip(this.label4, "Which spirit ash item will be overwritten with new summon data");
+            // 
+            // List_SpiritAsh
+            // 
+            this.List_SpiritAsh.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.List_SpiritAsh.FormattingEnabled = true;
+            this.List_SpiritAsh.Location = new System.Drawing.Point(6, 41);
+            this.List_SpiritAsh.Name = "List_SpiritAsh";
+            this.List_SpiritAsh.Size = new System.Drawing.Size(174, 23);
+            this.List_SpiritAsh.TabIndex = 72;
+            this.toolTip1.SetToolTip(this.List_SpiritAsh, "Which spirit ash item will be overwritten with new summon data");
+            this.List_SpiritAsh.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ComboBox_KeyPress);
+            // 
+            // Option_SpiritAshNoRequirements
+            // 
+            this.Option_SpiritAshNoRequirements.AutoSize = true;
+            this.Option_SpiritAshNoRequirements.Checked = true;
+            this.Option_SpiritAshNoRequirements.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.Option_SpiritAshNoRequirements.Location = new System.Drawing.Point(6, 70);
+            this.Option_SpiritAshNoRequirements.Name = "Option_SpiritAshNoRequirements";
+            this.Option_SpiritAshNoRequirements.Size = new System.Drawing.Size(155, 19);
+            this.Option_SpiritAshNoRequirements.TabIndex = 75;
+            this.Option_SpiritAshNoRequirements.Text = "No HP/FP Consumption";
+            this.toolTip1.SetToolTip(this.Option_SpiritAshNoRequirements, "Whether the Spirit ash will consume zero HP and FP");
+            this.Option_SpiritAshNoRequirements.UseVisualStyleBackColor = true;
             // 
             // t_console
             // 
@@ -929,27 +964,6 @@
             this.Button_StatScalingLevelInfo.Text = "Stat Scaling Levels";
             this.Button_StatScalingLevelInfo.Click += new System.EventHandler(this.Button_StatScalingLevelInfo_Click);
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 23);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(57, 15);
-            this.label4.TabIndex = 74;
-            this.label4.Text = "Spirit Ash";
-            this.toolTip1.SetToolTip(this.label4, "Which spirit ash item will be overwritten with new summon data");
-            // 
-            // List_SpiritAsh
-            // 
-            this.List_SpiritAsh.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.List_SpiritAsh.FormattingEnabled = true;
-            this.List_SpiritAsh.Location = new System.Drawing.Point(6, 41);
-            this.List_SpiritAsh.Name = "List_SpiritAsh";
-            this.List_SpiritAsh.Size = new System.Drawing.Size(174, 23);
-            this.List_SpiritAsh.TabIndex = 72;
-            this.toolTip1.SetToolTip(this.List_SpiritAsh, "Which spirit ash item will be overwritten with new summon data");
-            this.List_SpiritAsh.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ComboBox_KeyPress);
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -969,14 +983,14 @@
             this.SpiritDataGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.SpiritDataGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.SpiritDataGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.SpiritDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.SpiritDataGrid.ContextMenuStrip = this.Context_DataGrid;
             this.SpiritDataGrid.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
@@ -984,14 +998,14 @@
             this.SpiritDataGrid.MultiSelect = false;
             this.SpiritDataGrid.Name = "SpiritDataGrid";
             this.SpiritDataGrid.ReadOnly = true;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.SpiritDataGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.SpiritDataGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.SpiritDataGrid.RowHeadersVisible = false;
             this.SpiritDataGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
             this.SpiritDataGrid.RowTemplate.Height = 25;
@@ -1138,19 +1152,6 @@
             this.Option_TargetAllSpiritAshes.Visible = false;
             this.Option_TargetAllSpiritAshes.CheckedChanged += new System.EventHandler(this.Option_TargetAllSpiritAshes_CheckedChanged);
             // 
-            // Option_SpiritAshNoRequirements
-            // 
-            this.Option_SpiritAshNoRequirements.AutoSize = true;
-            this.Option_SpiritAshNoRequirements.Checked = true;
-            this.Option_SpiritAshNoRequirements.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.Option_SpiritAshNoRequirements.Location = new System.Drawing.Point(6, 70);
-            this.Option_SpiritAshNoRequirements.Name = "Option_SpiritAshNoRequirements";
-            this.Option_SpiritAshNoRequirements.Size = new System.Drawing.Size(155, 19);
-            this.Option_SpiritAshNoRequirements.TabIndex = 75;
-            this.Option_SpiritAshNoRequirements.Text = "No HP/FP Consumption";
-            this.toolTip1.SetToolTip(this.Option_SpiritAshNoRequirements, "Whether the Spirit ash will consume zero HP and FP");
-            this.Option_SpiritAshNoRequirements.UseVisualStyleBackColor = true;
-            // 
             // groupBox2
             // 
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -1190,6 +1191,7 @@
             // groupBox3
             // 
             this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox3.Controls.Add(this.Option_Randomize_PhantomColor);
             this.groupBox3.Controls.Add(this.Group_TeamSummonPos_Manual);
             this.groupBox3.Controls.Add(this.label10);
             this.groupBox3.Controls.Add(this.Input_TeamDamageMult);
@@ -1210,6 +1212,17 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Team";
             // 
+            // Option_Randomize_PhantomColor
+            // 
+            this.Option_Randomize_PhantomColor.Location = new System.Drawing.Point(137, 41);
+            this.Option_Randomize_PhantomColor.Name = "Option_Randomize_PhantomColor";
+            this.Option_Randomize_PhantomColor.Size = new System.Drawing.Size(22, 23);
+            this.Option_Randomize_PhantomColor.TabIndex = 117;
+            this.Option_Randomize_PhantomColor.Text = "?";
+            this.toolTip1.SetToolTip(this.Option_Randomize_PhantomColor, "Picks a random phantom color");
+            this.Option_Randomize_PhantomColor.UseVisualStyleBackColor = true;
+            this.Option_Randomize_PhantomColor.Click += new System.EventHandler(this.Option_Randomize_PhantomColor_Click);
+            // 
             // Group_TeamSummonPos_Manual
             // 
             this.Group_TeamSummonPos_Manual.Controls.Add(this.List_TeamSummonPreset);
@@ -1228,11 +1241,12 @@
             // 
             // Button_RandomTeamName
             // 
-            this.Button_RandomTeamName.Location = new System.Drawing.Point(169, 85);
+            this.Button_RandomTeamName.Location = new System.Drawing.Point(166, 85);
             this.Button_RandomTeamName.Name = "Button_RandomTeamName";
-            this.Button_RandomTeamName.Size = new System.Drawing.Size(76, 23);
+            this.Button_RandomTeamName.Size = new System.Drawing.Size(22, 23);
             this.Button_RandomTeamName.TabIndex = 4;
-            this.Button_RandomTeamName.Text = "Randomize";
+            this.Button_RandomTeamName.Text = "?";
+            this.toolTip1.SetToolTip(this.Button_RandomTeamName, "Picks a random team name");
             this.Button_RandomTeamName.UseVisualStyleBackColor = true;
             this.Button_RandomTeamName.Click += new System.EventHandler(this.Button_RandomizeTeam_Click);
             // 
@@ -1257,14 +1271,14 @@
             this.TeamDataGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.TeamDataGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.TeamDataGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.TeamDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.TeamDataGrid.ContextMenuStrip = this.Context_TeamDataGrid;
             this.TeamDataGrid.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
@@ -1272,14 +1286,14 @@
             this.TeamDataGrid.MultiSelect = false;
             this.TeamDataGrid.Name = "TeamDataGrid";
             this.TeamDataGrid.ReadOnly = true;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.TeamDataGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.TeamDataGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.TeamDataGrid.RowHeadersVisible = false;
             this.TeamDataGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
             this.TeamDataGrid.RowTemplate.Height = 25;
@@ -1558,5 +1572,6 @@
         private GroupBox Group_TeamSummonPos_Manual;
         private ComboBox List_TeamSummonPreset;
         private Label Label_SearchText;
+        private Button Option_Randomize_PhantomColor;
     }
 }

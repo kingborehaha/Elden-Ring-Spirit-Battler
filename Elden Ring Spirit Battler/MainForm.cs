@@ -106,9 +106,7 @@ namespace EldenRingSpiritBattler
 
         private void Button_RandomizeTeam_Click(object sender, EventArgs e)
         {
-            Random rand = new();
             SetRandomTeamName();
-            List_TeamPhantomColor.SelectedIndex = rand.Next(0, List_TeamPhantomColor.Items.Count - 1);
         }
 
         private void Button_Info_Click(object sender, EventArgs e)
@@ -395,6 +393,12 @@ namespace EldenRingSpiritBattler
         {
             Search_Enemy.Focus();
             Search_Enemy_Click(sender, e);
+        }
+
+        private void Option_Randomize_PhantomColor_Click(object sender, EventArgs e)
+        {
+            Random rand = new();
+            List_TeamPhantomColor.SelectedIndex = rand.Next(0, List_TeamPhantomColor.Items.Count - 1);
         }
     }
 }
