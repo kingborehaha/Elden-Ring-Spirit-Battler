@@ -40,7 +40,6 @@ namespace EldenRingSpiritBattler
 {
     public partial class MainForm
     {
-        public readonly uint buddyLimit = 10; // Limit with buddyParam successive IDs.
 
         public string backupFileName = "";
 
@@ -929,7 +928,7 @@ namespace EldenRingSpiritBattler
 
         public bool AddSpiritToList(BattleSpirit spirit)
         {
-            if (SpiritDataGrid.Rows.Count > buddyLimit)
+            if (SpiritDataGrid.Rows.Count >= buddyLimit)
             {
                 MessageBox.Show($"A spirit ash cannot handle more than {buddyLimit} summons at once. Sorry!", "Warning");
                 return false;
@@ -940,7 +939,7 @@ namespace EldenRingSpiritBattler
         }
         public bool InsertSpiritToList(BattleSpirit spirit, int index)
         {
-            if (SpiritDataGrid.Rows.Count > buddyLimit)
+            if (SpiritDataGrid.Rows.Count >= buddyLimit)
             {
                 MessageBox.Show($"A spirit ash cannot handle more than {buddyLimit} summons at once. Sorry!", "Warning");
                 return false;

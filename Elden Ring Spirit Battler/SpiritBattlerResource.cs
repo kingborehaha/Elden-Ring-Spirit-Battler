@@ -4,6 +4,8 @@ namespace EldenRingSpiritBattler
 {
     public static class SpiritBattlerResources
     {
+        public static readonly uint buddyLimit = 10; // Limit with buddyParam successive IDs.
+
         private static readonly float magnitude = 1; // Unimplemented
         private static readonly float incrementBase = 1.5f;
         public static readonly Dictionary<string, SummonPos?> teamSummonPresetDict = new()
@@ -107,7 +109,7 @@ namespace EldenRingSpiritBattler
             Salmon = 240,
             GreyBlueOutline = 250,
             BlueBrightOutline = 260,
-            RedBrightOutline = 270,
+            GoldBright = 270,
             WhiteOutline = 290,
             BlueBrightGhost = 300,
             BlueLight = 310,
