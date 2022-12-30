@@ -29,8 +29,8 @@
 
 ## Updates
 ### v0.1.1
-Beta release
-- Changed a default team's teamType, fixing them not mutually hate the "Enemy" team.
+- Added Spirit Ash search
+- Changed a default team's teamType, fixing them not mutually hate the "Enemy" team
 - Added randomize phantom color button, and removed that functionality from randomize team name button
 - Fixed summon limit check being off by 1
 - UI tweaks
