@@ -19,10 +19,10 @@ using static EldenRingSpiritBattler.SpiritBattlerResources;
     Better catalog enemy variant names
     Options to randomize an entire ash
     Custom phantom colors
-    Look into summoning spirits anywhere
     increase position preset increment based on enemy's hitbox size
         would have to load regulation.bin early if i used this for preview. maybe it should just be a execute-only thing for now
 -- low priority
+    True summon-anywhere by editing MSB and inserting summon talk entities in every map.
     Can probably allow editing team position even with presets active
         Add step increment to UI.
     Put phantom param stuff into a resource file, make it detail more info
@@ -253,6 +253,7 @@ namespace EldenRingSpiritBattler
             }
 
             PARAM buddyParam;
+            PARAM stoneParam;
             PARAM npcParam;
             PARAM npcThinkParam;
             PARAM goodsParam;
@@ -262,6 +263,7 @@ namespace EldenRingSpiritBattler
             try
             {
                 buddyParam = paramList["BuddyParam"];
+                stoneParam = paramList["BuddyStoneParam"];
                 npcParam = paramList["NpcParam"];
                 npcThinkParam = paramList["NpcThinkParam"];
                 goodsParam = paramList["EquipParamGoods"];
@@ -443,7 +445,7 @@ namespace EldenRingSpiritBattler
                 //
 
                 //
-                #region BuddyParam
+                #region BuddyParam (individual)
                 PARAM.Row buddyParamRow = InsertParamRow(buddyParam, targetBuddyRow, targetBuddyRow.ID + i, buddyRowIndex + i);
 
                 buddyParamRow["npcParamId"].Value = newNpcRow.ID;
@@ -495,6 +497,33 @@ namespace EldenRingSpiritBattler
                             goodsParam.Rows[i+i2]["consumeMP"].Value = (Int16)0;
                         }
                     }
+                }
+            }
+            #endregion
+            //
+            //
+            #region BuddyStoneParam
+            foreach (var row in stoneParam.Rows.ToList())
+            {
+                //TODO
+                //int backupID = row.ID + 1230000;
+                //if (stoneParam.Rows[backupID] == null)
+                //{
+                //PARAM.Row backupRow = InsertParamRow(stoneParam, row, backupID);
+                //backupRow.Name += "-backup";
+
+                //row["talkChrEntityId"].Value = 10000; // Didn't work, didn't work with bonfire talk character either. Target likely needs the correct talkESD ID.
+                if (Option_MoreSummonAreas.Checked)
+                {
+                    row["activateRange"].Value = ushort.MaxValue;
+                    row["overwriteReturnRange"].Value = (short)-1;
+                    row["overwriteActivateRegionEntityId"].Value = (uint)0;
+                    row["warnRegionEntityId"].Value = (uint)0;
+                }
+                if (Option_EnableResummoning.Checked)
+                {
+                    row["summonedEventFlagId"].Value = (uint)0;
+                    row["eliminateTargetEntityId"].Value = (uint)0;
                 }
             }
             #endregion
@@ -808,7 +837,7 @@ namespace EldenRingSpiritBattler
             string teamDam = spirit.Team.TeamDamageMult.ToString();
             return $"{enemyScalingLvl}, {myHp}*{teamHp} / {myDam}*{teamDam}";
             */
-            string enemyScalingLvl = $"{Enum.GetName(typeof(StatScalingEnum), spirit.Sp_StatScaling)}";
+                string enemyScalingLvl = $"{Enum.GetName(typeof(StatScalingEnum), spirit.Sp_StatScaling)}";
             decimal hp = spirit.HpMult * spirit.Team.TeamHpMult;
             decimal dam = spirit.DamageMult * spirit.Team.TeamDamageMult;
 

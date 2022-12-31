@@ -28,14 +28,18 @@
 - Save Changes. The selected ash should now be changed in-game
 
 ## Updates
+### v0.2.0
+- Added options to expand summon areas and allow resummoning
+- Swapped default team's Team Type for Column Left (Enemy -> Beast) and Row Far (Beast -> Enemy)
 ### v0.1.1
+Patreon Beta Release
 - Added Spirit Ash search
 - Changed a default team's teamType, fixing them not mutually hate the "Enemy" team
 - Added randomize phantom color button, and removed that functionality from randomize team name button
 - Fixed summon limit check being off by 1
 - UI tweaks
 ### v0.1.0
-Private release
+Private Release
 
 ## Info
 - Built using https://github.com/JKAnderson/SoulsFormats

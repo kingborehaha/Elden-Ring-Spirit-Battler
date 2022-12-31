@@ -9,9 +9,9 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <ApplicationIcon>spiritbell.ico</ApplicationIcon>
     <PackageIcon></PackageIcon>
-    <FileVersion>0.1.1</FileVersion>
-    <AssemblyVersion>0.1.1</AssemblyVersion>
-    <Version>0.1.1</Version>
+    <FileVersion>0.2.0</FileVersion>
+    <AssemblyVersion>0.2.0</AssemblyVersion>
+    <Version>0.2.0</Version>
     <Company></Company>
     <Authors>King Bore Haha</Authors>
     <RunPostBuildEvent>Always</RunPostBuildEvent>
@@ -41,6 +41,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="Paramdex\BuddyStoneParam.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="Paramdex\RoleParam.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

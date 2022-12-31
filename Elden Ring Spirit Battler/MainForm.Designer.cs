@@ -100,6 +100,8 @@
             this.Button_ResetTool = new System.Windows.Forms.ToolStripMenuItem();
             this.Menu_Settings = new System.Windows.Forms.ToolStripMenuItem();
             this.Option_ReduceEnemyMapCol = new System.Windows.Forms.ToolStripMenuItem();
+            this.Option_EnableResummoning = new System.Windows.Forms.ToolStripMenuItem();
+            this.Option_MoreSummonAreas = new System.Windows.Forms.ToolStripMenuItem();
             this.Option_HidePlayer = new System.Windows.Forms.ToolStripMenuItem();
             this.Menu_Help = new System.Windows.Forms.ToolStripMenuItem();
             this.Button_Info = new System.Windows.Forms.ToolStripMenuItem();
@@ -964,6 +966,8 @@
             // 
             this.Menu_Settings.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.Option_ReduceEnemyMapCol,
+            this.Option_EnableResummoning,
+            this.Option_MoreSummonAreas,
             this.Option_HidePlayer});
             this.Menu_Settings.Name = "Menu_Settings";
             this.Menu_Settings.Size = new System.Drawing.Size(61, 20);
@@ -974,18 +978,39 @@
             this.Option_ReduceEnemyMapCol.Checked = true;
             this.Option_ReduceEnemyMapCol.CheckState = System.Windows.Forms.CheckState.Checked;
             this.Option_ReduceEnemyMapCol.Name = "Option_ReduceEnemyMapCol";
-            this.Option_ReduceEnemyMapCol.Size = new System.Drawing.Size(266, 22);
+            this.Option_ReduceEnemyMapCol.Size = new System.Drawing.Size(279, 22);
             this.Option_ReduceEnemyMapCol.Text = "Reduce Enemy Map Collision Radius";
             this.Option_ReduceEnemyMapCol.ToolTipText = "Helps prevent big enemies from spawning inside the ground and makes them fit insi" +
     "de of tight areas\r\n";
             this.Option_ReduceEnemyMapCol.Click += new System.EventHandler(this.Option_ReduceEnemyMapCol_clicked);
             // 
+            // Option_EnableResummoning
+            // 
+            this.Option_EnableResummoning.Checked = true;
+            this.Option_EnableResummoning.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.Option_EnableResummoning.Name = "Option_EnableResummoning";
+            this.Option_EnableResummoning.Size = new System.Drawing.Size(279, 22);
+            this.Option_EnableResummoning.Text = "Enable Resummoning (Cannot Undo)";
+            this.Option_EnableResummoning.ToolTipText = "Allows resummoning spirit ashes repeatedly, and makes ashes not disappear when de" +
+    "feating enemies in the area.\r\nThis setting requires restoring backups to undo.\r\n" +
+    "";
+            // 
+            // Option_MoreSummonAreas
+            // 
+            this.Option_MoreSummonAreas.Checked = true;
+            this.Option_MoreSummonAreas.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.Option_MoreSummonAreas.Name = "Option_MoreSummonAreas";
+            this.Option_MoreSummonAreas.Size = new System.Drawing.Size(279, 22);
+            this.Option_MoreSummonAreas.Text = "Expand Summon Areas (Cannot Undo)";
+            this.Option_MoreSummonAreas.ToolTipText = "Greatly increases the number of areas you can summon spirits in.\r\nThis setting re" +
+    "quires restoring backups to undo.";
+            // 
             // Option_HidePlayer
             // 
             this.Option_HidePlayer.Name = "Option_HidePlayer";
-            this.Option_HidePlayer.Size = new System.Drawing.Size(266, 22);
-            this.Option_HidePlayer.Text = "Hide Player";
-            this.Option_HidePlayer.ToolTipText = "Makes player get ignored by enemies and turn invisible";
+            this.Option_HidePlayer.Size = new System.Drawing.Size(279, 22);
+            this.Option_HidePlayer.Text = "Enable Hidden Player";
+            this.Option_HidePlayer.ToolTipText = "Makes player invisible and unable to hurt/be hurt enemies";
             this.Option_HidePlayer.Click += new System.EventHandler(this.Option_HidePlayer_Click);
             // 
             // Menu_Help
@@ -1605,5 +1630,7 @@
         private Button Option_Randomize_PhantomColor;
         private Label Label_SearchSpiritAshText;
         private TextBox Search_SpiritAsh;
+        private ToolStripMenuItem Option_MoreSummonAreas;
+        private ToolStripMenuItem Option_EnableResummoning;
     }
 }
