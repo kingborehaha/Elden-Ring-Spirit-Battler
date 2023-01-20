@@ -148,6 +148,8 @@ namespace EldenRingSpiritBattler
         }
         */
 
+        public static int c0000ScalingEffectOffset = 12350; //base scaling effect ID is 7000, base c0000 scaling is 19350
+        /// </summary>
         public enum StatScalingEnum
         {
             Default = -99,
@@ -173,6 +175,29 @@ namespace EldenRingSpiritBattler
             Lvl19 = 7018,
             Lvl20 = 7019,
             Lvl21 = 7020,
+            /*
+            Lvl1Human = 19350;
+            Lvl2Human = 19351;
+            Lvl3Human = 19352;
+            Lvl4Human = 19353;
+            Lvl5Human = 19354;
+            Lvl6Human = 19355;
+            Lvl7Human = 19356;
+            Lvl8Human = 19357;
+            Lvl9Human = 19358;
+            Lvl10Human = 19359;
+            Lvl11Human = 19360;
+            Lvl12Human = 19361;
+            Lvl13Human = 19362;
+            Lvl14Human = 19363;
+            Lvl15Human = 19364;
+            Lvl16Human = 19365;
+            Lvl17Human = 19366;
+            Lvl18Human = 19367;
+            Lvl19Human = 19368;
+            Lvl20Human = 19369;
+            Lvl21Human = 19370;
+            */
         };
 
         public static readonly string[] randomTeamNames = new string[]

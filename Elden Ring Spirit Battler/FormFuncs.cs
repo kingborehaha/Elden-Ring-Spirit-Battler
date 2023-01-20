@@ -14,6 +14,7 @@ using static EldenRingSpiritBattler.SpiritBattlerResources;
 -- in progress
     c0000 support
         Need to support c0000 scaling values.
+        Test mimic tear
 -- medium priority
     Enemy names appear above their heads
         invader blaidd style. need to experiment with limitations. does it work with every team, or just enemies?
@@ -113,13 +114,6 @@ namespace EldenRingSpiritBattler
                     if (line.StartsWith("--"))
                     {
                         // Start of a new enemy section
-                        if (i + 1 >= file.Length)
-                            break;
-
-                        string nextLine = file[i + 1];
-                        //if (nextLine.Count(c => c == '|') != 6)
-                            //continue;
-
                         variantKey = line[2..]; // Choose key name based on current line post-comment.
                         enemyVariantDict[variantKey] = new List<Enemy>();
                         continue;
@@ -133,8 +127,13 @@ namespace EldenRingSpiritBattler
                 }
                 foreach (var dict in enemyVariantDict.ToList())
                 {
+                    // Remove empty keys
                     if (!dict.Value.Any())
+                    {
                         enemyVariantDict.Remove(dict.Key);
+                        continue;
+                    }
+                    enemyVariantDict[dict.Key] = enemyVariantDict[dict.Key].DistinctBy(e => e.Name).ToList();
                 }
 
                 enemyListCache = enemyVariantDict.Keys.ToList();
@@ -199,20 +198,6 @@ namespace EldenRingSpiritBattler
                 param.Rows.Insert(index, newRow);
 
             return newRow;
-        }
-
-        private void InsertSpecialEffect(PARAM.Row npcRow, int spEffectID)
-        {
-            for (var iEffect = 0; iEffect <= 31; iEffect++)
-            {
-                PARAM.Cell cell = npcRow["spEffectID" + iEffect];
-                if ((int)cell.Value != -1)
-                {
-                    cell.Value = spEffectID;
-                    return;
-                }
-            }
-            throw new Exception($"Ran out of unused SpEffectID slots in npcParam for ID {npcRow.ID}");
         }
 
         private bool ExecuteMainLogic()
@@ -312,7 +297,7 @@ namespace EldenRingSpiritBattler
                 #region VfxParam
                 PARAM.Row? newVfxRow = null;
                 if (spirit.Team.PhantomParamID > 0
-                    && enemyPhantomBlacklist.Contains(spirit.BaseNpcID - (spirit.BaseNpcID%10000)) == false)
+                    && enemyPhantomBlacklist.Contains(spirit.BaseNpcID - (spirit.BaseNpcID % 10000)) == false)
                 {
                     int baseVfxID = 57000;
                     int newVfxID = 60000;
@@ -403,13 +388,15 @@ namespace EldenRingSpiritBattler
                 for (var iEffect = 0; iEffect <= 31; iEffect++)
                 {
                     int effectID = (int)newNpcRow["spEffectID" + iEffect].Value;
-                    if (spirit.Sp_StatScaling != (int)StatScalingEnum.Default
-                        && effectID >= 7000 && effectID < 7700)
+                    if (spirit.Sp_StatScaling != (int)StatScalingEnum.Default)
                     {
-                        // Vanilla scaling spEffect. Remove it
-                        newNpcRow["spEffectID" + iEffect].Value = -1;
+                        if ((effectID >= 7000 && effectID < 7700)
+                            ||(effectID >= 12350 && effectID <= 12370))
+                        {
+                            // Vanilla scaling spEffect. Remove it
+                            newNpcRow["spEffectID" + iEffect].Value = -1;
+                        }
                     }
-
                     if (effectID == -1 && iBuddy < buddyEffects.Count)
                     {
                         // Slot is empty, insert effect

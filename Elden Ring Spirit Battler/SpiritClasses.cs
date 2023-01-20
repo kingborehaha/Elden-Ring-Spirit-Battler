@@ -113,14 +113,26 @@ namespace EldenRingSpiritBattler
             get
             {
                 List<int> effects = new();
-                effects.Add(Sp_StatScaling);
-                //if (Team.BonusStatScalingEffect > 0)
-                    //effects.Add(Team.BonusStatScalingEffect);
+                if (IsC0000)
+                {
+                    effects.Add(Sp_SpecialScaling + SpiritBattlerResources.c0000ScalingEffectOffset);
+                }
+                else
+                {
+                    effects.Add(Sp_StatScaling);
+                }
                 if (Sp_SpecialScaling > 0)
+                {
                     effects.Add(Sp_SpecialScaling);
+                }
                 return effects;
             }
         }
+        public bool IsC0000
+        {
+            get => CharaInitID != -1;
+        }
+
         public BattleSpirit()
         { }
 

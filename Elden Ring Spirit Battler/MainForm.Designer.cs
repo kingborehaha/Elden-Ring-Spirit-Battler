@@ -594,8 +594,9 @@
             this.Label_SearchEnemyText.AutoSize = true;
             this.Label_SearchEnemyText.BackColor = System.Drawing.SystemColors.Window;
             this.Label_SearchEnemyText.CausesValidation = false;
+            this.Label_SearchEnemyText.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.Label_SearchEnemyText.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.Label_SearchEnemyText.Location = new System.Drawing.Point(11, 89);
+            this.Label_SearchEnemyText.Location = new System.Drawing.Point(10, 91);
             this.Label_SearchEnemyText.Name = "Label_SearchEnemyText";
             this.Label_SearchEnemyText.Size = new System.Drawing.Size(51, 15);
             this.Label_SearchEnemyText.TabIndex = 0;
@@ -827,6 +828,7 @@
             this.Label_SearchSpiritAshText.AutoSize = true;
             this.Label_SearchSpiritAshText.BackColor = System.Drawing.SystemColors.Window;
             this.Label_SearchSpiritAshText.CausesValidation = false;
+            this.Label_SearchSpiritAshText.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.Label_SearchSpiritAshText.ForeColor = System.Drawing.SystemColors.GrayText;
             this.Label_SearchSpiritAshText.Location = new System.Drawing.Point(12, 57);
             this.Label_SearchSpiritAshText.Name = "Label_SearchSpiritAshText";

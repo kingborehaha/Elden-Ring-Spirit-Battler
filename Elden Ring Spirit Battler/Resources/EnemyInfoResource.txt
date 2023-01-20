@@ -1391,6 +1391,11 @@ Merciless Chariot||81200007||81200000||-1
 Merciless Chariot 2||81200132||81200000||-1
 
 --Human NPC
+Nepheli Loux Puppet||100000020||100000020||23342
+Dung Eater Puppet||100000030||100000030||23232
+Finger Maiden Therolina Puppet||100000040||100000040||23631
+Dolores the Sleeping Arrow||100000050||100000050||23640
+Jarwight Puppet||100000060||100000060||23650
 Adan, Thief of Fire||523560020||523560000||23560
 Amy, Third Sister||523890056||523890000||23890
 Anastasia, Tarnished-Eater||523530032||523530000||23531
@@ -1511,7 +1516,6 @@ Millicent 12||533481030||533480000||23487
 Millicent 13||533481033||533480000||23487
 Millicent 14||533481050||533480000||23487
 Millicent 15||543480040||543480000||23485
-Mimic Tear||526100965||90603100||24020
 Moongrum, Carian Knight||523590024||523590100||23590
 Nameless White Mask||523770068||523770000||23770
 Necromancer Garris||523760930||523760000||23760
@@ -1572,6 +1576,8 @@ Silver Tear 3||523680065||523680000||23680
 Silver Tear 4||523680065||523680000||23681
 Silver Tear 5||523680065||523680000||23682
 Silver Tear 6||523680065||523680000||23683
+Stray Mimic Tear||526100052||526050000||24010
+Mimic Tear (Enemy)||526100965||90603100||24020
 Sir Gideon Ofnir||523240070||523240100||23241
 Sir Gideon Ofnir 2||523240070||523240100||23242
 Sir Gideon Ofnir 3||523240070||523240100||23243
@@ -1598,7 +1604,6 @@ Sorceress Sellen 6||523160124||523161000||23162
 Sorceress Sellen 7||533160024||533160000||23162
 Sorceress Sellen 8||533160124||533161000||23162
 Stormhill Colosseum Silent Spirit||500000010||500000000||27000
-Stray Mimic Tear||526100052||526050000||24010
 Tanith||523000038||523000000||23000
 Tanith 2||523000138||523000000||23000
 Unnamed Human||52306000||1||28500
@@ -1624,3 +1629,4 @@ Yura, Hunter of Bloody Fingers 5||523180330||523180000||23180
 Yura, Hunter of Bloody Fingers 6||533181010||533181000||23183
 Yura, Hunter of Bloody Fingers 7||533181020||533180000||23183
 Yura, Hunter of Bloody Fingers 8||533181110||533181000||23183
+--Mimic Tear||100000010||100000010||26050 (Doesn't work, may have some hardcoded functionality with its buddy param row. Look into this more later.)

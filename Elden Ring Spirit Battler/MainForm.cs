@@ -26,7 +26,6 @@ namespace EldenRingSpiritBattler
             b_restoreRegulation.Enabled = false;
             Text += GetVersion();
 
-            // TODO: figure out non-lame teamtypes
             AddRandomizedTeamToGrid(TeamTypeEnum.Beast, teamSummonPresetDict["Column Left"]);
             AddRandomizedTeamToGrid(TeamTypeEnum.DS3_CoopMadPhantom, teamSummonPresetDict["Column Right"]); //Tried hostileNPC
             AddRandomizedTeamToGrid(TeamTypeEnum.SpiritSummon, teamSummonPresetDict["Row Close"]);
@@ -229,8 +228,8 @@ namespace EldenRingSpiritBattler
         private void SpiritDataGrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             preventEnemyEdited = true;
-            UpdateSpiritElements();
             Search_Enemy.Text = "";
+            UpdateSpiritElements();
             preventEnemyEdited = false;
         }
 
@@ -353,7 +352,7 @@ namespace EldenRingSpiritBattler
             List_Enemy.Enabled = true;
             List_EnemyVariant.Enabled = true;
 
-            if (str == "")
+            if (str == "" || preventEnemyEdited)
             {
                 Label_SearchEnemyText.Visible = true;
                 List_Enemy.DataSource = enemyListCache;
@@ -382,7 +381,6 @@ namespace EldenRingSpiritBattler
 
                     List<string> variantResults = enemyVariantDict[List_Enemy.Text].FindAll(s => s.Name.Contains(str, StringComparison.CurrentCultureIgnoreCase)).Select(e => e.Name).ToList();
                     List_EnemyVariant.DataSource = variantResults;
-                    List_EnemyVariant.SelectedIndex = 0;
                 }
             }
         }
