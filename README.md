@@ -29,6 +29,8 @@
 
 ## Updates
 ### v0.3.0
+- Support human NPCs and populate enemy resource with humans.
+- Enemy search now filters enemy variant list too.
 - Added FAQ button
 ### v0.2.0
 - Added option to expand the amount of areas you can summon in

@@ -11,6 +11,9 @@ using static EldenRingSpiritBattler.SpiritBattlerResources;
 
 /*
 -- TODO
+-- in progress
+    c0000 support
+        Need to support c0000 scaling values.
 -- medium priority
     Enemy names appear above their heads
         invader blaidd style. need to experiment with limitations. does it work with every team, or just enemies?
@@ -114,10 +117,9 @@ namespace EldenRingSpiritBattler
                             break;
 
                         string nextLine = file[i + 1];
-                        if (nextLine.Count(c => c == '|') != 4)
-                            continue;
+                        //if (nextLine.Count(c => c == '|') != 6)
+                            //continue;
 
-                        //variantKey = nextLine.Split("||")[0]; // Choose key name based on next valid line (first entry in new category)
                         variantKey = line[2..]; // Choose key name based on current line post-comment.
                         enemyVariantDict[variantKey] = new List<Enemy>();
                         continue;
@@ -126,9 +128,15 @@ namespace EldenRingSpiritBattler
                         continue;
 
                     var split = line.Split("||");
-                    Enemy newEnemy = new(split[0], int.Parse(split[1]), int.Parse(split[2]));
+                    Enemy newEnemy = new(split[0], int.Parse(split[1]), int.Parse(split[2]), int.Parse(split[3]));
                     enemyVariantDict[variantKey].Add(newEnemy);
                 }
+                foreach (var dict in enemyVariantDict.ToList())
+                {
+                    if (!dict.Value.Any())
+                        enemyVariantDict.Remove(dict.Key);
+                }
+
                 enemyListCache = enemyVariantDict.Keys.ToList();
                 List_Enemy.DataSource = enemyListCache;
             }
@@ -354,7 +362,7 @@ namespace EldenRingSpiritBattler
                 //
                 #region NpcParam
                 int npcID = spirit.BaseNpcID;
-                int newNpcID = 2000000000 + npcID;
+                int newNpcID = 100000000 + npcID;
                 if (npcParam[npcID] == null)
                 {
                     MessageBox.Show($"Summon {spirit.VariantName}'s base NpcParamID {npcID} cannot be found. Please fix this enemy.", "Error");
@@ -420,7 +428,7 @@ namespace EldenRingSpiritBattler
                 //
                 #region NpcThinkParam
                 int npcThinkID = spirit.BaseThinkID;
-                int newNpcThinkID = 2000000000 + npcThinkID;
+                int newNpcThinkID = 100000000 + npcThinkID;
                 if (npcThinkParam[npcThinkID] == null)
                 {
                     MessageBox.Show($"Summon {spirit.VariantName}'s base NpcThinkParamID {npcThinkID} cannot be found. Please fix this enemy.", "Error");
@@ -450,7 +458,7 @@ namespace EldenRingSpiritBattler
 
                 buddyParamRow["npcParamId"].Value = newNpcRow.ID;
                 buddyParamRow["npcThinkParamId"].Value = newNpcThinkRow.ID;
-                buddyParamRow["npcPlayerInitParamId"].Value = -1; // Probably for c0000
+                buddyParamRow["npcPlayerInitParamId"].Value = spirit.CharaInitID; // CharaInit
 
                 buddyParamRow["disablePCTargetShare"].Value = true; // Must be true for enemies, or else they can try to target themselves.
                 buddyParamRow["appearOnAroundSekihi"].Value = (byte)0; // 0 = Summon using player location.
@@ -777,6 +785,7 @@ namespace EldenRingSpiritBattler
 
             Input_NpcParamID.Value = spirit.BaseNpcID;
             Input_NpcThinkID.Value = spirit.BaseThinkID;
+            Input_CharaInitID.Value = spirit.CharaInitID;
 
             List_StatScaling.Text = ((StatScalingEnum)spirit.Sp_StatScaling).ToString();
 
@@ -956,6 +965,7 @@ namespace EldenRingSpiritBattler
                 DamageMult = Input_EnemyDamageMult.Value,
                 BaseNpcID = (int)Input_NpcParamID.Value,
                 BaseThinkID = (int)Input_NpcThinkID.Value,
+                CharaInitID = (int)Input_CharaInitID.Value,
             };
             return spirit;
         }

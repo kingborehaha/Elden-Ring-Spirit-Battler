@@ -83,6 +83,8 @@
             this.Button_RandomTeamName = new System.Windows.Forms.Button();
             this.Search_SpiritAsh = new System.Windows.Forms.TextBox();
             this.Label_SearchSpiritAshText = new System.Windows.Forms.Label();
+            this.Input_CharaInitID = new System.Windows.Forms.NumericUpDown();
+            this.label9 = new System.Windows.Forms.Label();
             this.t_console = new System.Windows.Forms.TextBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.Menu_File = new System.Windows.Forms.ToolStripMenuItem();
@@ -106,6 +108,7 @@
             this.Menu_Help = new System.Windows.Forms.ToolStripMenuItem();
             this.Button_Info = new System.Windows.Forms.ToolStripMenuItem();
             this.Button_StatScalingLevelInfo = new System.Windows.Forms.ToolStripMenuItem();
+            this.fAQToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label5 = new System.Windows.Forms.Label();
             this.SpiritDataGrid = new System.Windows.Forms.DataGridView();
             this.Context_DataGrid = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -137,7 +140,6 @@
             this.label24 = new System.Windows.Forms.Label();
             this.Button_Randomize_SvE = new System.Windows.Forms.Button();
             this.Button_Randomize_PvE = new System.Windows.Forms.Button();
-            this.fAQToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.SummonPosition_X)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SummonPosition_Z)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SummonPosition_Angle)).BeginInit();
@@ -149,6 +151,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.Input_NpcThinkID)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Input_TeamDamageMult)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Input_TeamHpMult)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Input_CharaInitID)).BeginInit();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SpiritDataGrid)).BeginInit();
             this.Context_DataGrid.SuspendLayout();
@@ -181,7 +184,7 @@
             // SummonPosition_X
             // 
             this.SummonPosition_X.DecimalPlaces = 1;
-            this.SummonPosition_X.Location = new System.Drawing.Point(78, 276);
+            this.SummonPosition_X.Location = new System.Drawing.Point(286, 270);
             this.SummonPosition_X.Maximum = new decimal(new int[] {
             9999,
             0,
@@ -202,7 +205,7 @@
             // SummonPosition_Z
             // 
             this.SummonPosition_Z.DecimalPlaces = 1;
-            this.SummonPosition_Z.Location = new System.Drawing.Point(78, 305);
+            this.SummonPosition_Z.Location = new System.Drawing.Point(286, 299);
             this.SummonPosition_Z.Maximum = new decimal(new int[] {
             9999,
             0,
@@ -223,7 +226,7 @@
             // SummonPosition_Angle
             // 
             this.SummonPosition_Angle.DecimalPlaces = 1;
-            this.SummonPosition_Angle.Location = new System.Drawing.Point(78, 334);
+            this.SummonPosition_Angle.Location = new System.Drawing.Point(286, 328);
             this.SummonPosition_Angle.Maximum = new decimal(new int[] {
             180,
             0,
@@ -374,7 +377,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(15, 278);
+            this.label6.Location = new System.Drawing.Point(223, 272);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(57, 15);
             this.label6.TabIndex = 78;
@@ -385,7 +388,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(15, 307);
+            this.label7.Location = new System.Drawing.Point(223, 301);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(57, 15);
             this.label7.TabIndex = 79;
@@ -396,7 +399,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(34, 336);
+            this.label8.Location = new System.Drawing.Point(242, 330);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(38, 15);
             this.label8.TabIndex = 82;
@@ -420,7 +423,7 @@
             // Input_NpcParamID
             // 
             this.Input_NpcParamID.Enabled = false;
-            this.Input_NpcParamID.Location = new System.Drawing.Point(212, 160);
+            this.Input_NpcParamID.Location = new System.Drawing.Point(6, 214);
             this.Input_NpcParamID.Maximum = new decimal(new int[] {
             999999999,
             0,
@@ -446,7 +449,7 @@
             // Input_NpcThinkID
             // 
             this.Input_NpcThinkID.Enabled = false;
-            this.Input_NpcThinkID.Location = new System.Drawing.Point(295, 160);
+            this.Input_NpcThinkID.Location = new System.Drawing.Point(89, 214);
             this.Input_NpcThinkID.Maximum = new decimal(new int[] {
             999999999,
             0,
@@ -458,7 +461,7 @@
             0,
             -2147483648});
             this.Input_NpcThinkID.Name = "Input_NpcThinkID";
-            this.Input_NpcThinkID.Size = new System.Drawing.Size(72, 23);
+            this.Input_NpcThinkID.Size = new System.Drawing.Size(77, 23);
             this.Input_NpcThinkID.TabIndex = 93;
             this.toolTip1.SetToolTip(this.Input_NpcThinkID, "NpcThinkParam ID used by this enemy variant");
             this.Input_NpcThinkID.Value = new decimal(new int[] {
@@ -472,32 +475,34 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(212, 142);
+            this.label3.Location = new System.Drawing.Point(6, 196);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(77, 15);
             this.label3.TabIndex = 94;
             this.label3.Text = "NpcParam ID";
             this.toolTip1.SetToolTip(this.label3, "NpcParam ID used by this enemy variant");
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             this.label3.Validated += new System.EventHandler(this.EnemyWasEdited);
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(295, 142);
+            this.label11.Location = new System.Drawing.Point(89, 196);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(72, 15);
             this.label11.TabIndex = 95;
             this.label11.Text = "NpcThink ID";
             this.toolTip1.SetToolTip(this.label11, "NpcThinkParam ID used by this enemy variant");
+            this.label11.Click += new System.EventHandler(this.label11_Click);
             this.label11.Validated += new System.EventHandler(this.EnemyWasEdited);
             // 
             // List_StatScaling
             // 
             this.List_StatScaling.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.List_StatScaling.FormattingEnabled = true;
-            this.List_StatScaling.Location = new System.Drawing.Point(6, 223);
+            this.List_StatScaling.Location = new System.Drawing.Point(98, 263);
             this.List_StatScaling.Name = "List_StatScaling";
-            this.List_StatScaling.Size = new System.Drawing.Size(129, 23);
+            this.List_StatScaling.Size = new System.Drawing.Size(98, 23);
             this.List_StatScaling.TabIndex = 98;
             this.toolTip1.SetToolTip(this.List_StatScaling, resources.GetString("List_StatScaling.ToolTip"));
             this.List_StatScaling.SelectedIndexChanged += new System.EventHandler(this.EnemyWasEdited);
@@ -507,7 +512,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label13.Location = new System.Drawing.Point(11, 205);
+            this.label13.Location = new System.Drawing.Point(98, 246);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(98, 15);
             this.label13.TabIndex = 99;
@@ -626,9 +631,9 @@
             // 
             // Button_PickRandomEnemy
             // 
-            this.Button_PickRandomEnemy.Location = new System.Drawing.Point(212, 115);
+            this.Button_PickRandomEnemy.Location = new System.Drawing.Point(209, 159);
             this.Button_PickRandomEnemy.Name = "Button_PickRandomEnemy";
-            this.Button_PickRandomEnemy.Size = new System.Drawing.Size(22, 23);
+            this.Button_PickRandomEnemy.Size = new System.Drawing.Size(22, 24);
             this.Button_PickRandomEnemy.TabIndex = 111;
             this.Button_PickRandomEnemy.Text = "?";
             this.toolTip1.SetToolTip(this.Button_PickRandomEnemy, "Picks a random Enemy Variant");
@@ -832,6 +837,42 @@
         "enemy details is determined by Enemy Variant.");
             this.Label_SearchSpiritAshText.Click += new System.EventHandler(this.Label_SearchSpiritAshText_Click);
             // 
+            // Input_CharaInitID
+            // 
+            this.Input_CharaInitID.Enabled = false;
+            this.Input_CharaInitID.Location = new System.Drawing.Point(172, 214);
+            this.Input_CharaInitID.Maximum = new decimal(new int[] {
+            999999999,
+            0,
+            0,
+            0});
+            this.Input_CharaInitID.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            -2147483648});
+            this.Input_CharaInitID.Name = "Input_CharaInitID";
+            this.Input_CharaInitID.Size = new System.Drawing.Size(72, 23);
+            this.Input_CharaInitID.TabIndex = 114;
+            this.toolTip1.SetToolTip(this.Input_CharaInitID, "NpcParam ID used by this enemy variant");
+            this.Input_CharaInitID.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            -2147483648});
+            this.Input_CharaInitID.ValueChanged += new System.EventHandler(this.EnemyWasEdited);
+            this.Input_CharaInitID.Click += new System.EventHandler(this.EnemyWasEdited);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(169, 196);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(72, 15);
+            this.label9.TabIndex = 115;
+            this.label9.Text = "Character ID";
+            this.toolTip1.SetToolTip(this.label9, "NpcParam ID used by this enemy variant");
+            // 
             // t_console
             // 
             this.t_console.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -1029,7 +1070,7 @@
             // Button_Info
             // 
             this.Button_Info.Name = "Button_Info";
-            this.Button_Info.Size = new System.Drawing.Size(180, 22);
+            this.Button_Info.Size = new System.Drawing.Size(170, 22);
             this.Button_Info.Text = "How to use";
             this.Button_Info.Click += new System.EventHandler(this.Button_Info_Click);
             // 
@@ -1037,15 +1078,22 @@
             // 
             this.Button_StatScalingLevelInfo.Name = "Button_StatScalingLevelInfo";
             this.Button_StatScalingLevelInfo.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.Button_StatScalingLevelInfo.Size = new System.Drawing.Size(180, 22);
+            this.Button_StatScalingLevelInfo.Size = new System.Drawing.Size(170, 22);
             this.Button_StatScalingLevelInfo.Text = "Stat Scaling Levels";
             this.Button_StatScalingLevelInfo.Click += new System.EventHandler(this.Button_StatScalingLevelInfo_Click);
+            // 
+            // fAQToolStripMenuItem
+            // 
+            this.fAQToolStripMenuItem.Name = "fAQToolStripMenuItem";
+            this.fAQToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.fAQToolStripMenuItem.Text = "FAQ";
+            this.fAQToolStripMenuItem.Click += new System.EventHandler(this.fAQToolStripMenuItem_Click);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label5.Location = new System.Drawing.Point(11, 253);
+            this.label5.Location = new System.Drawing.Point(219, 247);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(124, 20);
             this.label5.TabIndex = 76;
@@ -1135,7 +1183,7 @@
             // Input_EnemyHpMult
             // 
             this.Input_EnemyHpMult.DecimalPlaces = 2;
-            this.Input_EnemyHpMult.Location = new System.Drawing.Point(170, 223);
+            this.Input_EnemyHpMult.Location = new System.Drawing.Point(6, 264);
             this.Input_EnemyHpMult.Maximum = new decimal(new int[] {
             999,
             0,
@@ -1156,7 +1204,7 @@
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label14.Location = new System.Drawing.Point(158, 205);
+            this.label14.Location = new System.Drawing.Point(1, 246);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(87, 15);
             this.label14.TabIndex = 101;
@@ -1167,7 +1215,7 @@
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label15.Location = new System.Drawing.Point(254, 205);
+            this.label15.Location = new System.Drawing.Point(1, 291);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(115, 15);
             this.label15.TabIndex = 103;
@@ -1177,14 +1225,14 @@
             // Input_EnemyDamageMult
             // 
             this.Input_EnemyDamageMult.DecimalPlaces = 2;
-            this.Input_EnemyDamageMult.Location = new System.Drawing.Point(264, 223);
+            this.Input_EnemyDamageMult.Location = new System.Drawing.Point(6, 309);
             this.Input_EnemyDamageMult.Maximum = new decimal(new int[] {
             999,
             0,
             0,
             0});
             this.Input_EnemyDamageMult.Name = "Input_EnemyDamageMult";
-            this.Input_EnemyDamageMult.Size = new System.Drawing.Size(76, 23);
+            this.Input_EnemyDamageMult.Size = new System.Drawing.Size(75, 23);
             this.Input_EnemyDamageMult.TabIndex = 102;
             this.Input_EnemyDamageMult.Value = new decimal(new int[] {
             1,
@@ -1234,6 +1282,8 @@
             // groupBox2
             // 
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Controls.Add(this.Input_CharaInitID);
+            this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.Controls.Add(this.Label_SearchEnemyText);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.List_EnemyChosenTeam);
@@ -1471,13 +1521,6 @@
             this.Button_Randomize_PvE.Text = "Player vs enemies";
             this.Button_Randomize_PvE.UseVisualStyleBackColor = true;
             // 
-            // fAQToolStripMenuItem
-            // 
-            this.fAQToolStripMenuItem.Name = "fAQToolStripMenuItem";
-            this.fAQToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.fAQToolStripMenuItem.Text = "FAQ";
-            this.fAQToolStripMenuItem.Click += new System.EventHandler(this.fAQToolStripMenuItem_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -1507,6 +1550,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.Input_NpcThinkID)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Input_TeamDamageMult)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Input_TeamHpMult)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Input_CharaInitID)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SpiritDataGrid)).EndInit();
@@ -1642,5 +1686,7 @@
         private ToolStripMenuItem Option_MoreSummonAreas;
         private ToolStripMenuItem Option_EnableResummoning;
         private ToolStripMenuItem fAQToolStripMenuItem;
+        private NumericUpDown Input_CharaInitID;
+        private Label label9;
     }
 }

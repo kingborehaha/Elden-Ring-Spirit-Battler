@@ -14,11 +14,13 @@ namespace EldenRingSpiritBattler
         public string Name;
         public int NpcID;
         public int ThinkID;
-        public Enemy(string name, int npcID, int thinkID)
+        public int CharaInitID;
+        public Enemy(string name, int npcID, int thinkID, int charaInitID = -1)
         {
             Name = name;
             NpcID = npcID;
             ThinkID = thinkID;
+            CharaInitID = charaInitID;
         }
     }
 
@@ -98,6 +100,7 @@ namespace EldenRingSpiritBattler
         public string VariantName = "";
         public int BaseNpcID;
         public int BaseThinkID;
+        public int CharaInitID = -1;
         public SpiritTeam Team = null!;
         public SummonPos Position = new(); // X, Z, Angle
 
@@ -128,6 +131,7 @@ namespace EldenRingSpiritBattler
             spirit.VariantName = VariantName;
             spirit.BaseNpcID = BaseNpcID;
             spirit.BaseThinkID = BaseThinkID;
+            spirit.CharaInitID = CharaInitID;
             spirit.Team = Team;
             spirit.HpMult = HpMult;
             spirit.DamageMult = DamageMult;

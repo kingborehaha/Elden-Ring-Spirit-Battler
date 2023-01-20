@@ -247,17 +247,19 @@ namespace EldenRingSpiritBattler
                 // Update NpcParamId and NpcThinkParam elements
                 Input_NpcParamID.Value = enemyVariantDict[List_Enemy.Text][0].NpcID;
                 Input_NpcThinkID.Value = enemyVariantDict[List_Enemy.Text][0].ThinkID;
+                Input_CharaInitID.Value = enemyVariantDict[List_Enemy.Text][0].CharaInitID;
             }
             EnemyWasEdited(sender, e);
         }
 
         private void List_EnemyVariant_SelectedIndexChanged(object sender, EventArgs e)
         {
-            // Update NpcParamId and NpcThinkParam elements
+            // Update NpcParam, NpcThinkParam, and CharaInit elements
             if (List_Enemy.Text != "" && List_EnemyVariant.Text != "")
             {
-                Input_NpcParamID.Value = enemyVariantDict[List_Enemy.Text][List_EnemyVariant.SelectedIndex].NpcID;
-                Input_NpcThinkID.Value = enemyVariantDict[List_Enemy.Text][List_EnemyVariant.SelectedIndex].ThinkID;
+                Input_NpcParamID.Value = enemyVariantDict[List_Enemy.Text].Find(e => e.Name == List_EnemyVariant.Text).NpcID;
+                Input_NpcThinkID.Value = enemyVariantDict[List_Enemy.Text].Find(e => e.Name == List_EnemyVariant.Text).ThinkID;
+                Input_CharaInitID.Value = enemyVariantDict[List_Enemy.Text].Find(e => e.Name == List_EnemyVariant.Text).CharaInitID;
                 EnemyWasEdited(sender, e);
             }
         }
@@ -377,6 +379,10 @@ namespace EldenRingSpiritBattler
                 else
                 {
                     List_Enemy.DataSource = results;
+
+                    List<string> variantResults = enemyVariantDict[List_Enemy.Text].FindAll(s => s.Name.Contains(str, StringComparison.CurrentCultureIgnoreCase)).Select(e => e.Name).ToList();
+                    List_EnemyVariant.DataSource = variantResults;
+                    List_EnemyVariant.SelectedIndex = 0;
                 }
             }
         }
@@ -451,6 +457,16 @@ namespace EldenRingSpiritBattler
                 "Team Types will also determine which other teams enemies will attack. Using default team types is encouraged.\n\n" +
                 ""
                 , "FAQ", MessageBoxButtons.OK);
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label11_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
