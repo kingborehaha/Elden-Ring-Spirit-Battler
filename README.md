@@ -28,8 +28,11 @@
 - Save Changes. The selected ash should now be changed in-game
 
 ## Updates
+### v0.3.0
+- Added FAQ button
 ### v0.2.0
-- Added options to expand summon areas and allow resummoning
+- Added option to expand the amount of areas you can summon in
+- Added option that lets you summon and resummon without reloading the game
 - Swapped default team's Team Type for Column Left (Enemy -> Beast) and Row Far (Beast -> Enemy)
 ### v0.1.1
 Patreon Beta Release

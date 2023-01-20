@@ -442,5 +442,15 @@ namespace EldenRingSpiritBattler
             Search_SpiritAsh.SelectionStart = 0;
             Search_SpiritAsh.SelectionLength = Search_SpiritAsh.Text.Length;
         }
+
+        private void fAQToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(
+                "Q: Enemies aren't attacking eachother!\n" +
+                "A: If Seamless Coop is installed, it will cause this to happen.\n" +
+                "Team Types will also determine which other teams enemies will attack. Using default team types is encouraged.\n\n" +
+                ""
+                , "FAQ", MessageBoxButtons.OK);
+        }
     }
 }

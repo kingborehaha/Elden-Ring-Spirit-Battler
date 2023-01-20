@@ -9,9 +9,9 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <ApplicationIcon>spiritbell.ico</ApplicationIcon>
     <PackageIcon></PackageIcon>
-    <FileVersion>0.2.0</FileVersion>
-    <AssemblyVersion>0.2.0</AssemblyVersion>
-    <Version>0.2.0</Version>
+    <FileVersion>0.3.0</FileVersion>
+    <AssemblyVersion>0.3.0</AssemblyVersion>
+    <Version>0.3.0</Version>
     <Company></Company>
     <Authors>King Bore Haha</Authors>
     <RunPostBuildEvent>Always</RunPostBuildEvent>

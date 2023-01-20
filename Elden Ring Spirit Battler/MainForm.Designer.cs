@@ -137,6 +137,7 @@
             this.label24 = new System.Windows.Forms.Label();
             this.Button_Randomize_SvE = new System.Windows.Forms.Button();
             this.Button_Randomize_PvE = new System.Windows.Forms.Button();
+            this.fAQToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.SummonPosition_X)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SummonPosition_Z)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SummonPosition_Angle)).BeginInit();
@@ -1017,7 +1018,8 @@
             // 
             this.Menu_Help.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.Button_Info,
-            this.Button_StatScalingLevelInfo});
+            this.Button_StatScalingLevelInfo,
+            this.fAQToolStripMenuItem});
             this.Menu_Help.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Menu_Help.Name = "Menu_Help";
             this.Menu_Help.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -1027,7 +1029,7 @@
             // Button_Info
             // 
             this.Button_Info.Name = "Button_Info";
-            this.Button_Info.Size = new System.Drawing.Size(170, 22);
+            this.Button_Info.Size = new System.Drawing.Size(180, 22);
             this.Button_Info.Text = "How to use";
             this.Button_Info.Click += new System.EventHandler(this.Button_Info_Click);
             // 
@@ -1035,7 +1037,7 @@
             // 
             this.Button_StatScalingLevelInfo.Name = "Button_StatScalingLevelInfo";
             this.Button_StatScalingLevelInfo.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.Button_StatScalingLevelInfo.Size = new System.Drawing.Size(170, 22);
+            this.Button_StatScalingLevelInfo.Size = new System.Drawing.Size(180, 22);
             this.Button_StatScalingLevelInfo.Text = "Stat Scaling Levels";
             this.Button_StatScalingLevelInfo.Click += new System.EventHandler(this.Button_StatScalingLevelInfo_Click);
             // 
@@ -1469,6 +1471,13 @@
             this.Button_Randomize_PvE.Text = "Player vs enemies";
             this.Button_Randomize_PvE.UseVisualStyleBackColor = true;
             // 
+            // fAQToolStripMenuItem
+            // 
+            this.fAQToolStripMenuItem.Name = "fAQToolStripMenuItem";
+            this.fAQToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.fAQToolStripMenuItem.Text = "FAQ";
+            this.fAQToolStripMenuItem.Click += new System.EventHandler(this.fAQToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -1632,5 +1641,6 @@
         private TextBox Search_SpiritAsh;
         private ToolStripMenuItem Option_MoreSummonAreas;
         private ToolStripMenuItem Option_EnableResummoning;
+        private ToolStripMenuItem fAQToolStripMenuItem;
     }
 }
