@@ -50,4 +50,4 @@ Private Release
 
 ## Info
 - Built using https://github.com/JKAnderson/SoulsFormats
-- Contains Param Definitions from https://github.com/soulsmods/Paramdex
+- Contains param definitions from https://github.com/soulsmods/Paramdex and https://github.com/soulsmods/DSMapStudio
