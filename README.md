@@ -48,6 +48,6 @@ Patreon Beta Release
 ### v0.1.0
 Private Release
 
-## Info
+## Credits
 - Built using https://github.com/JKAnderson/SoulsFormats
 - Contains param definitions from https://github.com/soulsmods/Paramdex and https://github.com/soulsmods/DSMapStudio
