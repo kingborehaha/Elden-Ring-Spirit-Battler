@@ -11,26 +11,26 @@ using static EldenRingSpiritBattler.SpiritBattlerResources;
 
 /*
 -- TODO
--- in progress
-    c0000 support
-        Need to support c0000 scaling values.
-        Test mimic tear
 -- medium priority
     Enemy names appear above their heads
         invader blaidd style. need to experiment with limitations. does it work with every team, or just enemies?
-    Save program settings
-    Save/load .json for fights.
+    Remember program settings
     Better catalog enemy variant names
     Options to randomize an entire ash
     Custom phantom colors
-    increase position preset increment based on enemy's hitbox size
-        would have to load regulation.bin early if i used this for preview. maybe it should just be a execute-only thing for now
+    Increase position preset increment based on enemy's hitbox size
+        Would have to load regulation.bin early if i used this for preview. Maybe it should just be a execute-only thing for now?
 -- low priority
-    True summon-anywhere by editing MSB and inserting summon talk entities in every map.
+    True summon-anywhere
+        Edit super-overworld MSB and insert a summon thing into it.
+        Requires making tool handle mod directory structures and whether or not user unpacked.
     Can probably allow editing team position even with presets active
         Add step increment to UI.
     Put phantom param stuff into a resource file, make it detail more info
     Replace team enum with more comprehensive info, so user knows where these scaling levels correspond
+    Figure out how mimic tear works so it can be implemented
+        Moving buddyParam entries to another ash DID NOT WORK
+            So, probably some field in summon good/spEffect notifier, or hardcoded ID reference for good/spEffect/buddy.
     Change targeted ash name's FMG name
         Format: "Spirit Battler: [team] vs [team]
     Better catalog team behavior
@@ -449,7 +449,7 @@ namespace EldenRingSpiritBattler
 
                 buddyParamRow["disablePCTargetShare"].Value = true; // Must be true for enemies, or else they can try to target themselves.
                 buddyParamRow["appearOnAroundSekihi"].Value = (byte)0; // 0 = Summon using player location.
-                buddyParamRow["pcFollowType"].Value = (byte)1; // 0 = Follow player around, 1 = Wander Around?, 2 = Stand in place?
+                buddyParamRow["pcFollowType"].Value = (byte)1; // This may only affect enemies with logic/AI set up for it. 0 = Follow player around?, 1 = Wander Around?, 2 = Stand in place?
 
                 for (var ii = 0; ii <= 10; ii++)
                 {
@@ -961,7 +961,7 @@ namespace EldenRingSpiritBattler
         {
             if (SpiritDataGrid.Rows.Count >= buddyLimit)
             {
-                MessageBox.Show($"A spirit ash cannot handle more than {buddyLimit} summons at once. Sorry!", "Warning");
+                MessageBox.Show($"A spirit ash cannot handle more than {buddyLimit} summons at once. Sorry!", "Summon Limit");
                 return false;
             }
             battleSpiritList.Add(spirit);
@@ -972,7 +972,7 @@ namespace EldenRingSpiritBattler
         {
             if (SpiritDataGrid.Rows.Count >= buddyLimit)
             {
-                MessageBox.Show($"A spirit ash cannot handle more than {buddyLimit} summons at once. Sorry!", "Warning");
+                MessageBox.Show($"A spirit ash cannot handle more than {buddyLimit} summons at once. Sorry!", "Summon Limit");
                 return false;
             }
             battleSpiritList.Insert(index, spirit);
