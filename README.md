@@ -1,4 +1,4 @@
-## Tool to set up custom encounters in Elden Ring via spirit ash summons.
+## Elden Ring Spirit Battler is a tool to set up custom encounters in Elden Ring via spirit ash summons.
 - Summon vs summon. Watch them fight as a bystander
 - Player vs summon. Set up an encounter to defeat
 - Free for All. Somebody will win, might even be you
@@ -28,6 +28,8 @@
 - Save Changes. The selected ash should now be changed in-game
 
 ## Updates
+### v0.1.0
+- Public release
 ### v0.3.0
 - Support human NPCs and populate enemy resource with humans.
 - Enemy search now filters enemy variant list too.
