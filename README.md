@@ -29,7 +29,7 @@
 
 ## Updates
 ### v0.1.0
-- Public release
+Public release
 ### v0.3.0
 - Support human NPCs and populate enemy resource with humans.
 - Enemy search now filters enemy variant list too.
