@@ -20,7 +20,7 @@
 ## How to Use
 - Download Mod Engine 2: https://github.com/soulsmods/ModEngine2/releases
 - Download and install .NET Desktop Runtime 6.0: https://dotnet.microsoft.com/en-us/download/dotnet/6.0
-- Locate your Mod engine 2 "Mod folder.
+- Locate your Mod engine 2 "Mod" folder.
 - If you have no other mods installed, locate your Elden Ring installation and find regulation.bin, then copy and paste regulation.bin into your Mod Engine 2 "mod" folder. If you do have other mods installed, you can use the regulation.bin that's already in your mod folder.
 - Start Elden Ring Spirit Battler, click the browse button in the top left, and load the regulation.bin in your mod engine 2 "mod" folder.
 - Hover the mouse over options for tips!
