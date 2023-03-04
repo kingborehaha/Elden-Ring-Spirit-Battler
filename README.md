@@ -1,9 +1,8 @@
 ## Elden Ring Spirit Battler is a tool to set up custom encounters in Elden Ring via spirit ash summons.
-- Summon vs summon. Watch them fight as a bystander
-- Player vs summon. Set up an encounter to defeat
-- Free for All. Somebody will win, might even be you
-- Custom Spirit Ash. You ever want to summon 10 Radahns?
-- Whatever you want!
+- Summon vs summon. Watch them fight as a bystander.
+- Player vs summon. Set up an encounter to defeat.
+- Free for All. Somebody will win. Might even be you!
+- Custom Spirit Ash. Malenia too hard? Just summon 10 Radahns.
 
 ## Features
 - Customize entire fights with any enemy you want, up to 10 enemies at once
@@ -19,13 +18,14 @@
 - Do not run this tool on Regulation.bin in Elden Ring's "Game" folder. If you do and play online, you could potentially be banned.
 
 ## How to Use
-- Download Mod Engine 2 https://github.com/soulsmods/ModEngine2/releases
-- If you have no other mods installed, locate your Elden Ring installation and find regulation.bin, then copy and paste regulation.bin into your Mod Engine 2 "Mod" folder
-- If you do have other mods installed, just find the regulation.bin already in your Mod folder
-- Use this tool to browse and load the copied regulation.bin
+- Download Mod Engine 2: https://github.com/soulsmods/ModEngine2/releases
+- Download and install .NET Desktop Runtime 6.0: https://dotnet.microsoft.com/en-us/download/dotnet/6.0
+- Locate your Mod engine 2 "Mod folder.
+- If you have no other mods installed, locate your Elden Ring installation and find regulation.bin, then copy and paste regulation.bin into your Mod Engine 2 "mod" folder. If you do have other mods installed, you can use the regulation.bin that's already in your mod folder.
+- Start Elden Ring Spirit Battler, click the browse button in the top left, and load the regulation.bin in your mod engine 2 "mod" folder.
 - Hover the mouse over options for tips!
-- Create teams and enemies as desired, then choose which Spirit Ash to overwrite
-- Save Changes. The selected ash should now be changed in-game
+- Create teams and enemies as desired, then choose which Spirit Ash to overwrite.
+- Save Changes. The selected ash should now be changed in-game.
 
 ## Updates
 ### v0.1.0
