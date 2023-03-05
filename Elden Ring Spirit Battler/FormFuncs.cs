@@ -186,7 +186,7 @@ namespace EldenRingSpiritBattler
 
         private static PARAM.Row InsertParamRow(PARAM param, PARAM.Row row, int newID, int index = -1)
         {
-            PARAM.Row newRow = new PARAM.Row(newID, "buddyRando " + newID, param.AppliedParamdef);
+            PARAM.Row newRow = new PARAM.Row(newID, "SpiritBattler " + newID, param.AppliedParamdef);
 
             for (var i = 0; i < row.Cells.Count; i++)
             {
@@ -449,7 +449,14 @@ namespace EldenRingSpiritBattler
 
                 buddyParamRow["disablePCTargetShare"].Value = true; // Must be true for enemies, or else they can try to target themselves.
                 buddyParamRow["appearOnAroundSekihi"].Value = (byte)0; // 0 = Summon using player location.
-                buddyParamRow["pcFollowType"].Value = (byte)1; // This may only affect enemies with logic/AI set up for it. 0 = Follow player around?, 1 = Wander Around?, 2 = Stand in place?
+                if (spirit.FollowPlayer)
+                {
+                    buddyParamRow["pcFollowType"].Value = (byte)0; // 0 = Follow player around, 1 = Wander Around, 2 = Wait in place?
+                }
+                else
+                {
+                    buddyParamRow["pcFollowType"].Value = (byte)1; // 0 = Follow player around, 1 = Wander Around, 2 = Wait in place?
+                }
 
                 for (var ii = 0; ii <= 10; ii++)
                 {
@@ -604,7 +611,8 @@ namespace EldenRingSpiritBattler
                 V1 = Enum.GetName(typeof(TeamTypeEnum), team.Value.TeamType),
                 V2 = Enum.GetName(typeof(PhantomEnum), team.Value.PhantomParamID),
                 Scale = GetTeamScalingLevelString(team.Value),
-                Pos = GetTeamPositionString(team.Value)
+                Pos = GetTeamPositionString(team.Value),
+                Follow = team.Value.FollowPlayer
             }).ToList();
             TeamDataGrid.Columns[0].Visible = false;
             TeamDataGrid.Columns[1].HeaderCell.Value = "Name";
@@ -615,8 +623,10 @@ namespace EldenRingSpiritBattler
             TeamDataGrid.Columns[3].Width = 130;
             TeamDataGrid.Columns[4].HeaderCell.Value = "Stats";
             TeamDataGrid.Columns[4].Width = 60;
-            TeamDataGrid.Columns[5].HeaderCell.Value = "Pos";
-            TeamDataGrid.Columns[5].Width = 100;
+            TeamDataGrid.Columns[5].HeaderCell.Value = "Position";
+            TeamDataGrid.Columns[5].Width = 85;
+            TeamDataGrid.Columns[6].HeaderCell.Value = "Follow";
+            TeamDataGrid.Columns[6].Width = 50;
 
             if (prevIndex > TeamDataGrid.Rows.Count - 1)
                 prevIndex = TeamDataGrid.Rows.Count - 1;
@@ -648,6 +658,7 @@ namespace EldenRingSpiritBattler
                 TeamType = (byte)Enum.Parse(typeof(TeamTypeEnum), List_TeamType.Text),
                 TeamHpMult = Input_TeamHpMult.Value,
                 TeamDamageMult = Input_TeamDamageMult.Value,
+                FollowPlayer = Option_TeamFollowPlayer.Checked,
                 TeamPosition = teamPos,
             };
             return team;
@@ -671,7 +682,7 @@ namespace EldenRingSpiritBattler
         private void AddRandomizedTeamToGrid(TeamTypeEnum team, SummonPos? summonPos = null)
         {
             string teamName = GetRandomUnusedTeamName();
-            teamDict.Add(teamName, new SpiritTeam(teamName, GetRandomUnusedPhantomId(), (byte)team, summonPos));
+            teamDict.Add(teamName, new SpiritTeam(teamName, GetRandomUnusedPhantomId(), (byte)team, false, summonPos));
         }
 
         public void SetRandomTeamName()
@@ -914,8 +925,8 @@ namespace EldenRingSpiritBattler
             SpiritDataGrid.Columns[2].Width = 200;
             SpiritDataGrid.Columns[3].HeaderCell.Value = "Stats";
             SpiritDataGrid.Columns[3].Width = 80;
-            SpiritDataGrid.Columns[4].HeaderCell.Value = "Pos";
-            SpiritDataGrid.Columns[4].Width = 100;
+            SpiritDataGrid.Columns[4].HeaderCell.Value = "Position";
+            SpiritDataGrid.Columns[4].Width = 85;
 
             SpiritDataGrid.ClearSelection();
             if (prevIndex > SpiritDataGrid.Rows.Count - 1)

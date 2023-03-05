@@ -126,6 +126,7 @@
             this.Option_TargetAllSpiritAshes = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.Option_TeamFollowPlayer = new System.Windows.Forms.CheckBox();
             this.Group_TeamSummonPos_Manual = new System.Windows.Forms.GroupBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.TeamDataGrid = new System.Windows.Forms.DataGridView();
@@ -1322,6 +1323,7 @@
             // groupBox3
             // 
             this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox3.Controls.Add(this.Option_TeamFollowPlayer);
             this.groupBox3.Controls.Add(this.Option_Randomize_PhantomColor);
             this.groupBox3.Controls.Add(this.Group_TeamSummonPos_Manual);
             this.groupBox3.Controls.Add(this.label10);
@@ -1342,6 +1344,17 @@
             this.groupBox3.TabIndex = 114;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Team";
+            // 
+            // Option_TeamFollowPlayer
+            // 
+            this.Option_TeamFollowPlayer.AutoSize = true;
+            this.Option_TeamFollowPlayer.Location = new System.Drawing.Point(193, 87);
+            this.Option_TeamFollowPlayer.Name = "Option_TeamFollowPlayer";
+            this.Option_TeamFollowPlayer.Size = new System.Drawing.Size(96, 19);
+            this.Option_TeamFollowPlayer.TabIndex = 118;
+            this.Option_TeamFollowPlayer.Text = "Follow Player";
+            this.toolTip1.SetToolTip(this.Option_TeamFollowPlayer, "If checked, members of this team will follow the player around");
+            this.Option_TeamFollowPlayer.UseVisualStyleBackColor = true;
             // 
             // Group_TeamSummonPos_Manual
             // 
@@ -1690,5 +1703,6 @@
         private ToolStripMenuItem fAQToolStripMenuItem;
         private NumericUpDown Input_CharaInitID;
         private Label label9;
+        private CheckBox Option_TeamFollowPlayer;
     }
 }

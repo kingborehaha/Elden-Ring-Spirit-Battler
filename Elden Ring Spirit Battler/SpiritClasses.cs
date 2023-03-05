@@ -108,6 +108,8 @@ namespace EldenRingSpiritBattler
         public decimal DamageMult = 1;
         public int Sp_StatScaling = -1; //
         public int Sp_SpecialScaling = -1; // Stores ID of newly created spEffect that holds HpMult and DamageMult modifiers
+        public bool IsC0000 { get => CharaInitID != -1; }
+        public bool FollowPlayer { get => Team.FollowPlayer; }
         public List<int> SpecialEffects
         {
             get
@@ -125,14 +127,14 @@ namespace EldenRingSpiritBattler
                 {
                     effects.Add(Sp_SpecialScaling);
                 }
+                if (Team.FollowPlayer)
+                {
+                    effects.Add(297000); // Permitted to follow player spEffect + StateInfo (required in tandem with BuddyParam pcFollowType 0)
+                }
                 return effects;
             }
         }
-        public bool IsC0000
-        {
-            get => CharaInitID != -1;
-        }
-
+        
         public BattleSpirit()
         { }
 
@@ -161,14 +163,16 @@ namespace EldenRingSpiritBattler
         public int PhantomParamID; // PhantomParam ID to insert into SpEffectVfxParam
         public decimal TeamHpMult = 1;
         public decimal TeamDamageMult = 1;
+        public bool FollowPlayer = false;
         public SummonPos TeamPosition = new();
         public SpiritTeam()
         { }
-        public SpiritTeam(string name, int phantomShaderID, byte teamType, SummonPos? teamPosition = null)
+        public SpiritTeam(string name, int phantomShaderID, byte teamType, bool followPlayer, SummonPos? teamPosition = null)
         {
             Name = name;
             PhantomParamID = phantomShaderID;
             TeamType = teamType;
+            FollowPlayer = followPlayer;
             if (teamPosition != null)
                 TeamPosition = teamPosition;
         }
@@ -180,11 +184,7 @@ namespace EldenRingSpiritBattler
             team.PhantomParamID = PhantomParamID;
             team.TeamHpMult = TeamHpMult;
             team.TeamDamageMult = TeamDamageMult;
-            /*
-            team.TeamPosition.X = TeamPosition.X;
-            team.TeamPosition.Z = TeamPosition.Z;
-            team.TeamPosition.Ang = TeamPosition.Ang;
-            */
+            team.FollowPlayer = FollowPlayer;
             team.TeamPosition = TeamPosition.Clone();
             return team;
         }

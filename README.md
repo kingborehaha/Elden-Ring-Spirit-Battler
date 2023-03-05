@@ -30,7 +30,9 @@
 - Save Changes. The selected ash should now be changed in-game.
 
 ## Updates
-### v0.1.0
+### v1.1.0
+- Added Follow Player option for teams, which lets summons to follow the player around.
+### v1.0.0
 Public release
 ### v0.3.0
 - Support human NPCs and populate enemy resource with humans.
