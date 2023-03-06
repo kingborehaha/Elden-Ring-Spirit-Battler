@@ -397,7 +397,7 @@ namespace EldenRingSpiritBattler
                             newNpcRow["spEffectID" + iEffect].Value = -1;
                         }
                     }
-                    if (effectID == -1 && iBuddy < buddyEffects.Count)
+                    if (effectID <= 0 && iBuddy < buddyEffects.Count)
                     {
                         // Slot is empty, insert effect
                         newNpcRow["spEffectID" + iEffect].Value = buddyEffects[iBuddy];
@@ -418,7 +418,7 @@ namespace EldenRingSpiritBattler
                 int newNpcThinkID = 100000000 + npcThinkID;
                 if (npcThinkParam[npcThinkID] == null)
                 {
-                    MessageBox.Show($"Summon {spirit.VariantName}'s base NpcThinkParamID {npcThinkID} cannot be found. Please fix this enemy.", "Error");
+                    MessageBox.Show($"Summon {spirit.VariantName}'s base NpcThinkParam ID {npcThinkID} cannot be found. Please fix your EnemyInfoResource file if it has been modified.", "Error");
                     return false;
                 }
                 do
