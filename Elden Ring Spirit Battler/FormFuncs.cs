@@ -390,10 +390,10 @@ namespace EldenRingSpiritBattler
                     int effectID = (int)newNpcRow["spEffectID" + iEffect].Value;
                     if (spirit.Sp_StatScaling != (int)StatScalingEnum.Default)
                     {
-                        if ((effectID >= 7000 && effectID < 7700)
-                            ||(effectID >= 12350 && effectID <= 12370))
+                        if ((effectID >= ScalingEffectBaseId && effectID <= ScalingEffectMaxId)
+                            ||(effectID >= c0000ScalingEffectBaseId && effectID <= c0000ScalingEffectMaxId))
                         {
-                            // Vanilla scaling spEffect. Remove it
+                            // Vanilla scaling spEffect. Remove it.
                             newNpcRow["spEffectID" + iEffect].Value = -1;
                         }
                     }
@@ -406,7 +406,7 @@ namespace EldenRingSpiritBattler
                 }
                 if (iBuddy < buddyEffects.Count)
                 {
-                    MessageBox.Show($"Not enough free SpEffect slots in NpcParam ID {spirit.BaseNpcID}.\nPlease report this issue and ID.", "Error", MessageBoxButtons.OK);
+                    MessageBox.Show($"Not enough free SpEffect slots in NpcParam ID {spirit.BaseNpcID}.\nPlease report this issue and ID, along with any other mods you have installed.", "Error", MessageBoxButtons.OK);
                     return false;
                 }
                 #endregion

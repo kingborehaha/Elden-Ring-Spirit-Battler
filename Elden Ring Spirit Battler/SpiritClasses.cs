@@ -119,7 +119,8 @@ namespace EldenRingSpiritBattler
                 {
                     if (Is_c0000)
                     {
-                        int idOffset = (Sp_StatScaling - 7000)/10;
+                        // Calculate Lvl of assigned scaling spEffect, then calculate c0000 ID using that..
+                        int idOffset = (Sp_StatScaling - SpiritBattlerResources.ScalingEffectBaseId) / 10; // Get Lvl offset (+10 -> +1 per level)
                         effects.Add(SpiritBattlerResources.c0000ScalingEffectBaseId + idOffset);
                     }
                     else

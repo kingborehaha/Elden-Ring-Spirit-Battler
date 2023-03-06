@@ -31,7 +31,8 @@
 
 ## Updates
 ### v1.1.0
-- Fixed modified Stat Scaling effects not applying to anybody except human NPCs.
+- Fixed default stat scaling level effects not being removed for human NPCs.
+- Fixed stat scaling level effects not applying to non-human NPCs.
 - Added Follow Player option for teams, which lets summons to follow the player around.
 - Improved empty SpEffect detection, which should help prevent "Not enough free SpEffect slots in NpcParam" errors.
 - Fixed an issue where SpEffects were added when they didn't need to be, which should also help prevent "Not enough free SpEffect slots in NpcParam" errors.

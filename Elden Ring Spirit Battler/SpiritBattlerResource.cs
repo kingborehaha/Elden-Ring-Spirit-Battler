@@ -6,6 +6,9 @@ namespace EldenRingSpiritBattler
     {
         public const uint BuddyLimit = 10; // Limit of summons per ash. BuddyParam succesive IDs limits this to 10.
         public const int c0000ScalingEffectBaseId = 19350; // ID offset to offset NPC scaling spEffects (ID 7000+) to c0000 scaling spEffects (ID 19350+)
+        public const int c0000ScalingEffectMaxId = 19350; // ID offset to offset NPC scaling spEffects (ID 7000+) to c0000 scaling spEffects (ID 19350+)
+        public const int ScalingEffectBaseId = (int)StatScalingEnum.Lvl0; // ID offset to offset NPC scaling spEffects (ID 7000+) to c0000 scaling spEffects (ID 19350+)
+        public const int ScalingEffectMaxId = (int)StatScalingEnum.Lvl20; // ID offset to offset NPC scaling spEffects (ID 7000+) to c0000 scaling spEffects (ID 19350+)
         public const int FollowPlayerSpEffectId = 297000; // SpEffect ID that allows buddies to follow and warp to the player when
 
         private static readonly float _positionMagnitude = 1;
