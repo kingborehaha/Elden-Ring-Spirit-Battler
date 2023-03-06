@@ -85,6 +85,7 @@
             this.Label_SearchSpiritAshText = new System.Windows.Forms.Label();
             this.Input_CharaInitID = new System.Windows.Forms.NumericUpDown();
             this.label9 = new System.Windows.Forms.Label();
+            this.Option_TeamFollowPlayer = new System.Windows.Forms.CheckBox();
             this.t_console = new System.Windows.Forms.TextBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.Menu_File = new System.Windows.Forms.ToolStripMenuItem();
@@ -126,7 +127,6 @@
             this.Option_TargetAllSpiritAshes = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.Option_TeamFollowPlayer = new System.Windows.Forms.CheckBox();
             this.Group_TeamSummonPos_Manual = new System.Windows.Forms.GroupBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.TeamDataGrid = new System.Windows.Forms.DataGridView();
@@ -876,6 +876,18 @@
             this.label9.Text = "Character ID";
             this.toolTip1.SetToolTip(this.label9, "NpcParam ID used by this enemy variant");
             // 
+            // Option_TeamFollowPlayer
+            // 
+            this.Option_TeamFollowPlayer.AutoSize = true;
+            this.Option_TeamFollowPlayer.Location = new System.Drawing.Point(193, 87);
+            this.Option_TeamFollowPlayer.Name = "Option_TeamFollowPlayer";
+            this.Option_TeamFollowPlayer.Size = new System.Drawing.Size(96, 19);
+            this.Option_TeamFollowPlayer.TabIndex = 118;
+            this.Option_TeamFollowPlayer.Text = "Follow Player";
+            this.toolTip1.SetToolTip(this.Option_TeamFollowPlayer, "If checked, members of this team will follow/teleport to the player when far away" +
+        ".");
+            this.Option_TeamFollowPlayer.UseVisualStyleBackColor = true;
+            // 
             // t_console
             // 
             this.t_console.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -1344,17 +1356,6 @@
             this.groupBox3.TabIndex = 114;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Team";
-            // 
-            // Option_TeamFollowPlayer
-            // 
-            this.Option_TeamFollowPlayer.AutoSize = true;
-            this.Option_TeamFollowPlayer.Location = new System.Drawing.Point(193, 87);
-            this.Option_TeamFollowPlayer.Name = "Option_TeamFollowPlayer";
-            this.Option_TeamFollowPlayer.Size = new System.Drawing.Size(96, 19);
-            this.Option_TeamFollowPlayer.TabIndex = 118;
-            this.Option_TeamFollowPlayer.Text = "Follow Player";
-            this.toolTip1.SetToolTip(this.Option_TeamFollowPlayer, "If checked, members of this team will follow the player around");
-            this.Option_TeamFollowPlayer.UseVisualStyleBackColor = true;
             // 
             // Group_TeamSummonPos_Manual
             // 

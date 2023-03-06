@@ -722,6 +722,7 @@ namespace EldenRingSpiritBattler
             Input_TeamSummonPos_X.Value = (decimal)team.TeamPosition.X;
             Input_TeamSummonPos_Z.Value = (decimal)team.TeamPosition.Z;
             Input_TeamSummonPos_Ang.Value = (decimal)team.TeamPosition.Ang;
+            Option_TeamFollowPlayer.Checked = team.FollowPlayer;
             List_TeamType.Text = ((TeamTypeEnum)team.TeamType).ToString();
 
             List_TeamSummonPreset.Text = team.TeamPosition.Label;
@@ -836,15 +837,7 @@ namespace EldenRingSpiritBattler
 
         private string GetStatScalingLevelString(BattleSpirit spirit)
         {
-            /*
             string enemyScalingLvl = $"{Enum.GetName(typeof(StatScalingEnum), spirit.Sp_StatScaling)}";
-            string myHp = spirit.HpMult.ToString();
-            string myDam = spirit.DamageMult.ToString();
-            string teamHp = spirit.Team.TeamHpMult.ToString();
-            string teamDam = spirit.Team.TeamDamageMult.ToString();
-            return $"{enemyScalingLvl}, {myHp}*{teamHp} / {myDam}*{teamDam}";
-            */
-                string enemyScalingLvl = $"{Enum.GetName(typeof(StatScalingEnum), spirit.Sp_StatScaling)}";
             decimal hp = spirit.HpMult * spirit.Team.TeamHpMult;
             decimal dam = spirit.DamageMult * spirit.Team.TeamDamageMult;
 
@@ -858,41 +851,10 @@ namespace EldenRingSpiritBattler
         }
         private string GetTeamPositionString(SpiritTeam team)
         {
-            /*
-            float x = team.TeamPosition.X;
-            float z = team.TeamPosition.Z;
-            float ang = team.TeamPosition.Ang;
-            return $"{x}/{z} {ang}";
-            */
             return team.TeamPosition.Label;
         }
         private string GetFinalPositionString(BattleSpirit spirit)
         {
-            /*
-            SummonPos teamPos = spirit.Team.TeamPosition;
-            if (teamPos.IsPreset)
-            {
-                float x = spirit.Position.X;
-                float z = spirit.Position.Z;
-                //float ang = spirit.Position.Ang;
-                return $"{x}x {z}z + Preset";
-            }
-            else
-            {
-                float x = spirit.Position.X + teamPos.X;
-                float z = spirit.Position.Z + teamPos.Z;
-                float ang = spirit.Position.Ang + teamPos.Ang;
-                return $"{x}x {z}z";
-                //return $"{x}x {z}z {ang}º";
-            }
-            */
-            /*
-            SummonPos teamPos = spirit.Team.TeamPosition;
-            float x = spirit.Position.X + teamPos.X;
-            float z = spirit.Position.Z + teamPos.Z;
-            float ang = spirit.Position.Ang + teamPos.Ang;
-            return $"{x}x {z}z {ang}º";
-            */
             SummonPos pos = GetOffsetSpiritSummonPos(spirit);
 
             return $"{pos.X}x {pos.Z}z {pos.Ang}º";
