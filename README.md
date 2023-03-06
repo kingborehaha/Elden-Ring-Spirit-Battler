@@ -32,6 +32,7 @@
 ## Updates
 ### v1.1.0
 - Added Follow Player option for teams, which lets summons to follow the player around.
+- Improved empty SpEffect detection, which should help prevent "Not enough free SpEffect slots in NpcParam" errors.
 ### v1.0.0
 Public release
 ### v0.3.0
