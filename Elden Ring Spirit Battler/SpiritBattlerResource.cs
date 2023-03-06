@@ -5,7 +5,7 @@ namespace EldenRingSpiritBattler
     public static class SpiritBattlerResources
     {
         public const uint BuddyLimit = 10; // Limit of summons per ash. BuddyParam succesive IDs limits this to 10.
-        public const int c0000ScalingEffectOffset = 12350; // ID offset to offset NPC scaling spEffects (ID 7000+) to c0000 scaling spEffects (ID 19350+)
+        public const int c0000ScalingEffectBaseId = 19350; // ID offset to offset NPC scaling spEffects (ID 7000+) to c0000 scaling spEffects (ID 19350+)
         public const int FollowPlayerSpEffectId = 297000; // SpEffect ID that allows buddies to follow and warp to the player when
 
         private static readonly float _positionMagnitude = 1;
@@ -146,27 +146,27 @@ namespace EldenRingSpiritBattler
         {
             Default = -99,
             None = -1,
-            Lvl1 = 7000,
-            Lvl2 = 7001,
-            Lvl3 = 7002,
-            Lvl4 = 7003,
-            Lvl5 = 7004,
-            Lvl6 = 7005,
-            Lvl7 = 7006,
-            Lvl8 = 7007,
-            Lvl9 = 7008,
-            Lvl10 = 7009,
-            Lvl11 = 7010,
-            Lvl12 = 7011,
-            Lvl13 = 7012,
-            Lvl14 = 7013,
-            Lvl15 = 7014,
-            Lvl16 = 7015,
-            Lvl17 = 7016,
-            Lvl18 = 7017,
-            Lvl19 = 7018,
-            Lvl20 = 7019,
-            Lvl21 = 7020,
+            Lvl0 = 7000,
+            Lvl1 = 7010,
+            Lvl2 = 7020,
+            Lvl3 = 7030,
+            Lvl4 = 7040,
+            Lvl5 = 7050,
+            Lvl6 = 7060,
+            Lvl7 = 7070,
+            Lvl8 = 7080,
+            Lvl9 = 7090,
+            Lvl10 = 7100,
+            Lvl11 = 7110,
+            Lvl12 = 7120,
+            Lvl13 = 7130,
+            Lvl14 = 7140,
+            Lvl15 = 7150,
+            Lvl16 = 7160,
+            Lvl17 = 7170,
+            Lvl18 = 7180,
+            Lvl19 = 7190,
+            Lvl20 = 7200,
             /*
             Lvl1Human = 19350;
             Lvl2Human = 19351;

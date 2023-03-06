@@ -115,13 +115,17 @@ namespace EldenRingSpiritBattler
             get
             {
                 List<int> effects = new();
-                if (Is_c0000)
+                if (Sp_StatScaling > 0)
                 {
-                    effects.Add(Sp_SpecialScaling + SpiritBattlerResources.c0000ScalingEffectOffset);
-                }
-                else
-                {
-                    effects.Add(Sp_StatScaling);
+                    if (Is_c0000)
+                    {
+                        int idOffset = (Sp_StatScaling - 7000)/10;
+                        effects.Add(SpiritBattlerResources.c0000ScalingEffectBaseId + idOffset);
+                    }
+                    else
+                    {
+                        effects.Add(Sp_StatScaling);
+                    }
                 }
                 if (Sp_SpecialScaling > 0)
                 {
