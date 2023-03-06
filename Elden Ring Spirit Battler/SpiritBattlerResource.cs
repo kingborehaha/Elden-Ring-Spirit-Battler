@@ -4,16 +4,18 @@ namespace EldenRingSpiritBattler
 {
     public static class SpiritBattlerResources
     {
-        public static readonly uint buddyLimit = 10; // Limit with buddyParam successive IDs.
+        public const uint BuddyLimit = 10; // Limit of summons per ash. BuddyParam succesive IDs limits this to 10.
+        public const int c0000ScalingEffectOffset = 12350; // ID offset to offset NPC scaling spEffects (ID 7000+) to c0000 scaling spEffects (ID 19350+)
+        public const int FollowPlayerSpEffectId = 297000; // SpEffect ID that allows buddies to follow and warp to the player when
 
-        private static readonly float magnitude = 1; // Unimplemented
-        private static readonly float incrementBase = 1.5f;
+        private static readonly float _positionMagnitude = 1;
+        private static readonly float _positionIncrementBase = 1.5f;
         public static readonly Dictionary<string, SummonPos?> teamSummonPresetDict = new()
         {
-            {"Column Left", new SummonPos(-10*magnitude, 13.5f*magnitude, 90, 0, incrementBase, "Column Left")},
-            {"Column Right", new SummonPos(10*magnitude, 13.5f*magnitude, -90, 0, incrementBase, "Column Right")},
-            {"Row Close", new SummonPos(0, 3*magnitude, 0, incrementBase, 0, "Row Close", true)},
-            {"Row Far", new SummonPos(0, 24*magnitude, -180, incrementBase, 0, "Row Far", true)},
+            {"Column Left", new SummonPos(-10*_positionMagnitude, 13.5f*_positionMagnitude, 90, 0, _positionIncrementBase, "Column Left")},
+            {"Column Right", new SummonPos(10*_positionMagnitude, 13.5f*_positionMagnitude, -90, 0, _positionIncrementBase, "Column Right")},
+            {"Row Close", new SummonPos(0, 3*_positionMagnitude, 0, _positionIncrementBase, 0, "Row Close", true)},
+            {"Row Far", new SummonPos(0, 24*_positionMagnitude, -180, _positionIncrementBase, 0, "Row Far", true)},
             {"Manual Offset", null},
         };
 
@@ -138,18 +140,8 @@ namespace EldenRingSpiritBattler
             //GhostRed50 = 922,
             //GhostBrown = 930,
             White = 998,
-            ///White = 999,
-
+            //White = 999,
         };
-
-        /*
-        public class StatScaler
-        { 
-        }
-        */
-
-        public static int c0000ScalingEffectOffset = 12350; //base scaling effect ID is 7000, base c0000 scaling is 19350
-        /// </summary>
         public enum StatScalingEnum
         {
             Default = -99,

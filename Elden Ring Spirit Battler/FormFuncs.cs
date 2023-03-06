@@ -932,9 +932,9 @@ namespace EldenRingSpiritBattler
 
         public bool AddSpiritToList(BattleSpirit spirit)
         {
-            if (SpiritDataGrid.Rows.Count >= buddyLimit)
+            if (SpiritDataGrid.Rows.Count >= BuddyLimit)
             {
-                MessageBox.Show($"A spirit ash cannot handle more than {buddyLimit} summons at once. Sorry!", "Summon Limit");
+                MessageBox.Show($"A spirit ash cannot handle more than {BuddyLimit} summons at once. Sorry!", "Summon Limit");
                 return false;
             }
             battleSpiritList.Add(spirit);
@@ -943,9 +943,9 @@ namespace EldenRingSpiritBattler
         }
         public bool InsertSpiritToList(BattleSpirit spirit, int index)
         {
-            if (SpiritDataGrid.Rows.Count >= buddyLimit)
+            if (SpiritDataGrid.Rows.Count >= BuddyLimit)
             {
-                MessageBox.Show($"A spirit ash cannot handle more than {buddyLimit} summons at once. Sorry!", "Summon Limit");
+                MessageBox.Show($"A spirit ash cannot handle more than {BuddyLimit} summons at once. Sorry!", "Summon Limit");
                 return false;
             }
             battleSpiritList.Insert(index, spirit);

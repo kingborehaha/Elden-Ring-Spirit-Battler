@@ -129,7 +129,7 @@ namespace EldenRingSpiritBattler
                 }
                 if (Team.FollowPlayer)
                 {
-                    effects.Add(297000); // Permitted to follow player spEffect + StateInfo (required in tandem with BuddyParam pcFollowType 0)
+                    effects.Add(SpiritBattlerResources.FollowPlayerSpEffectId); // Permitted to follow player spEffect + StateInfo (required in tandem with BuddyParam pcFollowType 0)
                 }
                 return effects;
             }
