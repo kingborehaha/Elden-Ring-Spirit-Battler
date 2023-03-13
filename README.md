@@ -30,6 +30,8 @@
 - Save Changes. The selected ash should now be changed in-game.
 
 ## Updates
+### v1.2.0
+- Added summon backup system, which lates you save and load backups that retain spirit battler data.
 ### v1.1.0
 - Fixed default stat scaling level effects not being removed from human NPCs.
 - Fixed stat scaling level effects not applying to non-human NPCs.
