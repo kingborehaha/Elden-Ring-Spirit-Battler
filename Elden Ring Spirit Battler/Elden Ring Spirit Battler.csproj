@@ -11,7 +11,7 @@
     <PackageIcon></PackageIcon>
     <FileVersion>1.2.1</FileVersion>
     <AssemblyVersion>1.2.1</AssemblyVersion>
-    <Version>1.2.0</Version>
+    <Version>1.2.1</Version>
     <Company></Company>
     <Authors>King Bore Haha</Authors>
     <RunPostBuildEvent>Always</RunPostBuildEvent>
