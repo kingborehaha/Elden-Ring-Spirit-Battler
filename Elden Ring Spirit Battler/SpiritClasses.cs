@@ -107,6 +107,11 @@ namespace EldenRingSpiritBattler
         [JsonExtensionData]
         private IDictionary<string, JToken>? _additionalData;
 
+        [JsonIgnore]
+        public bool Is_c0000 { get => CharaInitID != -1; }
+        [JsonIgnore]
+        public bool FollowPlayer { get => Team.FollowPlayer; } // Indicates of this summon will follow & warp to the player.
+
         public string BaseName = "";
         public string VariantName = "";
         public int BaseNpcID;
@@ -119,8 +124,6 @@ namespace EldenRingSpiritBattler
         public decimal DamageMult = 1;
         public int Sp_StatScaling = -1; // ID of Stat Scaling SpEffect overwrite (if one was provided).
         public int Sp_SpecialScaling = -1; // Stores ID of newly created spEffect that holds HpMult and DamageMult modifiers.
-        public bool Is_c0000 { get => CharaInitID != -1; }
-        public bool FollowPlayer { get => Team.FollowPlayer; } // Indicates of this summon will follow & warp to the player.
         public List<int> SpecialEffects
         {
             get
