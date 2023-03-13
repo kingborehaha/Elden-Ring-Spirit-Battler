@@ -30,6 +30,9 @@
 - Save Changes. The selected ash should now be changed in-game.
 
 ## Updates
+### v1.2.1
+- Fixed program version number
+- Made summon backups not store some pointless data.
 ### v1.2.0
 - Added summon backup system, which lets you save and load spirit battler data to json files.
 - Added config file that saves settings.
