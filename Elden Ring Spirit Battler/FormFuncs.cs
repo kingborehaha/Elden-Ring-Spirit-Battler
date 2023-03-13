@@ -210,14 +210,14 @@ namespace EldenRingSpiritBattler
 
             #region Load Parameters from Regulation.bin
             Dictionary<string, PARAM> paramList = new();
-            string regulationPath = openFileDialog1.FileName;
+            string regulationPath = FileDialog_Regulation.FileName;
 
             UpdateConsole("Checking Backup");
             if (!File.Exists(backupFileName))
             {
                 // No backup file exists
                 UpdateConsole("Creating Backup");
-                File.Copy(openFileDialog1.FileName, backupFileName);
+                File.Copy(FileDialog_Regulation.FileName, backupFileName);
                 b_restoreRegulation.Enabled = true;
             }
 
@@ -568,7 +568,7 @@ namespace EldenRingSpiritBattler
 
         private void Restore_Regulation()
         {
-            string regulationPath = openFileDialog1.FileName;
+            string regulationPath = FileDialog_Regulation.FileName;
 
             FileSystem.DeleteFile(regulationPath, UIOption.OnlyErrorDialogs, RecycleOption.SendToRecycleBin);
             if (!File.Exists(backupFileName))

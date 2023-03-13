@@ -14,6 +14,7 @@ namespace EldenRingSpiritBattler
     public partial class MainForm : Form
     {
         public bool preventEnemyEdited = false;
+        public string RegulationPath = "";
 
         public MainForm()
         {
@@ -22,6 +23,11 @@ namespace EldenRingSpiritBattler
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            string summonBackupPath = $@"{Directory.GetCurrentDirectory()}\Summon Backups";
+            Directory.CreateDirectory(summonBackupPath);
+            FileDialog_SaveJson.InitialDirectory = summonBackupPath;
+            FileDialog_LoadJson.InitialDirectory = summonBackupPath;
+
             Button_Execute.Enabled = false;
             b_restoreRegulation.Enabled = false;
             Text += GetVersion();
@@ -67,10 +73,9 @@ namespace EldenRingSpiritBattler
 
         private void b_browse_Click(object sender, EventArgs e)
         {
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            if (FileDialog_Regulation.ShowDialog() == DialogResult.OK)
             {
-
-                string? directory = Path.GetDirectoryName(openFileDialog1.FileName);
+                string? directory = Path.GetDirectoryName(FileDialog_Regulation.FileName);
                 if (File.Exists(directory + "\\eldenring.exe"))
                 {
                     // User is loading the regulation next to eldenring.exe, yell at them
@@ -451,20 +456,53 @@ namespace EldenRingSpiritBattler
         {
             MessageBox.Show(
                 "Q: Enemies aren't attacking eachother!\n" +
-                "A: If Seamless Coop is installed, it will cause this to happen.\n" +
-                "Team Types will also determine which other teams enemies will attack. Using default team types is encouraged.\n\n" +
-                ""
+                "A: If Seamless Coop is installed, that will cause issues.\n" +
+                "\n" +
+                "Q: What are Team Types?\n" +
+                "A: Team Types determine who summons will attack and who they can deal damage to. Using default team types is encouraged.\n" +
+                "\n"
                 , "FAQ", MessageBoxButtons.OK);
         }
 
-        private void label3_Click(object sender, EventArgs e)
+        private void Button_SaveSummonBackup_Click(object sender, EventArgs e)
         {
-
+            if (FileDialog_SaveJson.ShowDialog() == DialogResult.OK)
+            {
+                SaveLoad.Save(FileDialog_SaveJson.FileName, battleSpiritList, teamDict.Values.ToList());
+                MessageBox.Show("Summon backup has been saved.", "Finished", MessageBoxButtons.OK);
+            }
         }
 
-        private void label11_Click(object sender, EventArgs e)
+        private void Button_LoadSummonBackup_Click(object sender, EventArgs e)
         {
+            try
+            {
+                if (FileDialog_LoadJson.ShowDialog() == DialogResult.OK)
+                {
+                    if (MessageBox.Show("Are you sure you want to load this summon backup? All data currently in the program will be deleted.", "Overwrite current data", MessageBoxButtons.OKCancel) == DialogResult.OK)
+                    {
+                        var save = SaveLoad.Load(FileDialog_LoadJson.FileName);
 
+                        battleSpiritList = save.Spirits;
+                        teamDict = new();
+                        foreach (var team in save.Teams)
+                        {
+                            teamDict[team.Name] = team;
+                        }
+
+                        preventEnemyEdited = true;
+                        UpdateTeamGridAndList();
+                        UpdateSpiritGrid();
+                        preventEnemyEdited = false;
+
+                        MessageBox.Show("Summon backup has been loaded.", "Finished", MessageBoxButtons.OK);
+                    }
+                }
+            }
+            catch(Newtonsoft.Json.JsonException ex)
+            {
+                MessageBox.Show($"Summon backup couldn't be loaded.\n\n{ex.Message}", "Error", MessageBoxButtons.OK);
+            }
         }
     }
 }

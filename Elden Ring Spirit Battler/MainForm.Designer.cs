@@ -34,7 +34,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.FileDialog_Regulation = new System.Windows.Forms.OpenFileDialog();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.SummonPosition_X = new System.Windows.Forms.NumericUpDown();
             this.SummonPosition_Z = new System.Windows.Forms.NumericUpDown();
@@ -91,6 +91,9 @@
             this.Menu_File = new System.Windows.Forms.ToolStripMenuItem();
             this.loadRegulationbinToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.b_restoreRegulation = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveLoadPresetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.Button_LoadSummonBackup = new System.Windows.Forms.ToolStripMenuItem();
+            this.Button_SaveSummonBackup = new System.Windows.Forms.ToolStripMenuItem();
             this.Button_Execute = new System.Windows.Forms.ToolStripMenuItem();
             this.Menu_Edit = new System.Windows.Forms.ToolStripMenuItem();
             this.addSpiritToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -141,6 +144,8 @@
             this.label24 = new System.Windows.Forms.Label();
             this.Button_Randomize_SvE = new System.Windows.Forms.Button();
             this.Button_Randomize_PvE = new System.Windows.Forms.Button();
+            this.FileDialog_LoadJson = new System.Windows.Forms.OpenFileDialog();
+            this.FileDialog_SaveJson = new System.Windows.Forms.SaveFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.SummonPosition_X)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SummonPosition_Z)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SummonPosition_Angle)).BeginInit();
@@ -169,11 +174,12 @@
             this.groupBoxRandomize.SuspendLayout();
             this.SuspendLayout();
             // 
-            // openFileDialog1
+            // FileDialog_Regulation
             // 
-            this.openFileDialog1.FileName = "regulation.bin";
-            this.openFileDialog1.Filter = "Regulation File|regulation.bin|All Files|*.*";
-            this.openFileDialog1.Title = "Open \"regulation.bin\"";
+            this.FileDialog_Regulation.FileName = "regulation.bin";
+            this.FileDialog_Regulation.Filter = "Regulation File|regulation.bin|All Files|*.*";
+            this.FileDialog_Regulation.RestoreDirectory = true;
+            this.FileDialog_Regulation.Title = "Open \"regulation.bin\"";
             // 
             // toolTip1
             // 
@@ -482,7 +488,6 @@
             this.label3.TabIndex = 94;
             this.label3.Text = "NpcParam ID";
             this.toolTip1.SetToolTip(this.label3, "NpcParam ID used by this enemy variant");
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             this.label3.Validated += new System.EventHandler(this.EnemyWasEdited);
             // 
             // label11
@@ -494,7 +499,6 @@
             this.label11.TabIndex = 95;
             this.label11.Text = "NpcThink ID";
             this.toolTip1.SetToolTip(this.label11, "NpcThinkParam ID used by this enemy variant");
-            this.label11.Click += new System.EventHandler(this.label11_Click);
             this.label11.Validated += new System.EventHandler(this.EnemyWasEdited);
             // 
             // List_StatScaling
@@ -918,6 +922,7 @@
             this.Menu_File.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.loadRegulationbinToolStripMenuItem,
             this.b_restoreRegulation,
+            this.saveLoadPresetToolStripMenuItem,
             this.Button_Execute});
             this.Menu_File.Name = "Menu_File";
             this.Menu_File.Size = new System.Drawing.Size(37, 20);
@@ -926,22 +931,45 @@
             // loadRegulationbinToolStripMenuItem
             // 
             this.loadRegulationbinToolStripMenuItem.Name = "loadRegulationbinToolStripMenuItem";
-            this.loadRegulationbinToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+            this.loadRegulationbinToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
             this.loadRegulationbinToolStripMenuItem.Text = "Load regulation.bin";
             this.loadRegulationbinToolStripMenuItem.Click += new System.EventHandler(this.b_browse_Click);
             // 
             // b_restoreRegulation
             // 
             this.b_restoreRegulation.Name = "b_restoreRegulation";
-            this.b_restoreRegulation.Size = new System.Drawing.Size(177, 22);
-            this.b_restoreRegulation.Text = "Restore Backups";
+            this.b_restoreRegulation.Size = new System.Drawing.Size(184, 22);
+            this.b_restoreRegulation.Text = "Revert regulation.bin";
             this.b_restoreRegulation.Click += new System.EventHandler(this.b_restoreRegulation_Click);
+            // 
+            // saveLoadPresetToolStripMenuItem
+            // 
+            this.saveLoadPresetToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.Button_LoadSummonBackup,
+            this.Button_SaveSummonBackup});
+            this.saveLoadPresetToolStripMenuItem.Name = "saveLoadPresetToolStripMenuItem";
+            this.saveLoadPresetToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.saveLoadPresetToolStripMenuItem.Text = "Summon Backups";
+            // 
+            // Button_LoadSummonBackup
+            // 
+            this.Button_LoadSummonBackup.Name = "Button_LoadSummonBackup";
+            this.Button_LoadSummonBackup.Size = new System.Drawing.Size(194, 22);
+            this.Button_LoadSummonBackup.Text = "Load Summon Backup";
+            this.Button_LoadSummonBackup.Click += new System.EventHandler(this.Button_LoadSummonBackup_Click);
+            // 
+            // Button_SaveSummonBackup
+            // 
+            this.Button_SaveSummonBackup.Name = "Button_SaveSummonBackup";
+            this.Button_SaveSummonBackup.Size = new System.Drawing.Size(194, 22);
+            this.Button_SaveSummonBackup.Text = "Save Summon Backup";
+            this.Button_SaveSummonBackup.Click += new System.EventHandler(this.Button_SaveSummonBackup_Click);
             // 
             // Button_Execute
             // 
             this.Button_Execute.Name = "Button_Execute";
             this.Button_Execute.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.Button_Execute.Size = new System.Drawing.Size(177, 22);
+            this.Button_Execute.Size = new System.Drawing.Size(184, 22);
             this.Button_Execute.Text = "Save";
             this.Button_Execute.Click += new System.EventHandler(this.Button_Execute_Click);
             // 
@@ -1066,7 +1094,7 @@
             // 
             this.Option_HidePlayer.Name = "Option_HidePlayer";
             this.Option_HidePlayer.Size = new System.Drawing.Size(279, 22);
-            this.Option_HidePlayer.Text = "Enable Hidden Player";
+            this.Option_HidePlayer.Text = "Hidden Player";
             this.Option_HidePlayer.ToolTipText = "Makes player invisible and unable to hurt/be hurt enemies";
             this.Option_HidePlayer.Click += new System.EventHandler(this.Option_HidePlayer_Click);
             // 
@@ -1537,6 +1565,20 @@
             this.Button_Randomize_PvE.Text = "Player vs enemies";
             this.Button_Randomize_PvE.UseVisualStyleBackColor = true;
             // 
+            // FileDialog_LoadJson
+            // 
+            this.FileDialog_LoadJson.DefaultExt = "json";
+            this.FileDialog_LoadJson.Filter = "Json backup|*.json|All Files|*.*";
+            this.FileDialog_LoadJson.RestoreDirectory = true;
+            this.FileDialog_LoadJson.Title = "Choose summon backup to load";
+            // 
+            // FileDialog_SaveJson
+            // 
+            this.FileDialog_SaveJson.DefaultExt = "json";
+            this.FileDialog_SaveJson.Filter = "Json backup|*.json|All Files|*.*";
+            this.FileDialog_SaveJson.RestoreDirectory = true;
+            this.FileDialog_SaveJson.Title = "Choose where to save summon backup";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -1593,7 +1635,7 @@
         }
 
         #endregion
-        private OpenFileDialog openFileDialog1;
+        private OpenFileDialog FileDialog_Regulation;
         private ToolTip toolTip1;
         private TextBox t_console;
         private ToolStripMenuItem playgroundToolStripMenuItem;
@@ -1705,5 +1747,10 @@
         private NumericUpDown Input_CharaInitID;
         private Label label9;
         private CheckBox Option_TeamFollowPlayer;
+        private ToolStripMenuItem saveLoadPresetToolStripMenuItem;
+        private ToolStripMenuItem Button_SaveSummonBackup;
+        private ToolStripMenuItem Button_LoadSummonBackup;
+        private OpenFileDialog FileDialog_LoadJson;
+        private SaveFileDialog FileDialog_SaveJson;
     }
 }
