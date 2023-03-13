@@ -8,7 +8,7 @@ using Newtonsoft.Json.Linq;
 
 namespace EldenRingSpiritBattler
 {
-    public class SaveLoad
+    public class SpiritSaveLoad
     {
         public class SaveFile
         {

@@ -21,8 +21,18 @@ namespace EldenRingSpiritBattler
             InitializeComponent();
         }
 
+        public void LoadConfig()
+        {
+            Config = UserConfig.Load();
+            Option_ReduceEnemyMapCol.Checked = Config.ReduceEnemyCollisionRadii;
+            Option_EnableResummoning.Checked = Config.EnableResummoning;
+            Option_MoreSummonAreas.Checked = Config.ExpandSummonAreas;
+            Option_HidePlayer.Checked = Config.HidePlayer;
+        }
+
         private void MainForm_Load(object sender, EventArgs e)
         {
+            LoadConfig();
             string summonBackupPath = $@"{Directory.GetCurrentDirectory()}\Summon Backups";
             Directory.CreateDirectory(summonBackupPath);
             FileDialog_SaveJson.InitialDirectory = summonBackupPath;
@@ -241,6 +251,7 @@ namespace EldenRingSpiritBattler
         private void Option_ReduceEnemyMapCol_clicked(object sender, EventArgs e)
         {
             Option_ReduceEnemyMapCol.Checked = !Option_ReduceEnemyMapCol.Checked;
+            Config.ReduceEnemyCollisionRadii = Option_ReduceEnemyMapCol.Checked;
         }
 
         private void List_Enemy_SelectedIndexChanged(object sender, EventArgs e)
@@ -393,6 +404,7 @@ namespace EldenRingSpiritBattler
         private void Option_HidePlayer_Click(object sender, EventArgs e)
         {
             Option_HidePlayer.Checked = !Option_HidePlayer.Checked;
+            Config.HidePlayer = Option_HidePlayer.Checked;
         }
 
         private void Search_Enemy_Click(object sender, EventArgs e)
@@ -468,7 +480,7 @@ namespace EldenRingSpiritBattler
         {
             if (FileDialog_SaveJson.ShowDialog() == DialogResult.OK)
             {
-                SaveLoad.Save(FileDialog_SaveJson.FileName, battleSpiritList, teamDict.Values.ToList());
+                SpiritSaveLoad.Save(FileDialog_SaveJson.FileName, battleSpiritList, teamDict.Values.ToList());
                 MessageBox.Show("Summon backup has been saved.", "Finished", MessageBoxButtons.OK);
             }
         }
@@ -481,7 +493,7 @@ namespace EldenRingSpiritBattler
                 {
                     if (MessageBox.Show("Are you sure you want to load this summon backup? All data currently in the program will be deleted.", "Overwrite current data", MessageBoxButtons.OKCancel) == DialogResult.OK)
                     {
-                        var save = SaveLoad.Load(FileDialog_LoadJson.FileName);
+                        var save = SpiritSaveLoad.Load(FileDialog_LoadJson.FileName);
 
                         battleSpiritList = save.Spirits;
                         teamDict = new();
@@ -503,6 +515,23 @@ namespace EldenRingSpiritBattler
             {
                 MessageBox.Show($"Summon backup couldn't be loaded.\n\n{ex.Message}", "Error", MessageBoxButtons.OK);
             }
+        }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            UserConfig.Save(Config);
+        }
+
+        private void Option_EnableResummoning_Click(object sender, EventArgs e)
+        {
+            Option_EnableResummoning.Checked = !Option_EnableResummoning.Checked;
+            Config.EnableResummoning = Option_EnableResummoning.Checked;
+        }
+
+        private void Option_MoreSummonAreas_Click(object sender, EventArgs e)
+        {
+            Option_MoreSummonAreas.Checked = !Option_MoreSummonAreas.Checked;
+            Config.ExpandSummonAreas = Option_MoreSummonAreas.Checked;
         }
     }
 }

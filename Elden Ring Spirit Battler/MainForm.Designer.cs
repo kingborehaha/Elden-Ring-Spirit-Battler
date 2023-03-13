@@ -1079,6 +1079,7 @@
             this.Option_EnableResummoning.ToolTipText = "Allows resummoning spirit ashes repeatedly, and makes ashes not disappear when de" +
     "feating enemies in the area.\r\nThis setting requires restoring backups to undo.\r\n" +
     "";
+            this.Option_EnableResummoning.Click += new System.EventHandler(this.Option_EnableResummoning_Click);
             // 
             // Option_MoreSummonAreas
             // 
@@ -1089,6 +1090,7 @@
             this.Option_MoreSummonAreas.Text = "Expand Summon Areas (Cannot Undo)";
             this.Option_MoreSummonAreas.ToolTipText = "Greatly increases the number of areas you can summon spirits in.\r\nThis setting re" +
     "quires restoring backups to undo.";
+            this.Option_MoreSummonAreas.Click += new System.EventHandler(this.Option_MoreSummonAreas_Click);
             // 
             // Option_HidePlayer
             // 
@@ -1596,6 +1598,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainForm";
             this.Text = "Elden Ring Spirit Battler";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.MainForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.SummonPosition_X)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SummonPosition_Z)).EndInit();

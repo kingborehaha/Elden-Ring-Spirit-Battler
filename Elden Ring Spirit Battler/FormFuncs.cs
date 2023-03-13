@@ -58,6 +58,8 @@ namespace EldenRingSpiritBattler
 
         public List<BattleSpirit> battleSpiritList = new();
 
+        public UserConfig Config = new();
+
         public int GetRandomUnusedPhantomId()
         {
             Random rand = new();
@@ -367,7 +369,7 @@ namespace EldenRingSpiritBattler
                 newNpcRow["getSoul"].Value = (uint)0;
                 newNpcRow["npcType"].Value = (byte)0;
 
-                if (Option_ReduceEnemyMapCol.Checked)
+                if (Config.ReduceEnemyCollisionRadii)
                 {
                     // Cap map hit radii to prevent spawning issues
                     float maxHitRadius = 1;
@@ -507,22 +509,14 @@ namespace EldenRingSpiritBattler
             #region BuddyStoneParam
             foreach (var row in stoneParam.Rows.ToList())
             {
-                //TODO
-                //int backupID = row.ID + 1230000;
-                //if (stoneParam.Rows[backupID] == null)
-                //{
-                //PARAM.Row backupRow = InsertParamRow(stoneParam, row, backupID);
-                //backupRow.Name += "-backup";
-
-                //row["talkChrEntityId"].Value = 10000; // Didn't work, didn't work with bonfire talk character either. Target likely needs the correct talkESD ID.
-                if (Option_MoreSummonAreas.Checked)
+                if (Config.ExpandSummonAreas)
                 {
                     row["activateRange"].Value = ushort.MaxValue;
                     row["overwriteReturnRange"].Value = (short)-1;
                     row["overwriteActivateRegionEntityId"].Value = (uint)0;
                     row["warnRegionEntityId"].Value = (uint)0;
                 }
-                if (Option_EnableResummoning.Checked)
+                if (Config.EnableResummoning)
                 {
                     row["summonedEventFlagId"].Value = (uint)0;
                     row["eliminateTargetEntityId"].Value = (uint)0;

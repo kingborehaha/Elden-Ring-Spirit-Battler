@@ -32,6 +32,8 @@
 ## Updates
 ### v1.2.0
 - Added summon backup system, which lates you save and load backups that retain spirit battler data.
+- Added user config that saves settings.
+- Fixed not being able to disable "Enable Resummoning" and "Expand Summon Areas" options.
 ### v1.1.0
 - Fixed default stat scaling level effects not being removed from human NPCs.
 - Fixed stat scaling level effects not applying to non-human NPCs.
