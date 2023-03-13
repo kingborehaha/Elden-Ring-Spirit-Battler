@@ -14,7 +14,6 @@ using static EldenRingSpiritBattler.SpiritBattlerResources;
 -- medium priority
     Enemy names appear above their heads
         invader blaidd style. need to experiment with limitations. does it work with every team, or just enemies?
-    Remember program settings
     Better catalog enemy variant names
     Options to randomize an entire ash
     Custom phantom colors
@@ -23,6 +22,7 @@ using static EldenRingSpiritBattler.SpiritBattlerResources;
 -- low priority
     True summon-anywhere
         Edit super-overworld MSB and insert a summon thing into it.
+            Doesn't appear to work. Looks like talkESD has some actual distance limit not affected by params?
         Requires making tool handle mod directory structures and whether or not user unpacked.
     Can probably allow editing team position even with presets active
         Add step increment to UI.
@@ -38,8 +38,6 @@ using static EldenRingSpiritBattler.SpiritBattlerResources;
     Grid sorting (by team)
     Grid coloring (by team)
     Allow grid column resizing (currently resets on grid reload)
-    Save/load .json for battleSpiritList.
-        Automatically save on execute just so that data isn't lost on exceptions.
 */
 
 namespace EldenRingSpiritBattler
