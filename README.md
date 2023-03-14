@@ -30,6 +30,8 @@
 - Save Changes. The selected ash should now be changed in-game.
 
 ## Updates
+### v1.x.x
+- Fixed Melina's default phantom color overriding custom phantom colors.
 ### v1.2.1
 - Fixed program version number
 - Made summon backups not store some pointless data.
