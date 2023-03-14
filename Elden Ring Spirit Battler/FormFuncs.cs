@@ -366,6 +366,7 @@ namespace EldenRingSpiritBattler
                 newNpcRow["GameClearSpEffectID"].Value = -1;
                 newNpcRow["getSoul"].Value = (uint)0;
                 newNpcRow["npcType"].Value = (byte)0;
+                newNpcRow["phantomShaderId"].Value = -1; // Overrides VFX phantom. Only used by Melina in vanilla.
 
                 if (Config.ReduceEnemyCollisionRadii)
                 {
