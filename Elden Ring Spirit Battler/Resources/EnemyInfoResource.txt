@@ -48,9 +48,10 @@ Beast Clergyman||21100072||21100000||-1
 Gurranq, Beast Clergyman||21109042||21102000||-1
 
 --Malenia, Blade of Miquella
-Malenia 1||21200056||21200000||-1
-Malenia 3||21202056||21200000||-1
-Malenia 2||21203056||21200000||-1
+Malenia (Phase 1)||21200056||21200000||-1
+Malenia (Pseudo phase 2)||21201000||21200000||-1
+Malenia (Flower Ghosts)||21202056||21200000||-1
+Malenia (???)||21203056||21200000||-1
 
 --Margit
 Margit||21300014||21300000||-1
