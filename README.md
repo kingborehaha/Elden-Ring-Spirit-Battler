@@ -31,11 +31,11 @@
 
 ## Updates
 ### v1.3.0
-- Added a setting to toggle summons finding targets easily, letting you prevent summons running after boars from 99 meters away.
-- Added an option for summons that sets if they aggro on targets at long distance or not, emulating vanilla spirit summon behavior when finding targets easily is disabled.
-- Improved Malenia's info in SpiritAshResource.txt
+- Added a setting for summons finding targets easily, letting you disable summons noticing and running after targets that are very far away.
+- Added an option for summons aggro distance, letting you emulate vanilla spirit summon behavior (when "find targets easily" setting is disabled).
+- Minor SpiritAshResource.txt improvements.
 ### v1.2.1
-- Fixed program version number
+- Fixed program version number.
 - Made summon backups not store some pointless data.
 ### v1.2.0
 - Added summon backup system, which lets you save and load spirit battler data to json files.
