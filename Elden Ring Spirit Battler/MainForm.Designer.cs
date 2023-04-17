@@ -86,6 +86,7 @@
             this.Input_CharaInitID = new System.Windows.Forms.NumericUpDown();
             this.label9 = new System.Windows.Forms.Label();
             this.Option_TeamFollowPlayer = new System.Windows.Forms.CheckBox();
+            this.Option_Spirit_SearchesLongRange = new System.Windows.Forms.CheckBox();
             this.t_console = new System.Windows.Forms.TextBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.Menu_File = new System.Windows.Forms.ToolStripMenuItem();
@@ -109,6 +110,7 @@
             this.Option_EnableResummoning = new System.Windows.Forms.ToolStripMenuItem();
             this.Option_MoreSummonAreas = new System.Windows.Forms.ToolStripMenuItem();
             this.Option_HidePlayer = new System.Windows.Forms.ToolStripMenuItem();
+            this.Option_SummonsEasilyFindTargets = new System.Windows.Forms.ToolStripMenuItem();
             this.Menu_Help = new System.Windows.Forms.ToolStripMenuItem();
             this.Button_Info = new System.Windows.Forms.ToolStripMenuItem();
             this.Button_StatScalingLevelInfo = new System.Windows.Forms.ToolStripMenuItem();
@@ -137,7 +139,6 @@
             this.Button_Context_DuplicateTeam = new System.Windows.Forms.ToolStripMenuItem();
             this.Button_Context_DeleteTeam = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.groupBoxRandomize = new System.Windows.Forms.GroupBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label25 = new System.Windows.Forms.Label();
@@ -892,6 +893,21 @@
         ".");
             this.Option_TeamFollowPlayer.UseVisualStyleBackColor = true;
             // 
+            // Option_Spirit_SearchesLongRange
+            // 
+            this.Option_Spirit_SearchesLongRange.AutoSize = true;
+            this.Option_Spirit_SearchesLongRange.Checked = true;
+            this.Option_Spirit_SearchesLongRange.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.Option_Spirit_SearchesLongRange.Location = new System.Drawing.Point(6, 338);
+            this.Option_Spirit_SearchesLongRange.Name = "Option_Spirit_SearchesLongRange";
+            this.Option_Spirit_SearchesLongRange.Size = new System.Drawing.Size(139, 19);
+            this.Option_Spirit_SearchesLongRange.TabIndex = 116;
+            this.Option_Spirit_SearchesLongRange.Text = "Long-Distance Aggro";
+            this.toolTip1.SetToolTip(this.Option_Spirit_SearchesLongRange, resources.GetString("Option_Spirit_SearchesLongRange.ToolTip"));
+            this.Option_Spirit_SearchesLongRange.UseVisualStyleBackColor = true;
+            this.Option_Spirit_SearchesLongRange.CheckedChanged += new System.EventHandler(this.EnemyWasEdited);
+            this.Option_Spirit_SearchesLongRange.Click += new System.EventHandler(this.EnemyWasEdited);
+            // 
             // t_console
             // 
             this.t_console.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -1053,7 +1069,8 @@
             this.Option_ReduceEnemyMapCol,
             this.Option_EnableResummoning,
             this.Option_MoreSummonAreas,
-            this.Option_HidePlayer});
+            this.Option_HidePlayer,
+            this.Option_SummonsEasilyFindTargets});
             this.Menu_Settings.Name = "Menu_Settings";
             this.Menu_Settings.Size = new System.Drawing.Size(61, 20);
             this.Menu_Settings.Text = "Settings";
@@ -1099,6 +1116,15 @@
             this.Option_HidePlayer.Text = "Hidden Player";
             this.Option_HidePlayer.ToolTipText = "Makes player invisible and unable to hurt/be hurt enemies";
             this.Option_HidePlayer.Click += new System.EventHandler(this.Option_HidePlayer_Click);
+            // 
+            // Option_SummonsEasilyFindTargets
+            // 
+            this.Option_SummonsEasilyFindTargets.Name = "Option_SummonsEasilyFindTargets";
+            this.Option_SummonsEasilyFindTargets.Size = new System.Drawing.Size(279, 22);
+            this.Option_SummonsEasilyFindTargets.Text = "Summons Easily Find Targets";
+            this.Option_SummonsEasilyFindTargets.ToolTipText = "Makes summons find targets easily at long distances and through walls.\r\nAlso make" +
+    "s them not forget location of targets for a long period of time.\r\n";
+            this.Option_SummonsEasilyFindTargets.Click += new System.EventHandler(this.Option_SummonsEasilyFindTargets_Click);
             // 
             // Menu_Help
             // 
@@ -1254,6 +1280,7 @@
             this.label14.Size = new System.Drawing.Size(87, 15);
             this.label14.TabIndex = 101;
             this.label14.Text = "Bonus HP Mult";
+            this.label14.Click += new System.EventHandler(this.EnemyWasEdited);
             this.label14.Validated += new System.EventHandler(this.EnemyWasEdited);
             // 
             // label15
@@ -1327,6 +1354,7 @@
             // groupBox2
             // 
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Controls.Add(this.Option_Spirit_SearchesLongRange);
             this.groupBox2.Controls.Add(this.Input_CharaInitID);
             this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.Controls.Add(this.Label_SearchEnemyText);
@@ -1486,7 +1514,6 @@
             this.groupBox5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox5.Controls.Add(this.button1);
             this.groupBox5.Controls.Add(this.TeamDataGrid);
             this.groupBox5.Location = new System.Drawing.Point(12, 27);
             this.groupBox5.Name = "groupBox5";
@@ -1494,16 +1521,6 @@
             this.groupBox5.TabIndex = 116;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Teams";
-            // 
-            // button1
-            // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(499, 459);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(127, 23);
-            this.button1.TabIndex = 112;
-            this.button1.Text = "Add Random Spirit";
-            this.button1.UseVisualStyleBackColor = true;
             // 
             // groupBoxRandomize
             // 
@@ -1715,7 +1732,6 @@
         private ToolStripMenuItem Button_Context_DuplicateTeam;
         private ToolStripMenuItem Button_Context_DeleteTeam;
         private GroupBox groupBox5;
-        private Button button1;
         private ToolStripMenuItem Button_Menu_DeleteTeam;
         private ToolStripMenuItem Button_Menu_DuplicateTeam;
         private Label label2;
@@ -1755,5 +1771,7 @@
         private ToolStripMenuItem Button_LoadSummonBackup;
         private OpenFileDialog FileDialog_LoadJson;
         private SaveFileDialog FileDialog_SaveJson;
+        private ToolStripMenuItem Option_SummonsEasilyFindTargets;
+        private CheckBox Option_Spirit_SearchesLongRange;
     }
 }

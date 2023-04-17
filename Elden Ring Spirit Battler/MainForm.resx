@@ -87,6 +87,11 @@ Level 15: Crumbling Farum Azula
 Level 17: Consecrated Snowfield
 Level 20: Miquella's Haligtree</value>
   </data>
+  <data name="Option_Spirit_SearchesLongRange.ToolTip" xml:space="preserve">
+    <value>Determines if this summon will search and attack targets at long distances.
+Overriden by "Summons find targets easily" option.
+For normal spirit summon behavior, turn this OFF for melee summons, and ON for ranged summons.</value>
+  </data>
   <metadata name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>254, 17</value>
   </metadata>

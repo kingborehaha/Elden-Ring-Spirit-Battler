@@ -430,13 +430,37 @@ namespace EldenRingSpiritBattler
                 PARAM.Row newNpcThinkRow = InsertParamRow(npcThinkParam, npcThinkParam[npcThinkID], newNpcThinkID);
 
                 newNpcThinkRow["isBuddyAI"].Value = true; // This PROBABLY overrides backhomeDist, etc.
-                newNpcThinkRow["nose_dist"].Value = (UInt16)30;
-                newNpcThinkRow["backhomeDist"].Value = (UInt16)999;
-                newNpcThinkRow["maxBackhomeDist"].Value = (UInt16)999;
+                newNpcThinkRow["backhomeDist"].Value = (UInt16)9999;
+                newNpcThinkRow["maxBackhomeDist"].Value = (UInt16)9999;
                 newNpcThinkRow["backhomeBattleDist"].Value = (UInt16)999;
-                newNpcThinkRow["SoundTargetForgetTime"].Value = (float)9999;
-                newNpcThinkRow["SightTargetForgetTime"].Value = (float)9999;
-                newNpcThinkRow["MemoryTargetForgetTime"].Value = (float)99;
+                if (Config.SummonsFindTargetsEasily)
+                {
+                    // Find targets easily
+                    newNpcThinkRow["nose_dist"].Value = (UInt16)30;
+                    newNpcThinkRow["SoundTargetForgetTime"].Value = (float)9999.0f;
+                    newNpcThinkRow["SightTargetForgetTime"].Value = (float)9999.0f;
+                    newNpcThinkRow["MemoryTargetForgetTime"].Value = (float)99.0f;
+                }
+                else
+                {
+                    // Don't find targets easily
+                    newNpcThinkRow["nose_dist"].Value = (UInt16)0;
+                    newNpcThinkRow["SoundTargetForgetTime"].Value = (float)15.0f;
+                    newNpcThinkRow["SightTargetForgetTime"].Value = (float)0.1f;
+                    newNpcThinkRow["MemoryTargetForgetTime"].Value = (float)0.5f;
+                    if (spirit.LongDistanceAggro)
+                    {
+                        // Notice targets at distance
+                        newNpcThinkRow["eye_dist"].Value = (UInt16)30;
+                        newNpcThinkRow["BattleStartDist"].Value = (UInt16)20;
+                    }
+                    else
+                    {
+                        // Do not notice targets at distance
+                        newNpcThinkRow["eye_dist"].Value = (UInt16)2;
+                        newNpcThinkRow["BattleStartDist"].Value = (UInt16)2;
+                    }
+                }
                 #endregion
                 //
 
@@ -790,6 +814,8 @@ namespace EldenRingSpiritBattler
             SummonPosition_Z.Value = (decimal)spirit.Position.Z;
             SummonPosition_Angle.Value = (decimal)spirit.Position.Ang;
 
+            Option_Spirit_SearchesLongRange.Checked = spirit.LongDistanceAggro;
+
             UpdateTeamElements();
         }
 
@@ -871,7 +897,8 @@ namespace EldenRingSpiritBattler
                 spirit.Team.Name,
                 spirit.VariantName,
                 S = GetStatScalingLevelString(spirit),
-                P = GetFinalPositionString(spirit)
+                P = GetFinalPositionString(spirit),
+                spirit.LongDistanceAggro
             }).ToList();
             SpiritDataGrid.Columns[0].Visible = false;
             SpiritDataGrid.Columns[1].HeaderCell.Value = "Team";
@@ -882,6 +909,8 @@ namespace EldenRingSpiritBattler
             SpiritDataGrid.Columns[3].Width = 80;
             SpiritDataGrid.Columns[4].HeaderCell.Value = "Position";
             SpiritDataGrid.Columns[4].Width = 85;
+            SpiritDataGrid.Columns[5].HeaderCell.Value = "L. Dist";
+            SpiritDataGrid.Columns[5].Width = 45;
 
             SpiritDataGrid.ClearSelection();
             if (prevIndex > SpiritDataGrid.Rows.Count - 1)
@@ -919,6 +948,7 @@ namespace EldenRingSpiritBattler
                 BaseNpcID = (int)Input_NpcParamID.Value,
                 BaseThinkID = (int)Input_NpcThinkID.Value,
                 CharaInitID = (int)Input_CharaInitID.Value,
+                LongDistanceAggro = Option_Spirit_SearchesLongRange.Checked
             };
             return spirit;
         }

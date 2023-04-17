@@ -30,8 +30,10 @@
 - Save Changes. The selected ash should now be changed in-game.
 
 ## Updates
-### v1.x.x
-- Fixed Melina's default phantom color overriding custom phantom colors.
+### v1.3.0
+- Added a setting to toggle summons finding targets easily, letting you prevent summons running after boars from 99 meters away.
+- Added an option for summons that sets if they aggro on targets at long distance or not, emulating vanilla spirit summon behavior when finding targets easily is disabled.
+- Improved Malenia's info in SpiritAshResource.txt
 ### v1.2.1
 - Fixed program version number
 - Made summon backups not store some pointless data.

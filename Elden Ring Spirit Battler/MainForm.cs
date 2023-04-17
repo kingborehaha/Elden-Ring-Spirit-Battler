@@ -64,6 +64,8 @@ namespace EldenRingSpiritBattler
             UpdateTeamElements();
 
             List_TeamSummonPreset.DataSource = teamSummonPresetDict.Keys.ToList();
+
+            Option_Spirit_SearchesLongRange.Enabled = !Option_SummonsEasilyFindTargets.Checked;
         }
 
         private void EnemyWasEdited(object sender, EventArgs e)
@@ -532,6 +534,14 @@ namespace EldenRingSpiritBattler
         {
             Option_MoreSummonAreas.Checked = !Option_MoreSummonAreas.Checked;
             Config.ExpandSummonAreas = Option_MoreSummonAreas.Checked;
+        }
+
+        private void Option_SummonsEasilyFindTargets_Click(object sender, EventArgs e)
+        {
+            Option_SummonsEasilyFindTargets.Checked = !Option_SummonsEasilyFindTargets.Checked;
+            Config.SummonsFindTargetsEasily = Option_SummonsEasilyFindTargets.Checked;
+
+            Option_Spirit_SearchesLongRange.Enabled = !Option_SummonsEasilyFindTargets.Checked;
         }
     }
 }

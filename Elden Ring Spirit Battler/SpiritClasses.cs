@@ -124,6 +124,9 @@ namespace EldenRingSpiritBattler
         public decimal DamageMult = 1;
         public int Sp_StatScaling = -1; // ID of Stat Scaling SpEffect overwrite (if one was provided).
         public int Sp_SpecialScaling = -1; // Stores ID of newly created spEffect that holds HpMult and DamageMult modifiers.
+
+        public bool LongDistanceAggro = true;
+
         public List<int> SpecialEffects
         {
             get
@@ -133,7 +136,7 @@ namespace EldenRingSpiritBattler
                 {
                     if (Is_c0000)
                     {
-                        // Calculate Lvl of assigned scaling spEffect, then calculate c0000 ID using that..
+                        // Calculate Lvl of assigned scaling spEffect, then calculate c0000 ID using that.
                         int idOffset = (Sp_StatScaling - SpiritBattlerResources.ScalingEffectBaseId) / 10; // Get Lvl offset (+10 -> +1 per level)
                         effects.Add(SpiritBattlerResources.c0000ScalingEffectBaseId + idOffset);
                     }
@@ -171,6 +174,7 @@ namespace EldenRingSpiritBattler
             spirit.Sp_StatScaling = Sp_StatScaling;
             spirit.Sp_SpecialScaling = Sp_SpecialScaling;
             spirit.Position = new SummonPos(Position.X, Position.Z, Position.Ang);
+            spirit.LongDistanceAggro = LongDistanceAggro;
             return spirit;
         }
     }
