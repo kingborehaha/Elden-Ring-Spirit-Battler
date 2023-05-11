@@ -513,7 +513,7 @@ namespace EldenRingSpiritBattler
                     }
                 }
             }
-            catch(Newtonsoft.Json.JsonException ex)
+            catch (Newtonsoft.Json.JsonException ex)
             {
                 MessageBox.Show($"Summon backup couldn't be loaded.\n\n{ex.Message}", "Error", MessageBoxButtons.OK);
             }

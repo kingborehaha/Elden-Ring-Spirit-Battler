@@ -28,1630 +28,1447 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.FileDialog_Regulation = new System.Windows.Forms.OpenFileDialog();
-            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.SummonPosition_X = new System.Windows.Forms.NumericUpDown();
-            this.SummonPosition_Z = new System.Windows.Forms.NumericUpDown();
-            this.SummonPosition_Angle = new System.Windows.Forms.NumericUpDown();
-            this.Input_TeamSummonPos_X = new System.Windows.Forms.NumericUpDown();
-            this.Input_TeamSummonPos_Z = new System.Windows.Forms.NumericUpDown();
-            this.Input_TeamSummonPos_Ang = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.List_Enemy = new System.Windows.Forms.ComboBox();
-            this.Search_Enemy = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.List_TeamPhantomColor = new System.Windows.Forms.ComboBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.Button_AddNewTeam = new System.Windows.Forms.Button();
-            this.Input_NpcParamID = new System.Windows.Forms.NumericUpDown();
-            this.Input_NpcThinkID = new System.Windows.Forms.NumericUpDown();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.List_StatScaling = new System.Windows.Forms.ComboBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.List_EnemyVariant = new System.Windows.Forms.ComboBox();
-            this.label16 = new System.Windows.Forms.Label();
-            this.List_TeamType = new System.Windows.Forms.ComboBox();
-            this.label17 = new System.Windows.Forms.Label();
-            this.Input_TeamName = new System.Windows.Forms.TextBox();
-            this.label20 = new System.Windows.Forms.Label();
-            this.Label_SearchEnemyText = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.List_EnemyChosenTeam = new System.Windows.Forms.ComboBox();
-            this.Button_PickRandomEnemy = new System.Windows.Forms.Button();
-            this.List_TeamSummonPreset = new System.Windows.Forms.ComboBox();
-            this.label21 = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
-            this.label23 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.Input_TeamDamageMult = new System.Windows.Forms.NumericUpDown();
-            this.label12 = new System.Windows.Forms.Label();
-            this.Input_TeamHpMult = new System.Windows.Forms.NumericUpDown();
-            this.Button_AddRandomSpirit = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
-            this.List_SpiritAsh = new System.Windows.Forms.ComboBox();
-            this.Option_SpiritAshNoRequirements = new System.Windows.Forms.CheckBox();
-            this.Option_Randomize_PhantomColor = new System.Windows.Forms.Button();
-            this.Button_RandomTeamName = new System.Windows.Forms.Button();
-            this.Search_SpiritAsh = new System.Windows.Forms.TextBox();
-            this.Label_SearchSpiritAshText = new System.Windows.Forms.Label();
-            this.Input_CharaInitID = new System.Windows.Forms.NumericUpDown();
-            this.label9 = new System.Windows.Forms.Label();
-            this.Option_TeamFollowPlayer = new System.Windows.Forms.CheckBox();
-            this.Option_Spirit_SearchesLongRange = new System.Windows.Forms.CheckBox();
-            this.t_console = new System.Windows.Forms.TextBox();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.Menu_File = new System.Windows.Forms.ToolStripMenuItem();
-            this.loadRegulationbinToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.b_restoreRegulation = new System.Windows.Forms.ToolStripMenuItem();
-            this.saveLoadPresetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.Button_LoadSummonBackup = new System.Windows.Forms.ToolStripMenuItem();
-            this.Button_SaveSummonBackup = new System.Windows.Forms.ToolStripMenuItem();
-            this.Button_Execute = new System.Windows.Forms.ToolStripMenuItem();
-            this.Menu_Edit = new System.Windows.Forms.ToolStripMenuItem();
-            this.addSpiritToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.Button_Menu_DuplicateTeam = new System.Windows.Forms.ToolStripMenuItem();
-            this.duplicateSpiritToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.Button_Menu_DeleteTeam = new System.Windows.Forms.ToolStripMenuItem();
-            this.Button_DeleteSpiritFromList = new System.Windows.Forms.ToolStripMenuItem();
-            this.batchChangesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.Button_RemoveAllSpirits = new System.Windows.Forms.ToolStripMenuItem();
-            this.Button_ResetTool = new System.Windows.Forms.ToolStripMenuItem();
-            this.Menu_Settings = new System.Windows.Forms.ToolStripMenuItem();
-            this.Option_ReduceEnemyMapCol = new System.Windows.Forms.ToolStripMenuItem();
-            this.Option_EnableResummoning = new System.Windows.Forms.ToolStripMenuItem();
-            this.Option_MoreSummonAreas = new System.Windows.Forms.ToolStripMenuItem();
-            this.Option_HidePlayer = new System.Windows.Forms.ToolStripMenuItem();
-            this.Option_SummonsEasilyFindTargets = new System.Windows.Forms.ToolStripMenuItem();
-            this.Menu_Help = new System.Windows.Forms.ToolStripMenuItem();
-            this.Button_Info = new System.Windows.Forms.ToolStripMenuItem();
-            this.Button_StatScalingLevelInfo = new System.Windows.Forms.ToolStripMenuItem();
-            this.fAQToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.label5 = new System.Windows.Forms.Label();
-            this.SpiritDataGrid = new System.Windows.Forms.DataGridView();
-            this.Context_DataGrid = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.Button_Context_DuplicateSpirit = new System.Windows.Forms.ToolStripMenuItem();
-            this.Button_Context_RemoveSpirit = new System.Windows.Forms.ToolStripMenuItem();
-            this.Team = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.EnemyCol = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.Variant = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.Input_EnemyHpMult = new System.Windows.Forms.NumericUpDown();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.Input_EnemyDamageMult = new System.Windows.Forms.NumericUpDown();
-            this.label18 = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.Option_TargetAllSpiritAshes = new System.Windows.Forms.CheckBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.Group_TeamSummonPos_Manual = new System.Windows.Forms.GroupBox();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.TeamDataGrid = new System.Windows.Forms.DataGridView();
-            this.Context_TeamDataGrid = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.Button_Context_DuplicateTeam = new System.Windows.Forms.ToolStripMenuItem();
-            this.Button_Context_DeleteTeam = new System.Windows.Forms.ToolStripMenuItem();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.groupBoxRandomize = new System.Windows.Forms.GroupBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label25 = new System.Windows.Forms.Label();
-            this.label24 = new System.Windows.Forms.Label();
-            this.Button_Randomize_SvE = new System.Windows.Forms.Button();
-            this.Button_Randomize_PvE = new System.Windows.Forms.Button();
-            this.FileDialog_LoadJson = new System.Windows.Forms.OpenFileDialog();
-            this.FileDialog_SaveJson = new System.Windows.Forms.SaveFileDialog();
-            ((System.ComponentModel.ISupportInitialize)(this.SummonPosition_X)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SummonPosition_Z)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SummonPosition_Angle)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Input_TeamSummonPos_X)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Input_TeamSummonPos_Z)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Input_TeamSummonPos_Ang)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Input_NpcParamID)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Input_NpcThinkID)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Input_TeamDamageMult)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Input_TeamHpMult)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Input_CharaInitID)).BeginInit();
-            this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.SpiritDataGrid)).BeginInit();
-            this.Context_DataGrid.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Input_EnemyHpMult)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Input_EnemyDamageMult)).BeginInit();
-            this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            this.groupBox3.SuspendLayout();
-            this.Group_TeamSummonPos_Manual.SuspendLayout();
-            this.groupBox4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.TeamDataGrid)).BeginInit();
-            this.Context_TeamDataGrid.SuspendLayout();
-            this.groupBox5.SuspendLayout();
-            this.groupBoxRandomize.SuspendLayout();
-            this.SuspendLayout();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            FileDialog_Regulation = new OpenFileDialog();
+            toolTip1 = new ToolTip(components);
+            SummonPosition_X = new NumericUpDown();
+            SummonPosition_Z = new NumericUpDown();
+            SummonPosition_Angle = new NumericUpDown();
+            Input_TeamSummonPos_X = new NumericUpDown();
+            Input_TeamSummonPos_Z = new NumericUpDown();
+            Input_TeamSummonPos_Ang = new NumericUpDown();
+            numericUpDown1 = new NumericUpDown();
+            List_Enemy = new ComboBox();
+            Search_Enemy = new TextBox();
+            label1 = new Label();
+            List_TeamPhantomColor = new ComboBox();
+            label6 = new Label();
+            label7 = new Label();
+            label8 = new Label();
+            Button_AddNewTeam = new Button();
+            Input_NpcParamID = new NumericUpDown();
+            Input_NpcThinkID = new NumericUpDown();
+            label3 = new Label();
+            label11 = new Label();
+            List_StatScaling = new ComboBox();
+            label13 = new Label();
+            List_EnemyVariant = new ComboBox();
+            label16 = new Label();
+            List_TeamType = new ComboBox();
+            label17 = new Label();
+            Input_TeamName = new TextBox();
+            label20 = new Label();
+            Label_SearchEnemyText = new Label();
+            label2 = new Label();
+            List_EnemyChosenTeam = new ComboBox();
+            Button_PickRandomEnemy = new Button();
+            List_TeamSummonPreset = new ComboBox();
+            label21 = new Label();
+            label22 = new Label();
+            label23 = new Label();
+            label10 = new Label();
+            Input_TeamDamageMult = new NumericUpDown();
+            label12 = new Label();
+            Input_TeamHpMult = new NumericUpDown();
+            Button_AddRandomSpirit = new Button();
+            label4 = new Label();
+            List_SpiritAsh = new ComboBox();
+            Option_SpiritAshNoRequirements = new CheckBox();
+            Option_Randomize_PhantomColor = new Button();
+            Button_RandomTeamName = new Button();
+            Search_SpiritAsh = new TextBox();
+            Label_SearchSpiritAshText = new Label();
+            Input_CharaInitID = new NumericUpDown();
+            label9 = new Label();
+            Option_TeamFollowPlayer = new CheckBox();
+            Option_Spirit_SearchesLongRange = new CheckBox();
+            t_console = new TextBox();
+            menuStrip1 = new MenuStrip();
+            Menu_File = new ToolStripMenuItem();
+            loadRegulationbinToolStripMenuItem = new ToolStripMenuItem();
+            b_restoreRegulation = new ToolStripMenuItem();
+            saveLoadPresetToolStripMenuItem = new ToolStripMenuItem();
+            Button_LoadSummonBackup = new ToolStripMenuItem();
+            Button_SaveSummonBackup = new ToolStripMenuItem();
+            Button_Execute = new ToolStripMenuItem();
+            Menu_Edit = new ToolStripMenuItem();
+            addSpiritToolStripMenuItem = new ToolStripMenuItem();
+            Button_Menu_DuplicateTeam = new ToolStripMenuItem();
+            duplicateSpiritToolStripMenuItem = new ToolStripMenuItem();
+            Button_Menu_DeleteTeam = new ToolStripMenuItem();
+            Button_DeleteSpiritFromList = new ToolStripMenuItem();
+            batchChangesToolStripMenuItem = new ToolStripMenuItem();
+            Button_RemoveAllSpirits = new ToolStripMenuItem();
+            Button_ResetTool = new ToolStripMenuItem();
+            Menu_Settings = new ToolStripMenuItem();
+            Option_ReduceEnemyMapCol = new ToolStripMenuItem();
+            Option_EnableResummoning = new ToolStripMenuItem();
+            Option_MoreSummonAreas = new ToolStripMenuItem();
+            Option_HidePlayer = new ToolStripMenuItem();
+            Option_SummonsEasilyFindTargets = new ToolStripMenuItem();
+            Menu_Help = new ToolStripMenuItem();
+            Button_Info = new ToolStripMenuItem();
+            Button_StatScalingLevelInfo = new ToolStripMenuItem();
+            fAQToolStripMenuItem = new ToolStripMenuItem();
+            label5 = new Label();
+            SpiritDataGrid = new DataGridView();
+            Context_DataGrid = new ContextMenuStrip(components);
+            Button_Context_DuplicateSpirit = new ToolStripMenuItem();
+            Button_Context_RemoveSpirit = new ToolStripMenuItem();
+            Team = new DataGridViewComboBoxColumn();
+            EnemyCol = new DataGridViewComboBoxColumn();
+            Variant = new DataGridViewComboBoxColumn();
+            Input_EnemyHpMult = new NumericUpDown();
+            label14 = new Label();
+            label15 = new Label();
+            Input_EnemyDamageMult = new NumericUpDown();
+            label18 = new Label();
+            groupBox1 = new GroupBox();
+            Option_TargetAllSpiritAshes = new CheckBox();
+            groupBox2 = new GroupBox();
+            groupBox3 = new GroupBox();
+            Group_TeamSummonPos_Manual = new GroupBox();
+            groupBox4 = new GroupBox();
+            TeamDataGrid = new DataGridView();
+            Context_TeamDataGrid = new ContextMenuStrip(components);
+            Button_Context_DuplicateTeam = new ToolStripMenuItem();
+            Button_Context_DeleteTeam = new ToolStripMenuItem();
+            groupBox5 = new GroupBox();
+            groupBoxRandomize = new GroupBox();
+            comboBox1 = new ComboBox();
+            label25 = new Label();
+            label24 = new Label();
+            Button_Randomize_SvE = new Button();
+            Button_Randomize_PvE = new Button();
+            FileDialog_LoadJson = new OpenFileDialog();
+            FileDialog_SaveJson = new SaveFileDialog();
+            ((System.ComponentModel.ISupportInitialize)SummonPosition_X).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)SummonPosition_Z).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)SummonPosition_Angle).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)Input_TeamSummonPos_X).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)Input_TeamSummonPos_Z).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)Input_TeamSummonPos_Ang).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)Input_NpcParamID).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)Input_NpcThinkID).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)Input_TeamDamageMult).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)Input_TeamHpMult).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)Input_CharaInitID).BeginInit();
+            menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)SpiritDataGrid).BeginInit();
+            Context_DataGrid.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)Input_EnemyHpMult).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)Input_EnemyDamageMult).BeginInit();
+            groupBox1.SuspendLayout();
+            groupBox2.SuspendLayout();
+            groupBox3.SuspendLayout();
+            Group_TeamSummonPos_Manual.SuspendLayout();
+            groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)TeamDataGrid).BeginInit();
+            Context_TeamDataGrid.SuspendLayout();
+            groupBox5.SuspendLayout();
+            groupBoxRandomize.SuspendLayout();
+            SuspendLayout();
             // 
             // FileDialog_Regulation
             // 
-            this.FileDialog_Regulation.FileName = "regulation.bin";
-            this.FileDialog_Regulation.Filter = "Regulation File|regulation.bin|All Files|*.*";
-            this.FileDialog_Regulation.RestoreDirectory = true;
-            this.FileDialog_Regulation.Title = "Open \"regulation.bin\"";
+            FileDialog_Regulation.FileName = "regulation.bin";
+            FileDialog_Regulation.Filter = "Regulation File|regulation.bin|All Files|*.*";
+            FileDialog_Regulation.RestoreDirectory = true;
+            FileDialog_Regulation.Title = "Open \"regulation.bin\"";
             // 
             // toolTip1
             // 
-            this.toolTip1.AutomaticDelay = 200;
-            this.toolTip1.AutoPopDelay = 20000;
-            this.toolTip1.InitialDelay = 200;
-            this.toolTip1.ReshowDelay = 40;
+            toolTip1.AutomaticDelay = 200;
+            toolTip1.AutoPopDelay = 20000;
+            toolTip1.InitialDelay = 200;
+            toolTip1.ReshowDelay = 40;
             // 
             // SummonPosition_X
             // 
-            this.SummonPosition_X.DecimalPlaces = 1;
-            this.SummonPosition_X.Location = new System.Drawing.Point(286, 270);
-            this.SummonPosition_X.Maximum = new decimal(new int[] {
-            9999,
-            0,
-            0,
-            0});
-            this.SummonPosition_X.Minimum = new decimal(new int[] {
-            9999,
-            0,
-            0,
-            -2147483648});
-            this.SummonPosition_X.Name = "SummonPosition_X";
-            this.SummonPosition_X.Size = new System.Drawing.Size(57, 23);
-            this.SummonPosition_X.TabIndex = 75;
-            this.toolTip1.SetToolTip(this.SummonPosition_X, "Left/Right position of summon location in meters");
-            this.SummonPosition_X.ValueChanged += new System.EventHandler(this.EnemyWasEdited);
-            this.SummonPosition_X.Click += new System.EventHandler(this.EnemyWasEdited);
+            SummonPosition_X.DecimalPlaces = 1;
+            SummonPosition_X.Location = new Point(286, 270);
+            SummonPosition_X.Maximum = new decimal(new int[] { 9999, 0, 0, 0 });
+            SummonPosition_X.Minimum = new decimal(new int[] { 9999, 0, 0, int.MinValue });
+            SummonPosition_X.Name = "SummonPosition_X";
+            SummonPosition_X.Size = new Size(57, 23);
+            SummonPosition_X.TabIndex = 75;
+            toolTip1.SetToolTip(SummonPosition_X, "Left/Right position of summon location in meters");
+            SummonPosition_X.ValueChanged += EnemyWasEdited;
+            SummonPosition_X.Click += EnemyWasEdited;
             // 
             // SummonPosition_Z
             // 
-            this.SummonPosition_Z.DecimalPlaces = 1;
-            this.SummonPosition_Z.Location = new System.Drawing.Point(286, 299);
-            this.SummonPosition_Z.Maximum = new decimal(new int[] {
-            9999,
-            0,
-            0,
-            0});
-            this.SummonPosition_Z.Minimum = new decimal(new int[] {
-            9999,
-            0,
-            0,
-            -2147483648});
-            this.SummonPosition_Z.Name = "SummonPosition_Z";
-            this.SummonPosition_Z.Size = new System.Drawing.Size(57, 23);
-            this.SummonPosition_Z.TabIndex = 80;
-            this.toolTip1.SetToolTip(this.SummonPosition_Z, "Depth of summon location in meters");
-            this.SummonPosition_Z.ValueChanged += new System.EventHandler(this.EnemyWasEdited);
-            this.SummonPosition_Z.Click += new System.EventHandler(this.EnemyWasEdited);
+            SummonPosition_Z.DecimalPlaces = 1;
+            SummonPosition_Z.Location = new Point(286, 299);
+            SummonPosition_Z.Maximum = new decimal(new int[] { 9999, 0, 0, 0 });
+            SummonPosition_Z.Minimum = new decimal(new int[] { 9999, 0, 0, int.MinValue });
+            SummonPosition_Z.Name = "SummonPosition_Z";
+            SummonPosition_Z.Size = new Size(57, 23);
+            SummonPosition_Z.TabIndex = 80;
+            toolTip1.SetToolTip(SummonPosition_Z, "Depth of summon location in meters");
+            SummonPosition_Z.ValueChanged += EnemyWasEdited;
+            SummonPosition_Z.Click += EnemyWasEdited;
             // 
             // SummonPosition_Angle
             // 
-            this.SummonPosition_Angle.DecimalPlaces = 1;
-            this.SummonPosition_Angle.Location = new System.Drawing.Point(286, 328);
-            this.SummonPosition_Angle.Maximum = new decimal(new int[] {
-            180,
-            0,
-            0,
-            0});
-            this.SummonPosition_Angle.Minimum = new decimal(new int[] {
-            180,
-            0,
-            0,
-            -2147483648});
-            this.SummonPosition_Angle.Name = "SummonPosition_Angle";
-            this.SummonPosition_Angle.Size = new System.Drawing.Size(57, 23);
-            this.SummonPosition_Angle.TabIndex = 81;
-            this.toolTip1.SetToolTip(this.SummonPosition_Angle, "Facing angle of the spirit when summoned");
-            this.SummonPosition_Angle.Visible = false;
-            this.SummonPosition_Angle.ValueChanged += new System.EventHandler(this.EnemyWasEdited);
-            this.SummonPosition_Angle.Click += new System.EventHandler(this.EnemyWasEdited);
+            SummonPosition_Angle.DecimalPlaces = 1;
+            SummonPosition_Angle.Location = new Point(286, 328);
+            SummonPosition_Angle.Maximum = new decimal(new int[] { 180, 0, 0, 0 });
+            SummonPosition_Angle.Minimum = new decimal(new int[] { 180, 0, 0, int.MinValue });
+            SummonPosition_Angle.Name = "SummonPosition_Angle";
+            SummonPosition_Angle.Size = new Size(57, 23);
+            SummonPosition_Angle.TabIndex = 81;
+            toolTip1.SetToolTip(SummonPosition_Angle, "Facing angle of the spirit when summoned");
+            SummonPosition_Angle.Visible = false;
+            SummonPosition_Angle.ValueChanged += EnemyWasEdited;
+            SummonPosition_Angle.Click += EnemyWasEdited;
             // 
             // Input_TeamSummonPos_X
             // 
-            this.Input_TeamSummonPos_X.DecimalPlaces = 1;
-            this.Input_TeamSummonPos_X.Location = new System.Drawing.Point(67, 56);
-            this.Input_TeamSummonPos_X.Maximum = new decimal(new int[] {
-            9999,
-            0,
-            0,
-            0});
-            this.Input_TeamSummonPos_X.Minimum = new decimal(new int[] {
-            9999,
-            0,
-            0,
-            -2147483648});
-            this.Input_TeamSummonPos_X.Name = "Input_TeamSummonPos_X";
-            this.Input_TeamSummonPos_X.Size = new System.Drawing.Size(59, 23);
-            this.Input_TeamSummonPos_X.TabIndex = 9;
-            this.toolTip1.SetToolTip(this.Input_TeamSummonPos_X, "Left/Right position of summon location in meters");
+            Input_TeamSummonPos_X.DecimalPlaces = 1;
+            Input_TeamSummonPos_X.Location = new Point(67, 56);
+            Input_TeamSummonPos_X.Maximum = new decimal(new int[] { 9999, 0, 0, 0 });
+            Input_TeamSummonPos_X.Minimum = new decimal(new int[] { 9999, 0, 0, int.MinValue });
+            Input_TeamSummonPos_X.Name = "Input_TeamSummonPos_X";
+            Input_TeamSummonPos_X.Size = new Size(59, 23);
+            Input_TeamSummonPos_X.TabIndex = 9;
+            toolTip1.SetToolTip(Input_TeamSummonPos_X, "Left/Right position of summon location in meters");
             // 
             // Input_TeamSummonPos_Z
             // 
-            this.Input_TeamSummonPos_Z.DecimalPlaces = 1;
-            this.Input_TeamSummonPos_Z.Location = new System.Drawing.Point(67, 85);
-            this.Input_TeamSummonPos_Z.Maximum = new decimal(new int[] {
-            9999,
-            0,
-            0,
-            0});
-            this.Input_TeamSummonPos_Z.Minimum = new decimal(new int[] {
-            9999,
-            0,
-            0,
-            -2147483648});
-            this.Input_TeamSummonPos_Z.Name = "Input_TeamSummonPos_Z";
-            this.Input_TeamSummonPos_Z.Size = new System.Drawing.Size(59, 23);
-            this.Input_TeamSummonPos_Z.TabIndex = 10;
-            this.toolTip1.SetToolTip(this.Input_TeamSummonPos_Z, "Depth of summon location in meters");
+            Input_TeamSummonPos_Z.DecimalPlaces = 1;
+            Input_TeamSummonPos_Z.Location = new Point(67, 85);
+            Input_TeamSummonPos_Z.Maximum = new decimal(new int[] { 9999, 0, 0, 0 });
+            Input_TeamSummonPos_Z.Minimum = new decimal(new int[] { 9999, 0, 0, int.MinValue });
+            Input_TeamSummonPos_Z.Name = "Input_TeamSummonPos_Z";
+            Input_TeamSummonPos_Z.Size = new Size(59, 23);
+            Input_TeamSummonPos_Z.TabIndex = 10;
+            toolTip1.SetToolTip(Input_TeamSummonPos_Z, "Depth of summon location in meters");
             // 
             // Input_TeamSummonPos_Ang
             // 
-            this.Input_TeamSummonPos_Ang.DecimalPlaces = 1;
-            this.Input_TeamSummonPos_Ang.Location = new System.Drawing.Point(67, 114);
-            this.Input_TeamSummonPos_Ang.Maximum = new decimal(new int[] {
-            180,
-            0,
-            0,
-            0});
-            this.Input_TeamSummonPos_Ang.Minimum = new decimal(new int[] {
-            180,
-            0,
-            0,
-            -2147483648});
-            this.Input_TeamSummonPos_Ang.Name = "Input_TeamSummonPos_Ang";
-            this.Input_TeamSummonPos_Ang.Size = new System.Drawing.Size(59, 23);
-            this.Input_TeamSummonPos_Ang.TabIndex = 11;
-            this.toolTip1.SetToolTip(this.Input_TeamSummonPos_Ang, "Facing angle of the spirit when summoned");
+            Input_TeamSummonPos_Ang.DecimalPlaces = 1;
+            Input_TeamSummonPos_Ang.Location = new Point(67, 114);
+            Input_TeamSummonPos_Ang.Maximum = new decimal(new int[] { 180, 0, 0, 0 });
+            Input_TeamSummonPos_Ang.Minimum = new decimal(new int[] { 180, 0, 0, int.MinValue });
+            Input_TeamSummonPos_Ang.Name = "Input_TeamSummonPos_Ang";
+            Input_TeamSummonPos_Ang.Size = new Size(59, 23);
+            Input_TeamSummonPos_Ang.TabIndex = 11;
+            toolTip1.SetToolTip(Input_TeamSummonPos_Ang, "Facing angle of the spirit when summoned");
             // 
             // numericUpDown1
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(15, 104);
-            this.numericUpDown1.Maximum = new decimal(new int[] {
-            33,
-            0,
-            0,
-            0});
-            this.numericUpDown1.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(49, 23);
-            this.numericUpDown1.TabIndex = 121;
-            this.toolTip1.SetToolTip(this.numericUpDown1, "Facing angle of the spirit when summoned\r\nRange of -180 to 180 degrees\r\nNegative " +
-        "values face left, Positive values face right\r\n");
-            this.numericUpDown1.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
+            numericUpDown1.Location = new Point(15, 104);
+            numericUpDown1.Maximum = new decimal(new int[] { 33, 0, 0, 0 });
+            numericUpDown1.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
+            numericUpDown1.Name = "numericUpDown1";
+            numericUpDown1.Size = new Size(49, 23);
+            numericUpDown1.TabIndex = 121;
+            toolTip1.SetToolTip(numericUpDown1, "Facing angle of the spirit when summoned\r\nRange of -180 to 180 degrees\r\nNegative values face left, Positive values face right\r\n");
+            numericUpDown1.Value = new decimal(new int[] { 1, 0, 0, 0 });
             // 
             // List_Enemy
             // 
-            this.List_Enemy.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.List_Enemy.DropDownWidth = 200;
-            this.List_Enemy.FormattingEnabled = true;
-            this.List_Enemy.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.List_Enemy.Location = new System.Drawing.Point(6, 115);
-            this.List_Enemy.Name = "List_Enemy";
-            this.List_Enemy.Size = new System.Drawing.Size(200, 23);
-            this.List_Enemy.TabIndex = 62;
-            this.toolTip1.SetToolTip(this.List_Enemy, "Base enemy type this summon will be, generated from EnemyInfoResource.txt\r\nExact " +
-        "enemy details is determined by Enemy Variant.");
-            this.List_Enemy.SelectedIndexChanged += new System.EventHandler(this.List_Enemy_SelectedIndexChanged);
-            this.List_Enemy.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ComboBox_KeyPress);
+            List_Enemy.DropDownStyle = ComboBoxStyle.DropDownList;
+            List_Enemy.DropDownWidth = 200;
+            List_Enemy.FormattingEnabled = true;
+            List_Enemy.ImeMode = ImeMode.NoControl;
+            List_Enemy.Location = new Point(6, 115);
+            List_Enemy.Name = "List_Enemy";
+            List_Enemy.Size = new Size(200, 23);
+            List_Enemy.TabIndex = 62;
+            toolTip1.SetToolTip(List_Enemy, "Base enemy type this summon will be, generated from EnemyInfoResource.txt\r\nExact enemy details is determined by Enemy Variant.");
+            List_Enemy.SelectedIndexChanged += List_Enemy_SelectedIndexChanged;
+            List_Enemy.KeyDown += ComboBox_KeyPress;
             // 
             // Search_Enemy
             // 
-            this.Search_Enemy.Location = new System.Drawing.Point(6, 86);
-            this.Search_Enemy.Name = "Search_Enemy";
-            this.Search_Enemy.Size = new System.Drawing.Size(200, 23);
-            this.Search_Enemy.TabIndex = 10;
-            this.toolTip1.SetToolTip(this.Search_Enemy, "Base enemy type this summon will be, generated from EnemyInfoResource.txt\r\nExact " +
-        "enemy details is determined by Enemy Variant.");
-            this.Search_Enemy.Click += new System.EventHandler(this.Search_Enemy_Click);
-            this.Search_Enemy.TextChanged += new System.EventHandler(this.Search_Enemy_TextChanged);
-            this.Search_Enemy.Validated += new System.EventHandler(this.EnemyWasEdited);
+            Search_Enemy.Location = new Point(6, 86);
+            Search_Enemy.Name = "Search_Enemy";
+            Search_Enemy.Size = new Size(200, 23);
+            Search_Enemy.TabIndex = 10;
+            toolTip1.SetToolTip(Search_Enemy, "Base enemy type this summon will be, generated from EnemyInfoResource.txt\r\nExact enemy details is determined by Enemy Variant.");
+            Search_Enemy.Click += Search_Enemy_Click;
+            Search_Enemy.TextChanged += Search_Enemy_TextChanged;
+            Search_Enemy.Validated += EnemyWasEdited;
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(11, 23);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(88, 15);
-            this.label1.TabIndex = 65;
-            this.label1.Text = "Phantom Color";
-            this.toolTip1.SetToolTip(this.label1, "Phantom color and other shader attributes given to members of this team\r\n");
+            label1.AutoSize = true;
+            label1.Location = new Point(11, 23);
+            label1.Name = "label1";
+            label1.Size = new Size(88, 15);
+            label1.TabIndex = 65;
+            label1.Text = "Phantom Color";
+            toolTip1.SetToolTip(label1, "Phantom color and other shader attributes given to members of this team\r\n");
             // 
             // List_TeamPhantomColor
             // 
-            this.List_TeamPhantomColor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.List_TeamPhantomColor.FormattingEnabled = true;
-            this.List_TeamPhantomColor.Location = new System.Drawing.Point(6, 41);
-            this.List_TeamPhantomColor.Name = "List_TeamPhantomColor";
-            this.List_TeamPhantomColor.Size = new System.Drawing.Size(129, 23);
-            this.List_TeamPhantomColor.TabIndex = 1;
-            this.toolTip1.SetToolTip(this.List_TeamPhantomColor, "Phantom color and other shader attributes given to members of this team\r\n");
-            this.List_TeamPhantomColor.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ComboBox_KeyPress);
+            List_TeamPhantomColor.DropDownStyle = ComboBoxStyle.DropDownList;
+            List_TeamPhantomColor.FormattingEnabled = true;
+            List_TeamPhantomColor.Location = new Point(6, 41);
+            List_TeamPhantomColor.Name = "List_TeamPhantomColor";
+            List_TeamPhantomColor.Size = new Size(129, 23);
+            List_TeamPhantomColor.TabIndex = 1;
+            toolTip1.SetToolTip(List_TeamPhantomColor, "Phantom color and other shader attributes given to members of this team\r\n");
+            List_TeamPhantomColor.KeyDown += ComboBox_KeyPress;
             // 
             // label6
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(223, 272);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(57, 15);
-            this.label6.TabIndex = 78;
-            this.label6.Text = "Width (X)";
-            this.toolTip1.SetToolTip(this.label6, "Left/Right position of summon location in meters");
-            this.label6.Validated += new System.EventHandler(this.EnemyWasEdited);
+            label6.AutoSize = true;
+            label6.Location = new Point(223, 272);
+            label6.Name = "label6";
+            label6.Size = new Size(57, 15);
+            label6.TabIndex = 78;
+            label6.Text = "Width (X)";
+            toolTip1.SetToolTip(label6, "Left/Right position of summon location in meters");
+            label6.Validated += EnemyWasEdited;
             // 
             // label7
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(223, 301);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(57, 15);
-            this.label7.TabIndex = 79;
-            this.label7.Text = "Depth (Z)";
-            this.toolTip1.SetToolTip(this.label7, "Depth of summon location in meters");
-            this.label7.Validated += new System.EventHandler(this.EnemyWasEdited);
+            label7.AutoSize = true;
+            label7.Location = new Point(223, 301);
+            label7.Name = "label7";
+            label7.Size = new Size(57, 15);
+            label7.TabIndex = 79;
+            label7.Text = "Depth (Z)";
+            toolTip1.SetToolTip(label7, "Depth of summon location in meters");
+            label7.Validated += EnemyWasEdited;
             // 
             // label8
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(242, 330);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(38, 15);
-            this.label8.TabIndex = 82;
-            this.label8.Text = "Angle";
-            this.toolTip1.SetToolTip(this.label8, "Facing angle of the spirit when summoned");
-            this.label8.Visible = false;
-            this.label8.Validated += new System.EventHandler(this.EnemyWasEdited);
+            label8.AutoSize = true;
+            label8.Location = new Point(242, 330);
+            label8.Name = "label8";
+            label8.Size = new Size(38, 15);
+            label8.TabIndex = 82;
+            label8.Text = "Angle";
+            toolTip1.SetToolTip(label8, "Facing angle of the spirit when summoned");
+            label8.Visible = false;
+            label8.Validated += EnemyWasEdited;
             // 
             // Button_AddNewTeam
             // 
-            this.Button_AddNewTeam.Location = new System.Drawing.Point(6, 114);
-            this.Button_AddNewTeam.Name = "Button_AddNewTeam";
-            this.Button_AddNewTeam.Size = new System.Drawing.Size(116, 23);
-            this.Button_AddNewTeam.TabIndex = 5;
-            this.Button_AddNewTeam.Text = "Add/Update Team";
-            this.toolTip1.SetToolTip(this.Button_AddNewTeam, "Updates a team\'s settings if Team Name exists in list.\r\nAdds a new team otherwise" +
-        ".");
-            this.Button_AddNewTeam.UseVisualStyleBackColor = true;
-            this.Button_AddNewTeam.Click += new System.EventHandler(this.Button_AddUpdateTeam_Click);
+            Button_AddNewTeam.Location = new Point(6, 114);
+            Button_AddNewTeam.Name = "Button_AddNewTeam";
+            Button_AddNewTeam.Size = new Size(116, 23);
+            Button_AddNewTeam.TabIndex = 5;
+            Button_AddNewTeam.Text = "Add/Update Team";
+            toolTip1.SetToolTip(Button_AddNewTeam, "Updates a team's settings if Team Name exists in list.\r\nAdds a new team otherwise.");
+            Button_AddNewTeam.UseVisualStyleBackColor = true;
+            Button_AddNewTeam.Click += Button_AddUpdateTeam_Click;
             // 
             // Input_NpcParamID
             // 
-            this.Input_NpcParamID.Enabled = false;
-            this.Input_NpcParamID.Location = new System.Drawing.Point(6, 214);
-            this.Input_NpcParamID.Maximum = new decimal(new int[] {
-            999999999,
-            0,
-            0,
-            0});
-            this.Input_NpcParamID.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            -2147483648});
-            this.Input_NpcParamID.Name = "Input_NpcParamID";
-            this.Input_NpcParamID.Size = new System.Drawing.Size(77, 23);
-            this.Input_NpcParamID.TabIndex = 92;
-            this.toolTip1.SetToolTip(this.Input_NpcParamID, "NpcParam ID used by this enemy variant");
-            this.Input_NpcParamID.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            -2147483648});
-            this.Input_NpcParamID.ValueChanged += new System.EventHandler(this.EnemyWasEdited);
-            this.Input_NpcParamID.Click += new System.EventHandler(this.EnemyWasEdited);
+            Input_NpcParamID.Enabled = false;
+            Input_NpcParamID.Location = new Point(6, 214);
+            Input_NpcParamID.Maximum = new decimal(new int[] { 999999999, 0, 0, 0 });
+            Input_NpcParamID.Minimum = new decimal(new int[] { 1, 0, 0, int.MinValue });
+            Input_NpcParamID.Name = "Input_NpcParamID";
+            Input_NpcParamID.Size = new Size(77, 23);
+            Input_NpcParamID.TabIndex = 92;
+            toolTip1.SetToolTip(Input_NpcParamID, "NpcParam ID used by this enemy variant");
+            Input_NpcParamID.Value = new decimal(new int[] { 1, 0, 0, int.MinValue });
+            Input_NpcParamID.ValueChanged += EnemyWasEdited;
+            Input_NpcParamID.Click += EnemyWasEdited;
             // 
             // Input_NpcThinkID
             // 
-            this.Input_NpcThinkID.Enabled = false;
-            this.Input_NpcThinkID.Location = new System.Drawing.Point(89, 214);
-            this.Input_NpcThinkID.Maximum = new decimal(new int[] {
-            999999999,
-            0,
-            0,
-            0});
-            this.Input_NpcThinkID.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            -2147483648});
-            this.Input_NpcThinkID.Name = "Input_NpcThinkID";
-            this.Input_NpcThinkID.Size = new System.Drawing.Size(77, 23);
-            this.Input_NpcThinkID.TabIndex = 93;
-            this.toolTip1.SetToolTip(this.Input_NpcThinkID, "NpcThinkParam ID used by this enemy variant");
-            this.Input_NpcThinkID.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            -2147483648});
-            this.Input_NpcThinkID.ValueChanged += new System.EventHandler(this.EnemyWasEdited);
-            this.Input_NpcThinkID.Click += new System.EventHandler(this.EnemyWasEdited);
+            Input_NpcThinkID.Enabled = false;
+            Input_NpcThinkID.Location = new Point(89, 214);
+            Input_NpcThinkID.Maximum = new decimal(new int[] { 999999999, 0, 0, 0 });
+            Input_NpcThinkID.Minimum = new decimal(new int[] { 1, 0, 0, int.MinValue });
+            Input_NpcThinkID.Name = "Input_NpcThinkID";
+            Input_NpcThinkID.Size = new Size(77, 23);
+            Input_NpcThinkID.TabIndex = 93;
+            toolTip1.SetToolTip(Input_NpcThinkID, "NpcThinkParam ID used by this enemy variant");
+            Input_NpcThinkID.Value = new decimal(new int[] { 1, 0, 0, int.MinValue });
+            Input_NpcThinkID.ValueChanged += EnemyWasEdited;
+            Input_NpcThinkID.Click += EnemyWasEdited;
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 196);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(77, 15);
-            this.label3.TabIndex = 94;
-            this.label3.Text = "NpcParam ID";
-            this.toolTip1.SetToolTip(this.label3, "NpcParam ID used by this enemy variant");
-            this.label3.Validated += new System.EventHandler(this.EnemyWasEdited);
+            label3.AutoSize = true;
+            label3.Location = new Point(6, 196);
+            label3.Name = "label3";
+            label3.Size = new Size(77, 15);
+            label3.TabIndex = 94;
+            label3.Text = "NpcParam ID";
+            toolTip1.SetToolTip(label3, "NpcParam ID used by this enemy variant");
+            label3.Validated += EnemyWasEdited;
             // 
             // label11
             // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(89, 196);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(72, 15);
-            this.label11.TabIndex = 95;
-            this.label11.Text = "NpcThink ID";
-            this.toolTip1.SetToolTip(this.label11, "NpcThinkParam ID used by this enemy variant");
-            this.label11.Validated += new System.EventHandler(this.EnemyWasEdited);
+            label11.AutoSize = true;
+            label11.Location = new Point(89, 196);
+            label11.Name = "label11";
+            label11.Size = new Size(72, 15);
+            label11.TabIndex = 95;
+            label11.Text = "NpcThink ID";
+            toolTip1.SetToolTip(label11, "NpcThinkParam ID used by this enemy variant");
+            label11.Validated += EnemyWasEdited;
             // 
             // List_StatScaling
             // 
-            this.List_StatScaling.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.List_StatScaling.FormattingEnabled = true;
-            this.List_StatScaling.Location = new System.Drawing.Point(98, 263);
-            this.List_StatScaling.Name = "List_StatScaling";
-            this.List_StatScaling.Size = new System.Drawing.Size(98, 23);
-            this.List_StatScaling.TabIndex = 98;
-            this.toolTip1.SetToolTip(this.List_StatScaling, resources.GetString("List_StatScaling.ToolTip"));
-            this.List_StatScaling.SelectedIndexChanged += new System.EventHandler(this.EnemyWasEdited);
-            this.List_StatScaling.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ComboBox_KeyPress);
+            List_StatScaling.DropDownStyle = ComboBoxStyle.DropDownList;
+            List_StatScaling.FormattingEnabled = true;
+            List_StatScaling.Location = new Point(98, 263);
+            List_StatScaling.Name = "List_StatScaling";
+            List_StatScaling.Size = new Size(98, 23);
+            List_StatScaling.TabIndex = 98;
+            toolTip1.SetToolTip(List_StatScaling, resources.GetString("List_StatScaling.ToolTip"));
+            List_StatScaling.SelectedIndexChanged += EnemyWasEdited;
+            List_StatScaling.KeyDown += ComboBox_KeyPress;
             // 
             // label13
             // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label13.Location = new System.Drawing.Point(98, 246);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(98, 15);
-            this.label13.TabIndex = 99;
-            this.label13.Text = "Stat Scaling Level";
-            this.toolTip1.SetToolTip(this.label13, resources.GetString("label13.ToolTip"));
-            this.label13.Validated += new System.EventHandler(this.EnemyWasEdited);
+            label13.AutoSize = true;
+            label13.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            label13.Location = new Point(98, 246);
+            label13.Name = "label13";
+            label13.Size = new Size(98, 15);
+            label13.TabIndex = 99;
+            label13.Text = "Stat Scaling Level";
+            toolTip1.SetToolTip(label13, resources.GetString("label13.ToolTip"));
+            label13.Validated += EnemyWasEdited;
             // 
             // List_EnemyVariant
             // 
-            this.List_EnemyVariant.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.List_EnemyVariant.DropDownWidth = 200;
-            this.List_EnemyVariant.FormattingEnabled = true;
-            this.List_EnemyVariant.Location = new System.Drawing.Point(6, 159);
-            this.List_EnemyVariant.Name = "List_EnemyVariant";
-            this.List_EnemyVariant.Size = new System.Drawing.Size(200, 23);
-            this.List_EnemyVariant.TabIndex = 104;
-            this.toolTip1.SetToolTip(this.List_EnemyVariant, "Specific enemy variant this summon will be, generated from EnemyInfoResource.txt");
-            this.List_EnemyVariant.SelectedIndexChanged += new System.EventHandler(this.List_EnemyVariant_SelectedIndexChanged);
-            this.List_EnemyVariant.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ComboBox_KeyPress);
+            List_EnemyVariant.DropDownStyle = ComboBoxStyle.DropDownList;
+            List_EnemyVariant.DropDownWidth = 200;
+            List_EnemyVariant.FormattingEnabled = true;
+            List_EnemyVariant.Location = new Point(6, 159);
+            List_EnemyVariant.Name = "List_EnemyVariant";
+            List_EnemyVariant.Size = new Size(200, 23);
+            List_EnemyVariant.TabIndex = 104;
+            toolTip1.SetToolTip(List_EnemyVariant, "Specific enemy variant this summon will be, generated from EnemyInfoResource.txt");
+            List_EnemyVariant.SelectedIndexChanged += List_EnemyVariant_SelectedIndexChanged;
+            List_EnemyVariant.KeyDown += ComboBox_KeyPress;
             // 
             // label16
             // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label16.Location = new System.Drawing.Point(11, 142);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(82, 15);
-            this.label16.TabIndex = 105;
-            this.label16.Text = "Enemy Variant";
-            this.toolTip1.SetToolTip(this.label16, "Specific enemy variant this summon will be, generated from EnemyInfoResource.txt");
-            this.label16.Validated += new System.EventHandler(this.EnemyWasEdited);
+            label16.AutoSize = true;
+            label16.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            label16.Location = new Point(11, 142);
+            label16.Name = "label16";
+            label16.Size = new Size(82, 15);
+            label16.TabIndex = 105;
+            label16.Text = "Enemy Variant";
+            toolTip1.SetToolTip(label16, "Specific enemy variant this summon will be, generated from EnemyInfoResource.txt");
+            label16.Validated += EnemyWasEdited;
             // 
             // List_TeamType
             // 
-            this.List_TeamType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.List_TeamType.FormattingEnabled = true;
-            this.List_TeamType.Location = new System.Drawing.Point(169, 41);
-            this.List_TeamType.Name = "List_TeamType";
-            this.List_TeamType.Size = new System.Drawing.Size(131, 23);
-            this.List_TeamType.TabIndex = 2;
-            this.toolTip1.SetToolTip(this.List_TeamType, "Determines who members of this team hate, can hurt, hated by, and can be hurt by " +
-        "(all mutually exclusive)");
-            this.List_TeamType.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ComboBox_KeyPress);
+            List_TeamType.DropDownStyle = ComboBoxStyle.DropDownList;
+            List_TeamType.FormattingEnabled = true;
+            List_TeamType.Location = new Point(169, 41);
+            List_TeamType.Name = "List_TeamType";
+            List_TeamType.Size = new Size(131, 23);
+            List_TeamType.TabIndex = 2;
+            toolTip1.SetToolTip(List_TeamType, "Determines who members of this team hate, can hurt, hated by, and can be hurt by (all mutually exclusive)");
+            List_TeamType.KeyDown += ComboBox_KeyPress;
             // 
             // label17
             // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(169, 23);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(62, 15);
-            this.label17.TabIndex = 106;
-            this.label17.Text = "Team Type";
-            this.toolTip1.SetToolTip(this.label17, "Determines who members of this team hate, can hurt, hated by, and can be hurt by " +
-        "(all mutually exclusive)\r\n");
+            label17.AutoSize = true;
+            label17.Location = new Point(169, 23);
+            label17.Name = "label17";
+            label17.Size = new Size(62, 15);
+            label17.TabIndex = 106;
+            label17.Text = "Team Type";
+            toolTip1.SetToolTip(label17, "Determines who members of this team hate, can hurt, hated by, and can be hurt by (all mutually exclusive)\r\n");
             // 
             // Input_TeamName
             // 
-            this.Input_TeamName.Location = new System.Drawing.Point(6, 85);
-            this.Input_TeamName.Name = "Input_TeamName";
-            this.Input_TeamName.Size = new System.Drawing.Size(157, 23);
-            this.Input_TeamName.TabIndex = 3;
-            this.toolTip1.SetToolTip(this.Input_TeamName, "Purely for in-tool organization (at the moment)");
+            Input_TeamName.Location = new Point(6, 85);
+            Input_TeamName.Name = "Input_TeamName";
+            Input_TeamName.Size = new Size(157, 23);
+            Input_TeamName.TabIndex = 3;
+            toolTip1.SetToolTip(Input_TeamName, "Purely for in-tool organization (at the moment)");
             // 
             // label20
             // 
-            this.label20.AutoSize = true;
-            this.label20.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label20.Location = new System.Drawing.Point(11, 68);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(70, 15);
-            this.label20.TabIndex = 111;
-            this.label20.Text = "Base Enemy";
-            this.toolTip1.SetToolTip(this.label20, "Base enemy type this summon will be, generated from EnemyInfoResource.txt\r\nExact " +
-        "enemy details is determined by Enemy Variant.");
-            this.label20.Validated += new System.EventHandler(this.EnemyWasEdited);
+            label20.AutoSize = true;
+            label20.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            label20.Location = new Point(11, 68);
+            label20.Name = "label20";
+            label20.Size = new Size(70, 15);
+            label20.TabIndex = 111;
+            label20.Text = "Base Enemy";
+            toolTip1.SetToolTip(label20, "Base enemy type this summon will be, generated from EnemyInfoResource.txt\r\nExact enemy details is determined by Enemy Variant.");
+            label20.Validated += EnemyWasEdited;
             // 
             // Label_SearchEnemyText
             // 
-            this.Label_SearchEnemyText.AutoSize = true;
-            this.Label_SearchEnemyText.BackColor = System.Drawing.SystemColors.Window;
-            this.Label_SearchEnemyText.CausesValidation = false;
-            this.Label_SearchEnemyText.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.Label_SearchEnemyText.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.Label_SearchEnemyText.Location = new System.Drawing.Point(10, 91);
-            this.Label_SearchEnemyText.Name = "Label_SearchEnemyText";
-            this.Label_SearchEnemyText.Size = new System.Drawing.Size(51, 15);
-            this.Label_SearchEnemyText.TabIndex = 0;
-            this.Label_SearchEnemyText.Text = "Search...";
-            this.toolTip1.SetToolTip(this.Label_SearchEnemyText, "Base enemy type this summon will be, generated from EnemyInfoResource.txt\r\nExact " +
-        "enemy details is determined by Enemy Variant.");
-            this.Label_SearchEnemyText.Click += new System.EventHandler(this.Label_SearchText_Click);
+            Label_SearchEnemyText.AutoSize = true;
+            Label_SearchEnemyText.BackColor = SystemColors.Window;
+            Label_SearchEnemyText.CausesValidation = false;
+            Label_SearchEnemyText.Cursor = Cursors.IBeam;
+            Label_SearchEnemyText.ForeColor = SystemColors.GrayText;
+            Label_SearchEnemyText.Location = new Point(10, 91);
+            Label_SearchEnemyText.Name = "Label_SearchEnemyText";
+            Label_SearchEnemyText.Size = new Size(51, 15);
+            Label_SearchEnemyText.TabIndex = 0;
+            Label_SearchEnemyText.Text = "Search...";
+            toolTip1.SetToolTip(Label_SearchEnemyText, "Base enemy type this summon will be, generated from EnemyInfoResource.txt\r\nExact enemy details is determined by Enemy Variant.");
+            Label_SearchEnemyText.Click += Label_SearchText_Click;
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(11, 24);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 15);
-            this.label2.TabIndex = 113;
-            this.label2.Text = "Team";
-            this.toolTip1.SetToolTip(this.label2, "Which team this enemy belongs to");
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            label2.Location = new Point(11, 24);
+            label2.Name = "label2";
+            label2.Size = new Size(35, 15);
+            label2.TabIndex = 113;
+            label2.Text = "Team";
+            toolTip1.SetToolTip(label2, "Which team this enemy belongs to");
             // 
             // List_EnemyChosenTeam
             // 
-            this.List_EnemyChosenTeam.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.List_EnemyChosenTeam.DropDownWidth = 200;
-            this.List_EnemyChosenTeam.FormattingEnabled = true;
-            this.List_EnemyChosenTeam.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.List_EnemyChosenTeam.Location = new System.Drawing.Point(6, 42);
-            this.List_EnemyChosenTeam.Name = "List_EnemyChosenTeam";
-            this.List_EnemyChosenTeam.Size = new System.Drawing.Size(157, 23);
-            this.List_EnemyChosenTeam.TabIndex = 20;
-            this.toolTip1.SetToolTip(this.List_EnemyChosenTeam, "Which team this enemy belongs to");
-            this.List_EnemyChosenTeam.SelectedIndexChanged += new System.EventHandler(this.List_EnemyChosenTeam_SelectedIndexChanged);
-            this.List_EnemyChosenTeam.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ComboBox_KeyPress);
+            List_EnemyChosenTeam.DropDownStyle = ComboBoxStyle.DropDownList;
+            List_EnemyChosenTeam.DropDownWidth = 200;
+            List_EnemyChosenTeam.FormattingEnabled = true;
+            List_EnemyChosenTeam.ImeMode = ImeMode.NoControl;
+            List_EnemyChosenTeam.Location = new Point(6, 42);
+            List_EnemyChosenTeam.Name = "List_EnemyChosenTeam";
+            List_EnemyChosenTeam.Size = new Size(157, 23);
+            List_EnemyChosenTeam.TabIndex = 20;
+            toolTip1.SetToolTip(List_EnemyChosenTeam, "Which team this enemy belongs to");
+            List_EnemyChosenTeam.SelectedIndexChanged += List_EnemyChosenTeam_SelectedIndexChanged;
+            List_EnemyChosenTeam.KeyDown += ComboBox_KeyPress;
             // 
             // Button_PickRandomEnemy
             // 
-            this.Button_PickRandomEnemy.Location = new System.Drawing.Point(209, 159);
-            this.Button_PickRandomEnemy.Name = "Button_PickRandomEnemy";
-            this.Button_PickRandomEnemy.Size = new System.Drawing.Size(22, 24);
-            this.Button_PickRandomEnemy.TabIndex = 111;
-            this.Button_PickRandomEnemy.Text = "?";
-            this.toolTip1.SetToolTip(this.Button_PickRandomEnemy, "Picks a random Enemy Variant");
-            this.Button_PickRandomEnemy.UseVisualStyleBackColor = true;
-            this.Button_PickRandomEnemy.Click += new System.EventHandler(this.Button_PickRandomEnemy_Click);
+            Button_PickRandomEnemy.Location = new Point(209, 159);
+            Button_PickRandomEnemy.Name = "Button_PickRandomEnemy";
+            Button_PickRandomEnemy.Size = new Size(22, 24);
+            Button_PickRandomEnemy.TabIndex = 111;
+            Button_PickRandomEnemy.Text = "?";
+            toolTip1.SetToolTip(Button_PickRandomEnemy, "Picks a random Enemy Variant");
+            Button_PickRandomEnemy.UseVisualStyleBackColor = true;
+            Button_PickRandomEnemy.Click += Button_PickRandomEnemy_Click;
             // 
             // List_TeamSummonPreset
             // 
-            this.List_TeamSummonPreset.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.List_TeamSummonPreset.DropDownWidth = 100;
-            this.List_TeamSummonPreset.FormattingEnabled = true;
-            this.List_TeamSummonPreset.Location = new System.Drawing.Point(6, 27);
-            this.List_TeamSummonPreset.Name = "List_TeamSummonPreset";
-            this.List_TeamSummonPreset.Size = new System.Drawing.Size(131, 23);
-            this.List_TeamSummonPreset.TabIndex = 8;
-            this.toolTip1.SetToolTip(this.List_TeamSummonPreset, "Summon positon presets\r\nNon-manual automatically offset and increment position fo" +
-        "r each additional enemy");
-            this.List_TeamSummonPreset.SelectedIndexChanged += new System.EventHandler(this.List_TeamSummonPreset_SelectedIndexChanged);
+            List_TeamSummonPreset.DropDownStyle = ComboBoxStyle.DropDownList;
+            List_TeamSummonPreset.DropDownWidth = 100;
+            List_TeamSummonPreset.FormattingEnabled = true;
+            List_TeamSummonPreset.Location = new Point(6, 27);
+            List_TeamSummonPreset.Name = "List_TeamSummonPreset";
+            List_TeamSummonPreset.Size = new Size(131, 23);
+            List_TeamSummonPreset.TabIndex = 8;
+            toolTip1.SetToolTip(List_TeamSummonPreset, "Summon positon presets\r\nNon-manual automatically offset and increment position for each additional enemy");
+            List_TeamSummonPreset.SelectedIndexChanged += List_TeamSummonPreset_SelectedIndexChanged;
             // 
             // label21
             // 
-            this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(4, 58);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(57, 15);
-            this.label21.TabIndex = 116;
-            this.label21.Text = "Width (X)";
-            this.toolTip1.SetToolTip(this.label21, "Left/Right position of summon location in meters");
+            label21.AutoSize = true;
+            label21.Location = new Point(4, 58);
+            label21.Name = "label21";
+            label21.Size = new Size(57, 15);
+            label21.TabIndex = 116;
+            label21.Text = "Width (X)";
+            toolTip1.SetToolTip(label21, "Left/Right position of summon location in meters");
             // 
             // label22
             // 
-            this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(4, 87);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(57, 15);
-            this.label22.TabIndex = 117;
-            this.label22.Text = "Depth (Z)";
-            this.toolTip1.SetToolTip(this.label22, "Depth of summon location in meters");
+            label22.AutoSize = true;
+            label22.Location = new Point(4, 87);
+            label22.Name = "label22";
+            label22.Size = new Size(57, 15);
+            label22.TabIndex = 117;
+            label22.Text = "Depth (Z)";
+            toolTip1.SetToolTip(label22, "Depth of summon location in meters");
             // 
             // label23
             // 
-            this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(23, 116);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(38, 15);
-            this.label23.TabIndex = 119;
-            this.label23.Text = "Angle";
-            this.toolTip1.SetToolTip(this.label23, "Facing angle of the spirit when summoned");
+            label23.AutoSize = true;
+            label23.Location = new Point(23, 116);
+            label23.Name = "label23";
+            label23.Size = new Size(38, 15);
+            label23.TabIndex = 119;
+            label23.Text = "Angle";
+            toolTip1.SetToolTip(label23, "Facing angle of the spirit when summoned");
             // 
             // label10
             // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label10.Location = new System.Drawing.Point(298, 91);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(110, 15);
-            this.label10.TabIndex = 114;
-            this.label10.Text = "Team Damage Mult";
-            this.toolTip1.SetToolTip(this.label10, "Damage Multiplier applied to members of team");
+            label10.AutoSize = true;
+            label10.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            label10.Location = new Point(298, 91);
+            label10.Name = "label10";
+            label10.Size = new Size(110, 15);
+            label10.TabIndex = 114;
+            label10.Text = "Team Damage Mult";
+            toolTip1.SetToolTip(label10, "Damage Multiplier applied to members of team");
             // 
             // Input_TeamDamageMult
             // 
-            this.Input_TeamDamageMult.DecimalPlaces = 2;
-            this.Input_TeamDamageMult.Location = new System.Drawing.Point(312, 109);
-            this.Input_TeamDamageMult.Maximum = new decimal(new int[] {
-            999,
-            0,
-            0,
-            0});
-            this.Input_TeamDamageMult.Name = "Input_TeamDamageMult";
-            this.Input_TeamDamageMult.Size = new System.Drawing.Size(61, 23);
-            this.Input_TeamDamageMult.TabIndex = 7;
-            this.toolTip1.SetToolTip(this.Input_TeamDamageMult, "Damage Multiplier applied to members of team");
-            this.Input_TeamDamageMult.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
+            Input_TeamDamageMult.DecimalPlaces = 2;
+            Input_TeamDamageMult.Location = new Point(312, 109);
+            Input_TeamDamageMult.Maximum = new decimal(new int[] { 999, 0, 0, 0 });
+            Input_TeamDamageMult.Name = "Input_TeamDamageMult";
+            Input_TeamDamageMult.Size = new Size(61, 23);
+            Input_TeamDamageMult.TabIndex = 7;
+            toolTip1.SetToolTip(Input_TeamDamageMult, "Damage Multiplier applied to members of team");
+            Input_TeamDamageMult.Value = new decimal(new int[] { 1, 0, 0, 0 });
             // 
             // label12
             // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label12.Location = new System.Drawing.Point(305, 47);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(82, 15);
-            this.label12.TabIndex = 112;
-            this.label12.Text = "Team HP Mult";
-            this.toolTip1.SetToolTip(this.label12, "HP Multiplier applied to members of team");
+            label12.AutoSize = true;
+            label12.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            label12.Location = new Point(305, 47);
+            label12.Name = "label12";
+            label12.Size = new Size(82, 15);
+            label12.TabIndex = 112;
+            label12.Text = "Team HP Mult";
+            toolTip1.SetToolTip(label12, "HP Multiplier applied to members of team");
             // 
             // Input_TeamHpMult
             // 
-            this.Input_TeamHpMult.DecimalPlaces = 2;
-            this.Input_TeamHpMult.Location = new System.Drawing.Point(312, 65);
-            this.Input_TeamHpMult.Maximum = new decimal(new int[] {
-            999,
-            0,
-            0,
-            0});
-            this.Input_TeamHpMult.Name = "Input_TeamHpMult";
-            this.Input_TeamHpMult.Size = new System.Drawing.Size(61, 23);
-            this.Input_TeamHpMult.TabIndex = 6;
-            this.toolTip1.SetToolTip(this.Input_TeamHpMult, "HP Multiplier applied to members of team");
-            this.Input_TeamHpMult.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
+            Input_TeamHpMult.DecimalPlaces = 2;
+            Input_TeamHpMult.Location = new Point(312, 65);
+            Input_TeamHpMult.Maximum = new decimal(new int[] { 999, 0, 0, 0 });
+            Input_TeamHpMult.Name = "Input_TeamHpMult";
+            Input_TeamHpMult.Size = new Size(61, 23);
+            Input_TeamHpMult.TabIndex = 6;
+            toolTip1.SetToolTip(Input_TeamHpMult, "HP Multiplier applied to members of team");
+            Input_TeamHpMult.Value = new decimal(new int[] { 1, 0, 0, 0 });
             // 
             // Button_AddRandomSpirit
             // 
-            this.Button_AddRandomSpirit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.Button_AddRandomSpirit.Location = new System.Drawing.Point(449, 332);
-            this.Button_AddRandomSpirit.Name = "Button_AddRandomSpirit";
-            this.Button_AddRandomSpirit.Size = new System.Drawing.Size(127, 23);
-            this.Button_AddRandomSpirit.TabIndex = 112;
-            this.Button_AddRandomSpirit.Text = "Add Random Spirit";
-            this.toolTip1.SetToolTip(this.Button_AddRandomSpirit, "Duplicates selected summon and randomizes Enemy Variant");
-            this.Button_AddRandomSpirit.UseVisualStyleBackColor = true;
-            this.Button_AddRandomSpirit.Click += new System.EventHandler(this.Button_AddRandomEnemy_Click);
+            Button_AddRandomSpirit.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            Button_AddRandomSpirit.Location = new Point(449, 332);
+            Button_AddRandomSpirit.Name = "Button_AddRandomSpirit";
+            Button_AddRandomSpirit.Size = new Size(127, 23);
+            Button_AddRandomSpirit.TabIndex = 112;
+            Button_AddRandomSpirit.Text = "Add Random Spirit";
+            toolTip1.SetToolTip(Button_AddRandomSpirit, "Duplicates selected summon and randomizes Enemy Variant");
+            Button_AddRandomSpirit.UseVisualStyleBackColor = true;
+            Button_AddRandomSpirit.Click += Button_AddRandomEnemy_Click;
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(7, 35);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(57, 15);
-            this.label4.TabIndex = 74;
-            this.label4.Text = "Spirit Ash";
-            this.toolTip1.SetToolTip(this.label4, "Which spirit ash item will be overwritten with new summon data");
+            label4.AutoSize = true;
+            label4.Location = new Point(7, 35);
+            label4.Name = "label4";
+            label4.Size = new Size(57, 15);
+            label4.TabIndex = 74;
+            label4.Text = "Spirit Ash";
+            toolTip1.SetToolTip(label4, "Which spirit ash item will be overwritten with new summon data");
             // 
             // List_SpiritAsh
             // 
-            this.List_SpiritAsh.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.List_SpiritAsh.FormattingEnabled = true;
-            this.List_SpiritAsh.Location = new System.Drawing.Point(6, 82);
-            this.List_SpiritAsh.Name = "List_SpiritAsh";
-            this.List_SpiritAsh.Size = new System.Drawing.Size(166, 23);
-            this.List_SpiritAsh.TabIndex = 72;
-            this.toolTip1.SetToolTip(this.List_SpiritAsh, "Which spirit ash item will be overwritten with new summon data");
-            this.List_SpiritAsh.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ComboBox_KeyPress);
+            List_SpiritAsh.DropDownStyle = ComboBoxStyle.DropDownList;
+            List_SpiritAsh.FormattingEnabled = true;
+            List_SpiritAsh.Location = new Point(6, 82);
+            List_SpiritAsh.Name = "List_SpiritAsh";
+            List_SpiritAsh.Size = new Size(166, 23);
+            List_SpiritAsh.TabIndex = 72;
+            toolTip1.SetToolTip(List_SpiritAsh, "Which spirit ash item will be overwritten with new summon data");
+            List_SpiritAsh.KeyDown += ComboBox_KeyPress;
             // 
             // Option_SpiritAshNoRequirements
             // 
-            this.Option_SpiritAshNoRequirements.AutoSize = true;
-            this.Option_SpiritAshNoRequirements.Checked = true;
-            this.Option_SpiritAshNoRequirements.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.Option_SpiritAshNoRequirements.Location = new System.Drawing.Point(6, 111);
-            this.Option_SpiritAshNoRequirements.Name = "Option_SpiritAshNoRequirements";
-            this.Option_SpiritAshNoRequirements.Size = new System.Drawing.Size(155, 19);
-            this.Option_SpiritAshNoRequirements.TabIndex = 75;
-            this.Option_SpiritAshNoRequirements.Text = "No HP/FP Consumption";
-            this.toolTip1.SetToolTip(this.Option_SpiritAshNoRequirements, "Whether the Spirit ash will consume zero HP and FP");
-            this.Option_SpiritAshNoRequirements.UseVisualStyleBackColor = true;
+            Option_SpiritAshNoRequirements.AutoSize = true;
+            Option_SpiritAshNoRequirements.Checked = true;
+            Option_SpiritAshNoRequirements.CheckState = CheckState.Checked;
+            Option_SpiritAshNoRequirements.Location = new Point(6, 111);
+            Option_SpiritAshNoRequirements.Name = "Option_SpiritAshNoRequirements";
+            Option_SpiritAshNoRequirements.Size = new Size(155, 19);
+            Option_SpiritAshNoRequirements.TabIndex = 75;
+            Option_SpiritAshNoRequirements.Text = "No HP/FP Consumption";
+            toolTip1.SetToolTip(Option_SpiritAshNoRequirements, "Whether the Spirit ash will consume zero HP and FP");
+            Option_SpiritAshNoRequirements.UseVisualStyleBackColor = true;
             // 
             // Option_Randomize_PhantomColor
             // 
-            this.Option_Randomize_PhantomColor.Location = new System.Drawing.Point(137, 41);
-            this.Option_Randomize_PhantomColor.Name = "Option_Randomize_PhantomColor";
-            this.Option_Randomize_PhantomColor.Size = new System.Drawing.Size(22, 23);
-            this.Option_Randomize_PhantomColor.TabIndex = 117;
-            this.Option_Randomize_PhantomColor.Text = "?";
-            this.toolTip1.SetToolTip(this.Option_Randomize_PhantomColor, "Picks a random phantom color");
-            this.Option_Randomize_PhantomColor.UseVisualStyleBackColor = true;
-            this.Option_Randomize_PhantomColor.Click += new System.EventHandler(this.Option_Randomize_PhantomColor_Click);
+            Option_Randomize_PhantomColor.Location = new Point(137, 41);
+            Option_Randomize_PhantomColor.Name = "Option_Randomize_PhantomColor";
+            Option_Randomize_PhantomColor.Size = new Size(22, 23);
+            Option_Randomize_PhantomColor.TabIndex = 117;
+            Option_Randomize_PhantomColor.Text = "?";
+            toolTip1.SetToolTip(Option_Randomize_PhantomColor, "Picks a random phantom color");
+            Option_Randomize_PhantomColor.UseVisualStyleBackColor = true;
+            Option_Randomize_PhantomColor.Click += Option_Randomize_PhantomColor_Click;
             // 
             // Button_RandomTeamName
             // 
-            this.Button_RandomTeamName.Location = new System.Drawing.Point(165, 85);
-            this.Button_RandomTeamName.Name = "Button_RandomTeamName";
-            this.Button_RandomTeamName.Size = new System.Drawing.Size(22, 23);
-            this.Button_RandomTeamName.TabIndex = 4;
-            this.Button_RandomTeamName.Text = "?";
-            this.toolTip1.SetToolTip(this.Button_RandomTeamName, "Picks a random team name");
-            this.Button_RandomTeamName.UseVisualStyleBackColor = true;
-            this.Button_RandomTeamName.Click += new System.EventHandler(this.Button_RandomizeTeam_Click);
+            Button_RandomTeamName.Location = new Point(165, 85);
+            Button_RandomTeamName.Name = "Button_RandomTeamName";
+            Button_RandomTeamName.Size = new Size(22, 23);
+            Button_RandomTeamName.TabIndex = 4;
+            Button_RandomTeamName.Text = "?";
+            toolTip1.SetToolTip(Button_RandomTeamName, "Picks a random team name");
+            Button_RandomTeamName.UseVisualStyleBackColor = true;
+            Button_RandomTeamName.Click += Button_RandomizeTeam_Click;
             // 
             // Search_SpiritAsh
             // 
-            this.Search_SpiritAsh.Location = new System.Drawing.Point(6, 53);
-            this.Search_SpiritAsh.Name = "Search_SpiritAsh";
-            this.Search_SpiritAsh.Size = new System.Drawing.Size(166, 23);
-            this.Search_SpiritAsh.TabIndex = 77;
-            this.toolTip1.SetToolTip(this.Search_SpiritAsh, "Base enemy type this summon will be, generated from EnemyInfoResource.txt\r\nExact " +
-        "enemy details is determined by Enemy Variant.");
-            this.Search_SpiritAsh.Click += new System.EventHandler(this.Search_SpiritAsh_Click);
-            this.Search_SpiritAsh.TextChanged += new System.EventHandler(this.Search_SpiritAsh_TextChanged);
+            Search_SpiritAsh.Location = new Point(6, 53);
+            Search_SpiritAsh.Name = "Search_SpiritAsh";
+            Search_SpiritAsh.Size = new Size(166, 23);
+            Search_SpiritAsh.TabIndex = 77;
+            toolTip1.SetToolTip(Search_SpiritAsh, "Base enemy type this summon will be, generated from EnemyInfoResource.txt\r\nExact enemy details is determined by Enemy Variant.");
+            Search_SpiritAsh.Click += Search_SpiritAsh_Click;
+            Search_SpiritAsh.TextChanged += Search_SpiritAsh_TextChanged;
             // 
             // Label_SearchSpiritAshText
             // 
-            this.Label_SearchSpiritAshText.AutoSize = true;
-            this.Label_SearchSpiritAshText.BackColor = System.Drawing.SystemColors.Window;
-            this.Label_SearchSpiritAshText.CausesValidation = false;
-            this.Label_SearchSpiritAshText.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.Label_SearchSpiritAshText.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.Label_SearchSpiritAshText.Location = new System.Drawing.Point(12, 57);
-            this.Label_SearchSpiritAshText.Name = "Label_SearchSpiritAshText";
-            this.Label_SearchSpiritAshText.Size = new System.Drawing.Size(51, 15);
-            this.Label_SearchSpiritAshText.TabIndex = 78;
-            this.Label_SearchSpiritAshText.Text = "Search...";
-            this.toolTip1.SetToolTip(this.Label_SearchSpiritAshText, "Base enemy type this summon will be, generated from EnemyInfoResource.txt\r\nExact " +
-        "enemy details is determined by Enemy Variant.");
-            this.Label_SearchSpiritAshText.Click += new System.EventHandler(this.Label_SearchSpiritAshText_Click);
+            Label_SearchSpiritAshText.AutoSize = true;
+            Label_SearchSpiritAshText.BackColor = SystemColors.Window;
+            Label_SearchSpiritAshText.CausesValidation = false;
+            Label_SearchSpiritAshText.Cursor = Cursors.IBeam;
+            Label_SearchSpiritAshText.ForeColor = SystemColors.GrayText;
+            Label_SearchSpiritAshText.Location = new Point(12, 57);
+            Label_SearchSpiritAshText.Name = "Label_SearchSpiritAshText";
+            Label_SearchSpiritAshText.Size = new Size(51, 15);
+            Label_SearchSpiritAshText.TabIndex = 78;
+            Label_SearchSpiritAshText.Text = "Search...";
+            toolTip1.SetToolTip(Label_SearchSpiritAshText, "Base enemy type this summon will be, generated from EnemyInfoResource.txt\r\nExact enemy details is determined by Enemy Variant.");
+            Label_SearchSpiritAshText.Click += Label_SearchSpiritAshText_Click;
             // 
             // Input_CharaInitID
             // 
-            this.Input_CharaInitID.Enabled = false;
-            this.Input_CharaInitID.Location = new System.Drawing.Point(172, 214);
-            this.Input_CharaInitID.Maximum = new decimal(new int[] {
-            999999999,
-            0,
-            0,
-            0});
-            this.Input_CharaInitID.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            -2147483648});
-            this.Input_CharaInitID.Name = "Input_CharaInitID";
-            this.Input_CharaInitID.Size = new System.Drawing.Size(72, 23);
-            this.Input_CharaInitID.TabIndex = 114;
-            this.toolTip1.SetToolTip(this.Input_CharaInitID, "NpcParam ID used by this enemy variant");
-            this.Input_CharaInitID.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            -2147483648});
-            this.Input_CharaInitID.ValueChanged += new System.EventHandler(this.EnemyWasEdited);
-            this.Input_CharaInitID.Click += new System.EventHandler(this.EnemyWasEdited);
+            Input_CharaInitID.Enabled = false;
+            Input_CharaInitID.Location = new Point(172, 214);
+            Input_CharaInitID.Maximum = new decimal(new int[] { 999999999, 0, 0, 0 });
+            Input_CharaInitID.Minimum = new decimal(new int[] { 1, 0, 0, int.MinValue });
+            Input_CharaInitID.Name = "Input_CharaInitID";
+            Input_CharaInitID.Size = new Size(72, 23);
+            Input_CharaInitID.TabIndex = 114;
+            toolTip1.SetToolTip(Input_CharaInitID, "NpcParam ID used by this enemy variant");
+            Input_CharaInitID.Value = new decimal(new int[] { 1, 0, 0, int.MinValue });
+            Input_CharaInitID.ValueChanged += EnemyWasEdited;
+            Input_CharaInitID.Click += EnemyWasEdited;
             // 
             // label9
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(169, 196);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(72, 15);
-            this.label9.TabIndex = 115;
-            this.label9.Text = "Character ID";
-            this.toolTip1.SetToolTip(this.label9, "NpcParam ID used by this enemy variant");
+            label9.AutoSize = true;
+            label9.Location = new Point(169, 196);
+            label9.Name = "label9";
+            label9.Size = new Size(72, 15);
+            label9.TabIndex = 115;
+            label9.Text = "Character ID";
+            toolTip1.SetToolTip(label9, "NpcParam ID used by this enemy variant");
             // 
             // Option_TeamFollowPlayer
             // 
-            this.Option_TeamFollowPlayer.AutoSize = true;
-            this.Option_TeamFollowPlayer.Location = new System.Drawing.Point(193, 87);
-            this.Option_TeamFollowPlayer.Name = "Option_TeamFollowPlayer";
-            this.Option_TeamFollowPlayer.Size = new System.Drawing.Size(96, 19);
-            this.Option_TeamFollowPlayer.TabIndex = 118;
-            this.Option_TeamFollowPlayer.Text = "Follow Player";
-            this.toolTip1.SetToolTip(this.Option_TeamFollowPlayer, "If checked, members of this team will follow/teleport to the player when far away" +
-        ".");
-            this.Option_TeamFollowPlayer.UseVisualStyleBackColor = true;
+            Option_TeamFollowPlayer.AutoSize = true;
+            Option_TeamFollowPlayer.Location = new Point(193, 87);
+            Option_TeamFollowPlayer.Name = "Option_TeamFollowPlayer";
+            Option_TeamFollowPlayer.Size = new Size(96, 19);
+            Option_TeamFollowPlayer.TabIndex = 118;
+            Option_TeamFollowPlayer.Text = "Follow Player";
+            toolTip1.SetToolTip(Option_TeamFollowPlayer, "If checked, members of this team will follow/teleport to the player when far away.");
+            Option_TeamFollowPlayer.UseVisualStyleBackColor = true;
             // 
             // Option_Spirit_SearchesLongRange
             // 
-            this.Option_Spirit_SearchesLongRange.AutoSize = true;
-            this.Option_Spirit_SearchesLongRange.Checked = true;
-            this.Option_Spirit_SearchesLongRange.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.Option_Spirit_SearchesLongRange.Location = new System.Drawing.Point(6, 338);
-            this.Option_Spirit_SearchesLongRange.Name = "Option_Spirit_SearchesLongRange";
-            this.Option_Spirit_SearchesLongRange.Size = new System.Drawing.Size(139, 19);
-            this.Option_Spirit_SearchesLongRange.TabIndex = 116;
-            this.Option_Spirit_SearchesLongRange.Text = "Long-Distance Aggro";
-            this.toolTip1.SetToolTip(this.Option_Spirit_SearchesLongRange, resources.GetString("Option_Spirit_SearchesLongRange.ToolTip"));
-            this.Option_Spirit_SearchesLongRange.UseVisualStyleBackColor = true;
-            this.Option_Spirit_SearchesLongRange.CheckedChanged += new System.EventHandler(this.EnemyWasEdited);
-            this.Option_Spirit_SearchesLongRange.Click += new System.EventHandler(this.EnemyWasEdited);
+            Option_Spirit_SearchesLongRange.AutoSize = true;
+            Option_Spirit_SearchesLongRange.Checked = true;
+            Option_Spirit_SearchesLongRange.CheckState = CheckState.Checked;
+            Option_Spirit_SearchesLongRange.Location = new Point(6, 338);
+            Option_Spirit_SearchesLongRange.Name = "Option_Spirit_SearchesLongRange";
+            Option_Spirit_SearchesLongRange.Size = new Size(139, 19);
+            Option_Spirit_SearchesLongRange.TabIndex = 116;
+            Option_Spirit_SearchesLongRange.Text = "Long-Distance Aggro";
+            toolTip1.SetToolTip(Option_Spirit_SearchesLongRange, resources.GetString("Option_Spirit_SearchesLongRange.ToolTip"));
+            Option_Spirit_SearchesLongRange.UseVisualStyleBackColor = true;
+            Option_Spirit_SearchesLongRange.CheckedChanged += EnemyWasEdited;
+            Option_Spirit_SearchesLongRange.Click += EnemyWasEdited;
             // 
             // t_console
             // 
-            this.t_console.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.t_console.Location = new System.Drawing.Point(595, 550);
-            this.t_console.Name = "t_console";
-            this.t_console.ReadOnly = true;
-            this.t_console.Size = new System.Drawing.Size(376, 23);
-            this.t_console.TabIndex = 24;
-            this.t_console.TabStop = false;
-            this.t_console.Text = "Awaiting regulation.bin";
-            this.t_console.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            t_console.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            t_console.Location = new Point(595, 550);
+            t_console.Name = "t_console";
+            t_console.ReadOnly = true;
+            t_console.Size = new Size(376, 23);
+            t_console.TabIndex = 24;
+            t_console.TabStop = false;
+            t_console.Text = "Awaiting regulation.bin";
+            t_console.TextAlign = HorizontalAlignment.Center;
             // 
             // menuStrip1
             // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.Menu_File,
-            this.Menu_Edit,
-            this.Menu_Settings,
-            this.Menu_Help});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1176, 24);
-            this.menuStrip1.TabIndex = 51;
-            this.menuStrip1.Text = "menuStrip1";
+            menuStrip1.Items.AddRange(new ToolStripItem[] { Menu_File, Menu_Edit, Menu_Settings, Menu_Help });
+            menuStrip1.Location = new Point(0, 0);
+            menuStrip1.Name = "menuStrip1";
+            menuStrip1.Size = new Size(1176, 24);
+            menuStrip1.TabIndex = 51;
+            menuStrip1.Text = "menuStrip1";
             // 
             // Menu_File
             // 
-            this.Menu_File.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.loadRegulationbinToolStripMenuItem,
-            this.b_restoreRegulation,
-            this.saveLoadPresetToolStripMenuItem,
-            this.Button_Execute});
-            this.Menu_File.Name = "Menu_File";
-            this.Menu_File.Size = new System.Drawing.Size(37, 20);
-            this.Menu_File.Text = "File";
+            Menu_File.DropDownItems.AddRange(new ToolStripItem[] { loadRegulationbinToolStripMenuItem, b_restoreRegulation, saveLoadPresetToolStripMenuItem, Button_Execute });
+            Menu_File.Name = "Menu_File";
+            Menu_File.Size = new Size(37, 20);
+            Menu_File.Text = "File";
             // 
             // loadRegulationbinToolStripMenuItem
             // 
-            this.loadRegulationbinToolStripMenuItem.Name = "loadRegulationbinToolStripMenuItem";
-            this.loadRegulationbinToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
-            this.loadRegulationbinToolStripMenuItem.Text = "Load regulation.bin";
-            this.loadRegulationbinToolStripMenuItem.Click += new System.EventHandler(this.b_browse_Click);
+            loadRegulationbinToolStripMenuItem.Name = "loadRegulationbinToolStripMenuItem";
+            loadRegulationbinToolStripMenuItem.Size = new Size(184, 22);
+            loadRegulationbinToolStripMenuItem.Text = "Load regulation.bin";
+            loadRegulationbinToolStripMenuItem.Click += b_browse_Click;
             // 
             // b_restoreRegulation
             // 
-            this.b_restoreRegulation.Name = "b_restoreRegulation";
-            this.b_restoreRegulation.Size = new System.Drawing.Size(184, 22);
-            this.b_restoreRegulation.Text = "Revert regulation.bin";
-            this.b_restoreRegulation.Click += new System.EventHandler(this.b_restoreRegulation_Click);
+            b_restoreRegulation.Name = "b_restoreRegulation";
+            b_restoreRegulation.Size = new Size(184, 22);
+            b_restoreRegulation.Text = "Revert regulation.bin";
+            b_restoreRegulation.Click += b_restoreRegulation_Click;
             // 
             // saveLoadPresetToolStripMenuItem
             // 
-            this.saveLoadPresetToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.Button_LoadSummonBackup,
-            this.Button_SaveSummonBackup});
-            this.saveLoadPresetToolStripMenuItem.Name = "saveLoadPresetToolStripMenuItem";
-            this.saveLoadPresetToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
-            this.saveLoadPresetToolStripMenuItem.Text = "Summon Backups";
+            saveLoadPresetToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { Button_LoadSummonBackup, Button_SaveSummonBackup });
+            saveLoadPresetToolStripMenuItem.Name = "saveLoadPresetToolStripMenuItem";
+            saveLoadPresetToolStripMenuItem.Size = new Size(184, 22);
+            saveLoadPresetToolStripMenuItem.Text = "Summon Backups";
             // 
             // Button_LoadSummonBackup
             // 
-            this.Button_LoadSummonBackup.Name = "Button_LoadSummonBackup";
-            this.Button_LoadSummonBackup.Size = new System.Drawing.Size(194, 22);
-            this.Button_LoadSummonBackup.Text = "Load Summon Backup";
-            this.Button_LoadSummonBackup.Click += new System.EventHandler(this.Button_LoadSummonBackup_Click);
+            Button_LoadSummonBackup.Name = "Button_LoadSummonBackup";
+            Button_LoadSummonBackup.Size = new Size(194, 22);
+            Button_LoadSummonBackup.Text = "Load Summon Backup";
+            Button_LoadSummonBackup.Click += Button_LoadSummonBackup_Click;
             // 
             // Button_SaveSummonBackup
             // 
-            this.Button_SaveSummonBackup.Name = "Button_SaveSummonBackup";
-            this.Button_SaveSummonBackup.Size = new System.Drawing.Size(194, 22);
-            this.Button_SaveSummonBackup.Text = "Save Summon Backup";
-            this.Button_SaveSummonBackup.Click += new System.EventHandler(this.Button_SaveSummonBackup_Click);
+            Button_SaveSummonBackup.Name = "Button_SaveSummonBackup";
+            Button_SaveSummonBackup.Size = new Size(194, 22);
+            Button_SaveSummonBackup.Text = "Save Summon Backup";
+            Button_SaveSummonBackup.Click += Button_SaveSummonBackup_Click;
             // 
             // Button_Execute
             // 
-            this.Button_Execute.Name = "Button_Execute";
-            this.Button_Execute.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.Button_Execute.Size = new System.Drawing.Size(184, 22);
-            this.Button_Execute.Text = "Save";
-            this.Button_Execute.Click += new System.EventHandler(this.Button_Execute_Click);
+            Button_Execute.Name = "Button_Execute";
+            Button_Execute.ShortcutKeys = Keys.Control | Keys.S;
+            Button_Execute.Size = new Size(184, 22);
+            Button_Execute.Text = "Save";
+            Button_Execute.Click += Button_Execute_Click;
             // 
             // Menu_Edit
             // 
-            this.Menu_Edit.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.addSpiritToolStripMenuItem,
-            this.Button_Menu_DuplicateTeam,
-            this.duplicateSpiritToolStripMenuItem,
-            this.Button_Menu_DeleteTeam,
-            this.Button_DeleteSpiritFromList,
-            this.batchChangesToolStripMenuItem});
-            this.Menu_Edit.Name = "Menu_Edit";
-            this.Menu_Edit.Size = new System.Drawing.Size(39, 20);
-            this.Menu_Edit.Text = "Edit";
+            Menu_Edit.DropDownItems.AddRange(new ToolStripItem[] { addSpiritToolStripMenuItem, Button_Menu_DuplicateTeam, duplicateSpiritToolStripMenuItem, Button_Menu_DeleteTeam, Button_DeleteSpiritFromList, batchChangesToolStripMenuItem });
+            Menu_Edit.Name = "Menu_Edit";
+            Menu_Edit.Size = new Size(39, 20);
+            Menu_Edit.Text = "Edit";
             // 
             // addSpiritToolStripMenuItem
             // 
-            this.addSpiritToolStripMenuItem.Name = "addSpiritToolStripMenuItem";
-            this.addSpiritToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.Insert;
-            this.addSpiritToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
-            this.addSpiritToolStripMenuItem.Text = "Add Random Spirit";
-            this.addSpiritToolStripMenuItem.Click += new System.EventHandler(this.Button_AddRandomEnemy_Click);
+            addSpiritToolStripMenuItem.Name = "addSpiritToolStripMenuItem";
+            addSpiritToolStripMenuItem.ShortcutKeys = Keys.Insert;
+            addSpiritToolStripMenuItem.Size = new Size(196, 22);
+            addSpiritToolStripMenuItem.Text = "Add Random Spirit";
+            addSpiritToolStripMenuItem.Click += Button_AddRandomEnemy_Click;
             // 
             // Button_Menu_DuplicateTeam
             // 
-            this.Button_Menu_DuplicateTeam.Name = "Button_Menu_DuplicateTeam";
-            this.Button_Menu_DuplicateTeam.Size = new System.Drawing.Size(196, 22);
-            this.Button_Menu_DuplicateTeam.Text = "Duplicate Team";
-            this.Button_Menu_DuplicateTeam.Click += new System.EventHandler(this.Button_DuplicateTeam_Click);
+            Button_Menu_DuplicateTeam.Name = "Button_Menu_DuplicateTeam";
+            Button_Menu_DuplicateTeam.Size = new Size(196, 22);
+            Button_Menu_DuplicateTeam.Text = "Duplicate Team";
+            Button_Menu_DuplicateTeam.Click += Button_DuplicateTeam_Click;
             // 
             // duplicateSpiritToolStripMenuItem
             // 
-            this.duplicateSpiritToolStripMenuItem.Name = "duplicateSpiritToolStripMenuItem";
-            this.duplicateSpiritToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D)));
-            this.duplicateSpiritToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
-            this.duplicateSpiritToolStripMenuItem.Text = "Duplicate Spirit";
-            this.duplicateSpiritToolStripMenuItem.Click += new System.EventHandler(this.Button_DuplicateSpirit_Click);
+            duplicateSpiritToolStripMenuItem.Name = "duplicateSpiritToolStripMenuItem";
+            duplicateSpiritToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.D;
+            duplicateSpiritToolStripMenuItem.Size = new Size(196, 22);
+            duplicateSpiritToolStripMenuItem.Text = "Duplicate Spirit";
+            duplicateSpiritToolStripMenuItem.Click += Button_DuplicateSpirit_Click;
             // 
             // Button_Menu_DeleteTeam
             // 
-            this.Button_Menu_DeleteTeam.Name = "Button_Menu_DeleteTeam";
-            this.Button_Menu_DeleteTeam.Size = new System.Drawing.Size(196, 22);
-            this.Button_Menu_DeleteTeam.Text = "Delete Team";
-            this.Button_Menu_DeleteTeam.Click += new System.EventHandler(this.Button_DeleteTeam_Click);
+            Button_Menu_DeleteTeam.Name = "Button_Menu_DeleteTeam";
+            Button_Menu_DeleteTeam.Size = new Size(196, 22);
+            Button_Menu_DeleteTeam.Text = "Delete Team";
+            Button_Menu_DeleteTeam.Click += Button_DeleteTeam_Click;
             // 
             // Button_DeleteSpiritFromList
             // 
-            this.Button_DeleteSpiritFromList.Name = "Button_DeleteSpiritFromList";
-            this.Button_DeleteSpiritFromList.ShortcutKeys = System.Windows.Forms.Keys.Delete;
-            this.Button_DeleteSpiritFromList.Size = new System.Drawing.Size(196, 22);
-            this.Button_DeleteSpiritFromList.Text = "Delete Spirit";
-            this.Button_DeleteSpiritFromList.Click += new System.EventHandler(this.Button_DeleteSpiritFromList_Click);
+            Button_DeleteSpiritFromList.Name = "Button_DeleteSpiritFromList";
+            Button_DeleteSpiritFromList.ShortcutKeys = Keys.Delete;
+            Button_DeleteSpiritFromList.Size = new Size(196, 22);
+            Button_DeleteSpiritFromList.Text = "Delete Spirit";
+            Button_DeleteSpiritFromList.Click += Button_DeleteSpiritFromList_Click;
             // 
             // batchChangesToolStripMenuItem
             // 
-            this.batchChangesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.Button_RemoveAllSpirits,
-            this.Button_ResetTool});
-            this.batchChangesToolStripMenuItem.Name = "batchChangesToolStripMenuItem";
-            this.batchChangesToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
-            this.batchChangesToolStripMenuItem.Text = "Batch Changes";
-            this.batchChangesToolStripMenuItem.Visible = false;
+            batchChangesToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { Button_RemoveAllSpirits, Button_ResetTool });
+            batchChangesToolStripMenuItem.Name = "batchChangesToolStripMenuItem";
+            batchChangesToolStripMenuItem.Size = new Size(196, 22);
+            batchChangesToolStripMenuItem.Text = "Batch Changes";
+            batchChangesToolStripMenuItem.Visible = false;
             // 
             // Button_RemoveAllSpirits
             // 
-            this.Button_RemoveAllSpirits.Name = "Button_RemoveAllSpirits";
-            this.Button_RemoveAllSpirits.Size = new System.Drawing.Size(166, 22);
-            this.Button_RemoveAllSpirits.Text = "Remove all spirits";
+            Button_RemoveAllSpirits.Name = "Button_RemoveAllSpirits";
+            Button_RemoveAllSpirits.Size = new Size(166, 22);
+            Button_RemoveAllSpirits.Text = "Remove all spirits";
             // 
             // Button_ResetTool
             // 
-            this.Button_ResetTool.Name = "Button_ResetTool";
-            this.Button_ResetTool.Size = new System.Drawing.Size(166, 22);
-            this.Button_ResetTool.Text = "Reset to default";
-            this.Button_ResetTool.Visible = false;
+            Button_ResetTool.Name = "Button_ResetTool";
+            Button_ResetTool.Size = new Size(166, 22);
+            Button_ResetTool.Text = "Reset to default";
+            Button_ResetTool.Visible = false;
             // 
             // Menu_Settings
             // 
-            this.Menu_Settings.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.Option_ReduceEnemyMapCol,
-            this.Option_EnableResummoning,
-            this.Option_MoreSummonAreas,
-            this.Option_HidePlayer,
-            this.Option_SummonsEasilyFindTargets});
-            this.Menu_Settings.Name = "Menu_Settings";
-            this.Menu_Settings.Size = new System.Drawing.Size(61, 20);
-            this.Menu_Settings.Text = "Settings";
+            Menu_Settings.DropDownItems.AddRange(new ToolStripItem[] { Option_ReduceEnemyMapCol, Option_EnableResummoning, Option_MoreSummonAreas, Option_HidePlayer, Option_SummonsEasilyFindTargets });
+            Menu_Settings.Name = "Menu_Settings";
+            Menu_Settings.Size = new Size(61, 20);
+            Menu_Settings.Text = "Settings";
             // 
             // Option_ReduceEnemyMapCol
             // 
-            this.Option_ReduceEnemyMapCol.Checked = true;
-            this.Option_ReduceEnemyMapCol.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.Option_ReduceEnemyMapCol.Name = "Option_ReduceEnemyMapCol";
-            this.Option_ReduceEnemyMapCol.Size = new System.Drawing.Size(279, 22);
-            this.Option_ReduceEnemyMapCol.Text = "Reduce Enemy Map Collision Radius";
-            this.Option_ReduceEnemyMapCol.ToolTipText = "Helps prevent big enemies from spawning inside the ground and makes them fit insi" +
-    "de of tight areas\r\n";
-            this.Option_ReduceEnemyMapCol.Click += new System.EventHandler(this.Option_ReduceEnemyMapCol_clicked);
+            Option_ReduceEnemyMapCol.Checked = true;
+            Option_ReduceEnemyMapCol.CheckState = CheckState.Checked;
+            Option_ReduceEnemyMapCol.Name = "Option_ReduceEnemyMapCol";
+            Option_ReduceEnemyMapCol.Size = new Size(279, 22);
+            Option_ReduceEnemyMapCol.Text = "Reduce Enemy Map Collision Radius";
+            Option_ReduceEnemyMapCol.ToolTipText = "Helps prevent big enemies from spawning inside the ground and makes them fit inside of tight areas\r\n";
+            Option_ReduceEnemyMapCol.Click += Option_ReduceEnemyMapCol_clicked;
             // 
             // Option_EnableResummoning
             // 
-            this.Option_EnableResummoning.Checked = true;
-            this.Option_EnableResummoning.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.Option_EnableResummoning.Name = "Option_EnableResummoning";
-            this.Option_EnableResummoning.Size = new System.Drawing.Size(279, 22);
-            this.Option_EnableResummoning.Text = "Enable Resummoning (Cannot Undo)";
-            this.Option_EnableResummoning.ToolTipText = "Allows resummoning spirit ashes repeatedly, and makes ashes not disappear when de" +
-    "feating enemies in the area.\r\nThis setting requires restoring backups to undo.\r\n" +
-    "";
-            this.Option_EnableResummoning.Click += new System.EventHandler(this.Option_EnableResummoning_Click);
+            Option_EnableResummoning.Checked = true;
+            Option_EnableResummoning.CheckState = CheckState.Checked;
+            Option_EnableResummoning.Name = "Option_EnableResummoning";
+            Option_EnableResummoning.Size = new Size(279, 22);
+            Option_EnableResummoning.Text = "Enable Resummoning (Cannot Undo)";
+            Option_EnableResummoning.ToolTipText = "Allows resummoning spirit ashes repeatedly.\r\nAlso makes summons not disappear when defeating enemies in the area.\r\nThis setting requires restoring backups to undo.\r\n";
+            Option_EnableResummoning.Click += Option_EnableResummoning_Click;
             // 
             // Option_MoreSummonAreas
             // 
-            this.Option_MoreSummonAreas.Checked = true;
-            this.Option_MoreSummonAreas.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.Option_MoreSummonAreas.Name = "Option_MoreSummonAreas";
-            this.Option_MoreSummonAreas.Size = new System.Drawing.Size(279, 22);
-            this.Option_MoreSummonAreas.Text = "Expand Summon Areas (Cannot Undo)";
-            this.Option_MoreSummonAreas.ToolTipText = "Greatly increases the number of areas you can summon spirits in.\r\nThis setting re" +
-    "quires restoring backups to undo.";
-            this.Option_MoreSummonAreas.Click += new System.EventHandler(this.Option_MoreSummonAreas_Click);
+            Option_MoreSummonAreas.Checked = true;
+            Option_MoreSummonAreas.CheckState = CheckState.Checked;
+            Option_MoreSummonAreas.Name = "Option_MoreSummonAreas";
+            Option_MoreSummonAreas.Size = new Size(279, 22);
+            Option_MoreSummonAreas.Text = "Expand Summon Areas (Cannot Undo)";
+            Option_MoreSummonAreas.ToolTipText = "Greatly increases the number of areas you can summon spirits in.\r\nThis setting requires restoring backups to undo.";
+            Option_MoreSummonAreas.Click += Option_MoreSummonAreas_Click;
             // 
             // Option_HidePlayer
             // 
-            this.Option_HidePlayer.Name = "Option_HidePlayer";
-            this.Option_HidePlayer.Size = new System.Drawing.Size(279, 22);
-            this.Option_HidePlayer.Text = "Hidden Player";
-            this.Option_HidePlayer.ToolTipText = "Makes player invisible and unable to hurt/be hurt enemies";
-            this.Option_HidePlayer.Click += new System.EventHandler(this.Option_HidePlayer_Click);
+            Option_HidePlayer.Name = "Option_HidePlayer";
+            Option_HidePlayer.Size = new Size(279, 22);
+            Option_HidePlayer.Text = "Hidden Player";
+            Option_HidePlayer.ToolTipText = "Makes player invisible and unable to hurt/be hurt enemies";
+            Option_HidePlayer.Click += Option_HidePlayer_Click;
             // 
             // Option_SummonsEasilyFindTargets
             // 
-            this.Option_SummonsEasilyFindTargets.Name = "Option_SummonsEasilyFindTargets";
-            this.Option_SummonsEasilyFindTargets.Size = new System.Drawing.Size(279, 22);
-            this.Option_SummonsEasilyFindTargets.Text = "Summons Easily Find Targets";
-            this.Option_SummonsEasilyFindTargets.ToolTipText = "Makes summons find targets easily at long distances and through walls.\r\nAlso make" +
-    "s them not forget location of targets for a long period of time.\r\n";
-            this.Option_SummonsEasilyFindTargets.Click += new System.EventHandler(this.Option_SummonsEasilyFindTargets_Click);
+            Option_SummonsEasilyFindTargets.Name = "Option_SummonsEasilyFindTargets";
+            Option_SummonsEasilyFindTargets.Size = new Size(279, 22);
+            Option_SummonsEasilyFindTargets.Text = "Summons Easily Find Targets";
+            Option_SummonsEasilyFindTargets.ToolTipText = "Makes summons find targets easily at long distances and through walls.\r\nAlso makes them not forget location of targets for a long period of time.\r\n";
+            Option_SummonsEasilyFindTargets.Click += Option_SummonsEasilyFindTargets_Click;
             // 
             // Menu_Help
             // 
-            this.Menu_Help.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.Button_Info,
-            this.Button_StatScalingLevelInfo,
-            this.fAQToolStripMenuItem});
-            this.Menu_Help.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.Menu_Help.Name = "Menu_Help";
-            this.Menu_Help.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.Menu_Help.Size = new System.Drawing.Size(44, 20);
-            this.Menu_Help.Text = "Help";
+            Menu_Help.DropDownItems.AddRange(new ToolStripItem[] { Button_Info, Button_StatScalingLevelInfo, fAQToolStripMenuItem });
+            Menu_Help.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            Menu_Help.Name = "Menu_Help";
+            Menu_Help.RightToLeft = RightToLeft.No;
+            Menu_Help.Size = new Size(44, 20);
+            Menu_Help.Text = "Help";
             // 
             // Button_Info
             // 
-            this.Button_Info.Name = "Button_Info";
-            this.Button_Info.Size = new System.Drawing.Size(170, 22);
-            this.Button_Info.Text = "How to use";
-            this.Button_Info.Click += new System.EventHandler(this.Button_Info_Click);
+            Button_Info.Name = "Button_Info";
+            Button_Info.Size = new Size(170, 22);
+            Button_Info.Text = "How to use";
+            Button_Info.Click += Button_Info_Click;
             // 
             // Button_StatScalingLevelInfo
             // 
-            this.Button_StatScalingLevelInfo.Name = "Button_StatScalingLevelInfo";
-            this.Button_StatScalingLevelInfo.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.Button_StatScalingLevelInfo.Size = new System.Drawing.Size(170, 22);
-            this.Button_StatScalingLevelInfo.Text = "Stat Scaling Levels";
-            this.Button_StatScalingLevelInfo.Click += new System.EventHandler(this.Button_StatScalingLevelInfo_Click);
+            Button_StatScalingLevelInfo.Name = "Button_StatScalingLevelInfo";
+            Button_StatScalingLevelInfo.RightToLeft = RightToLeft.No;
+            Button_StatScalingLevelInfo.Size = new Size(170, 22);
+            Button_StatScalingLevelInfo.Text = "Stat Scaling Levels";
+            Button_StatScalingLevelInfo.Click += Button_StatScalingLevelInfo_Click;
             // 
             // fAQToolStripMenuItem
             // 
-            this.fAQToolStripMenuItem.Name = "fAQToolStripMenuItem";
-            this.fAQToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
-            this.fAQToolStripMenuItem.Text = "FAQ";
-            this.fAQToolStripMenuItem.Click += new System.EventHandler(this.fAQToolStripMenuItem_Click);
+            fAQToolStripMenuItem.Name = "fAQToolStripMenuItem";
+            fAQToolStripMenuItem.Size = new Size(170, 22);
+            fAQToolStripMenuItem.Text = "FAQ";
+            fAQToolStripMenuItem.Click += fAQToolStripMenuItem_Click;
             // 
             // label5
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label5.Location = new System.Drawing.Point(219, 247);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(124, 20);
-            this.label5.TabIndex = 76;
-            this.label5.Text = "Summon Position";
-            this.label5.Validated += new System.EventHandler(this.EnemyWasEdited);
+            label5.AutoSize = true;
+            label5.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label5.Location = new Point(219, 247);
+            label5.Name = "label5";
+            label5.Size = new Size(124, 20);
+            label5.TabIndex = 76;
+            label5.Text = "Summon Position";
+            label5.Validated += EnemyWasEdited;
             // 
             // SpiritDataGrid
             // 
-            this.SpiritDataGrid.AllowUserToAddRows = false;
-            this.SpiritDataGrid.AllowUserToDeleteRows = false;
-            this.SpiritDataGrid.AllowUserToResizeRows = false;
-            this.SpiritDataGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.SpiritDataGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.SpiritDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.SpiritDataGrid.ContextMenuStrip = this.Context_DataGrid;
-            this.SpiritDataGrid.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.SpiritDataGrid.Location = new System.Drawing.Point(4, 22);
-            this.SpiritDataGrid.MultiSelect = false;
-            this.SpiritDataGrid.Name = "SpiritDataGrid";
-            this.SpiritDataGrid.ReadOnly = true;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.SpiritDataGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.SpiritDataGrid.RowHeadersVisible = false;
-            this.SpiritDataGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
-            this.SpiritDataGrid.RowTemplate.Height = 25;
-            this.SpiritDataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.SpiritDataGrid.ShowCellToolTips = false;
-            this.SpiritDataGrid.Size = new System.Drawing.Size(572, 304);
-            this.SpiritDataGrid.TabIndex = 90;
-            this.SpiritDataGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.SpiritDataGrid_CellClick);
-            this.SpiritDataGrid.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.SpiritDataGrid_CellMouseDown);
+            SpiritDataGrid.AllowUserToAddRows = false;
+            SpiritDataGrid.AllowUserToDeleteRows = false;
+            SpiritDataGrid.AllowUserToResizeRows = false;
+            SpiritDataGrid.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.Control;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Control;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            SpiritDataGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            SpiritDataGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            SpiritDataGrid.ContextMenuStrip = Context_DataGrid;
+            SpiritDataGrid.EditMode = DataGridViewEditMode.EditProgrammatically;
+            SpiritDataGrid.Location = new Point(4, 22);
+            SpiritDataGrid.MultiSelect = false;
+            SpiritDataGrid.Name = "SpiritDataGrid";
+            SpiritDataGrid.ReadOnly = true;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Control;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Control;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            SpiritDataGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            SpiritDataGrid.RowHeadersVisible = false;
+            SpiritDataGrid.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
+            SpiritDataGrid.RowTemplate.Height = 25;
+            SpiritDataGrid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            SpiritDataGrid.ShowCellToolTips = false;
+            SpiritDataGrid.Size = new Size(572, 304);
+            SpiritDataGrid.TabIndex = 90;
+            SpiritDataGrid.CellClick += SpiritDataGrid_CellClick;
+            SpiritDataGrid.CellMouseDown += SpiritDataGrid_CellMouseDown;
             // 
             // Context_DataGrid
             // 
-            this.Context_DataGrid.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.Button_Context_DuplicateSpirit,
-            this.Button_Context_RemoveSpirit});
-            this.Context_DataGrid.Name = "Context_DataGrid";
-            this.Context_DataGrid.Size = new System.Drawing.Size(197, 48);
+            Context_DataGrid.Items.AddRange(new ToolStripItem[] { Button_Context_DuplicateSpirit, Button_Context_RemoveSpirit });
+            Context_DataGrid.Name = "Context_DataGrid";
+            Context_DataGrid.Size = new Size(197, 48);
             // 
             // Button_Context_DuplicateSpirit
             // 
-            this.Button_Context_DuplicateSpirit.Name = "Button_Context_DuplicateSpirit";
-            this.Button_Context_DuplicateSpirit.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D)));
-            this.Button_Context_DuplicateSpirit.Size = new System.Drawing.Size(196, 22);
-            this.Button_Context_DuplicateSpirit.Text = "Duplicate Spirit";
-            this.Button_Context_DuplicateSpirit.Click += new System.EventHandler(this.Button_DuplicateSpirit_Click);
+            Button_Context_DuplicateSpirit.Name = "Button_Context_DuplicateSpirit";
+            Button_Context_DuplicateSpirit.ShortcutKeys = Keys.Control | Keys.D;
+            Button_Context_DuplicateSpirit.Size = new Size(196, 22);
+            Button_Context_DuplicateSpirit.Text = "Duplicate Spirit";
+            Button_Context_DuplicateSpirit.Click += Button_DuplicateSpirit_Click;
             // 
             // Button_Context_RemoveSpirit
             // 
-            this.Button_Context_RemoveSpirit.Name = "Button_Context_RemoveSpirit";
-            this.Button_Context_RemoveSpirit.ShortcutKeys = System.Windows.Forms.Keys.Delete;
-            this.Button_Context_RemoveSpirit.Size = new System.Drawing.Size(196, 22);
-            this.Button_Context_RemoveSpirit.Text = "Delete Spirit";
-            this.Button_Context_RemoveSpirit.Click += new System.EventHandler(this.Button_DeleteSpiritFromList_Click);
+            Button_Context_RemoveSpirit.Name = "Button_Context_RemoveSpirit";
+            Button_Context_RemoveSpirit.ShortcutKeys = Keys.Delete;
+            Button_Context_RemoveSpirit.Size = new Size(196, 22);
+            Button_Context_RemoveSpirit.Text = "Delete Spirit";
+            Button_Context_RemoveSpirit.Click += Button_DeleteSpiritFromList_Click;
             // 
             // Team
             // 
-            this.Team.HeaderText = "Team";
-            this.Team.Name = "Team";
+            Team.HeaderText = "Team";
+            Team.Name = "Team";
             // 
             // EnemyCol
             // 
-            this.EnemyCol.HeaderText = "Enemy";
-            this.EnemyCol.Name = "EnemyCol";
+            EnemyCol.HeaderText = "Enemy";
+            EnemyCol.Name = "EnemyCol";
             // 
             // Variant
             // 
-            this.Variant.HeaderText = "Variant";
-            this.Variant.Name = "Variant";
+            Variant.HeaderText = "Variant";
+            Variant.Name = "Variant";
             // 
             // Input_EnemyHpMult
             // 
-            this.Input_EnemyHpMult.DecimalPlaces = 2;
-            this.Input_EnemyHpMult.Location = new System.Drawing.Point(6, 264);
-            this.Input_EnemyHpMult.Maximum = new decimal(new int[] {
-            999,
-            0,
-            0,
-            0});
-            this.Input_EnemyHpMult.Name = "Input_EnemyHpMult";
-            this.Input_EnemyHpMult.Size = new System.Drawing.Size(75, 23);
-            this.Input_EnemyHpMult.TabIndex = 100;
-            this.Input_EnemyHpMult.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.Input_EnemyHpMult.ValueChanged += new System.EventHandler(this.EnemyWasEdited);
-            this.Input_EnemyHpMult.Click += new System.EventHandler(this.EnemyWasEdited);
+            Input_EnemyHpMult.DecimalPlaces = 2;
+            Input_EnemyHpMult.Location = new Point(6, 264);
+            Input_EnemyHpMult.Maximum = new decimal(new int[] { 999, 0, 0, 0 });
+            Input_EnemyHpMult.Name = "Input_EnemyHpMult";
+            Input_EnemyHpMult.Size = new Size(75, 23);
+            Input_EnemyHpMult.TabIndex = 100;
+            Input_EnemyHpMult.Value = new decimal(new int[] { 1, 0, 0, 0 });
+            Input_EnemyHpMult.ValueChanged += EnemyWasEdited;
+            Input_EnemyHpMult.Click += EnemyWasEdited;
             // 
             // label14
             // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label14.Location = new System.Drawing.Point(1, 246);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(87, 15);
-            this.label14.TabIndex = 101;
-            this.label14.Text = "Bonus HP Mult";
-            this.label14.Click += new System.EventHandler(this.EnemyWasEdited);
-            this.label14.Validated += new System.EventHandler(this.EnemyWasEdited);
+            label14.AutoSize = true;
+            label14.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            label14.Location = new Point(1, 246);
+            label14.Name = "label14";
+            label14.Size = new Size(87, 15);
+            label14.TabIndex = 101;
+            label14.Text = "Bonus HP Mult";
+            label14.Click += EnemyWasEdited;
+            label14.Validated += EnemyWasEdited;
             // 
             // label15
             // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label15.Location = new System.Drawing.Point(1, 291);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(115, 15);
-            this.label15.TabIndex = 103;
-            this.label15.Text = "Bonus Damage Mult";
-            this.label15.Validated += new System.EventHandler(this.EnemyWasEdited);
+            label15.AutoSize = true;
+            label15.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            label15.Location = new Point(1, 291);
+            label15.Name = "label15";
+            label15.Size = new Size(115, 15);
+            label15.TabIndex = 103;
+            label15.Text = "Bonus Damage Mult";
+            label15.Validated += EnemyWasEdited;
             // 
             // Input_EnemyDamageMult
             // 
-            this.Input_EnemyDamageMult.DecimalPlaces = 2;
-            this.Input_EnemyDamageMult.Location = new System.Drawing.Point(6, 309);
-            this.Input_EnemyDamageMult.Maximum = new decimal(new int[] {
-            999,
-            0,
-            0,
-            0});
-            this.Input_EnemyDamageMult.Name = "Input_EnemyDamageMult";
-            this.Input_EnemyDamageMult.Size = new System.Drawing.Size(75, 23);
-            this.Input_EnemyDamageMult.TabIndex = 102;
-            this.Input_EnemyDamageMult.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.Input_EnemyDamageMult.ValueChanged += new System.EventHandler(this.EnemyWasEdited);
-            this.Input_EnemyDamageMult.Click += new System.EventHandler(this.EnemyWasEdited);
+            Input_EnemyDamageMult.DecimalPlaces = 2;
+            Input_EnemyDamageMult.Location = new Point(6, 309);
+            Input_EnemyDamageMult.Maximum = new decimal(new int[] { 999, 0, 0, 0 });
+            Input_EnemyDamageMult.Name = "Input_EnemyDamageMult";
+            Input_EnemyDamageMult.Size = new Size(75, 23);
+            Input_EnemyDamageMult.TabIndex = 102;
+            Input_EnemyDamageMult.Value = new decimal(new int[] { 1, 0, 0, 0 });
+            Input_EnemyDamageMult.ValueChanged += EnemyWasEdited;
+            Input_EnemyDamageMult.Click += EnemyWasEdited;
             // 
             // label18
             // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(11, 67);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(70, 15);
-            this.label18.TabIndex = 109;
-            this.label18.Text = "Team Name";
+            label18.AutoSize = true;
+            label18.Location = new Point(11, 67);
+            label18.Name = "label18";
+            label18.Size = new Size(70, 15);
+            label18.TabIndex = 109;
+            label18.Text = "Team Name";
             // 
             // groupBox1
             // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Controls.Add(this.Label_SearchSpiritAshText);
-            this.groupBox1.Controls.Add(this.Search_SpiritAsh);
-            this.groupBox1.Controls.Add(this.Option_TargetAllSpiritAshes);
-            this.groupBox1.Controls.Add(this.Option_SpiritAshNoRequirements);
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.List_SpiritAsh);
-            this.groupBox1.Location = new System.Drawing.Point(977, 414);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(187, 159);
-            this.groupBox1.TabIndex = 112;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Targeted Spirit Ash";
+            groupBox1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            groupBox1.Controls.Add(Label_SearchSpiritAshText);
+            groupBox1.Controls.Add(Search_SpiritAsh);
+            groupBox1.Controls.Add(Option_TargetAllSpiritAshes);
+            groupBox1.Controls.Add(Option_SpiritAshNoRequirements);
+            groupBox1.Controls.Add(label4);
+            groupBox1.Controls.Add(List_SpiritAsh);
+            groupBox1.Location = new Point(977, 414);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new Size(187, 159);
+            groupBox1.TabIndex = 112;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "Targeted Spirit Ash";
             // 
             // Option_TargetAllSpiritAshes
             // 
-            this.Option_TargetAllSpiritAshes.AutoSize = true;
-            this.Option_TargetAllSpiritAshes.Location = new System.Drawing.Point(6, 136);
-            this.Option_TargetAllSpiritAshes.Name = "Option_TargetAllSpiritAshes";
-            this.Option_TargetAllSpiritAshes.Size = new System.Drawing.Size(74, 19);
-            this.Option_TargetAllSpiritAshes.TabIndex = 76;
-            this.Option_TargetAllSpiritAshes.Text = "All Ashes";
-            this.Option_TargetAllSpiritAshes.UseVisualStyleBackColor = true;
-            this.Option_TargetAllSpiritAshes.Visible = false;
-            this.Option_TargetAllSpiritAshes.CheckedChanged += new System.EventHandler(this.Option_TargetAllSpiritAshes_CheckedChanged);
+            Option_TargetAllSpiritAshes.AutoSize = true;
+            Option_TargetAllSpiritAshes.Location = new Point(6, 136);
+            Option_TargetAllSpiritAshes.Name = "Option_TargetAllSpiritAshes";
+            Option_TargetAllSpiritAshes.Size = new Size(74, 19);
+            Option_TargetAllSpiritAshes.TabIndex = 76;
+            Option_TargetAllSpiritAshes.Text = "All Ashes";
+            Option_TargetAllSpiritAshes.UseVisualStyleBackColor = true;
+            Option_TargetAllSpiritAshes.Visible = false;
+            Option_TargetAllSpiritAshes.CheckedChanged += Option_TargetAllSpiritAshes_CheckedChanged;
             // 
             // groupBox2
             // 
-            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox2.Controls.Add(this.Option_Spirit_SearchesLongRange);
-            this.groupBox2.Controls.Add(this.Input_CharaInitID);
-            this.groupBox2.Controls.Add(this.label9);
-            this.groupBox2.Controls.Add(this.Label_SearchEnemyText);
-            this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Controls.Add(this.List_EnemyChosenTeam);
-            this.groupBox2.Controls.Add(this.Button_PickRandomEnemy);
-            this.groupBox2.Controls.Add(this.List_Enemy);
-            this.groupBox2.Controls.Add(this.SummonPosition_X);
-            this.groupBox2.Controls.Add(this.Search_Enemy);
-            this.groupBox2.Controls.Add(this.label20);
-            this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Controls.Add(this.label6);
-            this.groupBox2.Controls.Add(this.label7);
-            this.groupBox2.Controls.Add(this.SummonPosition_Z);
-            this.groupBox2.Controls.Add(this.SummonPosition_Angle);
-            this.groupBox2.Controls.Add(this.label16);
-            this.groupBox2.Controls.Add(this.label8);
-            this.groupBox2.Controls.Add(this.List_EnemyVariant);
-            this.groupBox2.Controls.Add(this.label15);
-            this.groupBox2.Controls.Add(this.Input_NpcParamID);
-            this.groupBox2.Controls.Add(this.Input_EnemyDamageMult);
-            this.groupBox2.Controls.Add(this.Input_NpcThinkID);
-            this.groupBox2.Controls.Add(this.label14);
-            this.groupBox2.Controls.Add(this.label3);
-            this.groupBox2.Controls.Add(this.Input_EnemyHpMult);
-            this.groupBox2.Controls.Add(this.label11);
-            this.groupBox2.Controls.Add(this.label13);
-            this.groupBox2.Controls.Add(this.List_StatScaling);
-            this.groupBox2.Location = new System.Drawing.Point(598, 176);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(373, 368);
-            this.groupBox2.TabIndex = 113;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Summon";
+            groupBox2.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            groupBox2.Controls.Add(Option_Spirit_SearchesLongRange);
+            groupBox2.Controls.Add(Input_CharaInitID);
+            groupBox2.Controls.Add(label9);
+            groupBox2.Controls.Add(Label_SearchEnemyText);
+            groupBox2.Controls.Add(label2);
+            groupBox2.Controls.Add(List_EnemyChosenTeam);
+            groupBox2.Controls.Add(Button_PickRandomEnemy);
+            groupBox2.Controls.Add(List_Enemy);
+            groupBox2.Controls.Add(SummonPosition_X);
+            groupBox2.Controls.Add(Search_Enemy);
+            groupBox2.Controls.Add(label20);
+            groupBox2.Controls.Add(label5);
+            groupBox2.Controls.Add(label6);
+            groupBox2.Controls.Add(label7);
+            groupBox2.Controls.Add(SummonPosition_Z);
+            groupBox2.Controls.Add(SummonPosition_Angle);
+            groupBox2.Controls.Add(label16);
+            groupBox2.Controls.Add(label8);
+            groupBox2.Controls.Add(List_EnemyVariant);
+            groupBox2.Controls.Add(label15);
+            groupBox2.Controls.Add(Input_NpcParamID);
+            groupBox2.Controls.Add(Input_EnemyDamageMult);
+            groupBox2.Controls.Add(Input_NpcThinkID);
+            groupBox2.Controls.Add(label14);
+            groupBox2.Controls.Add(label3);
+            groupBox2.Controls.Add(Input_EnemyHpMult);
+            groupBox2.Controls.Add(label11);
+            groupBox2.Controls.Add(label13);
+            groupBox2.Controls.Add(List_StatScaling);
+            groupBox2.Location = new Point(598, 176);
+            groupBox2.Name = "groupBox2";
+            groupBox2.Size = new Size(373, 368);
+            groupBox2.TabIndex = 113;
+            groupBox2.TabStop = false;
+            groupBox2.Text = "Summon";
             // 
             // groupBox3
             // 
-            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox3.Controls.Add(this.Option_TeamFollowPlayer);
-            this.groupBox3.Controls.Add(this.Option_Randomize_PhantomColor);
-            this.groupBox3.Controls.Add(this.Group_TeamSummonPos_Manual);
-            this.groupBox3.Controls.Add(this.label10);
-            this.groupBox3.Controls.Add(this.Input_TeamDamageMult);
-            this.groupBox3.Controls.Add(this.Button_AddNewTeam);
-            this.groupBox3.Controls.Add(this.label12);
-            this.groupBox3.Controls.Add(this.Input_TeamHpMult);
-            this.groupBox3.Controls.Add(this.Button_RandomTeamName);
-            this.groupBox3.Controls.Add(this.label1);
-            this.groupBox3.Controls.Add(this.List_TeamPhantomColor);
-            this.groupBox3.Controls.Add(this.label18);
-            this.groupBox3.Controls.Add(this.label17);
-            this.groupBox3.Controls.Add(this.Input_TeamName);
-            this.groupBox3.Controls.Add(this.List_TeamType);
-            this.groupBox3.Location = new System.Drawing.Point(598, 27);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(566, 143);
-            this.groupBox3.TabIndex = 114;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Team";
+            groupBox3.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            groupBox3.Controls.Add(Option_TeamFollowPlayer);
+            groupBox3.Controls.Add(Option_Randomize_PhantomColor);
+            groupBox3.Controls.Add(Group_TeamSummonPos_Manual);
+            groupBox3.Controls.Add(label10);
+            groupBox3.Controls.Add(Input_TeamDamageMult);
+            groupBox3.Controls.Add(Button_AddNewTeam);
+            groupBox3.Controls.Add(label12);
+            groupBox3.Controls.Add(Input_TeamHpMult);
+            groupBox3.Controls.Add(Button_RandomTeamName);
+            groupBox3.Controls.Add(label1);
+            groupBox3.Controls.Add(List_TeamPhantomColor);
+            groupBox3.Controls.Add(label18);
+            groupBox3.Controls.Add(label17);
+            groupBox3.Controls.Add(Input_TeamName);
+            groupBox3.Controls.Add(List_TeamType);
+            groupBox3.Location = new Point(598, 27);
+            groupBox3.Name = "groupBox3";
+            groupBox3.Size = new Size(566, 143);
+            groupBox3.TabIndex = 114;
+            groupBox3.TabStop = false;
+            groupBox3.Text = "Team";
             // 
             // Group_TeamSummonPos_Manual
             // 
-            this.Group_TeamSummonPos_Manual.Controls.Add(this.List_TeamSummonPreset);
-            this.Group_TeamSummonPos_Manual.Controls.Add(this.Input_TeamSummonPos_Ang);
-            this.Group_TeamSummonPos_Manual.Controls.Add(this.label21);
-            this.Group_TeamSummonPos_Manual.Controls.Add(this.label22);
-            this.Group_TeamSummonPos_Manual.Controls.Add(this.label23);
-            this.Group_TeamSummonPos_Manual.Controls.Add(this.Input_TeamSummonPos_Z);
-            this.Group_TeamSummonPos_Manual.Controls.Add(this.Input_TeamSummonPos_X);
-            this.Group_TeamSummonPos_Manual.Location = new System.Drawing.Point(414, 0);
-            this.Group_TeamSummonPos_Manual.Name = "Group_TeamSummonPos_Manual";
-            this.Group_TeamSummonPos_Manual.Size = new System.Drawing.Size(152, 143);
-            this.Group_TeamSummonPos_Manual.TabIndex = 116;
-            this.Group_TeamSummonPos_Manual.TabStop = false;
-            this.Group_TeamSummonPos_Manual.Text = "Team Summon Position";
+            Group_TeamSummonPos_Manual.Controls.Add(List_TeamSummonPreset);
+            Group_TeamSummonPos_Manual.Controls.Add(Input_TeamSummonPos_Ang);
+            Group_TeamSummonPos_Manual.Controls.Add(label21);
+            Group_TeamSummonPos_Manual.Controls.Add(label22);
+            Group_TeamSummonPos_Manual.Controls.Add(label23);
+            Group_TeamSummonPos_Manual.Controls.Add(Input_TeamSummonPos_Z);
+            Group_TeamSummonPos_Manual.Controls.Add(Input_TeamSummonPos_X);
+            Group_TeamSummonPos_Manual.Location = new Point(414, 0);
+            Group_TeamSummonPos_Manual.Name = "Group_TeamSummonPos_Manual";
+            Group_TeamSummonPos_Manual.Size = new Size(152, 143);
+            Group_TeamSummonPos_Manual.TabIndex = 116;
+            Group_TeamSummonPos_Manual.TabStop = false;
+            Group_TeamSummonPos_Manual.Text = "Team Summon Position";
             // 
             // groupBox4
             // 
-            this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox4.Controls.Add(this.Button_AddRandomSpirit);
-            this.groupBox4.Controls.Add(this.SpiritDataGrid);
-            this.groupBox4.Location = new System.Drawing.Point(12, 218);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(580, 359);
-            this.groupBox4.TabIndex = 115;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Summons";
+            groupBox4.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            groupBox4.Controls.Add(Button_AddRandomSpirit);
+            groupBox4.Controls.Add(SpiritDataGrid);
+            groupBox4.Location = new Point(12, 218);
+            groupBox4.Name = "groupBox4";
+            groupBox4.Size = new Size(580, 359);
+            groupBox4.TabIndex = 115;
+            groupBox4.TabStop = false;
+            groupBox4.Text = "Summons";
             // 
             // TeamDataGrid
             // 
-            this.TeamDataGrid.AllowUserToAddRows = false;
-            this.TeamDataGrid.AllowUserToDeleteRows = false;
-            this.TeamDataGrid.AllowUserToResizeRows = false;
-            this.TeamDataGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.TeamDataGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.TeamDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.TeamDataGrid.ContextMenuStrip = this.Context_TeamDataGrid;
-            this.TeamDataGrid.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.TeamDataGrid.Location = new System.Drawing.Point(4, 22);
-            this.TeamDataGrid.MultiSelect = false;
-            this.TeamDataGrid.Name = "TeamDataGrid";
-            this.TeamDataGrid.ReadOnly = true;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.TeamDataGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            this.TeamDataGrid.RowHeadersVisible = false;
-            this.TeamDataGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
-            this.TeamDataGrid.RowTemplate.Height = 25;
-            this.TeamDataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.TeamDataGrid.ShowCellToolTips = false;
-            this.TeamDataGrid.Size = new System.Drawing.Size(572, 157);
-            this.TeamDataGrid.TabIndex = 113;
-            this.TeamDataGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TeamDataGrid_CellClick);
-            this.TeamDataGrid.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.TeamDataGrid_CellMouseDown);
+            TeamDataGrid.AllowUserToAddRows = false;
+            TeamDataGrid.AllowUserToDeleteRows = false;
+            TeamDataGrid.AllowUserToResizeRows = false;
+            TeamDataGrid.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = SystemColors.Control;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Control;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            TeamDataGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            TeamDataGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            TeamDataGrid.ContextMenuStrip = Context_TeamDataGrid;
+            TeamDataGrid.EditMode = DataGridViewEditMode.EditProgrammatically;
+            TeamDataGrid.Location = new Point(4, 22);
+            TeamDataGrid.MultiSelect = false;
+            TeamDataGrid.Name = "TeamDataGrid";
+            TeamDataGrid.ReadOnly = true;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = SystemColors.Control;
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Control;
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
+            TeamDataGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            TeamDataGrid.RowHeadersVisible = false;
+            TeamDataGrid.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
+            TeamDataGrid.RowTemplate.Height = 25;
+            TeamDataGrid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            TeamDataGrid.ShowCellToolTips = false;
+            TeamDataGrid.Size = new Size(572, 157);
+            TeamDataGrid.TabIndex = 113;
+            TeamDataGrid.CellClick += TeamDataGrid_CellClick;
+            TeamDataGrid.CellMouseDown += TeamDataGrid_CellMouseDown;
             // 
             // Context_TeamDataGrid
             // 
-            this.Context_TeamDataGrid.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.Button_Context_DuplicateTeam,
-            this.Button_Context_DeleteTeam});
-            this.Context_TeamDataGrid.Name = "Context_DataGrid";
-            this.Context_TeamDataGrid.Size = new System.Drawing.Size(149, 48);
+            Context_TeamDataGrid.Items.AddRange(new ToolStripItem[] { Button_Context_DuplicateTeam, Button_Context_DeleteTeam });
+            Context_TeamDataGrid.Name = "Context_DataGrid";
+            Context_TeamDataGrid.Size = new Size(149, 48);
             // 
             // Button_Context_DuplicateTeam
             // 
-            this.Button_Context_DuplicateTeam.Name = "Button_Context_DuplicateTeam";
-            this.Button_Context_DuplicateTeam.ShowShortcutKeys = false;
-            this.Button_Context_DuplicateTeam.Size = new System.Drawing.Size(148, 22);
-            this.Button_Context_DuplicateTeam.Text = "Duplicate Team";
-            this.Button_Context_DuplicateTeam.Click += new System.EventHandler(this.Button_DuplicateTeam_Click);
+            Button_Context_DuplicateTeam.Name = "Button_Context_DuplicateTeam";
+            Button_Context_DuplicateTeam.ShowShortcutKeys = false;
+            Button_Context_DuplicateTeam.Size = new Size(148, 22);
+            Button_Context_DuplicateTeam.Text = "Duplicate Team";
+            Button_Context_DuplicateTeam.Click += Button_DuplicateTeam_Click;
             // 
             // Button_Context_DeleteTeam
             // 
-            this.Button_Context_DeleteTeam.Name = "Button_Context_DeleteTeam";
-            this.Button_Context_DeleteTeam.ShowShortcutKeys = false;
-            this.Button_Context_DeleteTeam.Size = new System.Drawing.Size(148, 22);
-            this.Button_Context_DeleteTeam.Text = "Remove Team";
-            this.Button_Context_DeleteTeam.Click += new System.EventHandler(this.Button_DeleteTeam_Click);
+            Button_Context_DeleteTeam.Name = "Button_Context_DeleteTeam";
+            Button_Context_DeleteTeam.ShowShortcutKeys = false;
+            Button_Context_DeleteTeam.Size = new Size(148, 22);
+            Button_Context_DeleteTeam.Text = "Remove Team";
+            Button_Context_DeleteTeam.Click += Button_DeleteTeam_Click;
             // 
             // groupBox5
             // 
-            this.groupBox5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox5.Controls.Add(this.TeamDataGrid);
-            this.groupBox5.Location = new System.Drawing.Point(12, 27);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(580, 185);
-            this.groupBox5.TabIndex = 116;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Teams";
+            groupBox5.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            groupBox5.Controls.Add(TeamDataGrid);
+            groupBox5.Location = new Point(12, 27);
+            groupBox5.Name = "groupBox5";
+            groupBox5.Size = new Size(580, 185);
+            groupBox5.TabIndex = 116;
+            groupBox5.TabStop = false;
+            groupBox5.Text = "Teams";
             // 
             // groupBoxRandomize
             // 
-            this.groupBoxRandomize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBoxRandomize.Controls.Add(this.comboBox1);
-            this.groupBoxRandomize.Controls.Add(this.label25);
-            this.groupBoxRandomize.Controls.Add(this.label24);
-            this.groupBoxRandomize.Controls.Add(this.numericUpDown1);
-            this.groupBoxRandomize.Controls.Add(this.Button_Randomize_SvE);
-            this.groupBoxRandomize.Controls.Add(this.Button_Randomize_PvE);
-            this.groupBoxRandomize.Location = new System.Drawing.Point(977, 176);
-            this.groupBoxRandomize.Name = "groupBoxRandomize";
-            this.groupBoxRandomize.Size = new System.Drawing.Size(187, 200);
-            this.groupBoxRandomize.TabIndex = 113;
-            this.groupBoxRandomize.TabStop = false;
-            this.groupBoxRandomize.Text = "Randomizer";
-            this.groupBoxRandomize.Visible = false;
+            groupBoxRandomize.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            groupBoxRandomize.Controls.Add(comboBox1);
+            groupBoxRandomize.Controls.Add(label25);
+            groupBoxRandomize.Controls.Add(label24);
+            groupBoxRandomize.Controls.Add(numericUpDown1);
+            groupBoxRandomize.Controls.Add(Button_Randomize_SvE);
+            groupBoxRandomize.Controls.Add(Button_Randomize_PvE);
+            groupBoxRandomize.Location = new Point(977, 176);
+            groupBoxRandomize.Name = "groupBoxRandomize";
+            groupBoxRandomize.Size = new Size(187, 200);
+            groupBoxRandomize.TabIndex = 113;
+            groupBoxRandomize.TabStop = false;
+            groupBoxRandomize.Text = "Randomizer";
+            groupBoxRandomize.Visible = false;
             // 
             // comboBox1
             // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(6, 160);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 23);
-            this.comboBox1.TabIndex = 123;
+            comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Location = new Point(6, 160);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(121, 23);
+            comboBox1.TabIndex = 123;
             // 
             // label25
             // 
-            this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(6, 141);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(98, 15);
-            this.label25.TabIndex = 122;
-            this.label25.Text = "Stat Scaling Level";
+            label25.AutoSize = true;
+            label25.Location = new Point(6, 141);
+            label25.Name = "label25";
+            label25.Size = new Size(98, 15);
+            label25.TabIndex = 122;
+            label25.Text = "Stat Scaling Level";
             // 
             // label24
             // 
-            this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(6, 86);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(103, 15);
-            this.label24.TabIndex = 114;
-            this.label24.Text = "Summon Amount";
+            label24.AutoSize = true;
+            label24.Location = new Point(6, 86);
+            label24.Name = "label24";
+            label24.Size = new Size(103, 15);
+            label24.TabIndex = 114;
+            label24.Text = "Summon Amount";
             // 
             // Button_Randomize_SvE
             // 
-            this.Button_Randomize_SvE.Location = new System.Drawing.Point(6, 51);
-            this.Button_Randomize_SvE.Name = "Button_Randomize_SvE";
-            this.Button_Randomize_SvE.Size = new System.Drawing.Size(140, 23);
-            this.Button_Randomize_SvE.TabIndex = 1;
-            this.Button_Randomize_SvE.Text = "Summons vs Enemies";
-            this.Button_Randomize_SvE.UseVisualStyleBackColor = true;
+            Button_Randomize_SvE.Location = new Point(6, 51);
+            Button_Randomize_SvE.Name = "Button_Randomize_SvE";
+            Button_Randomize_SvE.Size = new Size(140, 23);
+            Button_Randomize_SvE.TabIndex = 1;
+            Button_Randomize_SvE.Text = "Summons vs Enemies";
+            Button_Randomize_SvE.UseVisualStyleBackColor = true;
             // 
             // Button_Randomize_PvE
             // 
-            this.Button_Randomize_PvE.Location = new System.Drawing.Point(6, 22);
-            this.Button_Randomize_PvE.Name = "Button_Randomize_PvE";
-            this.Button_Randomize_PvE.Size = new System.Drawing.Size(140, 23);
-            this.Button_Randomize_PvE.TabIndex = 0;
-            this.Button_Randomize_PvE.Text = "Player vs enemies";
-            this.Button_Randomize_PvE.UseVisualStyleBackColor = true;
+            Button_Randomize_PvE.Location = new Point(6, 22);
+            Button_Randomize_PvE.Name = "Button_Randomize_PvE";
+            Button_Randomize_PvE.Size = new Size(140, 23);
+            Button_Randomize_PvE.TabIndex = 0;
+            Button_Randomize_PvE.Text = "Player vs enemies";
+            Button_Randomize_PvE.UseVisualStyleBackColor = true;
             // 
             // FileDialog_LoadJson
             // 
-            this.FileDialog_LoadJson.DefaultExt = "json";
-            this.FileDialog_LoadJson.Filter = "Json backup|*.json|All Files|*.*";
-            this.FileDialog_LoadJson.RestoreDirectory = true;
-            this.FileDialog_LoadJson.Title = "Choose summon backup to load";
+            FileDialog_LoadJson.DefaultExt = "json";
+            FileDialog_LoadJson.Filter = "Json backup|*.json|All Files|*.*";
+            FileDialog_LoadJson.RestoreDirectory = true;
+            FileDialog_LoadJson.Title = "Choose summon backup to load";
             // 
             // FileDialog_SaveJson
             // 
-            this.FileDialog_SaveJson.DefaultExt = "json";
-            this.FileDialog_SaveJson.Filter = "Json backup|*.json|All Files|*.*";
-            this.FileDialog_SaveJson.RestoreDirectory = true;
-            this.FileDialog_SaveJson.Title = "Choose where to save summon backup";
+            FileDialog_SaveJson.DefaultExt = "json";
+            FileDialog_SaveJson.Filter = "Json backup|*.json|All Files|*.*";
+            FileDialog_SaveJson.RestoreDirectory = true;
+            FileDialog_SaveJson.Title = "Choose where to save summon backup";
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1176, 589);
-            this.Controls.Add(this.groupBoxRandomize);
-            this.Controls.Add(this.groupBox5);
-            this.Controls.Add(this.groupBox4);
-            this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.t_console);
-            this.Controls.Add(this.menuStrip1);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MainMenuStrip = this.menuStrip1;
-            this.Name = "MainForm";
-            this.Text = "Elden Ring Spirit Battler";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
-            this.Load += new System.EventHandler(this.MainForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.SummonPosition_X)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SummonPosition_Z)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SummonPosition_Angle)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Input_TeamSummonPos_X)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Input_TeamSummonPos_Z)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Input_TeamSummonPos_Ang)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Input_NpcParamID)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Input_NpcThinkID)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Input_TeamDamageMult)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Input_TeamHpMult)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Input_CharaInitID)).EndInit();
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.SpiritDataGrid)).EndInit();
-            this.Context_DataGrid.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.Input_EnemyHpMult)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Input_EnemyDamageMult)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
-            this.Group_TeamSummonPos_Manual.ResumeLayout(false);
-            this.Group_TeamSummonPos_Manual.PerformLayout();
-            this.groupBox4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.TeamDataGrid)).EndInit();
-            this.Context_TeamDataGrid.ResumeLayout(false);
-            this.groupBox5.ResumeLayout(false);
-            this.groupBoxRandomize.ResumeLayout(false);
-            this.groupBoxRandomize.PerformLayout();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(1176, 589);
+            Controls.Add(groupBoxRandomize);
+            Controls.Add(groupBox5);
+            Controls.Add(groupBox4);
+            Controls.Add(groupBox3);
+            Controls.Add(groupBox2);
+            Controls.Add(groupBox1);
+            Controls.Add(t_console);
+            Controls.Add(menuStrip1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
+            MainMenuStrip = menuStrip1;
+            Name = "MainForm";
+            Text = "Elden Ring Spirit Battler";
+            FormClosing += MainForm_FormClosing;
+            Load += MainForm_Load;
+            ((System.ComponentModel.ISupportInitialize)SummonPosition_X).EndInit();
+            ((System.ComponentModel.ISupportInitialize)SummonPosition_Z).EndInit();
+            ((System.ComponentModel.ISupportInitialize)SummonPosition_Angle).EndInit();
+            ((System.ComponentModel.ISupportInitialize)Input_TeamSummonPos_X).EndInit();
+            ((System.ComponentModel.ISupportInitialize)Input_TeamSummonPos_Z).EndInit();
+            ((System.ComponentModel.ISupportInitialize)Input_TeamSummonPos_Ang).EndInit();
+            ((System.ComponentModel.ISupportInitialize)numericUpDown1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)Input_NpcParamID).EndInit();
+            ((System.ComponentModel.ISupportInitialize)Input_NpcThinkID).EndInit();
+            ((System.ComponentModel.ISupportInitialize)Input_TeamDamageMult).EndInit();
+            ((System.ComponentModel.ISupportInitialize)Input_TeamHpMult).EndInit();
+            ((System.ComponentModel.ISupportInitialize)Input_CharaInitID).EndInit();
+            menuStrip1.ResumeLayout(false);
+            menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)SpiritDataGrid).EndInit();
+            Context_DataGrid.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)Input_EnemyHpMult).EndInit();
+            ((System.ComponentModel.ISupportInitialize)Input_EnemyDamageMult).EndInit();
+            groupBox1.ResumeLayout(false);
+            groupBox1.PerformLayout();
+            groupBox2.ResumeLayout(false);
+            groupBox2.PerformLayout();
+            groupBox3.ResumeLayout(false);
+            groupBox3.PerformLayout();
+            Group_TeamSummonPos_Manual.ResumeLayout(false);
+            Group_TeamSummonPos_Manual.PerformLayout();
+            groupBox4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)TeamDataGrid).EndInit();
+            Context_TeamDataGrid.ResumeLayout(false);
+            groupBox5.ResumeLayout(false);
+            groupBoxRandomize.ResumeLayout(false);
+            groupBoxRandomize.PerformLayout();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
