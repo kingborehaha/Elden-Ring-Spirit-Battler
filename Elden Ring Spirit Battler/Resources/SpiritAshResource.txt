@@ -55,6 +55,7 @@
 25200000||Leyndell Soldier
 25300000||Radahn Soldier
 25400000||Mausoleum Soldier
+25500000||Haligtree Soldier
 25600000||Ancient Dragon Knight Kristoff
 25700000||Redmane Knight Ogha
 25800000||Lhutel the Headless
