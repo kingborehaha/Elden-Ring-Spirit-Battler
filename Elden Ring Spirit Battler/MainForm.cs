@@ -154,7 +154,7 @@ namespace EldenRingSpiritBattler
             if (!IsStartup && !_noUpdateTeam)
             {
                 SpiritTeam team = CreateTeamFromElements();
-                AddUpdateTeamToGrid(team);
+                UpdateSelectedTeam(team);
                 UpdateSpiritGrid();
             }
         }
@@ -304,7 +304,7 @@ namespace EldenRingSpiritBattler
 
             SpiritTeam team = GetSelectedTeamFromGrid().Clone();
             team.Name = GetRandomUnusedTeamName();
-            AddUpdateTeamToGrid(team);
+            AddTeamToGrid(team);
         }
         private void Button_DeleteTeam_Click(object sender, EventArgs e)
         {
@@ -555,6 +555,45 @@ namespace EldenRingSpiritBattler
             Config.SummonsFindTargetsEasily = Option_SummonsEasilyFindTargets.Checked;
 
             Option_Spirit_SearchesLongRange.Enabled = !Option_SummonsEasilyFindTargets.Checked;
+        }
+
+        private bool _InputTeamNameTextChanged = false;
+        private bool _InputTeamNameFocused = false;
+        private void Input_TeamName_Validated(object sender, EventArgs e)
+        {
+            if (_InputTeamNameTextChanged)
+            {
+                if (!IsStartup && Input_TeamName.Text != "")
+                {
+                    SetSelectedTeamName();
+                }
+                _InputTeamNameTextChanged = false;
+                _InputTeamNameFocused = false;
+            }
+        }
+
+        private void Input_TeamName_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                Input_TeamName_Validated(sender, new());
+            }
+        }
+
+        private void Input_TeamName_TextChanged(object sender, EventArgs e)
+        {
+            if (_InputTeamNameFocused)
+                _InputTeamNameTextChanged = true;
+        }
+
+        private void Input_TeamName_Enter(object sender, EventArgs e)
+        {
+            _InputTeamNameFocused = true;
+        }
+
+        private void Input_TeamName_Leave(object sender, EventArgs e)
+        {
+            _InputTeamNameFocused = false;
         }
     }
 }

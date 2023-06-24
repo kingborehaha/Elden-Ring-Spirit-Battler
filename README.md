@@ -30,6 +30,8 @@
 - Save Changes. The selected ash should now be changed in-game.
 
 ## Updates
+### v1.4.1
+- Re-added team name options.
 ### v1.4.0
 - Added "Spirit Scaling" option for stat scaling. This makes spirits start with default stats and gain power as the spirit ash is upgraded (identical to vanilla summons).
 - Teams are now updated automatically as settings are changed.

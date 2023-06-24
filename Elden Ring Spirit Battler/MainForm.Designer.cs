@@ -495,10 +495,14 @@
             // 
             Input_TeamName.Location = new Point(6, 85);
             Input_TeamName.Name = "Input_TeamName";
-            Input_TeamName.Size = new Size(75, 23);
+            Input_TeamName.Size = new Size(129, 23);
             Input_TeamName.TabIndex = 3;
             toolTip1.SetToolTip(Input_TeamName, "Purely for in-tool organization (at the moment)");
-            Input_TeamName.Visible = false;
+            Input_TeamName.TextChanged += Input_TeamName_TextChanged;
+            Input_TeamName.Enter += Input_TeamName_Enter;
+            Input_TeamName.KeyDown += Input_TeamName_KeyDown;
+            Input_TeamName.Leave += Input_TeamName_Leave;
+            Input_TeamName.Validated += Input_TeamName_Validated;
             // 
             // label20
             // 
@@ -712,14 +716,13 @@
             // 
             // Button_RandomTeamName
             // 
-            Button_RandomTeamName.Location = new Point(81, 87);
+            Button_RandomTeamName.Location = new Point(137, 85);
             Button_RandomTeamName.Name = "Button_RandomTeamName";
             Button_RandomTeamName.Size = new Size(22, 23);
             Button_RandomTeamName.TabIndex = 4;
             Button_RandomTeamName.Text = "?";
             toolTip1.SetToolTip(Button_RandomTeamName, "Picks a random team name");
             Button_RandomTeamName.UseVisualStyleBackColor = true;
-            Button_RandomTeamName.Visible = false;
             Button_RandomTeamName.Click += Button_RandomizeTeam_Click;
             // 
             // Search_SpiritAsh
@@ -1156,12 +1159,11 @@
             // label18
             // 
             label18.AutoSize = true;
-            label18.Location = new Point(5, 85);
+            label18.Location = new Point(13, 69);
             label18.Name = "label18";
             label18.Size = new Size(70, 15);
             label18.TabIndex = 109;
             label18.Text = "Team Name";
-            label18.Visible = false;
             // 
             // groupBox1
             // 

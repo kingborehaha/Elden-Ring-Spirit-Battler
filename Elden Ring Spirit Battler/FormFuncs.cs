@@ -676,15 +676,15 @@ namespace EldenRingSpiritBattler
             if (prevScrollIndex != -1)
                 TeamDataGrid.FirstDisplayedScrollingRowIndex = prevScrollIndex; // Scroll to selection
 
-            // Retain spirit's chosen team
-            string prevText = List_EnemyChosenTeam.Text;
+            // Update enemy chosen team list and retain spirit's chosen team index
+            int prevChosenTeamIndex = List_EnemyChosenTeam.SelectedIndex;
             List_EnemyChosenTeam.DataSource = teamDict.Select(team => team.Key).ToList(); // Also triggers UpdateSelectedSpirit();
 
-            if (prevText == "")
-                List_EnemyChosenTeam.SelectedIndex = 0;
+            if (prevChosenTeamIndex != -1)
+                List_EnemyChosenTeam.SelectedIndex = prevChosenTeamIndex;
             else
-                List_EnemyChosenTeam.Text = prevText;
-            
+                List_EnemyChosenTeam.SelectedIndex = 0;
+
         }
 
         private SpiritTeam CreateTeamFromElements()
@@ -705,17 +705,32 @@ namespace EldenRingSpiritBattler
             return team;
         }
 
-        private void AddUpdateTeamToGrid(SpiritTeam team)
+        private void UpdateSelectedTeam(SpiritTeam team)
         {
-            if (teamDict.TryGetValue(team.Name, out SpiritTeam? oldteam))
+            var currentRow = TeamDataGrid.SelectedRows[0];
+            var oldTeamKey = (string)currentRow.Cells[1].Value;
+
+            if (teamDict.TryGetValue(oldTeamKey, out SpiritTeam? oldteam))
             {
-                // This is an update, update all the refs.
+                // Update refs to this team from spirits
                 foreach (BattleSpirit spirit in battleSpiritList)
                 {
                     if (spirit.Team == oldteam)
                         spirit.Team = team;
                 }
             }
+            else
+            {
+                throw new Exception("Couldn't locate old teamDict key while trying to update team data.");
+            }
+            // Name may have been changed, so swap out keys in teamDict.
+            teamDict.Remove(oldTeamKey); // Remove old key
+            teamDict[team.Name] = team; // Add new key
+            UpdateTeamGridAndList();
+        }
+
+        private void AddTeamToGrid(SpiritTeam team)
+        {
             teamDict[team.Name] = team;
             UpdateTeamGridAndList();
         }
@@ -729,6 +744,19 @@ namespace EldenRingSpiritBattler
         public void SetRandomTeamName()
         {
             Input_TeamName.Text = GetRandomUnusedTeamName();
+            SetSelectedTeamName();
+        }
+        public void SetSelectedTeamName()
+        {
+            if (teamDict.ContainsKey(Input_TeamName.Text))
+            {
+                MessageBox.Show($"Cannot name team \"{Input_TeamName.Text}\", there is already a team with that name.", "Error", MessageBoxButtons.OK);
+                Input_TeamName.Text = (string)TeamDataGrid.SelectedRows[0].Cells[1].Value; // Reset to name stored in grid
+            }
+            else
+            {
+                UpdateSelectedTeam(new(), new());
+            }
         }
 
         public string GetRandomUnusedTeamName()
