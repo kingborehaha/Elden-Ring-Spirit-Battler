@@ -9,7 +9,9 @@ namespace EldenRingSpiritBattler
         public const int c0000ScalingEffectMaxId = 19350; // ID offset to offset NPC scaling spEffects (ID 7000+) to c0000 scaling spEffects (ID 19350+)
         public const int ScalingEffectBaseId = (int)StatScalingEnum.Lvl0; // ID offset to offset NPC scaling spEffects (ID 7000+) to c0000 scaling spEffects (ID 19350+)
         public const int ScalingEffectMaxId = (int)StatScalingEnum.Lvl20; // ID offset to offset NPC scaling spEffects (ID 7000+) to c0000 scaling spEffects (ID 19350+)
-        public const int FollowPlayerSpEffectId = 297000; // SpEffect ID that allows buddies to follow and warp to the player when
+        public const int FollowPlayerSpEffectId = 297000; // SpEffect ID that allows buddies to follow and warp to the player when far enough away.
+        public const int BuddyDopingSpEffect = 290000; // ID of starting spEffect to use for buddy reinforcement effects.
+        public const int BuddyDopingSpEffect_c0000 = 290050; // ID of starting spEffect to use for  buddy reinforcement effects.
 
         private static readonly float _positionMagnitude = 1;
         private static readonly float _positionIncrementBase = 1.5f;
@@ -147,6 +149,8 @@ namespace EldenRingSpiritBattler
         };
         public enum StatScalingEnum
         {
+            // Positive values are used as spEffect IDs, negative values have conditional behavior.
+            Spirit = -200,
             Default = -99,
             None = -1,
             Lvl0 = 7000,

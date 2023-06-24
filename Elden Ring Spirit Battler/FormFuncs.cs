@@ -391,8 +391,9 @@ namespace EldenRingSpiritBattler
                     int effectID = (int)newNpcRow["spEffectID" + iEffect].Value;
                     if (spirit.Sp_StatScaling != (int)StatScalingEnum.Default)
                     {
+                        // Strip out vanilla stat scaling effects
                         if ((effectID >= ScalingEffectBaseId && effectID <= ScalingEffectMaxId)
-                            ||(effectID >= c0000ScalingEffectBaseId && effectID <= c0000ScalingEffectMaxId))
+                            || (effectID >= c0000ScalingEffectBaseId && effectID <= c0000ScalingEffectMaxId))
                         {
                             // Vanilla scaling spEffect. Remove it.
                             newNpcRow["spEffectID" + iEffect].Value = -1;
@@ -483,9 +484,31 @@ namespace EldenRingSpiritBattler
                     buddyParamRow["pcFollowType"].Value = (byte)1; // 0 = Follow player around, 1 = Wander Around, 2 = Wait in place?
                 }
 
-                for (var ii = 0; ii <= 10; ii++)
+                if (spirit.Sp_StatScaling == (int)StatScalingEnum.Spirit)
                 {
-                    buddyParamRow["dopingSpEffect_lv" + ii].Value = -1;
+                    // Spirit stats will increase with ash reinforcement
+                    Debugger.Break();
+                    int dopingEffectID;
+                    if (spirit.Is_c0000)
+                    {
+                        dopingEffectID = BuddyDopingSpEffect_c0000;
+                    }
+                    else
+                    {
+                        dopingEffectID = BuddyDopingSpEffect;
+                    }
+                    for (var ii = 0; ii <= 10; ii++)
+                    {
+                        buddyParamRow["dopingSpEffect_lv" + ii].Value = dopingEffectID + ii;
+                    }
+                }
+                else
+                {
+                    // Spirit stats will not increase with ash reinforcement
+                    for (var ii = 0; ii <= 10; ii++)
+                    {
+                        buddyParamRow["dopingSpEffect_lv" + ii].Value = -1;
+                    }
                 }
                 buddyParamRow["npcParamId_ridden"].Value = -1;
                 buddyParamRow["npcThinkParamId_ridden"].Value = -1;
@@ -653,7 +676,7 @@ namespace EldenRingSpiritBattler
             if (prevScrollIndex != -1)
                 TeamDataGrid.FirstDisplayedScrollingRowIndex = prevScrollIndex; // Scroll to selection
 
-            // Chosen Team list
+            // Retain spirit's chosen team
             string prevText = List_EnemyChosenTeam.Text;
             List_EnemyChosenTeam.DataSource = teamDict.Select(team => team.Key).ToList(); // Also triggers UpdateSelectedSpirit();
 
@@ -661,6 +684,7 @@ namespace EldenRingSpiritBattler
                 List_EnemyChosenTeam.SelectedIndex = 0;
             else
                 List_EnemyChosenTeam.Text = prevText;
+            
         }
 
         private SpiritTeam CreateTeamFromElements()
@@ -728,9 +752,14 @@ namespace EldenRingSpiritBattler
                 return name;
             }
         }
+
+        public bool _noUpdateTeam = false;
         public void UpdateTeamElements()
         {
+            _noUpdateTeam = true;
             SpiritTeam team = GetSelectedTeamFromGrid();
+
+            List_TeamSummonPreset.Text = team.TeamPosition.Label;
 
             Input_TeamName.Text = team.Name;
             Input_TeamDamageMult.Value = team.TeamDamageMult;
@@ -741,8 +770,7 @@ namespace EldenRingSpiritBattler
             Input_TeamSummonPos_Ang.Value = (decimal)team.TeamPosition.Ang;
             Option_TeamFollowPlayer.Checked = team.FollowPlayer;
             List_TeamType.Text = ((TeamTypeEnum)team.TeamType).ToString();
-
-            List_TeamSummonPreset.Text = team.TeamPosition.Label;
+            _noUpdateTeam = false;
         }
         #endregion
         //
@@ -782,7 +810,8 @@ namespace EldenRingSpiritBattler
 
             if (spirit == null)
                 return;
-
+            /*
+            // Make team grid select this spirit's team
             TeamDataGrid.ClearSelection();
             foreach (DataGridViewRow row in TeamDataGrid.Rows)
             {
@@ -795,7 +824,7 @@ namespace EldenRingSpiritBattler
             }
             if (TeamDataGrid.SelectedRows.Count == 0)
                 throw new Exception("Couldn't find selected Spirit's team in TeamDataGrid.");
-
+            */
             List_Enemy.SelectedItem = spirit.BaseName;
             List_EnemyVariant.SelectedItem = spirit.VariantName;
 
@@ -909,7 +938,7 @@ namespace EldenRingSpiritBattler
             SpiritDataGrid.Columns[3].Width = 80;
             SpiritDataGrid.Columns[4].HeaderCell.Value = "Position";
             SpiritDataGrid.Columns[4].Width = 85;
-            SpiritDataGrid.Columns[5].HeaderCell.Value = "L. Dist";
+            SpiritDataGrid.Columns[5].HeaderCell.Value = "Aggro";
             SpiritDataGrid.Columns[5].Width = 45;
 
             SpiritDataGrid.ClearSelection();

@@ -239,6 +239,7 @@
             Input_TeamSummonPos_X.Size = new Size(59, 23);
             Input_TeamSummonPos_X.TabIndex = 9;
             toolTip1.SetToolTip(Input_TeamSummonPos_X, "Left/Right position of summon location in meters");
+            Input_TeamSummonPos_X.ValueChanged += UpdateSelectedTeam;
             // 
             // Input_TeamSummonPos_Z
             // 
@@ -250,6 +251,7 @@
             Input_TeamSummonPos_Z.Size = new Size(59, 23);
             Input_TeamSummonPos_Z.TabIndex = 10;
             toolTip1.SetToolTip(Input_TeamSummonPos_Z, "Depth of summon location in meters");
+            Input_TeamSummonPos_Z.ValueChanged += UpdateSelectedTeam;
             // 
             // Input_TeamSummonPos_Ang
             // 
@@ -261,6 +263,7 @@
             Input_TeamSummonPos_Ang.Size = new Size(59, 23);
             Input_TeamSummonPos_Ang.TabIndex = 11;
             toolTip1.SetToolTip(Input_TeamSummonPos_Ang, "Facing angle of the spirit when summoned");
+            Input_TeamSummonPos_Ang.ValueChanged += UpdateSelectedTeam;
             // 
             // numericUpDown1
             // 
@@ -317,6 +320,7 @@
             List_TeamPhantomColor.Size = new Size(129, 23);
             List_TeamPhantomColor.TabIndex = 1;
             toolTip1.SetToolTip(List_TeamPhantomColor, "Phantom color and other shader attributes given to members of this team\r\n");
+            List_TeamPhantomColor.SelectedIndexChanged += UpdateSelectedTeam;
             List_TeamPhantomColor.KeyDown += ComboBox_KeyPress;
             // 
             // label6
@@ -355,14 +359,16 @@
             // 
             // Button_AddNewTeam
             // 
+            Button_AddNewTeam.Enabled = false;
             Button_AddNewTeam.Location = new Point(6, 114);
             Button_AddNewTeam.Name = "Button_AddNewTeam";
-            Button_AddNewTeam.Size = new Size(116, 23);
+            Button_AddNewTeam.Size = new Size(69, 23);
             Button_AddNewTeam.TabIndex = 5;
-            Button_AddNewTeam.Text = "Add/Update Team";
+            Button_AddNewTeam.Text = "[disabled] Add/Update Team";
             toolTip1.SetToolTip(Button_AddNewTeam, "Updates a team's settings if Team Name exists in list.\r\nAdds a new team otherwise.");
             Button_AddNewTeam.UseVisualStyleBackColor = true;
-            Button_AddNewTeam.Click += Button_AddUpdateTeam_Click;
+            Button_AddNewTeam.Visible = false;
+            Button_AddNewTeam.Click += UpdateSelectedTeam;
             // 
             // Input_NpcParamID
             // 
@@ -472,6 +478,7 @@
             List_TeamType.Size = new Size(131, 23);
             List_TeamType.TabIndex = 2;
             toolTip1.SetToolTip(List_TeamType, "Determines who members of this team hate, can hurt, hated by, and can be hurt by (all mutually exclusive)");
+            List_TeamType.SelectedIndexChanged += UpdateSelectedTeam;
             List_TeamType.KeyDown += ComboBox_KeyPress;
             // 
             // label17
@@ -488,9 +495,10 @@
             // 
             Input_TeamName.Location = new Point(6, 85);
             Input_TeamName.Name = "Input_TeamName";
-            Input_TeamName.Size = new Size(157, 23);
+            Input_TeamName.Size = new Size(75, 23);
             Input_TeamName.TabIndex = 3;
             toolTip1.SetToolTip(Input_TeamName, "Purely for in-tool organization (at the moment)");
+            Input_TeamName.Visible = false;
             // 
             // label20
             // 
@@ -618,6 +626,8 @@
             Input_TeamDamageMult.TabIndex = 7;
             toolTip1.SetToolTip(Input_TeamDamageMult, "Damage Multiplier applied to members of team");
             Input_TeamDamageMult.Value = new decimal(new int[] { 1, 0, 0, 0 });
+            Input_TeamDamageMult.ValueChanged += UpdateSelectedTeam;
+            Input_TeamDamageMult.Click += UpdateSelectedTeam;
             // 
             // label12
             // 
@@ -640,6 +650,8 @@
             Input_TeamHpMult.TabIndex = 6;
             toolTip1.SetToolTip(Input_TeamHpMult, "HP Multiplier applied to members of team");
             Input_TeamHpMult.Value = new decimal(new int[] { 1, 0, 0, 0 });
+            Input_TeamHpMult.ValueChanged += UpdateSelectedTeam;
+            Input_TeamHpMult.Click += UpdateSelectedTeam;
             // 
             // Button_AddRandomSpirit
             // 
@@ -700,13 +712,14 @@
             // 
             // Button_RandomTeamName
             // 
-            Button_RandomTeamName.Location = new Point(165, 85);
+            Button_RandomTeamName.Location = new Point(81, 87);
             Button_RandomTeamName.Name = "Button_RandomTeamName";
             Button_RandomTeamName.Size = new Size(22, 23);
             Button_RandomTeamName.TabIndex = 4;
             Button_RandomTeamName.Text = "?";
             toolTip1.SetToolTip(Button_RandomTeamName, "Picks a random team name");
             Button_RandomTeamName.UseVisualStyleBackColor = true;
+            Button_RandomTeamName.Visible = false;
             Button_RandomTeamName.Click += Button_RandomizeTeam_Click;
             // 
             // Search_SpiritAsh
@@ -761,13 +774,14 @@
             // Option_TeamFollowPlayer
             // 
             Option_TeamFollowPlayer.AutoSize = true;
-            Option_TeamFollowPlayer.Location = new Point(193, 87);
+            Option_TeamFollowPlayer.Location = new Point(169, 89);
             Option_TeamFollowPlayer.Name = "Option_TeamFollowPlayer";
             Option_TeamFollowPlayer.Size = new Size(96, 19);
             Option_TeamFollowPlayer.TabIndex = 118;
             Option_TeamFollowPlayer.Text = "Follow Player";
             toolTip1.SetToolTip(Option_TeamFollowPlayer, "If checked, members of this team will follow/teleport to the player when far away.");
             Option_TeamFollowPlayer.UseVisualStyleBackColor = true;
+            Option_TeamFollowPlayer.CheckedChanged += UpdateSelectedTeam;
             // 
             // Option_Spirit_SearchesLongRange
             // 
@@ -1142,11 +1156,12 @@
             // label18
             // 
             label18.AutoSize = true;
-            label18.Location = new Point(11, 67);
+            label18.Location = new Point(5, 85);
             label18.Name = "label18";
             label18.Size = new Size(70, 15);
             label18.TabIndex = 109;
             label18.Text = "Team Name";
+            label18.Visible = false;
             // 
             // groupBox1
             // 

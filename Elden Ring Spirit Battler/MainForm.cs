@@ -30,6 +30,8 @@ namespace EldenRingSpiritBattler
             Option_HidePlayer.Checked = Config.HidePlayer;
         }
 
+        public bool IsStartup = true;
+
         private void MainForm_Load(object sender, EventArgs e)
         {
             LoadConfig();
@@ -57,6 +59,7 @@ namespace EldenRingSpiritBattler
             LoadTeamTypeResource();
             LoadPhantomResource();
 
+
             AddRandomSpiritToGrid();
             List_EnemyChosenTeam.Text = teamDict.Values.Where(e => e.TeamPosition.Label == "Column Left").First().Name;
             AddRandomSpiritToGrid();
@@ -66,11 +69,14 @@ namespace EldenRingSpiritBattler
             List_TeamSummonPreset.DataSource = teamSummonPresetDict.Keys.ToList();
 
             Option_Spirit_SearchesLongRange.Enabled = !Option_SummonsEasilyFindTargets.Checked;
+
+            IsStartup = false;
+            EnemyWasEdited(sender, e);
         }
 
         private void EnemyWasEdited(object sender, EventArgs e)
         {
-            if (preventEnemyEdited)
+            if (preventEnemyEdited || IsStartup)
                 return;
             UpdateSelectedSpirit();
             UpdateSpiritElements();
@@ -143,11 +149,14 @@ namespace EldenRingSpiritBattler
             DeleteSelectedSpiritFromGrid();
         }
 
-        private void Button_AddUpdateTeam_Click(object sender, EventArgs e)
+        private void UpdateSelectedTeam(object sender, EventArgs e)
         {
-            SpiritTeam team = CreateTeamFromElements();
-            AddUpdateTeamToGrid(team);
-            UpdateSpiritGrid();
+            if (!IsStartup && !_noUpdateTeam)
+            {
+                SpiritTeam team = CreateTeamFromElements();
+                AddUpdateTeamToGrid(team);
+                UpdateSpiritGrid();
+            }
         }
 
         private void Button_StatScalingLevelInfo_Click(object sender, EventArgs e)
@@ -357,6 +366,8 @@ namespace EldenRingSpiritBattler
                 Input_TeamSummonPos_Z.Enabled = true;
                 Input_TeamSummonPos_Ang.Enabled = true;
             }
+
+            UpdateSelectedTeam(sender, e);
         }
 
         private void List_EnemyChosenTeam_SelectedIndexChanged(object sender, EventArgs e)
@@ -425,6 +436,8 @@ namespace EldenRingSpiritBattler
         {
             Random rand = new();
             List_TeamPhantomColor.SelectedIndex = rand.Next(0, List_TeamPhantomColor.Items.Count - 1);
+
+            UpdateSelectedTeam(sender, e);
         }
 
         private void Search_SpiritAsh_TextChanged(object sender, EventArgs e)

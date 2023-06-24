@@ -30,6 +30,9 @@
 - Save Changes. The selected ash should now be changed in-game.
 
 ## Updates
+### v1.4.0
+- Added "Spirit Scaling" option for stat scaling. This makes spirits start with default stats and gain power as the spirit ash is upgraded (identical to vanilla summons).
+- Teams are now updated automatically as settings are changed.
 ### v1.3.0
 - Added a setting for summons finding targets easily, letting you disable summons noticing and running after targets that are very far away.
 - Added an option for summons aggro distance, letting you emulate vanilla spirit summon behavior (when "find targets easily" setting is disabled).
