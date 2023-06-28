@@ -222,31 +222,6 @@ Millicent (Caelid) 4||543480040||543480000||23485||-1
 Recusant Henricus (Stormhill)||543690010||543690000||23690||-1
 Mad Tongue Alberich (Roundtable Hold)||543850079||543850000||23850||-1
 
---BuddyStone
-BuddyStone (Mountaintops of the Giants)||1000000||1000000||-1||-1
-BuddyStone (Caelid)||1000000||1000000||-1||5000
-
---Caravan Dummy
-Caravan Dummy (Southwest Mountaintops)||1100000||44000000||-1||-1
-Bullet Dummy (Academy of Raya Lucaria)||1200000||1002000||-1||-1
-
---Bullet Dummy
-Bullet Dummy (B) (Caelid)||1200000||1200000||-1||-1
-Bullet Dummy (B) (Liurnia to Altus Plateau)||1200020||1200000||-1||16613
-Bullet Dummy (B) (North Altus Plateau)||1200030||1200000||-1||16614
-Bullet Dummy (B) (Caelid) 2||1200041||1200000||-1||16615
-Bullet Dummy (C) (Bellum Highway)||1200100||1200100||-1||-1
-Bullet Dummy (D) (Liurnia of the Lakes)||1200100||1200199||-1||-1
-
---Balloon Dummy
-Balloon Dummy (Mountaintops of the Giants)||1300000||1300000||-1||-1
-
---Bonfire
-Bonfire (Crumbling Farum Azula)||10000000||1000000||-1||-1
-Bonfire (B) (Mohgwyn Palace)||10000000||1200000||-1||-1
-Talk Dummy (C) (Limgrave)||10005000||10005000||-1||-1
-Bonfire (C) (Caelid)||10000000||10005000||-1||-1
-
 --Blaidd the Half-Wolf
 Blaidd the Half-Wolf (Siofra River)||20109064||20100000||-1||-1
 Blaidd the Half-Wolf (Liurnia of the Lakes)||20109020||20100000||-1||-1
