@@ -82,16 +82,16 @@ Dung Eater (Roundtable Hold) 2||523230179||523230000||23230||-1
 Dung Eater (Subterranean Shunning-Grounds)||523230135||523230000||23230||-1
 Dung Eater (Subterranean Shunning-Grounds) 2||523230035||523230000||23230||-1
 Dung Eater (B) (Capital Outskirts)||523230033||543230000||23231||-1
-Sir Gideon Ofnir, the All-Knowing (Roundtable Hold)||523240179||523240000||23240||-1
-Sir Gideon Ofnir, the All-Knowing (Roundtable Hold) 2||523240079||523240000||23249||-1
-Sir Gideon Ofnir, the All-Knowing (B) (Leyndell, Ashen Capital)||523240070||523240100||23241||-1
-Sir Gideon Ofnir, the All-Knowing (B) (Leyndell, Ashen Capital) 2||523240070||523240100||23242||-1
-Sir Gideon Ofnir, the All-Knowing (B) (Leyndell, Ashen Capital) 3||523240070||523240100||23243||-1
-Sir Gideon Ofnir, the All-Knowing (B) (Leyndell, Ashen Capital) 4||523240070||523240100||23244||-1
-Sir Gideon Ofnir, the All-Knowing (B) (Leyndell, Ashen Capital) 5||523240070||523240100||23245||-1
-Sir Gideon Ofnir, the All-Knowing (B) (Leyndell, Ashen Capital) 6||523240070||523240100||23246||-1
-Sir Gideon Ofnir, the All-Knowing (B) (Leyndell, Ashen Capital) 7||523240070||523240100||23247||-1
-Sir Gideon Ofnir, the All-Knowing (B) (Leyndell, Ashen Capital) 8||523240070||523240100||23248||-1
+Sir Gideon Ofnir (Roundtable Hold)||523240179||523240000||23240||-1
+Sir Gideon Ofnir (Roundtable Hold) 2||523240079||523240000||23249||-1
+Sir Gideon Ofnir (B) (Leyndell, Ashen Capital)||523240070||523240100||23241||-1
+Sir Gideon Ofnir (B) (Leyndell, Ashen Capital) 2||523240070||523240100||23242||-1
+Sir Gideon Ofnir (B) (Leyndell, Ashen Capital) 3||523240070||523240100||23243||-1
+Sir Gideon Ofnir (B) (Leyndell, Ashen Capital) 4||523240070||523240100||23244||-1
+Sir Gideon Ofnir (B) (Leyndell, Ashen Capital) 5||523240070||523240100||23245||-1
+Sir Gideon Ofnir (B) (Leyndell, Ashen Capital) 6||523240070||523240100||23246||-1
+Sir Gideon Ofnir (B) (Leyndell, Ashen Capital) 7||523240070||523240100||23247||-1
+Sir Gideon Ofnir (B) (Leyndell, Ashen Capital) 8||523240070||523240100||23248||-1
 Sorcerer Rogier (Stormveil Castle)||523250114||523250000||23250||-1
 Sorcerer Rogier (Roundtable Hold)||523250079||523250000||23250||-1
 Sorcerer Rogier (B) (Deeproot Depths)||523250066||523250100||23252||-1
@@ -262,9 +262,9 @@ Blaidd the Half-Wolf (C) (Limgrave)||20109310||20109000||-1||-1
 Blaidd the Half-Wolf (D) (Southeast Caelid)||20109140||20109500||-1||-1
 
 --Rennala, Queen of the Full Moon
-Rennala, Queen of the Full Moon (Academy of Raya Lucaria)||20300024||20300000||-1||-1
-Rennala, Queen of the Full Moon (B) (Academy of Raya Lucaria)||20300124||20300100||-1||-1
-Rennala, Queen of the Full Moon (C) (Academy of Raya Lucaria) 2||20310024||20310000||-1||-1
+Rennala (Phase 1) (Academy of Raya Lucaria)||20300024||20300000||-1||-1
+Rennala (NPC) (B) (Academy of Raya Lucaria)||20300124||20300100||-1||-1
+Rennala (Phase 2) (C) (Academy of Raya Lucaria) 2||20310024||20310000||-1||-1
 
 --Rennala Student
 Rennala Student (Academy of Raya Lucaria)||20403024||20400000||-1||-1
@@ -293,7 +293,7 @@ Alecto, Black Knife Ringleader (Liurnia of the Lakes)||21002922||21000000||-1||5
 Black Knife Assassin (Consecrated Snowfield)||21000052||21000000||-1||-1
 Black Knife Assassin (Consecrated Snowfield) 2||21000052||21000000||-1||19055,19058
 Black Knife Assassin (Unscaled) (Consecrated Snowfield)||21009000||21000000||-1||-1
-Black Knife Assassin (Limgrave Catacombs Boss) (Deathtouched Catacombs)||21001010||21000010||-1||-1
+Black Knife Assassin (Boss) (Deathtouched Catacombs)||21001010||21000010||-1||-1
 Black Knife Assassin (Boss) (Altus Plateau)||21000830||21000030||-1||-1
 Black Knife Assassin (Consecrated Snowfield) 3||21000052||21000052||-1||-1
 
@@ -397,7 +397,7 @@ Crab - Golden Tuffs (m60_44_52_10)||22770033||22770000||-1||-1
 --Crucible Knight
 Crucible Knight (Boss) (Road's End Catacombs)||25006020||25000000||-1||-1
 Crucible Knight Ordovis (Auriza Hero's Grave)||25000933||25000030||-1||-1
-Crucible Knight (Limgrave Evergaol Boss) (Limgrave)||25000010||25000030||-1||5260
+Crucible Knight (Evergaol Boss) (Limgrave)||25000010||25000030||-1||5260
 Crucible Knight (Redmane Boss) (Caelid)||25000941||25000040||-1||-1
 Crucible Knight (Unused) (Stormveil Castle)||25000014||25000050||-1||-1
 Crucible Knight (Siofra River)||25000165||25000100||-1||-1
@@ -407,7 +407,7 @@ Crucible Knight (Four Belfries) (Siofra River)||25000865||25000110||-1||-1
 Crucible Knight (Crumbling Farum Azula) 2||25000172||25000110||-1||8600
 Crucible Knight (B) (Leyndell, Royal Capital)||25001034||25001000||-1||-1
 Crucible Knight (Boss) (B) (Road's End Catacombs)||25007020||25001000||-1||-1
-Crucible Knight Ordovis (Auriza Boss) (B) (Auriza Hero's Grave)||25001933||25001030||-1||-1
+Crucible Knight Ordovis (Boss) (B) (Auriza Hero's Grave)||25001933||25001030||-1||-1
 Crucible Knight Siluria (B) (Deeproot Depths)||25001066||25001066||-1||-1
 Crucible Knight (B) (Leyndell, Royal Capital) 2||25001134||25001100||-1||-1
 Crucible Knight (B) (Siofra River)||25001165||25001100||-1||-1
@@ -626,12 +626,12 @@ Bell Bearing Hunter (Greyoll's Dragonbarrow)||31000042||31001000||-1||-1
 
 --Night's Cavalry
 Night's Cavalry (Liurnia of the Lakes)||31500020||31500000||-1||-1
-Night's Cavalry (Limgrave Boss) (Limgrave)||31500010||31500000||-1||-1
+Night's Cavalry (Boss) (Limgrave)||31500010||31500000||-1||-1
 Night's Cavalry (Mountaintops of the Giants)||31500050||31500000||-1||-1
 Night's Cavalry (Greyoll's Dragonbarrow)||31500042||31500000||-1||-1
 Night's Cavalry (Glaive) (Southwest Mountaintops)||31500052||31500052||-1||-1
 Night's Cavalry (B) (Altus Plateau)||31501030||31501000||-1||-1
-Night's Cavalry (Weeping Peninsula Boss) (B) (Weeping Peninsula)||31501012||31501000||-1||-1
+Night's Cavalry (Boss) (B) (Weeping Peninsula)||31501012||31501000||-1||-1
 Night's Cavalry (B) (Caelid)||31501040||31501000||-1||-1
 Night's Cavalry (Flail) (B) (Southwest Mountaintops)||31501052||31501052||-1||-1
 
@@ -657,8 +657,8 @@ Big Wolf (Liurnia of the Lakes)||31800021||31800020||-1||-1
 Red Wolf of Radagon (Siofra River)||31810065||31810000||-1||-1
 Red Wolf of Radagon (Moonlight Altar)||31810022||31810000||-1||-1
 Red Wolf of Radagon (Liurnia of the Lakes)||31810020||31810000||-1||-1
-Red Wolf of Radagon Sword (Archives) (Academy of Raya Lucaria)||31811024||31810024||-1||-1
-Red Wolf of Radagon Sword (Snowfields) (Mountaintops of the Giants)||31811052||31810052||-1||16941
+Red Wolf of Radagon Sword (Academy of Raya Lucaria)||31811024||31810024||-1||-1
+Red Wolf of Radagon Sword (Mountaintops of the Giants)||31811052||31810052||-1||16941
 Red Wolf of the Champion (B) (Gelmir Hero's Grave)||31811032||31810932||-1||-1
 
 --Nomadic Merchand
@@ -686,7 +686,7 @@ Hermit Merchant (Mountaintops of the Giants)||32002650||32000000||-1||-1
 
 --Tree Sentinel
 Draconic Tree Sentinel (Crumbling Farum Azula)||32500072||32500000||-1||-1
-Draconic Tree Sentinel (Capital Outskirts) (B) (Capital Outskirts)||32500033||32500900||-1||-1
+Draconic Tree Sentinel (B) (Capital Outskirts)||32500033||32500900||-1||-1
 Tree Sentinel (Altus Plateau)||32510030||32510900||-1||-1
 Tree Sentinel (Limgrave)||32510010||32510900||-1||-1
 Tree Sentinel - Torch (B) (Altus Plateau)||32511030||32511000||-1||-1
@@ -791,7 +791,7 @@ Frenzied Grave Warden Duelist (Boss) (Gaol Cave)||34000940||34000010||-1||-1
 Grave Warden Duelist (B) (Leyndell, Royal Capital)||34001034||34001000||-1||-1
 Grave Warden Duelist (B) (Consecrated Snowfield)||34001852||34001000||-1||-1
 Grave Warden Duelist (Boss) (B) (Murkwater Catacombs)||34001110||34001010||-1||-1
-Grave Warden Duelist (Auriza Boss) (B) (Auriza Side Tomb)||34001133||34001010||-1||-1
+Grave Warden Duelist (Boss) (B) (Auriza Side Tomb)||34001133||34001010||-1||-1
 
 --Misbegotten
 Misbegotten (Leyndell, Royal Capital)||34500034||34500000||-1||-1
@@ -818,7 +818,7 @@ Scaly Misbegotten (Miquella's Haligtree)||34510354||34510000||-1||-1
 Scaly Misbegotten (Miquella's Haligtree) 2||34510054||34510000||-1||-1
 Scaly Misbegotten (Altus Plateau)||34510030||34510000||-1||-1
 Scaly Misbegotten (Cave of the Forlorn)||34510052||34510000||-1||-1
-Scaly Misbegotten ( Boss) (Morne Tunnel)||34510912||34510000||-1||-1
+Scaly Misbegotten (Boss) (Morne Tunnel)||34510912||34510000||-1||-1
 Scaly Misbegotten (Weeping Peninsula)||34510013||34510000||-1||-1
 Scaly Misbegotten (Weeping Peninsula) 2||34510012||34510000||-1||-1
 Smithing Master Hewg (B) (Roundtable Hold)||34510179||34519000||-1||-1
@@ -830,7 +830,7 @@ Misbegotten Crusader (Cave of the Forlorn)||34601952||34600000||-1||-1
 Leonine Misbegotten (Miquella's Haligtree) 2||34600354||34600010||-1||-1
 Leonine Misbegotten (Leyndell, Royal Capital) 2||34600034||34600020||-1||-1
 Misbegotten Warrior (B) (Unsightly Catacombs)||34600930||34600900||-1||-1
-Leonine Misbegotten ( Boss) (C) (Weeping Peninsula)||34600913||34601000||-1||-1
+Leonine Misbegotten (Boss) (C) (Weeping Peninsula)||34600913||34601000||-1||-1
 Misbegotten Warrior (D) (Caelid)||34600941||34602000||-1||-1
 
 --Albinauric
@@ -978,7 +978,7 @@ Godskin Apostle (B) (Altus Plateau)||35600030||35600900||-1||-1
 Godskin Apostle (B) (Divine Tower of Caelid)||35600042||35600942||-1||-1
 
 --Godskin Noble
-Godskin Noble (Liurnia Divine Tower) (Divine Tower of Liurnia)||35700028||35700000||-1||-1
+Godskin Noble (Divine Tower of Liurnia)||35700028||35700000||-1||-1
 Godskin Noble (Godskin Duo) (B) (Crumbling Farum Azula)||35700172||35700100||-1||-1
 Godskin Noble (C) (Volcano Manor)||35700038||35700900||-1||-1
 Godskin Noble (C) (Spiritcaller Cave)||35700950||35700910||-1||15025
@@ -1719,7 +1719,7 @@ Smaller Dog (Altus Plateau)||41610030||41610000||-1||-1
 Smaller Dog (m60_44_38_10)||41610010||41610000||-1||-1
 Smaller Dog (Liurnia of the Lakes)||41610220||41610000||-1||-1
 Smaller Dog (Consecrated Snowfield)||41610252||41610000||-1||-1
-Starved Dog (Village of the Albinaurics) (Liurnia of the Lakes)||41610020||41610000||-1||-1
+Starved Dog (Village of the Albinaurics)||41610020||41610000||-1||-1
 Smaller Dog (Mt. Gelmir)||41610032||41610000||-1||-1
 Smaller Dog (Mt. Gelmir) 2||41610032||41610000||-1||5000
 Starved Dog (Shaded Castle)||41610031||41610000||-1||-1
@@ -2419,11 +2419,11 @@ Leyndell Knight (B) (Mt. Gelmir)||43531232||43531000||-1||-1
 Leyndell Knight (B) (Altus Plateau)||43531130||43531000||-1||-1
 Leyndell Knight (B) (Altus Plateau) 2||43531130||43531000||-1||14498
 Leyndell Knight (B) (Altus Plateau) 3||43531030||43531000||-1||14498
-Leyndell Knight - Archer (Leyndell- Royal Capital) (C) (Leyndell, Royal Capital)||43532034||43532000||-1||14498,14499
+Leyndell Knight - Archer (C) (Leyndell, Royal Capital)||43532034||43532000||-1||14498,14499
 Leyndell Knight (C) (Divine Tower of East Altus)||43532050||43532000||-1||-1
 Leyndell Knight (C) (Altus Plateau)||43532030||43532000||-1||-1
-Leyndell Knight - Archer (Leyndell- Royal Capital) (D) (Leyndell, Royal Capital)||43532034||43532100||-1||14498,14499
-Leyndell Knight - Archer (Leyndell- Royal Capital) (D) (Leyndell, Royal Capital) 2||43532034||43532100||-1||14498,14467,14499
+Leyndell Knight - Archer (D) (Leyndell, Royal Capital)||43532034||43532100||-1||14498,14499
+Leyndell Knight - Archer (D) (Leyndell, Royal Capital) 2||43532034||43532100||-1||14498,14467,14499
 Redmane Knight (m60_47_39_10)||43540040||43540000||-1||-1
 Redmane Knight (Caelid)||43540041||43540000||-1||-1
 Redmane Knight (B) (War-Dead Catacombs)||43540342||43540210||-1||4802
@@ -2950,9 +2950,9 @@ Dragonkin Soldier (Nokstella) (Ainsel River)||46500060||46500100||-1||4800
 Dragonkin Soldier Ice (Ainsel River)||46500160||46500100||-1||4800
 Dragonkin Soldier (Lake of Rot) (B) (Ainsel River)||46500262||46500200||-1||-1
 Dragonkin Soldier (Nokron) (B) (Siofra River)||46500265||46500265||-1||-1
-Dragonkin Soldier Phantom (Snowfields) (B) (Consecrated Snowfield)||46500352||46500300||-1||-1
-Dragonkin Soldier Phantom (Snowfields) (B) (Consecrated Snowfield) 2||46500352||46500310||-1||13222
-Dragonkin Soldier Phantom (Snowfields) (B) (Consecrated Snowfield) 3||46500352||46500310||-1||-1
+Dragonkin Soldier Phantom (B) (Consecrated Snowfield)||46500352||46500300||-1||-1
+Dragonkin Soldier Phantom (B) (Consecrated Snowfield) 2||46500352||46500310||-1||13222
+Dragonkin Soldier Phantom (B) (Consecrated Snowfield) 3||46500352||46500310||-1||-1
 
 --Golem
 Golem (Leyndell, Royal Capital)||46600034||46600000||-1||-1
@@ -2963,7 +2963,7 @@ Guardian Golem (Stormhill)||46606010||46600000||-1||-1
 Guardian Golem (Capital Outskirts)||46600133||46600000||-1||-1
 Guardian Golem (Greyoll's Dragonbarrow)||46604142||46600000||-1||-1
 Guardian Golem (Mountaintops of the Giants)||46602050||46600000||-1||-1
-Golem (Limgrave Boss) (B) (Highroad Cave)||46600910||46600100||-1||-1
+Golem (Boss) (B) (Highroad Cave)||46600910||46600100||-1||-1
 Guardian Golem (C) (Divine Tower of Limgrave)||46600010||46600300||-1||-1
 Guardian Golem (C) (Divine Tower of Limgrave) 2||46600010||46600301||-1||-1
 Guardian Golem (C) (Liurnia of the Lakes)||46600030||46600330||-1||-1
@@ -3039,9 +3039,9 @@ Mohg, The Omen (Sewers) (Subterranean Shunning-Grounds)||48001935||48000000||-1|
 Erdtree Avatar (Leyndell, Royal Capital)||48100034||48100000||-1||-1
 Erdtree Avatar (Deeproot Depths)||48100066||48100000||-1||-1
 Erdtree Avatar (North Liurnia) (Bellum Highway)||48100020||48100000||-1||-1
-Erdtree Avatar (Giants Mountaintops) (Mountaintops of the Giants)||48100150||48100000||-1||-1
+Erdtree Avatar (Mountaintops of the Giants)||48100150||48100000||-1||-1
 Erdtree Avatar (South Liurnia) (B) (Liurnia of the Lakes)||48100920||48100900||-1||-1
-Erdtree Avatar (Weeping Peninsula Boss) (B) (Weeping Peninsula)||48100012||48100900||-1||-1
+Erdtree Avatar (Boss) (B) (Weeping Peninsula)||48100012||48100900||-1||-1
 Putrid Erdtree Avatar (Miquella's Haligtree)||48110056||48110000||-1||-1
 Putrid Erdtree Avatar (Greyoll's Dragonbarrow)||48110042||48110000||-1||-1
 Putrid Erdtree Avatar (Caelid)||48110040||48110040||-1||-1
@@ -3059,9 +3059,9 @@ Omenkiller (Boss) (C) (Liurnia of the Lakes)||48200920||48200900||-1||-1
 
 --Magma Wyrm
 Magma Wyrm (Volcano Manor)||49100038||49100000||-1||-1
-Magma Wyrm ( Boss) (Gael Tunnel)||49100940||49100000||-1||-1
+Magma Wyrm (Boss) (Gael Tunnel)||49100940||49100000||-1||-1
 Magma Wyrm Makar (Boss) (B) (Ruin-Strewn Precipice)||49100026||49100926||-1||-1
-Magma Wyrm (Lava Lake Boss) (B) (Mt. Gelmir)||49100032||49100932||-1||-1
+Magma Wyrm (Boss) (B) (Mt. Gelmir)||49100032||49100932||-1||-1
 Great Wyrm Theodorix (Boss) (C) (Mountaintops of the Giants)||49110052||49100952||-1||-1
 
 --Tibia Mariner
@@ -3278,7 +3278,7 @@ Ancient Hero of Zamor (Boss) (Sainted Hero's Grave)||71000030||71000000||-1||-1
 Ancient Hero of Zamor (Mountaintops of the Giants)||71000150||71000000||-1||-1
 Ancient Hero of Zamor (Mountaintops of the Giants) 2||71000150||71000050||-1||-1
 Ancient Hero of Zamor (Mountaintops of the Giants) 3||71000150||71000051||-1||-1
-Ancient Hero of Zamor (Weeping Peninsula Boss) (B) (Weeping Peninsula)||71000012||71000900||-1||5260
+Ancient Hero of Zamor (Boss) (B) (Weeping Peninsula)||71000012||71000900||-1||5260
 Ancient Hero of Zamor (Boss) (B) (Giant-Conquering Hero's Grave)||71000950||71000950||-1||-1
 
 --Mounted Weapons
