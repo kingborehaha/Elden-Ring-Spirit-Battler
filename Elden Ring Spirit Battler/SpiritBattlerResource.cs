@@ -107,7 +107,7 @@ namespace EldenRingSpiritBattler
             BrownSummon = 61,
             Red62 = 62,
             Blue70 = 70,
-            WhiteSummon = 200,
+            SpiritSummon = 200,
             White201 = 201,
             Red202 = 202,
             Red203 = 203,
