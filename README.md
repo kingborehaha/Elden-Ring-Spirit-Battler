@@ -30,6 +30,18 @@
 - Save Changes. The selected ash should now be changed in-game.
 
 ## Updates
+### v1.5.0
+- Reworked enemy info resource:
+-- Greatly expands number of selectable enemies
+-- Removes invalid enemies
+-- Provide an enemy's original location
+-- Mark enemies with data that indicated they have special behvaior, differentiated by (LETTERS)
+-- Stores additional spEffects the enemy may require to display unique behavior.
+- Follow Player option now additional determines if a summon will focus on player lock-on targets.
+- Added option to make summons disappear upon death
+- Retain selected enemy and enemy variant when search filter is used (if selection exists within filter).
+- Fixed Enemy Variant list not being filtered by search filter when changing base enemy.
+- Spirit summon team preset now has Follow Player on by default
 ### v1.4.1
 - Re-added team name options.
 ### v1.4.0

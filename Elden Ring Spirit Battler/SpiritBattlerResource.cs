@@ -12,6 +12,7 @@ namespace EldenRingSpiritBattler
         public const int FollowPlayerSpEffectId = 297000; // SpEffect ID that allows buddies to follow and warp to the player when far enough away.
         public const int BuddyDopingSpEffect = 290000; // ID of starting spEffect to use for buddy reinforcement effects.
         public const int BuddyDopingSpEffect_c0000 = 290050; // ID of starting spEffect to use for  buddy reinforcement effects.
+        public const int VanishAfterDeathSpEffect = 4302;
 
         private static readonly float _positionMagnitude = 1;
         private static readonly float _positionIncrementBase = 1.5f;

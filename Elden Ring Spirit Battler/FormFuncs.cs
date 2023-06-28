@@ -11,6 +11,12 @@ using static EldenRingSpiritBattler.SpiritBattlerResources;
 
 /*
 -- TODO
+-- high priority
+    * Figure out how "follow player" buddyParam is making AI not able to attack targets (something missing in npcThink?)
+        * test those spear knights with new spEffect
+    * enemy filter
+        * cache and reselect enemy list when search filter is changed (when possible, index 0 otherwise)
+        * fix enemy variant list not filtering after changing enemy list selection
 -- medium priority
     Enemy names appear above their heads
         invader blaidd style. need to experiment with limitations. does it work with every team, or just enemies?
@@ -56,7 +62,7 @@ namespace EldenRingSpiritBattler
 
         public List<BattleSpirit> battleSpiritList = new();
 
-        public UserConfig Config = new();
+        public static UserConfig Config = new();
 
         public int GetRandomUnusedPhantomId()
         {
@@ -103,14 +109,15 @@ namespace EldenRingSpiritBattler
 
         private void LoadEnemyResource()
         {
+            int lineNum = 0;
             try
             {
                 var file = File.ReadAllLines($@"{AppDomain.CurrentDomain.BaseDirectory}\Resources\EnemyInfoResource.txt");
 
                 string variantKey = "";
-                for (var i = 0; i < file.Length; i++)
+                for (; lineNum < file.Length; lineNum++)
                 {
-                    var line = file[i];
+                    var line = file[lineNum];
                     if (line.StartsWith("--"))
                     {
                         // Start of a new enemy section
@@ -122,7 +129,20 @@ namespace EldenRingSpiritBattler
                         continue;
 
                     var split = line.Split("||");
-                    Enemy newEnemy = new(split[0], int.Parse(split[1]), int.Parse(split[2]), int.Parse(split[3]));
+                    List<int> behaviorSpEffects = new();
+                    if (split.Length == 5)
+                    {
+                        var effectSplit = split[4].Split(",");
+                        foreach (var effect in effectSplit)
+                        {
+                            int effectID = int.Parse(effect);
+                            if (effectID > 0)
+                            {
+                                behaviorSpEffects.Add(effectID);
+                            }
+                        }
+                    }
+                    Enemy newEnemy = new(split[0], int.Parse(split[1]), int.Parse(split[2]), int.Parse(split[3]), behaviorSpEffects);
                     enemyVariantDict[variantKey].Add(newEnemy);
                 }
                 foreach (var dict in enemyVariantDict.ToList())
@@ -141,7 +161,7 @@ namespace EldenRingSpiritBattler
             }
             catch (Exception e)
             {
-                throw new Exception("Error loading \"Resources\\EnemyInfoResource.txt\"", e);
+                throw new Exception($"Error loading \"Resources\\EnemyInfoResource.txt\" on line {lineNum}", e);
             }
         }
 
@@ -396,7 +416,7 @@ namespace EldenRingSpiritBattler
                             || (effectID >= c0000ScalingEffectBaseId && effectID <= c0000ScalingEffectMaxId))
                         {
                             // Vanilla scaling spEffect. Remove it.
-                            newNpcRow["spEffectID" + iEffect].Value = -1;
+                            newNpcRow["spEffectID" + iEffect].Value = 0;
                         }
                     }
                     if (effectID <= 0 && iBuddy < buddyEffects.Count)
@@ -473,21 +493,21 @@ namespace EldenRingSpiritBattler
                 buddyParamRow["npcThinkParamId"].Value = newNpcThinkRow.ID;
                 buddyParamRow["npcPlayerInitParamId"].Value = spirit.CharaInitID; // CharaInit
 
-                buddyParamRow["disablePCTargetShare"].Value = true; // Must be true for enemies, or else they can try to target themselves.
                 buddyParamRow["appearOnAroundSekihi"].Value = (byte)0; // 0 = Summon using player location.
                 if (spirit.FollowPlayer)
                 {
+                    buddyParamRow["disablePCTargetShare"].Value = false; // Must be true for enemies, or else they can try to target themselves.
                     buddyParamRow["pcFollowType"].Value = (byte)0; // 0 = Follow player around, 1 = Wander Around, 2 = Wait in place?
                 }
                 else
                 {
+                    buddyParamRow["disablePCTargetShare"].Value = true; // Must be true for enemies, or else they can try to target themselves.
                     buddyParamRow["pcFollowType"].Value = (byte)1; // 0 = Follow player around, 1 = Wander Around, 2 = Wait in place?
                 }
 
                 if (spirit.Sp_StatScaling == (int)StatScalingEnum.Spirit)
                 {
                     // Spirit stats will increase with ash reinforcement
-                    Debugger.Break();
                     int dopingEffectID;
                     if (spirit.Is_c0000)
                     {
@@ -735,10 +755,12 @@ namespace EldenRingSpiritBattler
             UpdateTeamGridAndList();
         }
 
-        private void AddRandomizedTeamToGrid(TeamTypeEnum team, SummonPos? summonPos = null)
+        private SpiritTeam AddRandomizedTeamToGrid(TeamTypeEnum teamType, SummonPos? summonPos = null)
         {
             string teamName = GetRandomUnusedTeamName();
-            teamDict.Add(teamName, new SpiritTeam(teamName, GetRandomUnusedPhantomId(), (byte)team, false, summonPos));
+            SpiritTeam team = new(teamName, GetRandomUnusedPhantomId(), (byte)teamType, false, summonPos);
+            teamDict.Add(teamName, team);
+            return team;
         }
 
         public void SetRandomTeamName()
@@ -860,6 +882,8 @@ namespace EldenRingSpiritBattler
             Input_NpcThinkID.Value = spirit.BaseThinkID;
             Input_CharaInitID.Value = spirit.CharaInitID;
 
+            List_EnemyBehaviorSpEffects.DataSource = spirit.BehaviorSpEffects;
+
             List_StatScaling.Text = ((StatScalingEnum)spirit.Sp_StatScaling).ToString();
 
             Input_EnemyHpMult.Value = spirit.HpMult;
@@ -873,7 +897,7 @@ namespace EldenRingSpiritBattler
 
             Option_Spirit_SearchesLongRange.Checked = spirit.LongDistanceAggro;
 
-            UpdateTeamElements();
+            //UpdateTeamElements();
         }
 
         private void UpdateSelectedSpirit()
@@ -1005,6 +1029,7 @@ namespace EldenRingSpiritBattler
                 BaseNpcID = (int)Input_NpcParamID.Value,
                 BaseThinkID = (int)Input_NpcThinkID.Value,
                 CharaInitID = (int)Input_CharaInitID.Value,
+                BehaviorSpEffects = List_EnemyBehaviorSpEffects.Items.Cast<int>().ToList(),
                 LongDistanceAggro = Option_Spirit_SearchesLongRange.Checked
             };
             return spirit;

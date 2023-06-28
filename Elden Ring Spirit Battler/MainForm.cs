@@ -46,7 +46,8 @@ namespace EldenRingSpiritBattler
 
             AddRandomizedTeamToGrid(TeamTypeEnum.Beast, teamSummonPresetDict["Column Left"]);
             AddRandomizedTeamToGrid(TeamTypeEnum.DS3_CoopMadPhantom, teamSummonPresetDict["Column Right"]); //Tried hostileNPC
-            AddRandomizedTeamToGrid(TeamTypeEnum.SpiritSummon, teamSummonPresetDict["Row Close"]);
+            var friendlyTeam = AddRandomizedTeamToGrid(TeamTypeEnum.SpiritSummon, teamSummonPresetDict["Row Close"]);
+            friendlyTeam.FollowPlayer = true;
             AddRandomizedTeamToGrid(TeamTypeEnum.Enemy, teamSummonPresetDict["Row Far"]);
 
             List_StatScaling.DataSource = GetOrderedEnumNames(typeof(StatScalingEnum));
@@ -58,7 +59,6 @@ namespace EldenRingSpiritBattler
             UpdateTeamElements();
             LoadTeamTypeResource();
             LoadPhantomResource();
-
 
             AddRandomSpiritToGrid();
             List_EnemyChosenTeam.Text = teamDict.Values.Where(e => e.TeamPosition.Label == "Column Left").First().Name;
@@ -194,26 +194,6 @@ namespace EldenRingSpiritBattler
 
         private void Button_Execute_Click(object sender, EventArgs e)
         {
-            /*
-            if (File.Exists(backupFile))
-            {
-                //User wants to randomize a regulation that has a backup file next to it
-
-                DialogResult result = MessageBox.Show("Warning: Backup Regulation.bin already exists."
-                    + " \nYou may be trying to randomize an already randomized Regulation.bin, which will cause issues. It's recommended you restore the backup first."
-                    + " \n\nDelete Regulation.bin and restore backup before proceeding?"
-                    , "Confirm Randomization", MessageBoxButtons.YesNoCancel);
-                if (result == DialogResult.OK)
-                {
-                    Restore_Regulation();
-                }
-                else if (result == DialogResult.Cancel)
-                {
-                    return;
-                }
-            }
-            */
-
             if (ExecuteMainLogic())
             {
                 // Success
@@ -269,11 +249,14 @@ namespace EldenRingSpiritBattler
         {
             if (enemyVariantDict.TryGetValue(List_Enemy.Text, out List<Enemy>? list))
             {
-                List_EnemyVariant.DataSource = list.Select(e => e.Name).ToList();
+                List<string> variantResults = enemyVariantDict[List_Enemy.Text].FindAll(s => s.Name.Contains(Search_Enemy.Text, StringComparison.CurrentCultureIgnoreCase)).Select(e => e.Name).ToList();
+                List_EnemyVariant.DataSource = variantResults;
+                //List_EnemyVariant.DataSource = list.Select(e => e.Name).ToList();
                 // Update NpcParamId and NpcThinkParam elements
                 Input_NpcParamID.Value = enemyVariantDict[List_Enemy.Text][0].NpcID;
                 Input_NpcThinkID.Value = enemyVariantDict[List_Enemy.Text][0].ThinkID;
                 Input_CharaInitID.Value = enemyVariantDict[List_Enemy.Text][0].CharaInitID;
+                List_EnemyBehaviorSpEffects.DataSource = enemyVariantDict[List_Enemy.Text][0].BehaviorSpEffects;
             }
             EnemyWasEdited(sender, e);
         }
@@ -286,6 +269,7 @@ namespace EldenRingSpiritBattler
                 Input_NpcParamID.Value = enemyVariantDict[List_Enemy.Text].Find(e => e.Name == List_EnemyVariant.Text).NpcID;
                 Input_NpcThinkID.Value = enemyVariantDict[List_Enemy.Text].Find(e => e.Name == List_EnemyVariant.Text).ThinkID;
                 Input_CharaInitID.Value = enemyVariantDict[List_Enemy.Text].Find(e => e.Name == List_EnemyVariant.Text).CharaInitID;
+                List_EnemyBehaviorSpEffects.DataSource = enemyVariantDict[List_Enemy.Text].Find(e => e.Name == List_EnemyVariant.Text).BehaviorSpEffects;
                 EnemyWasEdited(sender, e);
             }
         }
@@ -377,11 +361,14 @@ namespace EldenRingSpiritBattler
 
         private void Search_Enemy_TextChanged(object sender, EventArgs e)
         {
-            string str = Search_Enemy.Text;
+            string prevEnemySel = List_Enemy.Text;
+            string prevEnemyVariantSel = List_EnemyVariant.Text;
+
+            string searchStr = Search_Enemy.Text;
             List_Enemy.Enabled = true;
             List_EnemyVariant.Enabled = true;
 
-            if (str == "" || preventEnemyEdited)
+            if (searchStr == "" || preventEnemyEdited)
             {
                 Label_SearchEnemyText.Visible = true;
                 List_Enemy.DataSource = enemyListCache;
@@ -389,11 +376,11 @@ namespace EldenRingSpiritBattler
             else
             {
                 Label_SearchEnemyText.Visible = false;
-                List<string> results = enemyListCache.FindAll(s => s.Contains(str, StringComparison.CurrentCultureIgnoreCase));
+                List<string> results = enemyListCache.FindAll(s => s.Contains(searchStr, StringComparison.CurrentCultureIgnoreCase));
                 foreach (var en in enemyVariantDict)
                 {
                     // Scan through variants for matches too
-                    if (en.Value.Find(e => e.Name.Contains(str, StringComparison.CurrentCultureIgnoreCase)) != null)
+                    if (en.Value.Find(e => e.Name.Contains(searchStr, StringComparison.CurrentCultureIgnoreCase)) != null)
                     {
                         results.Add(en.Key);
                     }
@@ -408,9 +395,19 @@ namespace EldenRingSpiritBattler
                 {
                     List_Enemy.DataSource = results;
 
-                    List<string> variantResults = enemyVariantDict[List_Enemy.Text].FindAll(s => s.Name.Contains(str, StringComparison.CurrentCultureIgnoreCase)).Select(e => e.Name).ToList();
+                    List<string> variantResults = enemyVariantDict[List_Enemy.Text].FindAll(s => s.Name.Contains(searchStr, StringComparison.CurrentCultureIgnoreCase)).Select(e => e.Name).ToList();
                     List_EnemyVariant.DataSource = variantResults;
                 }
+            }
+
+            // Restore previous selections if possible
+            if (List_Enemy.Items.Contains(prevEnemySel))
+            {
+                List_Enemy.Text = prevEnemySel;
+            }
+            if (List_EnemyVariant.Items.Contains(prevEnemyVariantSel))
+            {
+                List_EnemyVariant.Text = prevEnemyVariantSel;
             }
         }
 
@@ -555,6 +552,12 @@ namespace EldenRingSpiritBattler
             Config.SummonsFindTargetsEasily = Option_SummonsEasilyFindTargets.Checked;
 
             Option_Spirit_SearchesLongRange.Enabled = !Option_SummonsEasilyFindTargets.Checked;
+        }
+
+        private void Option_SummonsVanishAfterDeath_Click(object sender, EventArgs e)
+        {
+            Option_SummonsVanishAfterDeath.Checked = !Option_SummonsVanishAfterDeath.Checked;
+            Config.SummonsVanishAfterDeath = Option_SummonsVanishAfterDeath.Checked;
         }
 
         private bool _InputTeamNameTextChanged = false;

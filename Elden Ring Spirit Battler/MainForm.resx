@@ -147,6 +147,11 @@ Level 15: Crumbling Farum Azula
 Level 17: Consecrated Snowfield
 Level 20: Miquella's Haligtree</value>
   </data>
+  <data name="Option_TeamFollowPlayer.ToolTip" xml:space="preserve">
+    <value>If checked, members of this team will follow/teleport to the player when far away.
+They will also target enemies the player has locked onto.
+Warning: If the player locks on to a summon, the summon will try to attack itself.</value>
+  </data>
   <data name="Option_Spirit_SearchesLongRange.ToolTip" xml:space="preserve">
     <value>Determines if this summon will search and attack targets at long distances.
 Overriden by "Summons find targets easily" option.
@@ -168,7 +173,7 @@ For normal spirit summon behavior, turn this OFF for melee summons, and ON for r
     <value>17, 53</value>
   </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>149</value>
+    <value>111</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">

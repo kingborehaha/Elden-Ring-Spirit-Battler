@@ -87,6 +87,8 @@
             label9 = new Label();
             Option_TeamFollowPlayer = new CheckBox();
             Option_Spirit_SearchesLongRange = new CheckBox();
+            List_EnemyBehaviorSpEffects = new ListBox();
+            label19 = new Label();
             t_console = new TextBox();
             menuStrip1 = new MenuStrip();
             Menu_File = new ToolStripMenuItem();
@@ -111,6 +113,7 @@
             Option_MoreSummonAreas = new ToolStripMenuItem();
             Option_HidePlayer = new ToolStripMenuItem();
             Option_SummonsEasilyFindTargets = new ToolStripMenuItem();
+            Option_SummonsVanishAfterDeath = new ToolStripMenuItem();
             Menu_Help = new ToolStripMenuItem();
             Button_Info = new ToolStripMenuItem();
             Button_StatScalingLevelInfo = new ToolStripMenuItem();
@@ -284,7 +287,7 @@
             List_Enemy.ImeMode = ImeMode.NoControl;
             List_Enemy.Location = new Point(6, 115);
             List_Enemy.Name = "List_Enemy";
-            List_Enemy.Size = new Size(200, 23);
+            List_Enemy.Size = new Size(245, 23);
             List_Enemy.TabIndex = 62;
             toolTip1.SetToolTip(List_Enemy, "Base enemy type this summon will be, generated from EnemyInfoResource.txt\r\nExact enemy details is determined by Enemy Variant.");
             List_Enemy.SelectedIndexChanged += List_Enemy_SelectedIndexChanged;
@@ -294,7 +297,7 @@
             // 
             Search_Enemy.Location = new Point(6, 86);
             Search_Enemy.Name = "Search_Enemy";
-            Search_Enemy.Size = new Size(200, 23);
+            Search_Enemy.Size = new Size(245, 23);
             Search_Enemy.TabIndex = 10;
             toolTip1.SetToolTip(Search_Enemy, "Base enemy type this summon will be, generated from EnemyInfoResource.txt\r\nExact enemy details is determined by Enemy Variant.");
             Search_Enemy.Click += Search_Enemy_Click;
@@ -451,7 +454,7 @@
             List_EnemyVariant.FormattingEnabled = true;
             List_EnemyVariant.Location = new Point(6, 159);
             List_EnemyVariant.Name = "List_EnemyVariant";
-            List_EnemyVariant.Size = new Size(200, 23);
+            List_EnemyVariant.Size = new Size(333, 23);
             List_EnemyVariant.TabIndex = 104;
             toolTip1.SetToolTip(List_EnemyVariant, "Specific enemy variant this summon will be, generated from EnemyInfoResource.txt");
             List_EnemyVariant.SelectedIndexChanged += List_EnemyVariant_SelectedIndexChanged;
@@ -523,7 +526,7 @@
             Label_SearchEnemyText.CausesValidation = false;
             Label_SearchEnemyText.Cursor = Cursors.IBeam;
             Label_SearchEnemyText.ForeColor = SystemColors.GrayText;
-            Label_SearchEnemyText.Location = new Point(10, 91);
+            Label_SearchEnemyText.Location = new Point(11, 89);
             Label_SearchEnemyText.Name = "Label_SearchEnemyText";
             Label_SearchEnemyText.Size = new Size(51, 15);
             Label_SearchEnemyText.TabIndex = 0;
@@ -558,9 +561,9 @@
             // 
             // Button_PickRandomEnemy
             // 
-            Button_PickRandomEnemy.Location = new Point(209, 159);
+            Button_PickRandomEnemy.Location = new Point(345, 159);
             Button_PickRandomEnemy.Name = "Button_PickRandomEnemy";
-            Button_PickRandomEnemy.Size = new Size(22, 24);
+            Button_PickRandomEnemy.Size = new Size(22, 23);
             Button_PickRandomEnemy.TabIndex = 111;
             Button_PickRandomEnemy.Text = "?";
             toolTip1.SetToolTip(Button_PickRandomEnemy, "Picks a random Enemy Variant");
@@ -779,10 +782,10 @@
             Option_TeamFollowPlayer.AutoSize = true;
             Option_TeamFollowPlayer.Location = new Point(169, 89);
             Option_TeamFollowPlayer.Name = "Option_TeamFollowPlayer";
-            Option_TeamFollowPlayer.Size = new Size(96, 19);
+            Option_TeamFollowPlayer.Size = new Size(104, 19);
             Option_TeamFollowPlayer.TabIndex = 118;
-            Option_TeamFollowPlayer.Text = "Follow Player";
-            toolTip1.SetToolTip(Option_TeamFollowPlayer, "If checked, members of this team will follow/teleport to the player when far away.");
+            Option_TeamFollowPlayer.Text = "Player is leader";
+            toolTip1.SetToolTip(Option_TeamFollowPlayer, resources.GetString("Option_TeamFollowPlayer.ToolTip"));
             Option_TeamFollowPlayer.UseVisualStyleBackColor = true;
             Option_TeamFollowPlayer.CheckedChanged += UpdateSelectedTeam;
             // 
@@ -800,6 +803,32 @@
             Option_Spirit_SearchesLongRange.UseVisualStyleBackColor = true;
             Option_Spirit_SearchesLongRange.CheckedChanged += EnemyWasEdited;
             Option_Spirit_SearchesLongRange.Click += EnemyWasEdited;
+            // 
+            // List_EnemyBehaviorSpEffects
+            // 
+            List_EnemyBehaviorSpEffects.BackColor = SystemColors.Menu;
+            List_EnemyBehaviorSpEffects.ColumnWidth = 32;
+            List_EnemyBehaviorSpEffects.ForeColor = SystemColors.WindowFrame;
+            List_EnemyBehaviorSpEffects.FormattingEnabled = true;
+            List_EnemyBehaviorSpEffects.HorizontalScrollbar = true;
+            List_EnemyBehaviorSpEffects.ItemHeight = 15;
+            List_EnemyBehaviorSpEffects.Location = new Point(250, 210);
+            List_EnemyBehaviorSpEffects.MultiColumn = true;
+            List_EnemyBehaviorSpEffects.Name = "List_EnemyBehaviorSpEffects";
+            List_EnemyBehaviorSpEffects.SelectionMode = SelectionMode.None;
+            List_EnemyBehaviorSpEffects.Size = new Size(117, 34);
+            List_EnemyBehaviorSpEffects.TabIndex = 117;
+            toolTip1.SetToolTip(List_EnemyBehaviorSpEffects, "Additional special effects used by this enemy variant for unique behavior\r\n");
+            // 
+            // label19
+            // 
+            label19.AutoSize = true;
+            label19.Location = new Point(272, 192);
+            label19.Name = "label19";
+            label19.Size = new Size(71, 15);
+            label19.TabIndex = 118;
+            label19.Text = "Extra Effects";
+            toolTip1.SetToolTip(label19, "List_EnemyBehaviorSpEffects");
             // 
             // t_console
             // 
@@ -940,7 +969,7 @@
             // 
             // Menu_Settings
             // 
-            Menu_Settings.DropDownItems.AddRange(new ToolStripItem[] { Option_ReduceEnemyMapCol, Option_EnableResummoning, Option_MoreSummonAreas, Option_HidePlayer, Option_SummonsEasilyFindTargets });
+            Menu_Settings.DropDownItems.AddRange(new ToolStripItem[] { Option_ReduceEnemyMapCol, Option_EnableResummoning, Option_MoreSummonAreas, Option_HidePlayer, Option_SummonsEasilyFindTargets, Option_SummonsVanishAfterDeath });
             Menu_Settings.Name = "Menu_Settings";
             Menu_Settings.Size = new Size(61, 20);
             Menu_Settings.Text = "Settings";
@@ -990,6 +1019,15 @@
             Option_SummonsEasilyFindTargets.Text = "Summons Easily Find Targets";
             Option_SummonsEasilyFindTargets.ToolTipText = "Makes summons find targets easily at long distances and through walls.\r\nAlso makes them not forget location of targets for a long period of time.\r\n";
             Option_SummonsEasilyFindTargets.Click += Option_SummonsEasilyFindTargets_Click;
+            // 
+            // Option_SummonsVanishAfterDeath
+            // 
+            Option_SummonsVanishAfterDeath.Checked = true;
+            Option_SummonsVanishAfterDeath.CheckState = CheckState.Checked;
+            Option_SummonsVanishAfterDeath.Name = "Option_SummonsVanishAfterDeath";
+            Option_SummonsVanishAfterDeath.Size = new Size(279, 22);
+            Option_SummonsVanishAfterDeath.Text = "Summons Vanish After Death";
+            Option_SummonsVanishAfterDeath.Click += Option_SummonsVanishAfterDeath_Click;
             // 
             // Menu_Help
             // 
@@ -1196,6 +1234,8 @@
             // groupBox2
             // 
             groupBox2.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            groupBox2.Controls.Add(label19);
+            groupBox2.Controls.Add(List_EnemyBehaviorSpEffects);
             groupBox2.Controls.Add(Option_Spirit_SearchesLongRange);
             groupBox2.Controls.Add(Input_CharaInitID);
             groupBox2.Controls.Add(label9);
@@ -1607,5 +1647,8 @@
         private SaveFileDialog FileDialog_SaveJson;
         private ToolStripMenuItem Option_SummonsEasilyFindTargets;
         private CheckBox Option_Spirit_SearchesLongRange;
+        private ListBox List_EnemyBehaviorSpEffects;
+        private Label label19;
+        private ToolStripMenuItem Option_SummonsVanishAfterDeath;
     }
 }

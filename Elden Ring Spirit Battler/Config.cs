@@ -50,5 +50,6 @@ namespace EldenRingSpiritBattler
         public bool ExpandSummonAreas = true;
         public bool HidePlayer = false;
         public bool SummonsFindTargetsEasily = false;
+        public bool SummonsVanishAfterDeath = true;
     }
 }

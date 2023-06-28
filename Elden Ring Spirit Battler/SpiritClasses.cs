@@ -17,12 +17,14 @@ namespace EldenRingSpiritBattler
         public int NpcID;
         public int ThinkID;
         public int CharaInitID;
-        public Enemy(string name, int npcID, int thinkID, int charaInitID = -1)
+        public List<int> BehaviorSpEffects;
+        public Enemy(string name, int npcID, int thinkID, int charaInitID, List<int> behaviorSpEffects)
         {
             Name = name;
             NpcID = npcID;
             ThinkID = thinkID;
             CharaInitID = charaInitID;
+            BehaviorSpEffects = behaviorSpEffects;
         }
     }
 
@@ -124,6 +126,7 @@ namespace EldenRingSpiritBattler
         public decimal DamageMult = 1;
         public int Sp_StatScaling = -1; // ID of Stat Scaling SpEffect overwrite (if one was provided).
         public int Sp_SpecialScaling = -1; // Stores ID of newly created spEffect that holds HpMult and DamageMult modifiers.
+        public List<int> BehaviorSpEffects = new(); // Additional spEffects that affect enemy variant behavior.
 
         public bool LongDistanceAggro = true;
 
@@ -149,14 +152,19 @@ namespace EldenRingSpiritBattler
                 {
                     effects.Add(Sp_SpecialScaling);
                 }
-                if (Team.FollowPlayer)
+                if (MainForm.Config.SummonsVanishAfterDeath)
+                {
+                    effects.Add(SpiritBattlerResources.VanishAfterDeathSpEffect);
+                }
+                if (FollowPlayer)
                 {
                     effects.Add(SpiritBattlerResources.FollowPlayerSpEffectId); // Permitted to follow player spEffect + StateInfo (required in tandem with BuddyParam pcFollowType 0)
                 }
+                effects.AddRange(BehaviorSpEffects);
                 return effects;
             }
         }
-        
+
         public BattleSpirit()
         { }
 
@@ -175,6 +183,7 @@ namespace EldenRingSpiritBattler
             spirit.Sp_SpecialScaling = Sp_SpecialScaling;
             spirit.Position = new SummonPos(Position.X, Position.Z, Position.Ang);
             spirit.LongDistanceAggro = LongDistanceAggro;
+            spirit.BehaviorSpEffects = BehaviorSpEffects.ToList();
             return spirit;
         }
     }
