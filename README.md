@@ -32,11 +32,11 @@
 ## Updates
 ### v1.5.0
 - Reworked enemy info resource:
--- Greatly expands number of selectable enemies
--- Removes invalid enemies
--- Provide an enemy's original location
--- Mark enemies with data that indicated they have special behvaior, differentiated by (LETTERS)
--- Stores additional spEffects the enemy may require to display unique behavior.
+- - Greatly expands number of selectable enemies
+- - Removes invalid enemies
+- - Provide an enemy's original location
+- - Mark enemies with data that indicated they have special behvaior, differentiated by (LETTERS)
+- - Stores additional spEffects the enemy may require to display unique behavior.
 - Follow Player option now additional determines if a summon will focus on player lock-on targets.
 - Added option to make summons disappear upon death
 - Retain selected enemy and enemy variant when search filter is used (if selection exists within filter).
