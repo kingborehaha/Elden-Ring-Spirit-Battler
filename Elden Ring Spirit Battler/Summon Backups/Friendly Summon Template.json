@@ -1,0 +1,319 @@
+{
+  "Spirits": [
+    {
+      "BaseName": "Putrid Corpse",
+      "VariantName": "Putrid Corpse (Impaler's Catacombs)",
+      "BaseNpcID": 36610034,
+      "BaseThinkID": 36610000,
+      "CharaInitID": -1,
+      "Team": {
+        "Name": "Friends!",
+        "TeamType": 47,
+        "PhantomParamID": 200,
+        "TeamHpMult": 1.0,
+        "TeamDamageMult": 1.0,
+        "FollowPlayer": true,
+        "TeamPosition": {
+          "X": 0.0,
+          "Z": 3.0,
+          "Ang": 0.0,
+          "PresetName": "Row Close",
+          "X_increment": 1.5,
+          "Z_increment": 0.0,
+          "EnemiesOffsetInitX": true,
+          "IsPreset": true,
+          "Label": "Row Close"
+        }
+      },
+      "Position": {
+        "X": 0.0,
+        "Z": 0.0,
+        "Ang": 0.0,
+        "PresetName": "",
+        "X_increment": 0.0,
+        "Z_increment": 0.0,
+        "EnemiesOffsetInitX": false,
+        "IsPreset": false,
+        "Label": "0x 0z 0º"
+      },
+      "HpMult": 1.0,
+      "DamageMult": 1.0,
+      "Sp_StatScaling": -200,
+      "Sp_SpecialScaling": -1,
+      "BehaviorSpEffects": [
+        17045
+      ],
+      "LongDistanceAggro": false,
+      "SpecialEffects": [
+        4302,
+        297000,
+        17045
+      ]
+    },
+    {
+      "BaseName": "Putrid Corpse",
+      "VariantName": "Putrid Corpse (Impaler's Catacombs)",
+      "BaseNpcID": 36610034,
+      "BaseThinkID": 36610000,
+      "CharaInitID": -1,
+      "Team": {
+        "Name": "Friends!",
+        "TeamType": 47,
+        "PhantomParamID": 200,
+        "TeamHpMult": 1.0,
+        "TeamDamageMult": 1.0,
+        "FollowPlayer": true,
+        "TeamPosition": {
+          "X": 0.0,
+          "Z": 3.0,
+          "Ang": 0.0,
+          "PresetName": "Row Close",
+          "X_increment": 1.5,
+          "Z_increment": 0.0,
+          "EnemiesOffsetInitX": true,
+          "IsPreset": true,
+          "Label": "Row Close"
+        }
+      },
+      "Position": {
+        "X": 0.0,
+        "Z": 0.0,
+        "Ang": 0.0,
+        "PresetName": "",
+        "X_increment": 0.0,
+        "Z_increment": 0.0,
+        "EnemiesOffsetInitX": false,
+        "IsPreset": false,
+        "Label": "0x 0z 0º"
+      },
+      "HpMult": 1.0,
+      "DamageMult": 1.0,
+      "Sp_StatScaling": -200,
+      "Sp_SpecialScaling": -1,
+      "BehaviorSpEffects": [
+        17045
+      ],
+      "LongDistanceAggro": false,
+      "SpecialEffects": [
+        4302,
+        297000,
+        17045
+      ]
+    },
+    {
+      "BaseName": "Putrid Corpse",
+      "VariantName": "Putrid Corpse (Impaler's Catacombs)",
+      "BaseNpcID": 36610034,
+      "BaseThinkID": 36610000,
+      "CharaInitID": -1,
+      "Team": {
+        "Name": "Friends!",
+        "TeamType": 47,
+        "PhantomParamID": 200,
+        "TeamHpMult": 1.0,
+        "TeamDamageMult": 1.0,
+        "FollowPlayer": true,
+        "TeamPosition": {
+          "X": 0.0,
+          "Z": 3.0,
+          "Ang": 0.0,
+          "PresetName": "Row Close",
+          "X_increment": 1.5,
+          "Z_increment": 0.0,
+          "EnemiesOffsetInitX": true,
+          "IsPreset": true,
+          "Label": "Row Close"
+        }
+      },
+      "Position": {
+        "X": 0.0,
+        "Z": 0.0,
+        "Ang": 0.0,
+        "PresetName": "",
+        "X_increment": 0.0,
+        "Z_increment": 0.0,
+        "EnemiesOffsetInitX": false,
+        "IsPreset": false,
+        "Label": "0x 0z 0º"
+      },
+      "HpMult": 1.0,
+      "DamageMult": 1.0,
+      "Sp_StatScaling": -200,
+      "Sp_SpecialScaling": -1,
+      "BehaviorSpEffects": [
+        17045
+      ],
+      "LongDistanceAggro": false,
+      "SpecialEffects": [
+        4302,
+        297000,
+        17045
+      ]
+    },
+    {
+      "BaseName": "Putrid Corpse",
+      "VariantName": "Putrid Corpse (Impaler's Catacombs)",
+      "BaseNpcID": 36610034,
+      "BaseThinkID": 36610000,
+      "CharaInitID": -1,
+      "Team": {
+        "Name": "Friends!",
+        "TeamType": 47,
+        "PhantomParamID": 200,
+        "TeamHpMult": 1.0,
+        "TeamDamageMult": 1.0,
+        "FollowPlayer": true,
+        "TeamPosition": {
+          "X": 0.0,
+          "Z": 3.0,
+          "Ang": 0.0,
+          "PresetName": "Row Close",
+          "X_increment": 1.5,
+          "Z_increment": 0.0,
+          "EnemiesOffsetInitX": true,
+          "IsPreset": true,
+          "Label": "Row Close"
+        }
+      },
+      "Position": {
+        "X": 0.0,
+        "Z": 0.0,
+        "Ang": 0.0,
+        "PresetName": "",
+        "X_increment": 0.0,
+        "Z_increment": 0.0,
+        "EnemiesOffsetInitX": false,
+        "IsPreset": false,
+        "Label": "0x 0z 0º"
+      },
+      "HpMult": 1.0,
+      "DamageMult": 1.0,
+      "Sp_StatScaling": -200,
+      "Sp_SpecialScaling": -1,
+      "BehaviorSpEffects": [
+        17045
+      ],
+      "LongDistanceAggro": false,
+      "SpecialEffects": [
+        4302,
+        297000,
+        17045
+      ]
+    },
+    {
+      "BaseName": "Knight",
+      "VariantName": "Leyndell Knight - Archer (C) (Leyndell, Royal Capital)",
+      "BaseNpcID": 43510010,
+      "BaseThinkID": 43510000,
+      "CharaInitID": -1,
+      "Team": {
+        "Name": "Friends!",
+        "TeamType": 47,
+        "PhantomParamID": 200,
+        "TeamHpMult": 1.0,
+        "TeamDamageMult": 1.0,
+        "FollowPlayer": true,
+        "TeamPosition": {
+          "X": 0.0,
+          "Z": 3.0,
+          "Ang": 0.0,
+          "PresetName": "Row Close",
+          "X_increment": 1.5,
+          "Z_increment": 0.0,
+          "EnemiesOffsetInitX": true,
+          "IsPreset": true,
+          "Label": "Row Close"
+        }
+      },
+      "Position": {
+        "X": 0.0,
+        "Z": 0.0,
+        "Ang": 0.0,
+        "PresetName": "",
+        "X_increment": 0.0,
+        "Z_increment": 0.0,
+        "EnemiesOffsetInitX": false,
+        "IsPreset": false,
+        "Label": "0x 0z 0º"
+      },
+      "HpMult": 1.0,
+      "DamageMult": 1.0,
+      "Sp_StatScaling": -200,
+      "Sp_SpecialScaling": -1,
+      "BehaviorSpEffects": [],
+      "LongDistanceAggro": true,
+      "SpecialEffects": [
+        4302,
+        297000
+      ]
+    },
+    {
+      "BaseName": "Knight",
+      "VariantName": "Leyndell Knight - Archer (C) (Leyndell, Royal Capital)",
+      "BaseNpcID": 43510010,
+      "BaseThinkID": 43510000,
+      "CharaInitID": -1,
+      "Team": {
+        "Name": "Friends!",
+        "TeamType": 47,
+        "PhantomParamID": 200,
+        "TeamHpMult": 1.0,
+        "TeamDamageMult": 1.0,
+        "FollowPlayer": true,
+        "TeamPosition": {
+          "X": 0.0,
+          "Z": 3.0,
+          "Ang": 0.0,
+          "PresetName": "Row Close",
+          "X_increment": 1.5,
+          "Z_increment": 0.0,
+          "EnemiesOffsetInitX": true,
+          "IsPreset": true,
+          "Label": "Row Close"
+        }
+      },
+      "Position": {
+        "X": 0.0,
+        "Z": 0.0,
+        "Ang": 0.0,
+        "PresetName": "",
+        "X_increment": 0.0,
+        "Z_increment": 0.0,
+        "EnemiesOffsetInitX": false,
+        "IsPreset": false,
+        "Label": "0x 0z 0º"
+      },
+      "HpMult": 1.0,
+      "DamageMult": 1.0,
+      "Sp_StatScaling": -200,
+      "Sp_SpecialScaling": -1,
+      "BehaviorSpEffects": [],
+      "LongDistanceAggro": true,
+      "SpecialEffects": [
+        4302,
+        297000
+      ]
+    }
+  ],
+  "Teams": [
+    {
+      "Name": "Friends!",
+      "TeamType": 47,
+      "PhantomParamID": 200,
+      "TeamHpMult": 1.0,
+      "TeamDamageMult": 1.0,
+      "FollowPlayer": true,
+      "TeamPosition": {
+        "X": 0.0,
+        "Z": 3.0,
+        "Ang": 0.0,
+        "PresetName": "Row Close",
+        "X_increment": 1.5,
+        "Z_increment": 0.0,
+        "EnemiesOffsetInitX": true,
+        "IsPreset": true,
+        "Label": "Row Close"
+      }
+    }
+  ]
+}

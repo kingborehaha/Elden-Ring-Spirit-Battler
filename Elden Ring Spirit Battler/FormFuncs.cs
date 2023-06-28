@@ -694,7 +694,7 @@ namespace EldenRingSpiritBattler
             int prevChosenTeamIndex = List_EnemyChosenTeam.SelectedIndex;
             List_EnemyChosenTeam.DataSource = teamDict.Select(team => team.Key).ToList(); // Also triggers UpdateSelectedSpirit();
 
-            if (prevChosenTeamIndex != -1)
+            if (prevChosenTeamIndex != -1 && List_EnemyChosenTeam.Items.Count > prevChosenTeamIndex)
                 List_EnemyChosenTeam.SelectedIndex = prevChosenTeamIndex;
             else
                 List_EnemyChosenTeam.SelectedIndex = 0;

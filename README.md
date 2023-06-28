@@ -37,12 +37,14 @@
 - - Provides an enemy's original location
 - - Marks enemies with data that indicates they have special behvaior, differentiated by (LETTERS)
 - - Stores additional spEffects the enemy may require to display unique behavior
-- Follow Player option now additional determines if a summon will focus on player lock-on targets.
-- Added option to make summons disappear upon death
-- Retain selected enemy and enemy variant when search filter is used (if selection exists within filter).
+- Follow Player option now additionally determines if a summon will focus on player lock-on targets.
+- Added option to make summons disappear upon death.
+- Added pre-made Summon Backups.
+- Selected enemy and enemy variant are retained when search filter is used (if selection exists within filter).
+- Spirit summon team preset now has Follow Player on by default.
 - Fixed Enemy Variant list not being filtered by search filter when changing base enemy.
 - Fixed Base Enemy list including items twice when the search filter also matched within the Enemy Variant list.
-- Spirit summon team preset now has Follow Player on by default
+- Fixed crash when deleting teams.
 ### v1.4.1
 - Re-added team name options.
 ### v1.4.0
