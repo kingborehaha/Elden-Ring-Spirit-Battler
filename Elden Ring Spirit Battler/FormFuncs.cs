@@ -11,16 +11,7 @@ using static EldenRingSpiritBattler.SpiritBattlerResources;
 
 /*
 -- TODO
--- high priority
-    * Figure out how "follow player" buddyParam is making AI not able to attack targets (something missing in npcThink?)
-        * test those spear knights with new spEffect
-    * enemy filter
-        * cache and reselect enemy list when search filter is changed (when possible, index 0 otherwise)
-        * fix enemy variant list not filtering after changing enemy list selection
 -- medium priority
-    Enemy names appear above their heads
-        invader blaidd style. need to experiment with limitations. does it work with every team, or just enemies?
-    Better catalog enemy variant names
     Options to randomize an entire ash
     Custom phantom colors
     Increase position preset increment based on enemy's hitbox size
@@ -44,6 +35,9 @@ using static EldenRingSpiritBattler.SpiritBattlerResources;
     Grid sorting (by team)
     Grid coloring (by team)
     Allow grid column resizing (currently resets on grid reload)
+    Enemy names appear above their heads
+        invader blaidd style. need to experiment with limitations. does it work with every team, or just enemies?
+        Requires FMG modification which I'd like to avoid
 */
 
 namespace EldenRingSpiritBattler

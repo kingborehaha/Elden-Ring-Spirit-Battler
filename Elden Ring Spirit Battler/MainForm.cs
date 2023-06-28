@@ -15,6 +15,7 @@ namespace EldenRingSpiritBattler
     {
         public bool preventEnemyEdited = false;
         public string RegulationPath = "";
+        public bool IsStartup = true;
 
         public MainForm()
         {
@@ -28,9 +29,9 @@ namespace EldenRingSpiritBattler
             Option_EnableResummoning.Checked = Config.EnableResummoning;
             Option_MoreSummonAreas.Checked = Config.ExpandSummonAreas;
             Option_HidePlayer.Checked = Config.HidePlayer;
+            Option_SummonsEasilyFindTargets.Checked = Config.SummonsFindTargetsEasily;
+            Option_SummonsVanishAfterDeath.Checked = Config.SummonsVanishAfterDeath;
         }
-
-        public bool IsStartup = true;
 
         private void MainForm_Load(object sender, EventArgs e)
         {
@@ -44,15 +45,16 @@ namespace EldenRingSpiritBattler
             b_restoreRegulation.Enabled = false;
             Text += GetVersion();
 
+            // Default teams
             AddRandomizedTeamToGrid(TeamTypeEnum.Beast, teamSummonPresetDict["Column Left"]);
             AddRandomizedTeamToGrid(TeamTypeEnum.DS3_CoopMadPhantom, teamSummonPresetDict["Column Right"]); //Tried hostileNPC
             var friendlyTeam = AddRandomizedTeamToGrid(TeamTypeEnum.SpiritSummon, teamSummonPresetDict["Row Close"]);
             friendlyTeam.FollowPlayer = true;
             AddRandomizedTeamToGrid(TeamTypeEnum.Enemy, teamSummonPresetDict["Row Far"]);
 
+            // Prepare resources
             List_StatScaling.DataSource = GetOrderedEnumNames(typeof(StatScalingEnum));
             List_StatScaling.Text = StatScalingEnum.Lvl15.ToString();
-
             LoadSpiritAshResource();
             LoadEnemyResource();
             UpdateTeamGridAndList();
@@ -60,6 +62,7 @@ namespace EldenRingSpiritBattler
             LoadTeamTypeResource();
             LoadPhantomResource();
 
+            // Default spirits
             AddRandomSpiritToGrid();
             List_EnemyChosenTeam.Text = teamDict.Values.Where(e => e.TeamPosition.Label == "Column Left").First().Name;
             AddRandomSpiritToGrid();
