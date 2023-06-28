@@ -636,7 +636,7 @@ Red Wolf of Radagon Sword (Academy of Raya Lucaria)||31811024||31810024||-1||-1
 Red Wolf of Radagon Sword (Mountaintops of the Giants)||31811052||31810052||-1||16941
 Red Wolf of the Champion (B) (Gelmir Hero's Grave)||31811032||31810932||-1||-1
 
---Nomadic Merchand
+--Nomadic Merchant
 Frenzied Nomad (Subterranean Shunning-Grounds)||32010035||32010000||-1||-1
 Hermit Merchant (Ainsel River)||32002860||32000000||-1||-1
 Abandoned Merchant (Siofra River)||32002764||32000000||-1||-1
