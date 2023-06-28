@@ -41,6 +41,7 @@
 - Added option to make summons disappear upon death
 - Retain selected enemy and enemy variant when search filter is used (if selection exists within filter).
 - Fixed Enemy Variant list not being filtered by search filter when changing base enemy.
+- Fixed Base Enemy list including items twice when the search filter also matched within the Enemy Variant list.
 - Spirit summon team preset now has Follow Player on by default
 ### v1.4.1
 - Re-added team name options.

@@ -385,7 +385,10 @@ namespace EldenRingSpiritBattler
                     // Scan through variants for matches too
                     if (en.Value.Find(e => e.Name.Contains(searchStr, StringComparison.CurrentCultureIgnoreCase)) != null)
                     {
-                        results.Add(en.Key);
+                        if (!results.Contains(en.Key))
+                        {
+                            results.Add(en.Key);
+                        }
                     }
                 }
 
@@ -406,11 +409,11 @@ namespace EldenRingSpiritBattler
             // Restore previous selections if possible
             if (List_Enemy.Items.Contains(prevEnemySel))
             {
-                List_Enemy.Text = prevEnemySel;
+                List_Enemy.SelectedIndex = List_Enemy.Items.IndexOf(prevEnemySel);
             }
             if (List_EnemyVariant.Items.Contains(prevEnemyVariantSel))
             {
-                List_EnemyVariant.Text = prevEnemyVariantSel;
+                List_EnemyVariant.SelectedIndex = List_EnemyVariant.Items.IndexOf(prevEnemyVariantSel);
             }
         }
 
