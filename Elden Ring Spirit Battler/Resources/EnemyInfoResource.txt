@@ -3,10 +3,10 @@
 --Human NPC
 Tanith, Proprietress (Volcano Manor)||523000038||523000000||23000||-1
 Tanith, Proprietress (Volcano Manor) 2||523000138||523000000||23000||-1
-White Mask Varré (Mohgwyn Palace)||523010168||523010000||23010||-1
-White Mask Varré (Liurnia of the Lakes)||523010020||523010000||23010||-1
-White Mask Varré (B) (Limgrave)||523010010||523011000||23010||-1
-White Mask Varré (C) (Mohgwyn Palace)||523010068||523012000||23010||-1
+White Mask Varre (Mohgwyn Palace)||523010168||523010000||23010||-1
+White Mask Varre (Liurnia of the Lakes)||523010020||523010000||23010||-1
+White Mask Varre (B) (Limgrave)||523010010||523011000||23010||-1
+White Mask Varre (C) (Mohgwyn Palace)||523010068||523012000||23010||-1
 Roundtable Knight Vyke (Mountaintops of the Giants)||523040050||523040000||23040||-1
 Festering Fingerprint Vyke (Bellum Highway)||523040020||523040000||23041||-1
 Preceptor Seluvis (Liurnia of the Lakes)||523070020||523070000||23070||-1
@@ -648,7 +648,7 @@ Nomadic Merchant (Liurnia of the Lakes) 2||32001520||32000000||-1||-1
 Nomadic Merchant (Altus Plateau)||32002030||32000000||-1||-1
 Isolated Merchant (Weeping Peninsula)||32001612||32000000||-1||-1
 Nomadic Merchant (Limgrave)||32001310||32000000||-1||-1
-Merchant Kalé (Limgrave)||32000010||32000000||-1||-1
+Merchant Kale (Limgrave)||32000010||32000000||-1||-1
 Hermit Merchant (Capital Outskirts)||32001933||32000000||-1||-1
 Nomadic Merchant (Weeping Peninsula)||32001412||32000000||-1||-1
 Nomadic Merchant (m60_44_39_10)||32001110||32000000||-1||-1
