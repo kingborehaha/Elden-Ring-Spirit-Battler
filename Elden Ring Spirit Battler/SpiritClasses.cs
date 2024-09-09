@@ -125,44 +125,41 @@ namespace EldenRingSpiritBattler
         public decimal HpMult = 1;
         public decimal DamageMult = 1;
         public int Sp_StatScaling = -1; // ID of Stat Scaling SpEffect overwrite (if one was provided).
-        public int Sp_SpecialScaling = -1; // Stores ID of newly created spEffect that holds HpMult and DamageMult modifiers.
+        public int Sp_SpecialScaling = -1; // Stores ID of newly created spEffect that holds HpMult and DamageMult modifiers, as well as phantom VFX.
         public List<int> BehaviorSpEffects = new(); // Additional spEffects that affect enemy variant behavior.
 
         public bool LongDistanceAggro = true;
 
-        public List<int> SpecialEffects
+        public List<int> GetSpecialEffects()
         {
-            get
+            List<int> effects = new();
+            if (Sp_StatScaling > 0)
             {
-                List<int> effects = new();
-                if (Sp_StatScaling > 0)
+                if (Is_c0000)
                 {
-                    if (Is_c0000)
-                    {
-                        // Calculate Lvl of assigned scaling spEffect, then calculate c0000 ID using that.
-                        int idOffset = (Sp_StatScaling - SpiritBattlerResources.ScalingEffectBaseId) / 10; // Get Lvl offset (+10 -> +1 per level)
-                        effects.Add(SpiritBattlerResources.c0000ScalingEffectBaseId + idOffset);
-                    }
-                    else
-                    {
-                        effects.Add(Sp_StatScaling);
-                    }
+                    // Calculate Lvl of assigned scaling spEffect, then calculate c0000 ID using that.
+                    int idOffset = (Sp_StatScaling - SpiritBattlerResources.ScalingEffectBaseId) / 10; // Get Lvl offset (+10 -> +1 per level)
+                    effects.Add(SpiritBattlerResources.c0000ScalingEffectBaseId + idOffset);
                 }
-                if (Sp_SpecialScaling > 0)
+                else
                 {
-                    effects.Add(Sp_SpecialScaling);
+                    effects.Add(Sp_StatScaling);
                 }
-                if (MainForm.Config.SummonsVanishAfterDeath)
-                {
-                    effects.Add(SpiritBattlerResources.VanishAfterDeathSpEffect);
-                }
-                if (FollowPlayer)
-                {
-                    effects.Add(SpiritBattlerResources.FollowPlayerSpEffectId); // Permitted to follow player spEffect + StateInfo (required in tandem with BuddyParam pcFollowType 0)
-                }
-                effects.AddRange(BehaviorSpEffects);
-                return effects;
             }
+            if (Sp_SpecialScaling > 0)
+            {
+                effects.Add(Sp_SpecialScaling);
+            }
+            if (MainForm.Config.SummonsVanishAfterDeath)
+            {
+                effects.Add(SpiritBattlerResources.VanishAfterDeathSpEffect);
+            }
+            if (FollowPlayer)
+            {
+                effects.Add(SpiritBattlerResources.FollowPlayerSpEffectId); // Permitted to follow player spEffect + StateInfo (required in tandem with BuddyParam pcFollowType 0)
+            }
+            effects.AddRange(BehaviorSpEffects);
+            return effects;
         }
 
         public BattleSpirit()

@@ -15,11 +15,9 @@ using static EldenRingSpiritBattler.SpiritBattlerResources;
     Options to randomize an entire ash
     Custom phantom colors
     Increase position preset increment based on enemy's hitbox size
-        Would have to load regulation.bin early if i used this for preview. Maybe it should just be a execute-only thing for now?
+        Would have to load regulation.bin early if i used this for preview. Maybe it should just be a execute-only thing via setting?
 -- low priority
     True summon-anywhere
-        Edit super-overworld MSB and insert a summon thing into it.
-            Doesn't appear to work. Looks like talkESD has some actual distance limit not affected by params?
         Requires making tool handle mod directory structures and whether or not user unpacked.
     Can probably allow editing team position even with presets active
         Add step increment to UI.
@@ -214,6 +212,39 @@ namespace EldenRingSpiritBattler
             return newRow;
         }
 
+        private static bool SpEffectHasPhantomVfx(PARAM.Row spEffectRow, PARAM vfxParam)
+        {
+            bool CheckVfx(PARAM.Cell field)
+            {
+                int vfxRowID = (int)field.Value;
+                if (vfxRowID > 0)
+                {
+                    var vfxRow = vfxParam[vfxRowID];
+                    if ((int)vfxRow["phantomParamOverwriteId"].Value > 0)
+                    {
+                        return true;
+                    }
+                }
+                return false;
+            }
+
+            if (CheckVfx(spEffectRow["vfxId"]))
+            {
+                return true;
+            }
+
+            for (var i = 1; i <= 7; i++)
+            {
+                // Check vfx fields
+                if (CheckVfx(spEffectRow["vfxId" + i]))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
         private bool ExecuteMainLogic()
         {
             if (SpiritDataGrid.Rows.Count == 0)
@@ -255,8 +286,22 @@ namespace EldenRingSpiritBattler
                 string name = Path.GetFileNameWithoutExtension(file.Name);
                 var param = PARAM.Read(file.Bytes);
 
-                if (param.ApplyParamdefCarefully(paramdefs))
-                    paramList[name] = param;
+                try
+                {
+                    if (!paramList.ContainsKey(name))
+                    {
+                        if (param.ApplyParamdefCarefully(paramdefs))
+                        {
+                            paramList[name] = param;
+                        }
+                    }
+                }
+                catch
+                {
+#if DEBUG
+                    throw;
+#endif
+                }
             }
 
             PARAM buddyParam;
@@ -398,19 +443,33 @@ namespace EldenRingSpiritBattler
                 }
 
                 // NpcParam Special Effects
-                var buddyEffects = spirit.SpecialEffects;
+                var buddyEffects = spirit.GetSpecialEffects();
                 int iBuddy = 0;
                 for (var iEffect = 0; iEffect <= 31; iEffect++)
                 {
                     int effectID = (int)newNpcRow["spEffectID" + iEffect].Value;
-                    if (spirit.Sp_StatScaling != (int)StatScalingEnum.Default)
+                    if (effectID > 0)
                     {
-                        // Strip out vanilla stat scaling effects
-                        if ((effectID >= ScalingEffectBaseId && effectID <= ScalingEffectMaxId)
-                            || (effectID >= c0000ScalingEffectBaseId && effectID <= c0000ScalingEffectMaxId))
+                        if (spirit.Sp_StatScaling != (int)StatScalingEnum.Default
+                            && ((effectID >= ScalingEffectBaseId && effectID <= ScalingEffectMaxId)
+                                || (effectID >= c0000ScalingEffectBaseId && effectID <= c0000ScalingEffectMaxId)))
                         {
-                            // Vanilla scaling spEffect. Remove it.
+                            // Vanilla stat scaling effect. Remove it.
                             newNpcRow["spEffectID" + iEffect].Value = 0;
+                        }
+                        else
+                        {
+                            PARAM.Row? spRow = spEffectParam[effectID];
+                            if (spRow == null)
+                            {
+                                // Referenced spEffect doesn't exist. Remove it.
+                                newNpcRow["spEffectID" + iEffect].Value = 0;
+                            }
+                            else if (SpEffectHasPhantomVfx(spRow, vfxParam))
+                            {
+                                // spEffect used for vfx with phantomParam. Remove it.
+                                newNpcRow["spEffectID" + iEffect].Value = 0;
+                            }
                         }
                     }
                     if (effectID <= 0 && iBuddy < buddyEffects.Count)
