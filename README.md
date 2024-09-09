@@ -20,8 +20,8 @@
 - Do not run this tool on Regulation.bin in Elden Ring's "Game" folder. If you do and play online, you could potentially be banned.
 
 ## How to Use
+- Install [.NET 8.0 Desktop Runtime](https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/runtime-desktop-8.0.7-windows-x64-installer)
 - Download Mod Engine 2: https://github.com/soulsmods/ModEngine2/releases
-- Download and install .NET Desktop Runtime 6.0: https://dotnet.microsoft.com/en-us/download/dotnet/6.0
 - Locate your Mod engine 2 "Mod" folder.
 - If you do not have any other mods installed, locate your Elden Ring installation and find regulation.bin, then copy and paste regulation.bin into your Mod Engine 2 "mod" folder. You can skip this step if you have other mods installed which modify regulation.bin, just use the regulation.bin that's already in your mod folder.
 - Start Elden Ring Spirit Battler, click the browse button in the top left, and load the regulation.bin in your mod engine 2 "mod" folder.
@@ -30,6 +30,10 @@
 - Save Changes. The selected ash should now be changed in-game.
 
 ## Updates
+## v1.6.1
+- ER DLC support. Updated systems were taken from Smithbox (thanks to everybody involved!).
+- Enemy resource improvements. Added vanilla summon enemies. Added additional enemy info provided by RainbowLionSnek)
+- Remove default phantom colors from summons that are based off of enemies with default phantom colors.
 ### v1.5.0
 - Reworked enemy info resource:
 - - Greatly expands number of selectable enemies
@@ -89,4 +93,4 @@ Private Release
 
 ## Credits
 - Built using https://github.com/JKAnderson/SoulsFormats
-- Contains param definitions from https://github.com/soulsmods/Paramdex and https://github.com/soulsmods/DSMapStudio
+- Contains param definitions from https://github.com/soulsmods/Paramdex and https://github.com/soulsmods/DSMapStudio and https://github.com/vawser/Smithbox.
