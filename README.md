@@ -30,7 +30,7 @@
 - Save Changes. The selected ash should now be changed in-game.
 
 ## Updates
-## v1.6.1
+### v1.6.1
 - ER DLC support. Updated systems were taken from Smithbox (thanks to everybody involved!).
 - Enemy resource improvements. Added vanilla summon enemies. Added additional enemy info provided by RainbowLionSnek)
 - Remove default phantom colors from summons that are based off of enemies with default phantom colors.
