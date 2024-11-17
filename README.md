@@ -30,6 +30,9 @@
 - Save Changes. The selected ash should now be changed in-game.
 
 ## Updates
+### v1.6.2
+- Updated to work with Elden Ring v1.16
+- Fixed minor text errors in EnemyInfoResource.txt
 ### v1.6.1
 - ER DLC support. Updated systems were taken from Smithbox (thanks to everybody involved!).
 - Enemy resource improvements. Added vanilla summon enemies. Added additional enemy info provided by RainbowLionSnek)
@@ -92,5 +95,5 @@ Patreon Beta Release
 Private Release
 
 ## Credits
-- Built using https://github.com/JKAnderson/SoulsFormats
+- Built using https://github.com/JKAnderson/SoulsFormats and https://github.com/soulsmods/SoulsFormatsNEXT
 - Contains param definitions from https://github.com/soulsmods/Paramdex and https://github.com/soulsmods/DSMapStudio and https://github.com/vawser/Smithbox.
