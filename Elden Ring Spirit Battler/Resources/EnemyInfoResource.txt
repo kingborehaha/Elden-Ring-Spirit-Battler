@@ -1,87 +1,87 @@
---Name||NpcParamID||NpcThinkID||CharaInitID||SpEffect,Speffect,SpEffect
+--Name||NpcParamID||NpcThinkID||CharaInitID||SpEffect,SpEffect,SpEffect,..
 
 --Vanilla Summons
-Black Knife Tiche (Summon)||121000000||121000000||-1||-1 (Summon)||
-Banished Knight Oleg (Summon)||130101000||130101000||-1||-1 (Summon)||
-Banished Knight Engvall (Summon)||130102000||130102000||-1||-1 (Summon)||
-Fanged Imps (Summon)||130801100||130800000||-1||-1 (Summon)||
-Latenna the Albinauric (Summon)||131700000||131700000||-1||-1 (Summon)||
-Nomad (Summon)||132010000||132010000||-1||-1 (Summon)||
-Nightmaiden (Summon)||133001000||133100000||-1||-1 (Summon)||
-Swordstress (Summon)||133002000||133101000||-1||-1 (Summon)||
-Mimic Tear (Blob) (Summon)||133201000||133200000||-1||-1 (Summon)||
-Mimic Tear (Human) (Summon)||100000010||100000010||26050||-1 (Summon)||
-Crystalian (Summon)||133500000||133500000||-1||-1 (Summon)||
-Ancestral Follower (Summon)||133600500||133600500||-1||-1 (Summon)||
-Winged Misbegotten (Summon)||134502000||134501000||-1||-1 (Summon)||
-Albinauric Ashes (Summon)||134701300||134701000||-1||-1 (Summon)||
-Skeletal Militiaman (Summon)||135000000||135000000||-1||-1 (Summon)||
-Skeletal Bandit (Summon)||135004000||135004000||-1||-1 (Summon)||
-Oracle Envoy (Summon)||136100000||136100000||-1||-1 (Summon)||
-Putrid Corpse (Summon)||136610000||136610000||-1||-1 (Summon)||
-Depraved Perfumer (Summon)||137000000||137000000||-1||-1 (Summon)||
-Perfumer Tricia (Summon)||137011000||137010000||-1||-1 (Summon)||
-Glintstone Sorcerer (Summon)||137021000||137020100||-1||-1 (Summon)||
-Twinsage Sorcerer (Summon)||137023000||137020100||-1||-1 (Summon)||
-Page Ashes (Summon)||137030000||137030000||-1||-1 (Summon)||
-Battlemage Hugues (Summon)||137040000||137040000||-1||-1 (Summon)||
-Clayman (Summon)||137502000||137502000||-1||-1 (Summon)||
-Cleanrot Knight Finlay (Summon)||138001000||138001000||-1||-1 (Summon)||
-Kindred of Rot (Summon)||138100000||138100000||-1||-1 (Summon)||
-Marionette Soldier (Summon)||138500000||138500000||-1||-1 (Summon)||
-Avionette Soldier (Summon)||138601100||138601000||-1||-1 (Summon)||
-Fire Monk (Summon)||139000000||139000000||-1||-1 (Summon)||
-Blackflame Monk (Summon)||139011000||139011000||-1||-1 (Summon)||
-Man-Serpent (Summon)||139501000||139500000||-1||-1 (Summon)||
-Azula Beastman (Summon)||139701100||139701000||-1||-1 (Summon)||
-Kaiden Sellsword (Summon)||140500000||140500000||-1||-1 (Summon)||
-Lone Wolf (Summon)||140700000||140700000||-1||-1 (Summon)||
-Giant Rat (Summon)||140800000||140800000||-1||-1 (Summon)||
-Demi-Human (Summon)||141000000||141000000||-1||-1 (Summon)||
-Demi-Human (B) (Summon)||141001000||141001000||-1||-1 (Summon)||
-Demi-Human (C) (Summon)||141002000||141002000||-1||-1 (Summon)||
-Demi-Human (D) (Summon)||141010000||141010000||-1||-1 (Summon)||
-Demi-Human (E) (Summon)||141100000||141100000||-1||-1 (Summon)||
-Rotten Stray (Summon)||141660000||141660000||-1||-1 (Summon)||
-Spirit Jellyfish (Summon)||141800000||141800000||-1||-1 (Summon)||
-Warhawk (Summon)||142100100||142100000||-1||-1 (Summon)||
-Stormhawk (Summon)||142102000||142100000||-1||-1 (Summon)||
-Bloodhound Knight Floh (Summon)||142900000||142900000||-1||-1 (Summon)||
-Wandering Noble (Summon)||143000000||143000000||-1||-1 (Summon)||
-Wandering Noble (B) (Summon)||143000200||143000000||-1||-1 (Summon)||
-Wandering Noble (C) (Summon)||143001000||143001000||-1||-1 (Summon)||
-Wandering Noble (D) (Summon)||143005000||143005000||-1||-1 (Summon)||
-Wandering Noble (E) (Summon)||143005100||143005000||-1||-1 (Summon)||
-Noble Sorcerer (Summon)||143002000||143002000||-1||-1 (Summon)||
-Vulgar Militia (Summon)||143210000||143210000||-1||-1 (Summon)||
-Mad Pumpkin Head (Summon)||143410000||143410000||-1||-1 (Summon)||
-Land Squirt (Summon)||144400000||144400000||-1||-1 (Summon)||
-Miranda Sprout (Summon)||144810000||144810000||-1||-1 (Summon)||
-Soldjars of Fortune (Summon)||144910200||144910000||-1||-1 (Summon)||
-Omenkiller (Summon)||148200000||148200000||-1||-1 (Summon)||
-Greatshield Soldier (Summon)||170001000||170001000||-1||-1 (Summon)||
-Archer (Summon)||170002000||170002000||-1||-1 (Summon)||
-Godrick Soldier (Summon)||143111300||143110000||-1||-1 (Summon)||
-Godrick Soldier (B) (Summon)||143112000||143112000||-1||-1 (Summon)||
-Raya Lucaria Soldier (Summon)||143122000||143122000||-1||-1 (Summon)||
-Raya Lucaria Soldier (B) (Summon)||143720500||143720000||-1||-1 (Summon)||
-Raya Lucaria Soldier (C) (Summon)||143722500||143720000||-1||-1 (Summon)||
-Leyndell Soldier (Summon)||143133000||143133000||-1||-1 (Summon)||
-Radahn Soldier (Summon)||143140100||143140100||-1||-1 (Summon)||
-Radahn Soldier (B) (Summon)||143142000||143142000||-1||-1 (Summon)||
-Mausoleum Soldier (Summon)||143150000||143150000||-1||-1 (Summon)||
-Mausoleum Soldier (B) (Summon)||143151000||143151000||-1||-1 (Summon)||
-Mausoleum Soldier (C) (Summon)||143152000||143152000||-1||-1 (Summon)||
-Haligtree Soldier (Summon)||143760500||143760000||-1||-1 (Summon)||
-Haligtree Soldier (B) (Summon)||143762500||143760000||-1||-1 (Summon)||
-Ancient Dragon Knight Kristoff (Summon)||143531000||143531000||-1||-1 (Summon)||
-Redmane Knight Ogha (Summon)||143542000||143542000||-1||-1 (Summon)||
-Lhutel the Headless (Summon)||143551000||143551000||-1||-1 (Summon)||
-Nepheli Loux Puppet (Summon)||100000020||100000020||23342||-1 (Summon)||
-Dung Eater Puppet (Summon)||100000030||100000030||23232||-1 (Summon)||
-Finger Maiden Therolina Puppet (Summon)||100000040||100000040||23631||-1 (Summon)||
-Dolores the Sleeping Arrow (Summon)||100000050||100000050||23640||-1 (Summon)||
-Jarwight Puppet (Summon)||100000060||100000060||23650||-1 (Summon)||
+Black Knife Tiche (Summon)||121000000||121000000||-1||-1||
+Banished Knight Oleg (Summon)||130101000||130101000||-1||-1||
+Banished Knight Engvall (Summon)||130102000||130102000||-1||-1||
+Fanged Imps (Summon)||130801100||130800000||-1||-1||
+Latenna the Albinauric (Summon)||131700000||131700000||-1||-1||
+Nomad (Summon)||132010000||132010000||-1||-1||
+Nightmaiden (Summon)||133001000||133100000||-1||-1||
+Swordstress (Summon)||133002000||133101000||-1||-1||
+Mimic Tear (Blob) (Summon)||133201000||133200000||-1||-1||
+Mimic Tear (Human) (Summon)||100000010||100000010||26050||-1||
+Crystalian (Summon)||133500000||133500000||-1||-1||
+Ancestral Follower (Summon)||133600500||133600500||-1||-1||
+Winged Misbegotten (Summon)||134502000||134501000||-1||-1||
+Albinauric Ashes (Summon)||134701300||134701000||-1||-1||
+Skeletal Militiaman (Summon)||135000000||135000000||-1||-1||
+Skeletal Bandit (Summon)||135004000||135004000||-1||-1||
+Oracle Envoy (Summon)||136100000||136100000||-1||-1||
+Putrid Corpse (Summon)||136610000||136610000||-1||-1||
+Depraved Perfumer (Summon)||137000000||137000000||-1||-1||
+Perfumer Tricia (Summon)||137011000||137010000||-1||-1||
+Glintstone Sorcerer (Summon)||137021000||137020100||-1||-1||
+Twinsage Sorcerer (Summon)||137023000||137020100||-1||-1||
+Page Ashes (Summon)||137030000||137030000||-1||-1||
+Battlemage Hugues (Summon)||137040000||137040000||-1||-1||
+Clayman (Summon)||137502000||137502000||-1||-1||
+Cleanrot Knight Finlay (Summon)||138001000||138001000||-1||-1||
+Kindred of Rot (Summon)||138100000||138100000||-1||-1||
+Marionette Soldier (Summon)||138500000||138500000||-1||-1||
+Avionette Soldier (Summon)||138601100||138601000||-1||-1||
+Fire Monk (Summon)||139000000||139000000||-1||-1||
+Blackflame Monk (Summon)||139011000||139011000||-1||-1||
+Man-Serpent (Summon)||139501000||139500000||-1||-1||
+Azula Beastman (Summon)||139701100||139701000||-1||-1||
+Kaiden Sellsword (Summon)||140500000||140500000||-1||-1||
+Lone Wolf (Summon)||140700000||140700000||-1||-1||
+Giant Rat (Summon)||140800000||140800000||-1||-1||
+Demi-Human (Summon)||141000000||141000000||-1||-1||
+Demi-Human (B) (Summon)||141001000||141001000||-1||-1||
+Demi-Human (C) (Summon)||141002000||141002000||-1||-1||
+Demi-Human (D) (Summon)||141010000||141010000||-1||-1||
+Demi-Human (E) (Summon)||141100000||141100000||-1||-1||
+Rotten Stray (Summon)||141660000||141660000||-1||-1||
+Spirit Jellyfish (Summon)||141800000||141800000||-1||-1||
+Warhawk (Summon)||142100100||142100000||-1||-1||
+Stormhawk (Summon)||142102000||142100000||-1||-1||
+Bloodhound Knight Floh (Summon)||142900000||142900000||-1||-1||
+Wandering Noble (Summon)||143000000||143000000||-1||-1||
+Wandering Noble (B) (Summon)||143000200||143000000||-1||-1||
+Wandering Noble (C) (Summon)||143001000||143001000||-1||-1||
+Wandering Noble (D) (Summon)||143005000||143005000||-1||-1||
+Wandering Noble (E) (Summon)||143005100||143005000||-1||-1||
+Noble Sorcerer (Summon)||143002000||143002000||-1||-1||
+Vulgar Militia (Summon)||143210000||143210000||-1||-1||
+Mad Pumpkin Head (Summon)||143410000||143410000||-1||-1||
+Land Squirt (Summon)||144400000||144400000||-1||-1||
+Miranda Sprout (Summon)||144810000||144810000||-1||-1||
+Soldjars of Fortune (Summon)||144910200||144910000||-1||-1||
+Omenkiller (Summon)||148200000||148200000||-1||-1||
+Greatshield Soldier (Summon)||170001000||170001000||-1||-1||
+Archer (Summon)||170002000||170002000||-1||-1||
+Godrick Soldier (Summon)||143111300||143110000||-1||-1||
+Godrick Soldier (B) (Summon)||143112000||143112000||-1||-1||
+Raya Lucaria Soldier (Summon)||143122000||143122000||-1||-1||
+Raya Lucaria Soldier (B) (Summon)||143720500||143720000||-1||-1||
+Raya Lucaria Soldier (C) (Summon)||143722500||143720000||-1||-1||
+Leyndell Soldier (Summon)||143133000||143133000||-1||-1||
+Radahn Soldier (Summon)||143140100||143140100||-1||-1||
+Radahn Soldier (B) (Summon)||143142000||143142000||-1||-1||
+Mausoleum Soldier (Summon)||143150000||143150000||-1||-1||
+Mausoleum Soldier (B) (Summon)||143151000||143151000||-1||-1||
+Mausoleum Soldier (C) (Summon)||143152000||143152000||-1||-1||
+Haligtree Soldier (Summon)||143760500||143760000||-1||-1||
+Haligtree Soldier (B) (Summon)||143762500||143760000||-1||-1||
+Ancient Dragon Knight Kristoff (Summon)||143531000||143531000||-1||-1||
+Redmane Knight Ogha (Summon)||143542000||143542000||-1||-1||
+Lhutel the Headless (Summon)||143551000||143551000||-1||-1||
+Nepheli Loux Puppet (Summon)||100000020||100000020||23342||-1||
+Dung Eater Puppet (Summon)||100000030||100000030||23232||-1||
+Finger Maiden Therolina Puppet (Summon)||100000040||100000040||23631||-1||
+Dolores the Sleeping Arrow (Summon)||100000050||100000050||23640||-1||
+Jarwight Puppet (Summon)||100000060||100000060||23650||-1||
 
 --Human NPC
 Tanith, Proprietress (Volcano Manor)||523000038||523000000||23000||-1
